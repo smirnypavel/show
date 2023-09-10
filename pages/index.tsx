@@ -1,12 +1,18 @@
 import HomeChat from "@/components/Home/HomeChat";
-import React from "react";
+import RequestForm from "@/components/Home/RequestForm";
+import TopContainer from "@/components/Home/TopContainer";
+import styles from "@/styles/Home/Home.module.css";
 
 const Home = () => {
   return (
-    <div>
+    <div className={styles.homepage}>
       <div>Home</div>
-      <div>
+      <div className={styles.container}>
         <HomeChat />
+        <div>
+          <TopContainer />
+          <RequestForm />
+        </div>
       </div>
     </div>
   );

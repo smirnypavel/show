@@ -110,4 +110,5 @@ a {
   max-width: var(--max-width);
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }

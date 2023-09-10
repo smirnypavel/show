@@ -1,0 +1,7 @@
+.homepage {
+  width: 100%;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
+}

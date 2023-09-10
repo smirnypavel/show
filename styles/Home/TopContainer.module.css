@@ -1,0 +1,7 @@
+.container {
+  width: 500px;
+  height: 350px;
+  border: 2px solid #67676723;
+  text-align: center;
+  padding: 1rem;
+}
