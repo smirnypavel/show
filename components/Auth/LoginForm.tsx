@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
+import styles from "@/styles/components/Auth/LoginForm.module.css";
 
 // Определите тип для данных формы
 export type FormValues = {
@@ -30,7 +31,7 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <>
+    <div className={styles.container}>
       <Formik
         initialValues={{
           username: "",
@@ -44,8 +45,8 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
         }}>
         {({ isSubmitting }) => (
           <Form>
-            <div className="form-group">
-              <label htmlFor="username">Имя пользователя</label>
+            <div className={styles.formGroup}>
+              <label htmlFor="username">Имя</label>
               <Field
                 type="text"
                 name="username"
@@ -60,7 +61,7 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
               />
             </div>
 
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label htmlFor="password">Пароль</label>
               <div className="input-group">
                 <Field
@@ -96,10 +97,10 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
         )}
       </Formik>
       <div>
-        <p>Hет акаунта </p>
+        <p>Hет акаунта</p>
         <Link href={"/auth/registry"}>зарегистрируйся</Link>
       </div>
-    </>
+    </div>
   );
 };
 
