@@ -6,7 +6,7 @@ import styles from "@/styles/components/Auth/LoginForm.module.css";
 
 // Определите тип для данных формы
 export type FormValues = {
-  username: string;
+  email: string; // Заменено имя поля на "email"
   password: string;
   confirmPassword: string;
 };
@@ -17,16 +17,15 @@ type Props = {
 };
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(3, "Минимальная длина имени пользователя - 3 символа")
-    .max(50, "Максимальная длина имени пользователя - 50 символов")
+  email: Yup.string() // Заменено имя поля на "email"
+    .email("Некорректный адрес электронной почты")
     .required("Обязательное поле"),
   password: Yup.string()
     .min(8, "Минимальная длина пароля - 8 символов")
     .max(50, "Максимальная длина пароля - 50 символов")
     .required("Обязательное поле"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Пароли должны совпадать") // Уберите null здесь
+    .oneOf([Yup.ref("password")], "Пароли должны совпадать")
     .required("Обязательное поле"),
 });
 
@@ -38,7 +37,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
     <div className={styles.container}>
       <Formik
         initialValues={{
-          username: "",
+          email: "", // Заменено имя поля на "email"
           password: "",
           confirmPassword: "",
         }}
@@ -51,15 +50,16 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
         {({ isSubmitting }) => (
           <Form>
             <div className={styles.formGroup}>
-              <label htmlFor="username">Имя</label>
+              <label htmlFor="email">Почта</label>{" "}
+              {/* Заменено имя поля на "email" */}
               <Field
                 type="text"
-                name="username"
+                name="email" // Заменено имя поля на "email"
                 className="form-control"
-                placeholder="Введите имя пользователя"
+                placeholder="Введите адрес электронной почты"
               />
               <ErrorMessage
-                name="username"
+                name="email"
                 component="div"
                 className="text-danger"
               />
@@ -69,7 +69,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
               <label htmlFor="password">Пароль</label>
               <div className="input-group">
                 <Field
-                  type={showPassword ? "text" : "password"} // Изменение типа ввода в зависимости от showPassword
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   className="form-control"
                   placeholder="Введите пароль"
@@ -93,7 +93,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
             <div className="form-group">
               <label htmlFor="confirmPassword">Подтвердите пароль</label>
               <Field
-                type={showPassword ? "text" : "password"} // Изменение типа ввода в зависимости от showPassword
+                type={showPassword ? "text" : "password"}
                 name="confirmPassword"
                 className="form-control"
                 placeholder="Подтвердите пароль"
@@ -115,7 +115,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
         )}
       </Formik>
       <div>
-        <p>Есть акаунт</p>
+        <p>Есть аккаунт</p>
         <Link href={"/auth/login"}>Войти</Link>
       </div>
     </div>

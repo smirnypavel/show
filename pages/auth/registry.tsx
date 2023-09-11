@@ -1,15 +1,31 @@
 import React from "react";
+import { useAppDispatch } from "@/redux/hooks";
+import { useSelector } from "react-redux"; // Используйте useSelector из react-redux
+
 import RegistrationForm, {
   FormValues,
-} from "@/components/Auth/RegistrationForm"; // Замените на путь к вашему компоненту RegistrationForm
+} from "@/components/Auth/RegistrationForm";
+import { signIn, signUp } from "@/redux/auth/authOperations";
+import { selectIsLoggedIn } from "@/redux/auth/authSelectors";
 
 const Registry = () => {
+  const dispatch = useAppDispatch();
+  const IsLogin = useSelector(selectIsLoggedIn);
+
   // Обработчик, который будет вызван при успешной регистрации
-  const handleRegistration = (values: FormValues) => {
-    // Здесь вы можете выполнить необходимые действия при регистрации,
-    // например, отправить данные на сервер
-    // После успешной регистрации, например, перенаправьте пользователя на страницу входа
-    // Или выполните другие действия в зависимости от вашего приложения
+  const handleRegistration = async (values: FormValues) => {
+    try {
+      await dispatch(
+        signUp({ email: values.email, password: values.password })
+      );
+      if (!IsLogin) {
+        return console.log("Registration failed");
+      }
+      await dispatch(
+        signIn({ email: values.email, password: values.password })
+      );
+      // router.push("/account/settings");
+    } catch (error) {}
   };
 
   return (
