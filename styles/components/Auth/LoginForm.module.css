@@ -4,6 +4,12 @@
   height: 500px;
   border: 2px solid #67676723;
 }
+.socialContainer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 .formGroup {
   margin-top: 50px;
 }

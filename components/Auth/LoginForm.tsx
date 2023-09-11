@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
 import styles from "@/styles/components/Auth/LoginForm.module.css";
+import { FcGoogle } from "react-icons/fc";
+import { BsFacebook } from "react-icons/bs";
 
 // Определите тип для данных формы
 export type FormValues = {
@@ -32,6 +34,16 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.socialContainer}>
+        {" "}
+        <Link href={""}>
+          Войти с помощью <FcGoogle />{" "}
+        </Link>
+        <Link href={""}>
+          Войти с помощью <BsFacebook />{" "}
+        </Link>
+      </div>
+
       <Formik
         initialValues={{
           username: "",
