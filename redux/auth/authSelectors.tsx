@@ -3,7 +3,7 @@ import { IUserAuth } from "../../types/IAuth";
 export const getUser = (state: { auth: { user: IUserAuth } }) =>
   state.auth.user;
 
-export const selectIsLoggedIn = (state: { auth: { isLoggedIn: boolean } }) =>
+export const isLoggedIn = (state: { auth: { isLoggedIn: boolean } }) =>
   state.auth.isLoggedIn;
 
 export const isLoading = (state: { auth: { isLoading: boolean } }) =>
