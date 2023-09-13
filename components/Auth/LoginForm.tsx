@@ -8,7 +8,7 @@ import { BsFacebook } from "react-icons/bs";
 
 // Определите тип для данных формы
 export type FormValues = {
-  username: string;
+  email: string; // Заменили username на email
   password: string;
 };
 
@@ -18,9 +18,8 @@ type Props = {
 };
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(3, "Минимальная длина имени пользователя - 3 символа")
-    .max(50, "Максимальная длина имени пользователя - 50 символов")
+  email: Yup.string() // Заменили username на email
+    .email("Неправильный формат почты")
     .required("Обязательное поле"),
   password: Yup.string()
     .min(8, "Минимальная длина пароля - 8 символов")
@@ -35,7 +34,6 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
   return (
     <div className={styles.container}>
       <div className={styles.socialContainer}>
-        {" "}
         <Link href={""}>
           Войти с помощью <FcGoogle />{" "}
         </Link>
@@ -46,7 +44,7 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
 
       <Formik
         initialValues={{
-          username: "",
+          email: "",
           password: "",
         }}
         validationSchema={validationSchema}
@@ -58,16 +56,16 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
         {({ isSubmitting }) => (
           <Form>
             <div className={styles.formGroup}>
-              <label htmlFor="username">Имя</label>
+              <label htmlFor="email">Почта</label>
               <Field
-                type="text"
-                name="username"
+                type="email" // Заменили text на email
+                name="email" // Заменили username на email
                 className="form-control"
-                placeholder="Введите имя пользователя"
-                autocomplete="current-username"
+                placeholder="Введите почту"
+                autoComplete="current-email" // Заменили current-username на current-email
               />
               <ErrorMessage
-                name="username"
+                name="email"
                 component="div"
                 className="text-danger"
               />
@@ -77,11 +75,11 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
               <label htmlFor="password">Пароль</label>
               <div className="input-group">
                 <Field
-                  type={showPassword ? "text" : "password"} // Изменение типа ввода в зависимости от showPassword
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   className="form-control"
                   placeholder="Введите пароль"
-                  autocomplete="current-password"
+                  autoComplete="current-password"
                 />
                 <div className="input-group-append">
                   <button
@@ -109,8 +107,8 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
         )}
       </Formik>
       <div>
-        <p>Hет акаунта</p>
-        <Link href={"/auth/registry"}>зарегистрируйся</Link>
+        <p>Нет аккаунта?</p>
+        <Link href={"/auth/registry"}>Зарегистрируйтесь</Link>
       </div>
     </div>
   );
