@@ -6,11 +6,11 @@ import RegistrationForm, {
   FormValues,
 } from "@/components/Auth/RegistrationForm";
 import { signIn, signUp } from "@/redux/auth/authOperations";
-import { selectIsLoggedIn } from "@/redux/auth/authSelectors";
+import { isLoggedIn } from "@/redux/auth/authSelectors";
 
 const Registry = () => {
   const dispatch = useAppDispatch();
-  const IsLogin = useSelector(selectIsLoggedIn);
+  const IsLogin = useSelector(isLoggedIn);
 
   // Обработчик, который будет вызван при успешной регистрации
   const handleRegistration = async (values: FormValues) => {
