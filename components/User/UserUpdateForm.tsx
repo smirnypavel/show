@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import CitySearch from "../helpers/searchCity";
+import CloudinaryImageUpload from "./UploadImage";
 
 export type UserUpdateFormValues = {
   firstName: string;
@@ -78,171 +79,174 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
     onSubmit(updatedValues);
   };
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}>
-      {({ isSubmitting }) => (
-        <Form>
-          <div className="form-group">
-            <label htmlFor="firstName">Имя</label>
-            <Field
-              type="text"
-              name="firstName"
-              className="form-control"
-              placeholder="Введите имя"
-            />
-            <ErrorMessage
-              name="firstName"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="lastName">Фамилия</label>
-            <Field
-              type="text"
-              name="lastName"
-              className="form-control"
-              placeholder="Введите фамилию"
-            />
-            <ErrorMessage
-              name="lastName"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="title">Заголовок</label>
-            <Field
-              type="text"
-              name="title"
-              className="form-control"
-              placeholder="Введите заголовок"
-            />
-            <ErrorMessage
-              name="title"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="description">Описание</label>
-            <Field
-              as="textarea"
-              name="description"
-              className="form-control"
-              placeholder="Введите описание"
-            />
-            <ErrorMessage
-              name="description"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="phone">Телефон</label>
-            <Field
-              type="text"
-              name="phone"
-              className="form-control"
-              placeholder="Введите телефон"
-            />
-            <ErrorMessage
-              name="phone"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="telegram">Telegram</label>
-            <Field
-              type="text"
-              name="telegram"
-              className="form-control"
-              placeholder="Введите Telegram или телефон"
-            />
-            <ErrorMessage
-              name="telegram"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="viber">Viber</label>
-            <Field
-              type="text"
-              name="viber"
-              className="form-control"
-              placeholder="Введите Viber"
-            />
-            <ErrorMessage
-              name="viber"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="whatsapp">WhatsApp</label>
-            <Field
-              type="text"
-              name="whatsapp"
-              className="form-control"
-              placeholder="Введите WhatsApp"
-            />
-            <ErrorMessage
-              name="whatsapp"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="location">Локация</label>
-            <CitySearch onSelectCity={updateLocationField} />
-            <ErrorMessage
-              name="location"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="genre">Жанр</label>
-            <Field
-              type="text"
-              name="genre"
-              className="form-control"
-              placeholder="Введите жанр"
-            />
-            <ErrorMessage
-              name="genre"
-              component="div"
-              className="text-danger"
-            />
-          </div>
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}>
+        {({ isSubmitting }) => (
+          <Form>
+            <div className="form-group">
+              <label htmlFor="firstName">Имя</label>
+              <Field
+                type="text"
+                name="firstName"
+                className="form-control"
+                placeholder="Введите имя"
+              />
+              <ErrorMessage
+                name="firstName"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="lastName">Фамилия</label>
+              <Field
+                type="text"
+                name="lastName"
+                className="form-control"
+                placeholder="Введите фамилию"
+              />
+              <ErrorMessage
+                name="lastName"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="title">Заголовок</label>
+              <Field
+                type="text"
+                name="title"
+                className="form-control"
+                placeholder="Введите заголовок"
+              />
+              <ErrorMessage
+                name="title"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Описание</label>
+              <Field
+                as="textarea"
+                name="description"
+                className="form-control"
+                placeholder="Введите описание"
+              />
+              <ErrorMessage
+                name="description"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="phone">Телефон</label>
+              <Field
+                type="text"
+                name="phone"
+                className="form-control"
+                placeholder="Введите телефон"
+              />
+              <ErrorMessage
+                name="phone"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="telegram">Telegram</label>
+              <Field
+                type="text"
+                name="telegram"
+                className="form-control"
+                placeholder="Введите Telegram или телефон"
+              />
+              <ErrorMessage
+                name="telegram"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="viber">Viber</label>
+              <Field
+                type="text"
+                name="viber"
+                className="form-control"
+                placeholder="Введите Viber"
+              />
+              <ErrorMessage
+                name="viber"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="whatsapp">WhatsApp</label>
+              <Field
+                type="text"
+                name="whatsapp"
+                className="form-control"
+                placeholder="Введите WhatsApp"
+              />
+              <ErrorMessage
+                name="whatsapp"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="location">Локация</label>
+              <CitySearch onSelectCity={updateLocationField} />
+              <ErrorMessage
+                name="location"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="genre">Жанр</label>
+              <Field
+                type="text"
+                name="genre"
+                className="form-control"
+                placeholder="Введите жанр"
+              />
+              <ErrorMessage
+                name="genre"
+                component="div"
+                className="text-danger"
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="price">Цена</label>
-            <Field
-              type="text"
-              name="price"
-              className="form-control"
-              placeholder="Введите цену"
-            />
-            <ErrorMessage
-              name="price"
-              component="div"
-              className="text-danger"
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={isSubmitting}>
-            Сохранить
-          </button>
-        </Form>
-      )}
-    </Formik>
+            <div className="form-group">
+              <label htmlFor="price">Цена</label>
+              <Field
+                type="text"
+                name="price"
+                className="form-control"
+                placeholder="Введите цену"
+              />
+              <ErrorMessage
+                name="price"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={isSubmitting}>
+              Сохранить
+            </button>
+          </Form>
+        )}
+      </Formik>
+      <CloudinaryImageUpload />
+    </>
   );
 };
 
