@@ -3,10 +3,16 @@ import UserUpdateForm, {
   UserUpdateFormValues,
 } from "@/components/User/UserUpdateForm";
 import CloudinaryImageUpload from "@/components/User/UploadImage";
-import YouTubeEmbed from "@/components/User/YouTubeIFrame";
 import style from "../../styles/Profile/ProfileUpdate.module.css";
+import { useAppDispatch } from "@/redux/hooks";
+import { updateUser } from "@/redux/auth/authOperations";
+import { useSelector } from "react-redux";
+import { getUser } from "@/redux/auth/authSelectors";
 
 const UpdateProfile: React.FC = () => {
+  const user = useSelector(getUser);
+  console.log(user._id);
+  const dispatch = useAppDispatch();
   const initialValues: UserUpdateFormValues = {
     firstName: "",
     lastName: "",
@@ -16,13 +22,15 @@ const UpdateProfile: React.FC = () => {
     telegram: "",
     viber: "",
     whatsapp: "",
-    location: "",
-    genre: "",
     price: "",
+    video: [],
+    category: "",
+    genre: "",
   };
 
   const handleSubmit = (values: UserUpdateFormValues) => {
     // Обработка отправки формы
+    dispatch(updateUser({ credential: { ...values } }));
     console.log(values); // Замените эту строку на свою логику
   };
 
@@ -36,7 +44,6 @@ const UpdateProfile: React.FC = () => {
         />
         <div className={style.container}>
           <CloudinaryImageUpload />
-          <YouTubeEmbed />
         </div>
       </div>
     </div>

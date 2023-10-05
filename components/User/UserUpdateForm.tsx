@@ -1,8 +1,9 @@
 // components/UserUpdateForm.tsx
 import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 import CitySearch from "../helpers/searchCity";
+import { ImYoutube2 } from "react-icons/im";
 import style from "../../styles/components/Profile/UserUpdateForm.module.css";
 
 export type UserUpdateFormValues = {
@@ -14,9 +15,10 @@ export type UserUpdateFormValues = {
   telegram: string;
   viber: string;
   whatsapp: string;
-  location: string;
-  genre: string;
   price: string;
+  video: string[];
+  category: string;
+  genre: string;
 };
 
 type Props = {
@@ -61,6 +63,13 @@ const validationSchema = Yup.object().shape({
   // location: Yup.string().required("Обязательное поле"),
   genre: Yup.string().required("Обязательное поле"),
   price: Yup.string(),
+  category: Yup.string(),
+  video: Yup.array().of(
+    Yup.string().matches(
+      /^(https?\:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/.+$/,
+      "Неправильный формат YouTube видео"
+    )
+  ),
 });
 
 const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
@@ -125,6 +134,20 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
                 />
                 <ErrorMessage
                   name="category"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+              <div className={style.formGroup}>
+                <label htmlFor="category">genre</label>
+                <Field
+                  type="text"
+                  name="genre"
+                  className="form-control"
+                  placeholder="Виберіть  категорію"
+                />
+                <ErrorMessage
+                  name="genre"
                   component="div"
                   className="text-danger"
                 />
@@ -239,6 +262,41 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
                   className="text-danger"
                 />
               </div>
+              <FieldArray name="video">
+                {({ form, push, remove }) => (
+                  <div>
+                    {form.values.video &&
+                      form.values.video.length > 0 &&
+                      form.values.video.map((video: string, index: number) => (
+                        <div key={index}>
+                          <label htmlFor={`video[${index}]`}>
+                            <ImYoutube2 className={style.icon} />
+                          </label>
+                          <Field
+                            name={`video[${index}]`}
+                            className="form-control"
+                            placeholder="Вставьте линк на видео с YouTube"
+                          />
+                          <ErrorMessage
+                            name={`video[${index}]`}
+                            component="div"
+                            className="text-danger"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => remove(index)}>
+                            Удалить видео
+                          </button>
+                        </div>
+                      ))}
+                    <button
+                      type="button"
+                      onClick={() => push("")}>
+                      Добавить видео
+                    </button>
+                  </div>
+                )}
+              </FieldArray>
             </div>
             <button
               type="submit"

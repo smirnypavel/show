@@ -3,7 +3,6 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 
 axios.defaults.baseURL = "https://events-95cc.onrender.com/";
-// axios.defaults.baseURL = "https://swap-server.cyclic.clouds/";
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

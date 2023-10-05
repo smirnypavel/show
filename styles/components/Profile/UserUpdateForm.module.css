@@ -4,5 +4,26 @@
   justify-content: space-between;
 }
 .formGroup {
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
+}
+.icon {
+  font-size: 40px;
+}
+.videoGroup {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.videoGroup input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.videoGroup button {
+  flex: 0 0 auto;
+}
+.formСontrol {
+  width: 50px;
 }

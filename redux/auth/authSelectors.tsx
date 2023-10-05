@@ -12,5 +12,5 @@ export const isLoading = (state: { auth: { isLoading: boolean } }) =>
 export const selectToken = (state: { auth: { user: { token: string } } }) =>
   state.auth.user.token;
 
-export const getRole = (state: { auth: { user: IUserAuth } }) =>
-  state.auth.user.role;
+// export const getRole = (state: { auth: { user: IUserAuth } }) =>
+//   state.auth.user.role;

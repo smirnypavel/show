@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Image from "next/image";
 import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import Link from "next/link";
+import YouTubeEmbed from "@/components/User/YouTubeIFrame";
 
 const Profile = () => {
   const user = useSelector(getUser);
@@ -18,6 +19,7 @@ const Profile = () => {
           src={UserNoPhoto}
           alt={"user photo"}
           width={100}></Image>
+        <YouTubeEmbed />
       </div>
       <Link href={"/profile/update"}>Настройки профиля</Link>
     </div>
