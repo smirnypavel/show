@@ -1,6 +1,5 @@
-import CategoryList from "@/components/User/categoryList";
 import React from "react";
-
+import CategoryList from "../components/User/CategoryList";
 const About = () => {
   return (
     <div>
