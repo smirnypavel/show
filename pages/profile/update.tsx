@@ -13,6 +13,8 @@ const UpdateProfile: React.FC = () => {
   const user = useSelector(getUser);
   console.log(user._id);
   const dispatch = useAppDispatch();
+
+  // Используйте значения из хранилища как начальные значения формы
   const initialValues: UserUpdateFormValues = {
     firstName: "",
     lastName: "",
@@ -24,14 +26,20 @@ const UpdateProfile: React.FC = () => {
     whatsapp: "",
     price: "",
     video: [],
-    category: "",
-    genre: "",
   };
 
   const handleSubmit = (values: UserUpdateFormValues) => {
-    // Обработка отправки формы
-    dispatch(updateUser({ credential: { ...values } }));
-    console.log(values); // Замените эту строку на свою логику
+    // Фильтруем только заполненные поля
+    const filteredValues = Object.keys(values).reduce((acc, key) => {
+      if (values[key]) {
+        acc[key] = values[key];
+      }
+      return acc;
+    }, {} as UserUpdateFormValues);
+
+    // Обработка отправки формы с отфильтрованными значениями
+    dispatch(updateUser({ ...filteredValues }));
+    console.log(filteredValues);
   };
 
   return (

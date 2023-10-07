@@ -33,7 +33,7 @@ axios.interceptors.response.use(
       }
 
       try {
-        const { data } = await axios.patch("/auth/refresh");
+        const { data } = await axios.patch("/users/refresh");
         setAuthHeader(data.token);
         localStorage.setItem("refreshToken", data.token);
         originalRequest.headers["Authorization"] = `Bearer ${data.token}`;

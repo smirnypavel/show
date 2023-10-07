@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import CitySearch from "../helpers/searchCity";
 import { ImYoutube2 } from "react-icons/im";
 import style from "../../styles/components/Profile/UserUpdateForm.module.css";
+import UploadVideo from "./UploadVideo";
 
 export type UserUpdateFormValues = {
   firstName: string;
@@ -17,8 +18,9 @@ export type UserUpdateFormValues = {
   whatsapp: string;
   price: string;
   video: string[];
-  category: string;
-  genre: string;
+  // category: string;
+  // genre: string;
+  [key: string]: string | string[];
 };
 
 type Props = {
@@ -30,19 +32,22 @@ const validationSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(3, "Минимальная длина - 3 символа")
     .max(50, "Максимальная длина - 50 символов")
-    .required("Обязательное поле"),
+    .nullable(),
   lastName: Yup.string()
     .min(3, "Минимальная длина - 3 символа")
     .max(50, "Максимальная длина - 50 символов")
-    .required("Обязательное поле"),
+    .nullable(),
   title: Yup.string()
     .min(3, "Минимальная длина - 3 символа")
     .max(50, "Максимальная длина - 50 символов")
-    .required("Обязательное поле"),
+    .nullable(),
   description: Yup.string()
     .min(20, "Минимальная длина - 20 символов")
-    .max(500, "Максимальная длина - 500 символов"),
-  phone: Yup.string().matches(/^\+?\d{1,15}$/, "Неправильный формат телефона"),
+    .max(400, "Максимальная длина - 400 символов")
+    .nullable(),
+  phone: Yup.string()
+    .matches(/^\+?\d{1,15}$/, "Неправильный формат телефона")
+    .nullable(),
   telegram: Yup.string()
     .matches(/^\@[a-zA-Z\d_]{4,}$/i, "Неправильный формат Telegram")
     .test("telegramOrPhone", "Неправильный формат Telegram", function (value) {
@@ -53,23 +58,15 @@ const validationSchema = Yup.object().shape({
         return true; // Введен номер телефона
       }
       return this.parent.telegram !== ""; // Если Telegram не пустой, то введен или номер или Telegram
-    }),
-
-  viber: Yup.string().matches(/^\+?\d{1,15}$/, "Неправильный формат Viber"),
-  whatsapp: Yup.string().matches(
-    /^\+?\d{1,15}$/,
-    "Неправильный формат WhatsApp"
-  ),
-  // location: Yup.string().required("Обязательное поле"),
-  genre: Yup.string().required("Обязательное поле"),
-  price: Yup.string(),
-  category: Yup.string(),
-  video: Yup.array().of(
-    Yup.string().matches(
-      /^(https?\:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/.+$/,
-      "Неправильный формат YouTube видео"
-    )
-  ),
+    })
+    .nullable(),
+  viber: Yup.string()
+    .matches(/^\+?\d{1,15}$/, "Неправильный формат Viber")
+    .nullable(),
+  whatsapp: Yup.string()
+    .matches(/^\+?\d{1,15}$/, "Неправильный формат WhatsApp")
+    .nullable(),
+  price: Yup.string().nullable(),
 });
 
 const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
@@ -80,13 +77,15 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
     setSelectedCity(selectedCity);
   };
 
-  // Функция обработки отправки формы
   const handleSubmit = (values: UserUpdateFormValues) => {
-    // Обновляем значения с выбранной локацией
-    const updatedValues = { ...values, location: selectedCity };
+    const updatedValues = {
+      ...values,
+      location: selectedCity,
+    };
     // Вызываем onSubmit с обновленными значениями
     onSubmit(updatedValues);
   };
+
   return (
     <div>
       <Formik
@@ -124,34 +123,7 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
                   className="text-danger"
                 />
               </div>
-              <div className={style.formGroup}>
-                <label htmlFor="category">Категорія</label>
-                <Field
-                  type="text"
-                  name="category"
-                  className="form-control"
-                  placeholder="Виберіть  категорію"
-                />
-                <ErrorMessage
-                  name="category"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
-              <div className={style.formGroup}>
-                <label htmlFor="category">genre</label>
-                <Field
-                  type="text"
-                  name="genre"
-                  className="form-control"
-                  placeholder="Виберіть  категорію"
-                />
-                <ErrorMessage
-                  name="genre"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
+
               <div className={style.formGroup}>
                 <label htmlFor="title">Заголовок</label>
                 <Field
@@ -262,41 +234,6 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
                   className="text-danger"
                 />
               </div>
-              <FieldArray name="video">
-                {({ form, push, remove }) => (
-                  <div>
-                    {form.values.video &&
-                      form.values.video.length > 0 &&
-                      form.values.video.map((video: string, index: number) => (
-                        <div key={index}>
-                          <label htmlFor={`video[${index}]`}>
-                            <ImYoutube2 className={style.icon} />
-                          </label>
-                          <Field
-                            name={`video[${index}]`}
-                            className="form-control"
-                            placeholder="Вставьте линк на видео с YouTube"
-                          />
-                          <ErrorMessage
-                            name={`video[${index}]`}
-                            component="div"
-                            className="text-danger"
-                          />
-                          <button
-                            type="button"
-                            onClick={() => remove(index)}>
-                            Удалить видео
-                          </button>
-                        </div>
-                      ))}
-                    <button
-                      type="button"
-                      onClick={() => push("")}>
-                      Добавить видео
-                    </button>
-                  </div>
-                )}
-              </FieldArray>
             </div>
             <button
               type="submit"
@@ -307,6 +244,7 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
           </Form>
         )}
       </Formik>
+      <UploadVideo />
     </div>
   );
 };
