@@ -19,7 +19,7 @@ const Profile = () => {
           src={UserNoPhoto}
           alt={"user photo"}
           width={100}></Image>
-        <YouTubeEmbed />
+        {/* <YouTubeEmbed url={""} /> */}
       </div>
       <Link href={"/profile/update"}>Настройки профиля</Link>
     </div>
