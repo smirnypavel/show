@@ -1,21 +1,24 @@
-import React, { useState } from "react";
-import { getUser } from "@/redux/auth/authSelectors";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-const cloudName = "show-image";
-const uploadPreset = "aar6vwv6";
+export interface CloudinaryImage {
+  url: string;
+  publicId: string;
+}
 
-const CloudinaryImageUpload: React.FC = () => {
-  const [images, setImages] = useState<
-    Array<{ url: string; publicId: string }>
-  >([]);
-  const [previews, setPreviews] = useState<Array<string>>([]);
+interface CloudinaryImageUploadProps {
+  onImagesUpload: (images: CloudinaryImage[]) => void;
+}
+
+const CloudinaryImageUpload: React.FC<CloudinaryImageUploadProps> = ({
+  onImagesUpload,
+}) => {
+  const [previews, setPreviews] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const user = useSelector(getUser);
-  const [fileObjects, setFileObjects] = useState<Array<File>>([]);
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const files = event.target.files;
     if (!files) return;
 
@@ -24,65 +27,48 @@ const CloudinaryImageUpload: React.FC = () => {
       return;
     }
 
-    const newPreviews: Array<string> = [];
-    const newFileObjects: Array<File> = [];
+    setLoading(true);
+
+    const newPreviews: string[] = [...previews];
+    const promises: Promise<string>[] = [];
 
     for (let i = 0; i < files.length; i++) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        newPreviews.push(reader.result as string);
-        setPreviews([...newPreviews]);
-      };
-      reader.readAsDataURL(files[i]);
+      const file = files[i];
+      const promise = readFileAsync(file);
+      promises.push(promise);
 
-      newFileObjects.push(files[i]);
+      promise.then((preview) => {
+        newPreviews.push(preview);
+        setPreviews([...newPreviews]); // Добавляем новый предварительный просмотр к текущему состоянию
+      });
     }
 
-    setFileObjects(newFileObjects);
+    Promise.all(promises).then(() => setLoading(false));
+  };
+
+  const readFileAsync = (file: File): Promise<string> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    });
   };
 
   const handleRemovePreview = (index: number) => {
     const newPreviews = [...previews];
     newPreviews.splice(index, 1);
     setPreviews(newPreviews);
-
-    const newFileObjects = [...fileObjects];
-    newFileObjects.splice(index, 1);
-    setFileObjects(newFileObjects);
   };
 
-  const handleUploadConfirmed = async () => {
-    const formData = new FormData();
-    fileObjects.forEach((file) => {
-      formData.append("file", file);
-      formData.append("upload_preset", uploadPreset);
-      formData.append("folder", `user_${user._id}`);
-    });
-
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const data = await response.json();
-      const uploadedImages = fileObjects.map((file, index) => ({
-        url: data.secure_url,
-        publicId: data.public_id,
-      }));
-
-      setImages(uploadedImages);
-      setPreviews([]);
-      setFileObjects([]);
-    } catch (error) {
-      console.error("Error uploading images:", error);
-    } finally {
-      setLoading(false);
-    }
+  const handleUploadConfirmed = () => {
+    const images: CloudinaryImage[] = previews.map((url, index) => ({
+      url,
+      publicId: `public_id_${index}`,
+    }));
+    onImagesUpload(images);
+    setPreviews([]);
   };
 
   return (
@@ -92,7 +78,7 @@ const CloudinaryImageUpload: React.FC = () => {
         accept="image/*"
         onChange={handleImageUpload}
         multiple
-        disabled={previews.length >= 5}
+        disabled={previews.length >= 5 || loading}
       />
       {loading && <p>Загрузка...</p>}
       <div>
@@ -108,17 +94,11 @@ const CloudinaryImageUpload: React.FC = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleUploadConfirmed}>Ок</button>
-      {images.map((image, index) => (
-        <div key={index}>
-          <Image
-            src={image.url}
-            alt={`Фото ${index + 1}`}
-            width={100}
-            height={100}
-          />
-        </div>
-      ))}
+      <button
+        onClick={handleUploadConfirmed}
+        disabled={previews.length === 0}>
+        Ок
+      </button>
     </div>
   );
 };

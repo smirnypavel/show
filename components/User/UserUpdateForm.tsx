@@ -1,11 +1,10 @@
 // components/UserUpdateForm.tsx
 import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import CitySearch from "../helpers/searchCity";
-import { ImYoutube2 } from "react-icons/im";
 import style from "../../styles/components/Profile/UserUpdateForm.module.css";
-import UploadVideo from "./UploadVideo";
+import { CloudinaryImage } from "./UploadImage";
 
 export type UserUpdateFormValues = {
   firstName: string;
@@ -17,10 +16,8 @@ export type UserUpdateFormValues = {
   viber: string;
   whatsapp: string;
   price: string;
-  video: string[];
-  // category: string;
-  // genre: string;
-  [key: string]: string | string[];
+  photo: string | CloudinaryImage[];
+  [key: string]: string | string[] | CloudinaryImage[];
 };
 
 type Props = {
@@ -238,13 +235,13 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
             <button
               type="submit"
               className="btn btn-primary"
-              disabled={isSubmitting}>
+              // disabled={isSubmitting}
+            >
               Зберегти
             </button>
           </Form>
         )}
       </Formik>
-      <UploadVideo />
     </div>
   );
 };

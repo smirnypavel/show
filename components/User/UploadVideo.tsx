@@ -1,16 +1,18 @@
 import React from "react";
 import { useFormik } from "formik";
 import YouTubeEmbed from "./YouTubeIFrame";
+interface UploadVideoProps {
+  onVideoUrlsUpdate: (videoUrls: string[]) => void;
+}
 
-const UploadVideo = () => {
+const UploadVideo: React.FC<UploadVideoProps> = ({ onVideoUrlsUpdate }) => {
   const formik = useFormik({
     initialValues: {
-      videoUrl: "", // начальное значение для поля ввода ссылки на видео
-      videoUrls: [], // начальное значение для списка ссылок на видео
+      videoUrl: "",
+      videoUrls: [],
     },
     onSubmit: (values) => {
-      // здесь можно обработать отправку данных (например, отправить их на сервер)
-      console.log("Ссылки на видео:", values.videoUrls);
+      onVideoUrlsUpdate(values.videoUrls);
     },
   });
 

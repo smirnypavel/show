@@ -7,10 +7,13 @@ export interface Ilink {
 const YouTubeEmbed = ({ url }: Ilink) => {
   // Функция для извлечения videoId из ссылки в формате "https://www.youtube.com/watch?v=XaTwnKLQi4A"
   const getVideoId = (url: string): string | undefined => {
-    const match = url.match(
-      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-    );
-    return match?.[1];
+    if (url) {
+      const match = url.match(
+        /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+      );
+      return match?.[1];
+    }
+    return undefined;
   };
 
   // Получаем videoId из введенной пользователем ссылки
