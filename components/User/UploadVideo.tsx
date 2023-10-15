@@ -18,10 +18,10 @@ const UploadVideo: React.FC<UploadVideoProps> = ({ onVideoUrlsUpdate }) => {
 
   return (
     <div>
-      <h1>Загрузка видео</h1>
+      <h1>Завантаження відео</h1>
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <label htmlFor="videoUrl">Ссылка на видео:</label>
+          <label htmlFor="videoUrl">Посилання на відео:</label>
           <input
             id="videoUrl"
             name="videoUrl"
@@ -38,11 +38,11 @@ const UploadVideo: React.FC<UploadVideoProps> = ({ onVideoUrlsUpdate }) => {
               ]);
               formik.setFieldValue("videoUrl", ""); // очищаем поле ввода после добавления ссылки
             }}>
-            Добавить
+            Додати
           </button>
         </div>
         <div>
-          <h2>Добавленные ссылки:</h2>
+          <h2>Додані посилання:</h2>
           <ul>
             {formik.values.videoUrls.map((url, index) => (
               <li key={index}>
@@ -52,7 +52,7 @@ const UploadVideo: React.FC<UploadVideoProps> = ({ onVideoUrlsUpdate }) => {
           </ul>
           <p>{formik.values.videoUrls}</p>
         </div>
-        <button type="submit">Отправить</button>
+        <button type="submit">Відправити</button>
       </form>
     </div>
   );

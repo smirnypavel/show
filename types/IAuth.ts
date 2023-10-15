@@ -21,9 +21,9 @@ export interface IUserAuth {
   token: string;
   verify: boolean;
   ban: boolean;
-  photo: Photo[];
+  photo: IPhoto[];
   video: string[];
-  category: Category[];
+  category: ICategory[];
   genre: any[];
   createdAt: string;
   updatedAt: string;
@@ -35,17 +35,17 @@ export interface IUserAuth {
   price: string;
 }
 
-export interface Photo {
+export interface IPhoto {
   id: string;
   url: string;
 }
-export interface Category {
-  id: string;
+export interface ICategory {
+  _id: string;
   name: string;
-  subcategories: Subcategory[];
+  subcategories: ISubcategory[];
 }
 
-export interface Subcategory {
+export interface ISubcategory {
   id: string;
   name: string;
 }

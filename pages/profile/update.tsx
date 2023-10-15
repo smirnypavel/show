@@ -13,6 +13,7 @@ import { updateUser } from "@/redux/auth/authOperations";
 import { useSelector } from "react-redux";
 import { getUser } from "@/redux/auth/authSelectors";
 import UploadVideo from "@/components/User/UploadVideo";
+import CategorySelected from "@/components/Category/CategorySelected";
 
 const UpdateProfile: React.FC = () => {
   const [videoUrls, setVideoUrls] = useState<string[]>([]);
@@ -121,6 +122,7 @@ const UpdateProfile: React.FC = () => {
         <div className={style.container}>
           <CloudinaryImageUpload onImagesUpload={handleImagesSelect} />
           <UploadVideo onVideoUrlsUpdate={(urls) => setVideoUrls(urls)} />
+          <CategorySelected />
         </div>
       </div>
     </div>

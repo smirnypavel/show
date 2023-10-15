@@ -1,11 +1,11 @@
 import React from "react";
-import CategoryList from "../components/User/CategoryList";
+import AddCategory from "../components/Category/AddCategory";
 const About = () => {
   return (
     <div>
       About
       <div>
-        <CategoryList />
+        <AddCategory />
       </div>
     </div>
   );

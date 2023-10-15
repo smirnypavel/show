@@ -27,7 +27,7 @@ const initialState: IAuthState = {
     ban: false,
     photo: [{ id: "", url: "" }],
     video: [""],
-    category: [{ id: "", name: "", subcategories: [{ id: "", name: "" }] }],
+    category: [{ _id: "", name: "", subcategories: [{ id: "", name: "" }] }],
     genre: [],
     createdAt: "",
     updatedAt: "",

@@ -80,7 +80,7 @@ const CloudinaryImageUpload: React.FC<CloudinaryImageUploadProps> = ({
         multiple
         disabled={previews.length >= 5 || loading}
       />
-      {loading && <p>Загрузка...</p>}
+      {loading && <p>Завантаження...</p>}
       <div>
         {previews.map((preview, index) => (
           <div key={index}>
@@ -90,7 +90,7 @@ const CloudinaryImageUpload: React.FC<CloudinaryImageUploadProps> = ({
               width={100}
               height={100}
             />
-            <button onClick={() => handleRemovePreview(index)}>Удалить</button>
+            <button onClick={() => handleRemovePreview(index)}>Видалити</button>
           </div>
         ))}
       </div>
