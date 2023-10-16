@@ -28,8 +28,8 @@ const YouTubeEmbed = ({ url }: Ilink) => {
     <div className="video-responsive">
       {videoId && (
         <iframe
-          width="500"
-          height="200"
+          width="200"
+          height="100"
           src={embeddedUrl}
           title="YouTube video player"
           frameBorder="0"

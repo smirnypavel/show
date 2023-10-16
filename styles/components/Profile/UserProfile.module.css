@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+}
+.profileContainer {
+  display: flex;
+}
+.photoListContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+.videoListContainer {
+  display: flex;
+  gap: 10px;
+}

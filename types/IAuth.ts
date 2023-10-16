@@ -36,7 +36,7 @@ export interface IUserAuth {
 }
 
 export interface IPhoto {
-  id: string;
+  publicId: string;
   url: string;
 }
 export interface ICategory {
