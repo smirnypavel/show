@@ -25,7 +25,7 @@ const initialState: IAuthState = {
     trial: false,
     verify: false,
     ban: false,
-    photo: [{ id: "", url: "" }],
+    photo: [{ publicId: "", url: "" }],
     video: [""],
     category: [{ _id: "", name: "", subcategories: [{ id: "", name: "" }] }],
     genre: [],
