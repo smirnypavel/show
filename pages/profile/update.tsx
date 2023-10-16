@@ -20,8 +20,6 @@ const UpdateProfile: React.FC = () => {
 
   const [selectedImages, setSelectedImages] = useState<CloudinaryImage[]>([]);
 
-  const [uploadedImages, setUploadedImages] = useState<CloudinaryImage[]>([]);
-
   const handleImagesSelect = (images: CloudinaryImage[]) => {
     setSelectedImages(images);
   };
@@ -80,7 +78,6 @@ const UpdateProfile: React.FC = () => {
     viber: "",
     whatsapp: "",
     price: "",
-    photo: [],
   };
 
   const handleSubmit = async (values: UserUpdateFormValues) => {
@@ -108,7 +105,10 @@ const UpdateProfile: React.FC = () => {
       return;
     }
     // Обработка отправки формы с отфильтрованными значениями
-    dispatch(updateUser({ ...filteredValues }));
+    dispatch(updateUser({ ...filteredValues })).then(() => {
+      // После успешной отправки запроса очищаем массив selectedImages
+      setSelectedImages([]);
+    });
   };
 
   return (

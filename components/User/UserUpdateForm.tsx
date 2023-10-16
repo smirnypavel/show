@@ -16,7 +16,7 @@ export type UserUpdateFormValues = {
   viber: string;
   whatsapp: string;
   price: string;
-  photo: string | CloudinaryImage[];
+  // photo: string | CloudinaryImage[];
   [key: string]: string | string[] | CloudinaryImage[];
 };
 
