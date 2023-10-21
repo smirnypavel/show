@@ -68,7 +68,7 @@ const CitySearch: React.FC<CitySearchProps> = ({ onSelectCity }) => {
     <div>
       <input
         type="text"
-        placeholder="Введите город"
+        placeholder="Введіть назву міста"
         value={searchQuery}
         onChange={handleInputChange}
       />

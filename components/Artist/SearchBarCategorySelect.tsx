@@ -53,9 +53,9 @@ const SearchBarCategorySelect: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <p>Выберите категорию:</p>
+      <p>Оберіть категорію:</p>
       <select onChange={(e) => handleCategoryChange(e.target.value)}>
-        <option value="">Выберите категорию</option>
+        <option value="">Оберіть категорію</option>
         {categories.map((category) => (
           <option
             key={category._id}
@@ -67,9 +67,9 @@ const SearchBarCategorySelect: React.FC = () => {
 
       {selectedCategory && selectedCategory.subcategories && (
         <div className={styles.container}>
-          <p>Выберите подкатегорию:</p>
+          <p>Оберіть підкатегорії:</p>
           <select onChange={(e) => handleSubcategoryChange(e.target.value)}>
-            <option value="">Выберите подкатегорию</option>
+            <option value="">Оберіть підкатегорії</option>
             {selectedCategory.subcategories.map((subCategory) => (
               <option
                 key={subCategory.id}

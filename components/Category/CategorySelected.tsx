@@ -94,7 +94,7 @@ const CategorySelector: React.FC = () => {
 
       {selectedCategory && subcategoriesVisible && (
         <div>
-          <h3>Виберіть підкатегорії:</h3>
+          <h3>Оберіть підкатегорії:</h3>
           {subcategories.map((subCategory) => (
             <div key={subCategory.id}>
               <input

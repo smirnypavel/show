@@ -27,23 +27,23 @@ type Props = {
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string()
-    .min(3, "Минимальная длина - 3 символа")
-    .max(50, "Максимальная длина - 50 символов")
+    .min(3, "Мінімальна довжина – 3 символів")
+    .max(50, "Максимальна довжина – 50 символів")
     .nullable(),
   lastName: Yup.string()
-    .min(3, "Минимальная длина - 3 символа")
-    .max(50, "Максимальная длина - 50 символов")
+    .min(3, "ММінімальна довжина – 3 символів")
+    .max(50, "Максимальна довжина – 50 символів")
     .nullable(),
   title: Yup.string()
-    .min(3, "Минимальная длина - 3 символа")
-    .max(50, "Максимальная длина - 50 символов")
+    .min(3, "Мінімальна довжина – 10 символів")
+    .max(50, "Максимальна довжина – 50 символів")
     .nullable(),
   description: Yup.string()
-    .min(20, "Минимальная длина - 20 символов")
-    .max(400, "Максимальная длина - 400 символов")
+    .min(20, "Мінімальна довжина – 20 символів")
+    .max(400, "Максимальна довжина – 400 символів")
     .nullable(),
   phone: Yup.string()
-    .matches(/^\+?\d{1,15}$/, "Неправильный формат телефона")
+    .matches(/^\+?\d{1,15}$/, "Невірний формат телефона")
     .nullable(),
   telegram: Yup.string()
     .matches(/^\@[a-zA-Z\d_]{4,}$/i, "Неправильный формат Telegram")
@@ -98,7 +98,7 @@ const UserUpdateForm: React.FC<Props> = ({ initialValues, onSubmit }) => {
                   type="text"
                   name="firstName"
                   className="form-control"
-                  placeholder="Напишіть имя"
+                  placeholder="Напишіть імя"
                 />
                 <ErrorMessage
                   name="firstName"
