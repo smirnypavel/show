@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
@@ -15,7 +17,17 @@ const Header = () => {
         <Link href={"/auth/login"}>Auth</Link>
         <Link href={"/about"}>About</Link>
       </div>
-      {login && <Link href={"/profile"}>{user.firstName}</Link>}
+      {login && (
+        <Link href={"/profile"}>
+          <Image
+            src={user.master_photo}
+            alt={"user photo"}
+            width={20}
+            height={20}
+          />
+          {user.firstName}
+        </Link>
+      )}
     </div>
   );
 };
