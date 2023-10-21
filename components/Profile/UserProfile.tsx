@@ -2,7 +2,7 @@ import React from "react";
 import { getUser } from "@/redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
+// import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import Link from "next/link";
 import YouTubeEmbed from "@/components/User/YouTubeIFrame";
 import styles from "@/styles/components/Profile/UserProfile.module.css";
@@ -16,9 +16,10 @@ const UserProfile = () => {
       <div className={styles.profileContainer}>
         <div>
           <Image
-            src={UserNoPhoto}
+            src={user.master_photo}
             alt={"user photo"}
             width={200}
+            height={200}
           />
           <ul className={styles.photoListContainer}>
             {user.photo.map((item) => (
