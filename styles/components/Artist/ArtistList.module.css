@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+}
+.artistList {
+  /* display: block; */
+  text-align: start;
+}
+.artistItem {
+  display: flex;
+  align-items: center;
+}
