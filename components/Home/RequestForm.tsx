@@ -1,13 +1,28 @@
-import { Field, Form, Formik, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import React, { useState } from "react";
+import { Field, Form, Formik, ErrorMessage, FormikHelpers } from "formik";
+import * as Yup from "yup";
 import CitySearch from "@/components/helpers/searchCity";
-import SearchBarCategorySelect from "@/components/Artist/SearchBarCategorySelect";
-const initialValues = {
+import RequestFormCategorySelect from "@/components/Home/RequestFormCategorySelect";
+import { ICategory } from "@/types/IAuth";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+
+interface FormValues {
+  phone: string;
+  name: string;
+  description: string;
+  date: string;
+  price: string;
+}
+
+const initialValues: FormValues = {
   phone: "",
   name: "",
   description: "",
+  date: "", // Добавленное поле для даты и времени
+  price: "", // Добавленное поле для даты и времени
 };
+
 const validationSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(/^\+?\d{1,15}$/, "Невірний формат телефона")
@@ -17,18 +32,53 @@ const validationSchema = Yup.object().shape({
     .max(50, "Максимальна довжина – 50 символів")
     .required("Обовязкове поле"),
   description: Yup.string()
-    .min(20, "Мінімальна довжина – 20 символів")
+    .min(1, "Мінімальна довжина – 20 символів")
     .max(400, "Максимальна довжина – 400 символів")
     .nullable(),
+  date: Yup.string().required("Обовязкове поле"), // Валидация для поля datetime
 });
+
 const RequestForm = () => {
   const [selectedCity, setSelectedCity] = useState(""); // Состояние для выбранного города
+  const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
 
-  // Функция обновления локации
+  const handleItemsSelect = (items: ICategory[]) => {
+    setSelectedItems(items);
+  };
+
   const updateLocationField = (selectedCity: string) => {
     setSelectedCity(selectedCity);
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ) => {
+    const updatedValues = {
+      ...values,
+      location: selectedCity,
+      category: selectedItems,
+    };
+    console.log("Данные из формы:", updatedValues);
+
+    try {
+      // Отправка данных на сервер
+      await axios.post("/orders", updatedValues);
+      toast.success("Данные успешно отправлены на сервер");
+
+      console.log("Данные успешно отправлены на сервер");
+
+      // Добавьте здесь логику для обработки успешной отправки данных, если это необходимо
+    } catch (error) {
+      toast.error("Ошибка при отправке данных на сервер:");
+
+      console.error("Ошибка при отправке данных на сервер:", error);
+      // Добавьте здесь логику обработки ошибки при отправке данных на сервер
+    }
+
+    // Не забудьте вызвать метод setSubmitting(false) для завершения процесса отправки формы
+    setSubmitting(false);
+  };
+
   return (
     <div>
       <p>RequestForm</p>
@@ -49,6 +99,7 @@ const RequestForm = () => {
               component="div"
               className="text-danger"
             />
+
             <label htmlFor="phone">Телефон</label>
             <Field
               type="text"
@@ -60,7 +111,20 @@ const RequestForm = () => {
               component="div"
               className="text-danger"
             />
-            {/* <SearchBarCategorySelect /> */}
+            <label htmlFor="price">Бюджет</label>
+            <Field
+              type="text"
+              name="price"
+              placeholder="Бюджет"
+            />
+            <ErrorMessage
+              name="price"
+              component="div"
+              className="text-danger"
+            />
+
+            <RequestFormCategorySelect onItemsSelect={handleItemsSelect} />
+
             <label htmlFor="description">Опис</label>
             <Field
               as="textarea"
@@ -72,6 +136,7 @@ const RequestForm = () => {
               component="div"
               className="text-danger"
             />
+
             <label htmlFor="location">Локація</label>
             <CitySearch onSelectCity={updateLocationField} />
             <ErrorMessage
@@ -79,12 +144,19 @@ const RequestForm = () => {
               component="div"
               className="text-danger"
             />
-            <label htmlFor="datetime">Дата</label>
+
+            <label htmlFor="datetime">Дата і час</label>
             <Field
               type="datetime-local"
               id="datetime"
-              name="datetime"
+              name="date"
             />
+            <ErrorMessage
+              name="date"
+              component="div"
+              className="text-danger"
+            />
+
             <button
               type="submit"
               className="btn btn-primary"
