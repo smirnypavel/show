@@ -36,55 +36,63 @@ const RequestForm = () => {
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}>
-        <Form>
-          <label htmlFor="name">Імя</label>
-          <Field
-            type="text"
-            name="name"
-            placeholder="Напишіть імя"
-          />
-          <ErrorMessage
-            name="name"
-            component="div"
-            className="text-danger"
-          />
-          <label htmlFor="phone">Телефон</label>
-          <Field
-            type="text"
-            name="phone"
-            placeholder="Напишіть номер телефона"
-          />
-          <ErrorMessage
-            name="phone"
-            component="div"
-            className="text-danger"
-          />
-          <SearchBarCategorySelect />
-          <label htmlFor="description">Опис</label>
-          <Field
-            as="textarea"
-            name="description"
-            placeholder="Напишіть опис"
-          />
-          <ErrorMessage
-            name="description"
-            component="div"
-            className="text-danger"
-          />
-          <label htmlFor="location">Локація</label>
-          <CitySearch onSelectCity={updateLocationField} />
-          <ErrorMessage
-            name="location"
-            component="div"
-            className="text-danger"
-          />
-          <label htmlFor="datetime">Дата</label>
-          <Field
-            type="datetime-local"
-            id="datetime"
-            name="datetime"
-          />
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <label htmlFor="name">Імя</label>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Напишіть імя"
+            />
+            <ErrorMessage
+              name="name"
+              component="div"
+              className="text-danger"
+            />
+            <label htmlFor="phone">Телефон</label>
+            <Field
+              type="text"
+              name="phone"
+              placeholder="Напишіть номер телефона"
+            />
+            <ErrorMessage
+              name="phone"
+              component="div"
+              className="text-danger"
+            />
+            <SearchBarCategorySelect />
+            <label htmlFor="description">Опис</label>
+            <Field
+              as="textarea"
+              name="description"
+              placeholder="Напишіть опис"
+            />
+            <ErrorMessage
+              name="description"
+              component="div"
+              className="text-danger"
+            />
+            <label htmlFor="location">Локація</label>
+            <CitySearch onSelectCity={updateLocationField} />
+            <ErrorMessage
+              name="location"
+              component="div"
+              className="text-danger"
+            />
+            <label htmlFor="datetime">Дата</label>
+            <Field
+              type="datetime-local"
+              id="datetime"
+              name="datetime"
+            />
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={isSubmitting}>
+              Відправити
+            </button>
+          </Form>
+        )}
       </Formik>
     </div>
   );

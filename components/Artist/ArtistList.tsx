@@ -3,30 +3,35 @@ import Image from "next/image";
 import styles from "@/styles/components/Artist/ArtistList.module.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+export interface ItemListProps {
+  artists: IUserAuth[];
+}
+const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
+  if (!artists || artists.length === 0) {
+    return <p>No artists found</p>; // Заглушка или сообщение об отсутствии данных
+  }
+  // const [artistList, setArtistList] = useState<IUserAuth[]>([]);
 
-const ArtistList = () => {
-  const [artistList, setArtistList] = useState<IUserAuth[]>([]);
+  // useEffect(() => {
+  //   const fetchArtist = async () => {
+  //     try {
+  //       const response = await axios.get("/users/find");
+  //       setArtistList(response.data);
+  //     } catch (error) {
+  //       console.error("Ошибка при загрузке всех артистов:", error);
+  //     }
+  //   };
 
-  useEffect(() => {
-    const fetchArtist = async () => {
-      try {
-        const response = await axios.get("/users/find");
-        setArtistList(response.data);
-      } catch (error) {
-        console.error("Ошибка при загрузке всех артистов:", error);
-      }
-    };
-
-    fetchArtist();
-    console.log(artistList);
-  }, []);
+  //   fetchArtist();
+  //   console.log(artistList);
+  // }, []);
 
   return (
     <div className={styles.container}>
       <p>ArtistList</p>
       <ul className={styles.artistList}>
-        {artistList &&
-          artistList.map((artist) => (
+        {artists &&
+          artists.map((artist) => (
             <li
               key={artist._id}
               className={styles.artistItem}>

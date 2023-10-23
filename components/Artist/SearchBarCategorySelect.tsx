@@ -3,7 +3,15 @@ import axios from "axios";
 import { ICategory, ISubcategory } from "@/types/IAuth";
 import styles from "@/styles/components/Artist/SearchBarCategorySelect.module.css";
 
-const SearchBarCategorySelect: React.FC = () => {
+interface SearchBarCategorySelectProps {
+  onCategoryChange: (categoryId: string) => void;
+  onSubcategoryChange: (subcategoryId: string) => void;
+}
+
+const SearchBarCategorySelect: React.FC<SearchBarCategorySelectProps> = ({
+  onCategoryChange,
+  onSubcategoryChange,
+}) => {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(
     null
@@ -29,6 +37,7 @@ const SearchBarCategorySelect: React.FC = () => {
   }, []);
 
   const handleCategoryChange = (categoryId: string) => {
+    onCategoryChange(categoryId); // Передаем идентификатор категории в родительский компонент
     const selectedCategory = categories.find(
       (category) => category._id === categoryId
     );
@@ -37,6 +46,7 @@ const SearchBarCategorySelect: React.FC = () => {
   };
 
   const handleSubcategoryChange = (subcategoryId: string) => {
+    onSubcategoryChange(subcategoryId); // Передаем идентификатор подкатегории в родительский компонент
     const selectedSubcategory = selectedCategory?.subcategories.find(
       (subcategory) => subcategory.id === subcategoryId
     );
