@@ -1,11 +1,16 @@
 .container {
   width: 100%;
+  margin-top: 10px;
 }
 .artistList {
-  /* display: block; */
+  margin-top: 10px;
   text-align: start;
 }
 .artistItem {
   display: flex;
   align-items: center;
+  border: 1px solid #817f7f59;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
 }

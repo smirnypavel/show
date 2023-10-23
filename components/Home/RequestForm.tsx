@@ -60,7 +60,7 @@ const RequestForm = () => {
               component="div"
               className="text-danger"
             />
-            <SearchBarCategorySelect />
+            {/* <SearchBarCategorySelect /> */}
             <label htmlFor="description">Опис</label>
             <Field
               as="textarea"
