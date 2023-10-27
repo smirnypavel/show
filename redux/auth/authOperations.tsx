@@ -4,7 +4,7 @@ import axios from "axios";
 
 // axios.defaults.baseURL = "https://events-95cc.onrender.com/";
 // axios.defaults.baseURL = "https://events-show.cyclic.app/";
-axios.defaults.baseURL = "https://events-4qv2.onrender.com";
+axios.defaults.baseURL = "https://events-4qv2.onrender.com/";
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
