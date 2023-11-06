@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { Field, Form, Formik, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
+import BadWordsNext from "bad-words-next";
 import CitySearch from "@/components/helpers/searchCity";
 import RequestFormCategorySelect from "@/components/Home/RequestFormCategorySelect";
 import { ICategory } from "@/types/IAuth";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+
+const badWordsFilter = new BadWordsNext();
+badWordsFilter.add(require("bad-words-next/data/ru.json")); // Добавляем словарь для русского языка
+badWordsFilter.add(require("bad-words-next/data/ua.json")); // Добавляем словарь для украинского языка
 
 interface FormValues {
   phone: string;
@@ -19,27 +24,32 @@ const initialValues: FormValues = {
   phone: "",
   name: "",
   description: "",
-  date: "", // Добавленное поле для даты и времени
-  price: "", // Добавленное поле для даты и времени
+  date: "",
+  price: "",
 };
 
 const validationSchema = Yup.object().shape({
   phone: Yup.string()
     .matches(/^\+?\d{1,15}$/, "Невірний формат телефона")
-    .required("Обовязкове поле"),
+    .required("Обов'язкове поле"),
   name: Yup.string()
-    .min(3, "Мінімальна довжина – 3 символів")
+    .min(3, "Мінімальна довжина – 3 символи")
     .max(50, "Максимальна довжина – 50 символів")
-    .required("Обовязкове поле"),
+    .required("Обов'язкове поле"),
   description: Yup.string()
-    .min(1, "Мінімальна довжина – 20 символів")
+    .min(20, "Мінімальна довжина – 20 символів")
     .max(400, "Максимальна довжина – 400 символів")
-    .nullable(),
-  date: Yup.string().required("Обовязкове поле"), // Валидация для поля datetime
+    .nullable() // Поле может быть пустым или undefined
+    .test(
+      "profanity",
+      "Опис містить нецензурні слова",
+      (value) => !value || !badWordsFilter.check(value) // Проверка, если поле не пустое
+    ),
+  date: Yup.string().required("Обов'язкове поле"),
 });
 
 const RequestForm = () => {
-  const [selectedCity, setSelectedCity] = useState(""); // Состояние для выбранного города
+  const [selectedCity, setSelectedCity] = useState("");
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
 
   const handleItemsSelect = (items: ICategory[]) => {
@@ -49,33 +59,27 @@ const RequestForm = () => {
   const updateLocationField = (selectedCity: string) => {
     setSelectedCity(selectedCity);
   };
+
   const handleSubmit = async (
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
+    const filteredDescription = badWordsFilter.filter(values.description!);
     const updatedValues = {
       ...values,
+      description: filteredDescription,
       location: selectedCity,
       category: selectedItems,
     };
-    console.log("Данные из формы:", updatedValues);
 
     try {
-      // Отправка данных на сервер
       await axios.post("/orders", updatedValues);
-      toast.success("Данные успешно отправлены на сервер");
-
-      console.log("Данные успешно отправлены на сервер");
-
-      // Добавьте здесь логику для обработки успешной отправки данных, если это необходимо
+      toast.success("Дані успішно відправлені на сервер");
     } catch (error) {
-      toast.error("Ошибка при отправке данных на сервер:");
-
-      console.error("Ошибка при отправке данных на сервер:", error);
-      // Добавьте здесь логику обработки ошибки при отправке данных на сервер
+      toast.error("Помилка при відправці даних на сервер:");
+      console.error("Помилка при відправці даних на сервер:", error);
     }
 
-    // Не забудьте вызвать метод setSubmitting(false) для завершения процесса отправки формы
     setSubmitting(false);
   };
 
@@ -92,7 +96,7 @@ const RequestForm = () => {
             <Field
               type="text"
               name="name"
-              placeholder="Напишіть імя"
+              placeholder="Напишіть ім'я"
             />
             <ErrorMessage
               name="name"
@@ -111,6 +115,7 @@ const RequestForm = () => {
               component="div"
               className="text-danger"
             />
+
             <label htmlFor="price">Бюджет</label>
             <Field
               type="text"

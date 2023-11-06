@@ -46,7 +46,7 @@ const validationSchema = Yup.object().shape({
     .matches(/^\+?\d{1,15}$/, "Невірний формат телефона")
     .nullable(),
   telegram: Yup.string()
-    .matches(/^\@[a-zA-Z\d_]{4,}$/i, "Неправильный формат Telegram")
+    .matches(/^\[a-zA-Z\d_]{4,}$/i, "Неправильный формат Telegram")
     .test("telegramOrPhone", "Неправильный формат Telegram", function (value) {
       if (!value) {
         return true; // Поле пустое, валидация пройдена
