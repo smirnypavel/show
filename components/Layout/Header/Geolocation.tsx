@@ -1,24 +1,46 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const MyGeolocation: React.FC = () => {
+const UserLocation: React.FC = () => {
   const [userCity, setUserCity] = useState<string>("");
 
   useEffect(() => {
-    // Выполните запрос к API маршруту для получения города пользователя
-    fetch("/api/getUserLocation")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Ошибка HTTP: ${response.status}`);
-        }
-        console.log(response);
-        return response.json();
-      })
+    const apiKey = "AIzaSyDC3bqKHvQCfyZKUCLbkj-J-it_jomt0vg";
+
+    fetch(`https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        considerIp: true,
+      }),
+    })
+      .then((response) => response.json())
       .then((data) => {
-        if (data && data.city) {
-          setUserCity(data.city);
-        } else {
-          setUserCity("Информация о городе недоступна");
-        }
+        const { location } = data;
+        fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${apiKey}`
+        )
+          .then((response) => response.json())
+          .then((geoData) => {
+            const city = geoData.results[0]?.address_components.find(
+              (component: { types: string[] }) =>
+                component.types.includes("locality")
+            )?.long_name;
+
+            if (city) {
+              setUserCity(city);
+            } else {
+              setUserCity("Информация о городе недоступна");
+            }
+          })
+          .catch((error) => {
+            console.error(
+              "Ошибка при получении информации о местоположении:",
+              error
+            );
+            setUserCity("Информация о городе недоступна");
+          });
       })
       .catch((error) => {
         console.error("Ошибка при запросе к API:", error);
@@ -33,4 +55,4 @@ const MyGeolocation: React.FC = () => {
   );
 };
 
-export default MyGeolocation;
+export default UserLocation;
