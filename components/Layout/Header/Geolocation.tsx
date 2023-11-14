@@ -50,7 +50,7 @@ const UserLocation: React.FC = () => {
 
   return (
     <div>
-      <h2>Ваш город: {userCity}</h2>
+      <h2>Ваше місто: {userCity}</h2>
     </div>
   );
 };

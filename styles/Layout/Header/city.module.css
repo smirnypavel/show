@@ -1,0 +1,31 @@
+/* styles.module.css */
+
+.autocompleteContainer {
+  position: relative;
+  width: 400px;
+}
+
+.pac-container {
+  background-color: rgb(223, 11, 11);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.pac-item {
+  padding: 3px 5px;
+  cursor: pointer;
+}
+
+.pac-item:hover {
+  background-color: #e61717;
+}
+.input {
+  width: 300px;
+}
