@@ -6,6 +6,7 @@ import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
 import MyGeolocation from "./Geolocation";
+import AutocompleteComponent from "./ChooseLocation";
 
 const Header = () => {
   const login = useSelector(isLoggedIn);
@@ -18,6 +19,7 @@ const Header = () => {
         <Link href={"/auth/login"}>Auth</Link>
         <Link href={"/about"}>About</Link>
         <MyGeolocation />
+        <AutocompleteComponent />
       </div>
       {login && (
         <Link href={"/profile"}>
