@@ -5,6 +5,7 @@ import Image from "next/image";
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
+import MyGeolocation from "./Geolocation";
 
 const Header = () => {
   const login = useSelector(isLoggedIn);
@@ -16,6 +17,7 @@ const Header = () => {
         <Link href={"/artists"}>Artists</Link>
         <Link href={"/auth/login"}>Auth</Link>
         <Link href={"/about"}>About</Link>
+        <MyGeolocation />
       </div>
       {login && (
         <Link href={"/profile"}>
