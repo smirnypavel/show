@@ -15,7 +15,7 @@ const MyGeolocation: React.FC = () => {
       })
       .then((data) => {
         if (data && data.city) {
-          setUserCity(data);
+          setUserCity(data.city);
         } else {
           setUserCity("Информация о городе недоступна");
         }
