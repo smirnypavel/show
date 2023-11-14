@@ -31,7 +31,7 @@ const UserLocation: React.FC = () => {
             if (city) {
               setUserCity(city);
             } else {
-              setUserCity("Информация о городе недоступна");
+              setUserCity("Информация о городе недоступна 1");
             }
           })
           .catch((error) => {
@@ -39,12 +39,12 @@ const UserLocation: React.FC = () => {
               "Ошибка при получении информации о местоположении:",
               error
             );
-            setUserCity("Информация о городе недоступна");
+            setUserCity("Информация о городе недоступна 2");
           });
       })
       .catch((error) => {
         console.error("Ошибка при запросе к API:", error);
-        setUserCity("Информация о городе недоступна");
+        setUserCity("Информация о городе недоступна 3");
       });
   }, []);
 
