@@ -70,7 +70,9 @@ const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
         onCategoryChange={handleCategoryChange}
         onSubcategoryChange={handleSubcategoryChange}
       />
-      <ArtistList artists={filteredArtists} />
+      <div>
+        <ArtistList artists={filteredArtists} />
+      </div>
     </div>
   );
 };
