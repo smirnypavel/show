@@ -1,8 +1,6 @@
-.homepage {
-  width: 100%;
-}
-.container {
+.chatContainer {
   margin-top: 40px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }

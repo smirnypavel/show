@@ -1,5 +1,6 @@
 import ArtistList from "@/components/Artist/ArtistList";
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/Artist/Artist.module.css";
 import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import { GetServerSideProps } from "next/types";
@@ -15,7 +16,7 @@ const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
   const [selectedSubcategoryId, setSelectedSubcategoryId] =
     useState<string>("");
-
+  const router = useRouter();
   const handleCategoryChange = (categoryId: string) => {
     setSelectedCategoryId(categoryId);
     handleSearch(categoryId, selectedSubcategoryId);
@@ -48,13 +49,23 @@ const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
       setFilteredArtists([]); // В случае ошибки, установите пустой массив
     }
   };
+  useEffect(() => {
+    setFilteredArtists(artists); // Установить начальные результаты
+    const { search } = router.query;
+    if (search && typeof search === "string") {
+      setSearchTerm(search);
+    }
+  }, [router.query]);
+  useEffect(() => {
+    handleSearch();
+  }, [searchTerm]); // Добавьте searchTerm в зависимости
 
   return (
     <div className={styles.container}>
       <ArtistSearchBar
         onSearch={(searchTerm: string) => {
           setSearchTerm(searchTerm);
-          handleSearch(selectedCategoryId, selectedSubcategoryId);
+          handleSearch();
         }}
         onCategoryChange={handleCategoryChange}
         onSubcategoryChange={handleSubcategoryChange}

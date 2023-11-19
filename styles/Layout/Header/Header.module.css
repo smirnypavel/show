@@ -1,10 +1,28 @@
 .header {
-  margin-top: 20px;
-  height: 40px;
-  border-bottom: 2px solid #67676723;
-  text-align: center;
+  height: 84px;
+  border-bottom: 1px solid var(--white);
+  display: flex; /* Добавляем flex-контейнер */
+  justify-content: center; /* Выравниваем содержимое по центру по горизонтали */
+  align-items: center; /* Выравниваем содержимое по центру по вертикали */
 }
+
 .headerNav {
   display: flex;
   justify-content: space-evenly;
+  align-items: center; /* Чтобы элементы выравнивались по вертикали внутри headerNav */
+}
+.headerNav > * {
+  margin: 0 88px; /* Можешь изменить значение отступа по желанию */
+}
+.link {
+  color: var(--white);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  /* position: relative; */
+  white-space: nowrap;
+  width: fit-content;
 }

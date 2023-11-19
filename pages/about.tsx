@@ -1,11 +1,13 @@
+// import RequestForm from "@/components/Home/RequestForm";
+import RequestForm2 from "@/components/RequestForm/RequestForm";
 import React from "react";
-import AddCategory from "../components/Category/AddCategory";
+
 const About = () => {
   return (
     <div>
       About
       <div>
-        <AddCategory />
+        <RequestForm2 />
       </div>
     </div>
   );

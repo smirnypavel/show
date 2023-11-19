@@ -72,12 +72,10 @@ const AutocompleteComponent = () => {
           <input
             id="autocomplete"
             type="text"
-            placeholder="Введіть місто чи область"
+            placeholder="Введіть назву міста"
             className={styles.input}
           />
         </Autocomplete>
-        {/* Результат выбранного места */}
-        <p>Вибране місто чи область: {selectedPlace}</p>
       </div>
     </LoadScript>
   );

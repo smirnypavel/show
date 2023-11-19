@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ICategory } from "@/types/IAuth";
+import styles from "./CategorySelect.module.css";
 
 interface CategorySelectorProps {
   onItemsSelect: (selectedItems: ICategory[]) => void;
@@ -65,9 +66,11 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({
 
   return (
     <div>
-      <h2>Выберите категорию:</h2>
-      <select onChange={(e) => handleCategoryChange(e.target.value)}>
-        <option value="">Выберите категорию</option>
+      <p className={styles.title}>Оберіть потрібну категорію</p>
+      <select
+        onChange={(e) => handleCategoryChange(e.target.value)}
+        className={styles.name}>
+        <option value="">Категорія</option>
         {categories.map((category) => (
           <option
             key={category._id}
@@ -76,38 +79,22 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({
           </option>
         ))}
       </select>
-
-      {selectedCategory && (
-        <div>
-          <h3>Выберите подкатегорию:</h3>
-          <select onChange={(e) => handleSubcategoryChange(e.target.value)}>
-            <option value="">Выберите подкатегорию</option>
-            {categories
-              .find((category) => category._id === selectedCategory)
-              ?.subcategories.map((subCategory) => (
-                <option
-                  key={subCategory.id}
-                  value={subCategory.id}>
-                  {subCategory.name}
-                </option>
-              ))}
-          </select>
-        </div>
-      )}
-
-      <h3>Выбранные элементы:</h3>
-      <ul>
-        {selectedItems.map((item, index) => (
-          <li key={index}>
-            Категория: {item.name}, Подкатегория: {item.subcategories[0].name}
-          </li>
-        ))}
-      </ul>
-      {/* <button
-        type="button"
-        onClick={handleAcceptChange}>
-        підтведити
-      </button> */}
+      <div>
+        <select
+          onChange={(e) => handleSubcategoryChange(e.target.value)}
+          className={styles.name}>
+          <option value="">Підкатегорія</option>
+          {categories
+            .find((category) => category._id === selectedCategory)
+            ?.subcategories.map((subCategory) => (
+              <option
+                key={subCategory.id}
+                value={subCategory.id}>
+                {subCategory.name}
+              </option>
+            ))}
+        </select>
+      </div>
     </div>
   );
 };

@@ -7,8 +7,6 @@ import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
 import MyGeolocation from "./Geolocation";
 import AutocompleteComponent from "./ChooseLocation";
-// import ThemeButton from "./ThemeButton";
-import ThemeToggle from "./ThemeButton";
 
 const Header = () => {
   const login = useSelector(isLoggedIn);
@@ -16,28 +14,49 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles.headerNav}>
-        {/* <ThemeButton /> */}
-        <ThemeToggle />
-
-        <Link href={"/"}>Home</Link>
-        <Link href={"/artists"}>Artists</Link>
-        <Link href={"/auth/login"}>Auth</Link>
-        <Link href={"/about"}>About</Link>
-        <Link href={"/blog"}>Blog</Link>
-        <MyGeolocation />
-        <AutocompleteComponent />
-      </div>
-      {login && (
-        <Link href={"/profile"}>
-          <Image
-            src={user.master_photo}
-            alt={"user photo"}
-            width={20}
-            height={20}
-          />
-          {user.firstName}
+        <Link
+          href={"/"}
+          className={styles.link}>
+          Головна
         </Link>
-      )}
+        <Link
+          href={"/artists"}
+          className={styles.link}>
+          Артисти
+        </Link>
+
+        <Link
+          href={"/about"}
+          className={styles.link}>
+          Про нас
+        </Link>
+        <Link
+          href={"/blog"}
+          className={styles.link}>
+          Блог
+        </Link>
+        {/* <MyGeolocation />
+        <AutocompleteComponent /> */}
+        {login ? (
+          <Link
+            href={"/profile"}
+            className={styles.link}>
+            <Image
+              src={user.master_photo}
+              alt={"user photo"}
+              width={20}
+              height={20}
+            />
+            {user.firstName}
+          </Link>
+        ) : (
+          <Link
+            href={"/auth/login"}
+            className={styles.link}>
+            Auth
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

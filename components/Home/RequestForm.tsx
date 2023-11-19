@@ -7,7 +7,11 @@ import RequestFormCategorySelect from "@/components/Home/RequestFormCategorySele
 import { ICategory } from "@/types/IAuth";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-
+import styles from "@/styles/Home/RequestForm.module.css";
+import AutocompleteComponent from "../Layout/Header/ChooseLocation";
+import Telegramlogo from "@/public/logo/Telegramlogo.svg";
+import Viberlogo from "@/public/logo/Viberlogo.svg";
+import Image from "next/image";
 const badWordsFilter = new BadWordsNext();
 badWordsFilter.add(require("bad-words-next/data/ru.json")); // Добавляем словарь для русского языка
 badWordsFilter.add(require("bad-words-next/data/ua.json")); // Добавляем словарь для украинского языка
@@ -45,12 +49,13 @@ const validationSchema = Yup.object().shape({
       "Опис містить нецензурні слова",
       (value) => !value || !badWordsFilter.check(value) // Проверка, если поле не пустое
     ),
-  date: Yup.string().required("Обов'язкове поле"),
+  // date: Yup.string().required("Обов'язкове поле"),
 });
 
 const RequestForm = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
+  const [isPriceDisabled, setIsPriceDisabled] = useState(false);
 
   const handleItemsSelect = (items: ICategory[]) => {
     setSelectedItems(items);
@@ -82,92 +87,183 @@ const RequestForm = () => {
 
     setSubmitting(false);
   };
-
+  const handleCheckboxChange = (e: {
+    target: { checked: boolean | ((prevState: boolean) => boolean) };
+  }) => {
+    setIsPriceDisabled(e.target.checked);
+  };
   return (
-    <div>
-      <p>RequestForm</p>
+    <div className={styles.form}>
+      <div className={styles.title}>Форма створення запиту</div>
+
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}>
         {({ isSubmitting }) => (
           <Form>
-            <label htmlFor="name">Імя</label>
-            <Field
-              type="text"
-              name="name"
-              placeholder="Напишіть ім'я"
-            />
-            <ErrorMessage
-              name="name"
-              component="div"
-              className="text-danger"
-            />
-
-            <label htmlFor="phone">Телефон</label>
-            <Field
-              type="text"
-              name="phone"
-              placeholder="Напишіть номер телефона"
-            />
-            <ErrorMessage
-              name="phone"
-              component="div"
-              className="text-danger"
-            />
-
-            <label htmlFor="price">Бюджет</label>
-            <Field
-              type="text"
-              name="price"
-              placeholder="Бюджет"
-            />
-            <ErrorMessage
-              name="price"
-              component="div"
-              className="text-danger"
-            />
-
-            <RequestFormCategorySelect onItemsSelect={handleItemsSelect} />
-
-            <label htmlFor="description">Опис</label>
-            <Field
-              as="textarea"
-              name="description"
-              placeholder="Напишіть опис"
-            />
-            <ErrorMessage
-              name="description"
-              component="div"
-              className="text-danger"
-            />
-
-            <label htmlFor="location">Локація</label>
-            <CitySearch onSelectCity={updateLocationField} />
-            <ErrorMessage
-              name="location"
-              component="div"
-              className="text-danger"
-            />
-
-            <label htmlFor="datetime">Дата і час</label>
-            <Field
-              type="datetime-local"
-              id="datetime"
-              name="date"
-            />
-            <ErrorMessage
-              name="date"
-              component="div"
-              className="text-danger"
-            />
-
-            <button
-              type="submit"
-              className="btn btn-primary"
-              disabled={isSubmitting}>
-              Відправити
-            </button>
+            <div className={styles.info}>
+              <div className={styles.containerInfoCategory}>
+                <div className={styles.inputContainer}>
+                  <div className={styles.dangerContainer}>
+                    <div className={styles.titleInfo}>Особиста інформація</div>
+                    <Field
+                      type="text"
+                      name="name"
+                      placeholder="Iм'я"
+                      className={styles.name}
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className={styles.textDanger}
+                    />
+                  </div>
+                  <div className={styles.dangerContainer}>
+                    <Field
+                      type="text"
+                      name="phone"
+                      placeholder="Tелефон"
+                      className={styles.phone}
+                    />
+                    <ErrorMessage
+                      name="phone"
+                      component="div"
+                      className={styles.textDanger}
+                    />
+                  </div>
+                </div>
+                <RequestFormCategorySelect onItemsSelect={handleItemsSelect} />
+              </div>
+              <p className={styles.p}>
+                Ваша особиста інформація не є доступною для інших користувачів
+              </p>
+              <div className={styles.description}>
+                <div className={styles.titleInfo}>Опис</div>
+                <Field
+                  as="textarea"
+                  name="description"
+                  placeholder="Танцівник народних танців, в українському народному костюмі
+                на святкування Дня вишиванки в садочку"
+                  className={styles.field}
+                />
+                <ErrorMessage
+                  name="description"
+                  component="div"
+                  className={styles.textDanger}
+                />
+              </div>
+              <div className={styles.titleLocation}>Локація</div>
+              <div className={styles.locationWrapper}>
+                <AutocompleteComponent />
+                <Field
+                  type="text"
+                  name="address"
+                  placeholder="Введіть назву вулиці"
+                  className={styles.adressInput}
+                />
+                <ErrorMessage
+                  name="address"
+                  component="div"
+                  className={styles.textDanger}
+                />
+              </div>
+              <div className={styles.titleLocation}>Гонорар</div>
+              <div className={styles.priceWrapper}>
+                <Field
+                  type="text"
+                  name="price"
+                  placeholder="Вкажіть суму яку готові заплатити"
+                  className={`${styles.name} ${
+                    isPriceDisabled ? styles.disabled : ""
+                  }`}
+                  disabled={isPriceDisabled}
+                />
+                <ErrorMessage
+                  name="price"
+                  component="div"
+                  className={styles.textDanger}
+                />
+                <div className={styles.checkboxWrapper}>
+                  <input
+                    type="checkbox"
+                    onChange={handleCheckboxChange}
+                    id="checkboxId" // Добавь уникальный ID для чекбокса
+                  />
+                  <label
+                    htmlFor="checkboxId"
+                    className={styles.checkBoxLabel}>
+                    Договірний
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className={styles.calendarBtn}>
+              <label className={styles.textWrapper7}>
+                Оберіть потрібну дату та час
+              </label>
+              <Field
+                type="datetime-local"
+                id="datetime"
+                name="date"
+              />
+              <ErrorMessage
+                name="date"
+                component="div"
+                className="text-danger"
+              />
+            </div>
+            <div className={styles.socialTitle}>
+              Оберіть зручний для Вас месенджер
+            </div>
+            <div className={styles.social}>
+              <div className={styles.socialWrapper}>
+                <input
+                  type="checkbox"
+                  onChange={handleCheckboxChange}
+                  id="checkboxId" // Добавь уникальный ID для чекбокса
+                />
+                <label
+                  htmlFor="checkboxId"
+                  className={styles.checkBoxLabel}>
+                  Telegram
+                  <Image
+                    src={Telegramlogo}
+                    alt="logo telegram"
+                    width={24}
+                    height={24}
+                    className={styles.TelegramIcon}
+                  />
+                </label>
+              </div>
+              <div className={styles.socialWrapper}>
+                <input
+                  type="checkbox"
+                  onChange={handleCheckboxChange}
+                  id="checkboxId" // Добавь уникальный ID для чекбокса
+                />
+                <label
+                  htmlFor="checkboxId"
+                  className={styles.checkBoxLabel}>
+                  Viber{" "}
+                  <Image
+                    src={Viberlogo}
+                    alt="logo Viber"
+                    width={24}
+                    height={24}
+                    className={styles.ViberIcon}
+                  />
+                </label>
+              </div>
+            </div>
+            <div className={styles.btnContainer}>
+              <button
+                type="submit"
+                className={styles.btn}
+                disabled={isSubmitting}>
+                Створити запит
+              </button>
+            </div>
           </Form>
         )}
       </Formik>

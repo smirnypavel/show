@@ -1,0 +1,56 @@
+.container {
+  margin-left: 40px;
+  width: 372px;
+  height: 729px;
+  border-radius: 16px;
+  background: var(--white);
+  position: relative;
+}
+.bannerContainer {
+  width: 373px;
+  height: 423px;
+  flex-shrink: 0;
+  position: relative;
+}
+.bannerTitleContainer {
+  margin: 0 auto;
+  margin-top: 28px;
+  width: 351px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.bannerTitle {
+  color: var(--black);
+  text-align: center;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+}
+.bannerCategory {
+  margin-top: 32px;
+  height: 31px;
+  margin-left: 8px;
+}
+.bannerCategoryText {
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+.topArtists {
+  margin-top: 16px;
+  display: flex;
+  width: 373px;
+  height: 161px;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 20px;
+  background-color: #c9c9c9;
+  border-radius: 0px 0px 16px 16px;
+}

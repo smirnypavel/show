@@ -1,19 +1,17 @@
-import HomeChat from "@/components/Home/HomeChat";
+import HomeSearchBar from "@/components/Home/HomeSearchBar";
+import HomeTopBanner from "@/components/Home/HomeTopBanner/HomeTopBanner";
 import RequestForm from "@/components/Home/RequestForm";
-import TopContainer from "@/components/Home/TopContainer";
-
+import TopContainer from "@/components/Home/TopContainer/TopContainer";
 import styles from "@/styles/Home/Home.module.css";
 
 const Home = () => {
   return (
     <div className={styles.homepage}>
-      <div>Home</div>
+      <HomeSearchBar />
+      <HomeTopBanner />
       <div className={styles.container}>
-        <HomeChat />
-        <div>
-          <TopContainer />
-          <RequestForm />
-        </div>
+        <RequestForm />
+        <TopContainer />
       </div>
     </div>
   );

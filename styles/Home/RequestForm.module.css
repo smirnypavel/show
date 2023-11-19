@@ -1,0 +1,417 @@
+.form {
+  background-color: var(--accent-color);
+  border-radius: 16px;
+  height: 729px;
+  width: 756px;
+  position: relative;
+}
+
+.title {
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 28px;
+  margin-bottom: 24px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 80px;
+}
+
+.containerInfoCategory {
+  display: flex;
+}
+
+.titleInfo {
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+
+.p {
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: normal;
+  width: 260px;
+}
+.inputContainer {
+  /* width: 260px; */
+  margin-right: 40px; /* Задаем относительное позиционирование для контейнера инпута */
+}
+.dangerContainer {
+  position: relative;
+}
+.name {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  width: 260px;
+  border: none;
+  padding-left: 16px;
+  box-sizing: border-box;
+}
+.field {
+  background-color: #f4f4f4;
+
+  border-radius: 8px;
+  width: 340px;
+  height: 86px;
+  border: none;
+  resize: none;
+  padding: 8px 16px 16px 8px;
+  box-sizing: border-box; /* Учитываем padding в общих размерах */
+}
+.textWrapper2 {
+  color: var(--gray);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  left: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.phone {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  width: 260px;
+  border: none;
+  padding-left: 16px;
+  margin-top: 12px;
+  box-sizing: border-box;
+}
+.description {
+  margin-top: 20px;
+  height: 113px;
+  width: 337px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.description::placeholder {
+  color: var(--gray);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  left: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+.titleLocation {
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  left: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+.locationWrapper {
+  display: flex;
+}
+.adressInput {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  width: 260px;
+  border: none;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  margin-left: 40px;
+}
+
+.disabled {
+  background-color: #a6a7a9;
+  cursor: not-allowed;
+  border: 1px solid #62666a3e;
+}
+.priceWrapper {
+  display: flex;
+  align-items: baseline;
+}
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+}
+
+/* Стили для скрытия оригинального чекбокса */
+.checkboxWrapper input[type="checkbox"] {
+  display: none;
+}
+
+/* Стили для кастомизации внешнего вида чекбокса */
+.checkboxWrapper input[type="checkbox"] + label::before {
+  content: "";
+  background-color: var(--white); /* Цвет фона при выборе чекбокса */
+  display: inline-block;
+  width: 16px; /* Задаем ширину круглого чекбокса */
+  height: 16px; /* Задаем высоту круглого чекбокса */
+  border-radius: 12px; /* Делаем круглым */
+  border: 1px solid #62666a; /* Добавляем границу для круглого чекбокса */
+  margin-right: 8px; /* Отступ между чекбоксом и текстом */
+}
+
+/* Стили для отображения выбранного чекбокса */
+.checkboxWrapper input[type="checkbox"]:checked + label::before {
+  background-color: #2195f3; /* Цвет фона при выборе чекбокса */
+}
+.checkBoxLabel {
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 4px;
+}
+.divWrapper {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  left: 0;
+
+  width: 260px;
+}
+
+.textWrapper3 {
+  color: var(--gray);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  left: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.adress {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+
+  width: 260px;
+}
+
+.price {
+  height: 58px;
+  width: 260px;
+}
+
+.frame {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px;
+}
+
+.radiobtn {
+  background-color: var(--x-neutral0-white);
+  border: 1px solid;
+  border-color: #62666a;
+  border-radius: 12px;
+  height: 18px;
+  width: 18px;
+}
+
+.textWrapper5 {
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.textWrapper6 {
+  color: var(--gray);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  left: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+
+  width: 305px;
+}
+
+.calendarBtn {
+  margin-top: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 200px;
+  justify-content: center;
+  padding: 10px 28px;
+}
+
+.textWrapper7 {
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  width: fit-content;
+}
+
+.img {
+  height: 24px;
+  width: 24px;
+  color: #181818;
+}
+
+.category {
+  height: 98px;
+  left: 380px;
+  width: 260px;
+}
+
+.subCategory {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  width: 260px;
+}
+
+.tablerIconChevron {
+  height: 24px;
+  width: 24px;
+  color: #181818;
+}
+
+.category2 {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  width: 260px;
+}
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.btn {
+  all: unset;
+  align-items: center;
+  background-color: #ebede8;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 10px 28px;
+}
+.btn:hover {
+  box-shadow: 0 15px 25px -4px rgba(0, 0, 0, 0.5),
+    inset 0 -3px 4px -1px rgba(0, 0, 0, 0.2),
+    0 -10px 15px -1px rgba(255, 255, 255, 0.6),
+    inset 0 3px 4px -1px rgba(255, 255, 255, 0.2),
+    inset 0 0 5px 1px rgba(255, 255, 255, 0.8),
+    inset 0 20px 30px 0 rgba(255, 255, 255, 0.2);
+}
+.btn:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+
+.textWrapper8 {
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.messenger {
+  height: 68px;
+  width: 299px;
+}
+
+.frame2 {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px;
+}
+
+.textWrapper9 {
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.frame3 {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 8px;
+}
+.textDanger {
+  color: #f32b2b;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  top: 100%; /* Располагаем текст ошибки под инпутом */
+  left: 10px;
+}
+.socialTitle {
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  left: 4px;
+  margin-top: 20px;
+  line-height: normal;
+
+  margin-left: 80px;
+}
+.social {
+  margin-top: 23px;
+  margin-left: 80px;
+  display: flex;
+  gap: 88px;
+}
+.socialWrapper {
+  display: flex;
+  align-items: baseline;
+  position: relative;
+}
+.TelegramIcon {
+  position: absolute;
+  top: -3px;
+  left: 100px;
+}
+.ViberIcon {
+  position: absolute;
+  top: -3px;
+  left: 70px;
+}

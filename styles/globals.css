@@ -1,44 +1,425 @@
 /* Глобальные стили */
+:root {
+  --main-font: Helvetica, sans-serif;
+  --bg-color: #0f434e;
+  --button-bg-color: #eee;
+  --button-text-color: #333;
+  --accent-color: #e3d9c7;
+  --black: #181818;
+  --dark-mood: #070d23;
+  --gray: #908f8f;
+  --gray-light: #d9d9d9;
+  --mood: #62666a;
+  --white: #f4f4f4;
+}
+
 html {
   /* Устанавливаем базовые стили для всего приложения */
-  font-family: Arial, sans-serif;
+  font-family: var(--main-font);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: var(--bg-color);
 }
-
+li {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
 .container {
   /* Стили для вашего контейнера, если необходимо */
 }
 
 /* Стили для темной темы */
-html.dark-mode {
-  /* Напишите стили для темной темы здесь */
-  background-color: #333;
-  color: #fff;
-}
+/* html.dark-mode {
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+  color-scheme: dark;
+} */
 
 /* Стили для светлой темы */
-html:not(.dark-mode) {
-  /* Напишите стили для светлой темы здесь */
-  background-color: #fff;
-  color: #333;
-}
+/* html:not(.dark-mode) {
+  background-color: var(--light-bg-color);
+  color: var(--light-text-color);
+} */
 
 /* Стили для кнопки переключения темы */
-.theme-toggle-button {
-  /* Стили для кнопки */
+/* .theme-toggle-button {
   width: 20px;
   height: 20px;
   border: none;
   cursor: pointer;
-  background-color: #eee;
-  color: #333;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
   border-radius: 10px;
-}
+} */
 
 /* Дополнительные стили для кнопки в зависимости от темы */
-.dark-mode .theme-toggle-button {
-  background-color: #333;
-  color: #fff;
+/* .dark-mode .theme-toggle-button {
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+} */
+
+/* form */
+/* @import "../styles/globals.css"; */
+/* 
+.form {
+  background-color: var(--accent-color);
+  border-radius: 16px;
+  height: 729px;
+  position: relative;
+  width: 756px;
 }
+
+.form .text-wrapper {
+  color: var(--white);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 279px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 27px;
+  white-space: nowrap;
+}
+
+.form .info {
+  height: 126px;
+  left: 80px;
+  position: absolute;
+  top: 71px;
+  width: 260px;
+}
+
+.form .div {
+  color: var(--white);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: -1px;
+}
+
+.form .p {
+  color: var(--white);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 10px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 101px;
+  width: 260px;
+}
+
+.form .name {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  left: 0;
+  position: absolute;
+  top: 24px;
+  width: 260px;
+}
+
+.form .text-wrapper-2 {
+  color: var(--gray);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  left: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 7px;
+}
+
+.form .phone {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  left: 0;
+  position: absolute;
+  top: 63px;
+  width: 260px;
+}
+
+.form .location {
+  height: 58px;
+  left: 80px;
+  position: absolute;
+  top: 350px;
+  width: 560px;
+}
+
+.form .div-wrapper {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  left: 0;
+  position: absolute;
+  top: 27px;
+  width: 260px;
+}
+
+.form .text-wrapper-3 {
+  color: var(--gray);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  left: 14px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 7px;
+}
+
+.form .adress {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  left: 300px;
+  position: absolute;
+  top: 27px;
+  width: 260px;
+}
+
+.form .text-wrapper-4 {
+  color: var(--white);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  left: 4px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: -1px;
+}
+
+.form .price {
+  height: 58px;
+  left: 80px;
+  position: absolute;
+  top: 428px;
+  width: 260px;
+}
+
+.form .frame {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  left: 300px;
+  padding: 8px;
+  position: absolute;
+  top: 23px;
+}
+
+.form .radiobtn {
+  background-color: var(--x-neutral0-white);
+  border: 1px solid;
+  border-color: #62666a;
+  border-radius: 12px;
+  height: 18px;
+  position: relative;
+  width: 18px;
+}
+
+.form .text-wrapper-5 {
+  color: var(--white);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.form .description {
+  height: 113px;
+  left: 80px;
+  position: absolute;
+  top: 217px;
+  width: 337px;
+}
+
+.form .field {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 86px;
+  left: 0;
+  position: absolute;
+  top: 27px;
+  width: 337px;
+}
+
+.form .text-wrapper-6 {
+  color: var(--gray);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  left: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 7px;
+  width: 305px;
+}
+
+.form .calendar-btn {
+  align-items: center;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  left: 238px;
+  padding: 10px 28px;
+  position: absolute;
+  top: 506px;
+}
+
+.form .text-wrapper-7 {
+  color: #000000;
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  width: fit-content;
+}
+
+.form .img {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.form .category {
+  height: 98px;
+  left: 380px;
+  position: absolute;
+  top: 71px;
+  width: 260px;
+}
+
+.form .sub-category {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  left: 0;
+  position: absolute;
+  top: 67px;
+  width: 260px;
+}
+
+.form .tabler-icon-chevron {
+  height: 24px;
+  left: 228px;
+  position: absolute;
+  top: 4px;
+  width: 24px;
+}
+
+.form .category-2 {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  left: 0;
+  position: absolute;
+  top: 28px;
+  width: 260px;
+}
+
+.form .btn {
+  all: unset;
+  align-items: center;
+  background-color: #62666a;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  left: 287px;
+  padding: 10px 28px;
+  position: absolute;
+  top: 662px;
+}
+
+.form .text-wrapper-8 {
+  color: var(--white);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.form .messenger {
+  height: 68px;
+  left: 80px;
+  position: absolute;
+  top: 570px;
+  width: 299px;
+}
+
+.form .frame-2 {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  left: 0;
+  padding: 8px;
+  position: absolute;
+  top: 28px;
+}
+
+.form .text-wrapper-9 {
+  color: var(--white);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.form .frame-3 {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  left: 185px;
+  padding: 8px;
+  position: absolute;
+  top: 28px;
+} */
