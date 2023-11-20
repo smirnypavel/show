@@ -1,18 +1,24 @@
 /* Глобальные стили */
+
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Kdam+Thmor+Pro&display=swap");
+
 :root {
   --main-font: Helvetica, sans-serif;
-  --bg-color: #0f434e;
-  --button-bg-color: #eee;
+  --bg-color: #094356;
+  --button-bg-color: rgb(232, 149, 89);
   --button-text-color: #333;
-  --accent-color: #e3d9c7;
-  --black: #181818;
+  --accent-color: #ebdfca;
+  --black: rgb(24, 24, 24);
   --dark-mood: #070d23;
   --gray: #908f8f;
   --gray-light: #d9d9d9;
   --mood: #62666a;
-  --white: #f4f4f4;
+  --white: rgba(255, 255, 255, 1);
 }
-
+p {
+  margin: 0;
+  padding: 0;
+}
 html {
   /* Устанавливаем базовые стили для всего приложения */
   font-family: var(--main-font);
@@ -20,6 +26,12 @@ html {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--bg-color);
+  /* background-image: url(""); */
+  /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="80" stroke="rgb(232, 149, 89)" stroke-width="0.2" /><path d="M100 20C66.3956 20 40 46.3956 40 80C40 102.716 51.3394 122.647 69.6928 132.464L67.8335 136.205C48.7921 126.543 36 105.31 36 80C36 47.2548 62.2548 20 95 20C127.745 20 154 46.2548 154 79C154 113.017 125.827 140.463 91.6481 142.657L89.9625 146.404C126.306 144.032 154 114.373 154 80C154 45.8825 125.117 17 91 17C57.2132 17 30 44.2132 30 78C30 108.184 51.3364 133.84 79.2678 142.263L77.7173 146.014C46.0973 137.021 22 109.071 22 78C22 42.5071 52.5071 12 88 12C123.493 12 154 42.5071 154 78C154 114.494 123.493 145 88 145C52.5071 145 22 114.494 22 78" stroke="rgb(232, 149, 89)" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" /></svg>'); */
+  /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="80" stroke="rgb(232, 149, 89)" stroke-width="0.2" /><path d="M20 100C20 133.805 46.8921 161.985 80 163.53V183.684C29.661 179.05 0 139.644 0 88.2222C0 37.1908 39.951 0 89.0639 0C130.285 0 167.459 26.7207 182.346 65.2174H162.179C149.656 34.0748 122.075 12 89.0639 12C48.5201 12 12 48.8379 12 88.2222C12 126.169 39.4737 159.364 76.4991 169.084V149.527C34.9924 140.83 4.60204 111.888 4.60204 72.3495C4.60204 32.3149 38.3289 0 80 0C119.452 0 153.004 30.8502 163.586 72.3495H143.95C133.529 49.6076 112.378 32.0652 89.0639 32.0652C61.9939 32.0652 40 53.332 40 80C40 106.211 60.1626 127.815 86.2346 131.623V111.365C63.747 107.952 47.1858 91.1749 47.1858 72.3495C47.1858 53.1834 64.5013 37.2174 85.8981 37.2174C107.917 37.2174 125.063 55.3623 125.063 77.6259V97.4648C125.063 119.494 107.431 137.818 86.7036 139.962C110.441 142.242 129.615 159.441 129.615 181.941C129.615 197.959 117.617 212 102.131 212H20V100Z" stroke="rgb(232, 149, 89)" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" /></svg>'); */
+  /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="80" stroke="black" stroke-width="8" /><path d="M100 20C66.3956 20 40 46.3956 40 80C40 102.716 51.3394 122.647 69.6928 132.464L67.8335 136.205C48.7921 126.543 36 105.31 36 80C36 47.2548 62.2548 20 95 20C127.745 20 154 46.2548 154 79C154 113.017 125.827 140.463 91.6481 142.657L89.9625 146.404C126.306 144.032 154 114.373 154 80C154 45.8825 125.117 17 91 17C57.2132 17 30 44.2132 30 78C30 108.184 51.3364 133.84 79.2678 142.263L77.7173 146.014C46.0973 137.021 22 109.071 22 78C22 42.5071 52.5071 12 88 12C123.493 12 154 42.5071 154 78C154 114.494 123.493 145 88 145C52.5071 145 22 114.494 22 78" stroke="black" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" /></svg>'); */
+  background-size: cover; /* Растягиваем изображение на всю область */
+  background-repeat: no-repeat; /* Запрещаем повторение изображения */
 }
 li {
   list-style: none;
@@ -28,10 +40,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
-p {
-  margin: 0;
-  padding: 0;
-}
+
 * {
   box-sizing: border-box;
   outline: none;

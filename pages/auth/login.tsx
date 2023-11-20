@@ -2,6 +2,7 @@ import LoginForm from "@/components/Auth/LoginForm";
 import { signIn } from "@/redux/auth/authOperations";
 import { useAppDispatch } from "@/redux/hooks";
 import React from "react";
+import styles from "@/styles/components/Auth/LoginForm.module.css";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,11 @@ const Login = () => {
     } catch (error) {}
   };
 
-  return <LoginForm onSubmit={handleLogin} />;
+  return (
+    <div className={styles.loginContainer}>
+      <LoginForm onSubmit={handleLogin} />
+    </div>
+  );
 };
 
 export default Login;

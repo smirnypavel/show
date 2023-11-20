@@ -26,3 +26,10 @@
   white-space: nowrap;
   width: fit-content;
 }
+.logo {
+  font-family: "Bungee Spice", sans-serif;
+}
+.logoSpan {
+  font-size: 20px;
+  margin-left: -5px;
+}

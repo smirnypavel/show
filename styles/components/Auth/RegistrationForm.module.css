@@ -1,6 +1,6 @@
 .container {
   width: 770px;
-  height: 540px;
+  height: 777px;
   border-radius: 16px;
   background: var(--accent-color);
   margin: 0 auto;
@@ -12,7 +12,7 @@
 }
 
 .loginTitle {
-  color: #000000;
+  color: var(--black);
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 400;
@@ -39,7 +39,6 @@
 }
 .loginInput {
   background-color: var(--white);
-
   border-radius: 8px;
   height: 45px;
   border: none;
@@ -51,13 +50,13 @@
   position: relative;
 }
 .passwordInput {
-  background-color: #c9c9c9;
+  background-color: var(--white);
   border-radius: 8px;
   height: 45px;
   border: none;
   width: 298px;
   padding-left: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .showButton {
   width: 24px;
@@ -90,8 +89,19 @@
   font-size: 12px;
   font-weight: 400;
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
   left: 10px;
+}
+
+.textRegister {
+  color: #000000;
+  font-family: "Inter-Light", Helvetica;
+
+  font-size: 12px;
+  font-weight: 300;
+  line-height: normal;
+  width: 282px;
+  margin-bottom: 28px;
 }
 
 .serviceContainer {
@@ -140,11 +150,11 @@
   padding: 12px 24px;
   margin-bottom: 24px;
   transition: box-shadow 0.3s ease;
+  margin-bottom: 24px;
   cursor: pointer; /* Добавим указатель при наведении */
 }
 
 .textWrapper {
-  color: var(--);
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0;
@@ -171,6 +181,9 @@
   font-weight: 400;
   text-align: center;
   margin-bottom: 66px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
 }
 .socialContainer {
   display: flex;

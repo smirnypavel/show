@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-
+import Wechirka from "@/public/logo/Wechirka.png";
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
@@ -13,6 +13,14 @@ const Header = () => {
   const user = useSelector(getUser);
   return (
     <div className={styles.header}>
+      {/* <Image
+        src={Wechirka}
+        alt={"Logo"}
+        width={150}
+      /> */}
+      <h1 className={styles.logo}>
+        Wechirka. <span className={styles.logoSpan}>com</span>
+      </h1>
       <div className={styles.headerNav}>
         <Link
           href={"/"}

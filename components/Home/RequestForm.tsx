@@ -21,7 +21,9 @@ interface FormValues {
   name: string;
   description: string;
   date: string;
-  price: string;
+  price?: string;
+  [key: string]: string | ICategory[] | undefined;
+  botLink?: string;
 }
 
 const initialValues: FormValues = {
@@ -30,6 +32,7 @@ const initialValues: FormValues = {
   description: "",
   date: "",
   price: "",
+  botLink: "",
 };
 
 const validationSchema = Yup.object().shape({
@@ -56,13 +59,15 @@ const RequestForm = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [isPriceDisabled, setIsPriceDisabled] = useState(false);
+  const [isTelegramChecked, setIsTelegramChecked] = useState(false);
+  const [isViberChecked, setIsViberChecked] = useState(false);
 
   const handleItemsSelect = (items: ICategory[]) => {
     setSelectedItems(items);
   };
 
-  const updateLocationField = (selectedCity: string) => {
-    setSelectedCity(selectedCity);
+  const handleCitySelect = (city: string) => {
+    setSelectedCity(city);
   };
 
   const handleSubmit = async (
@@ -70,12 +75,21 @@ const RequestForm = () => {
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
     const filteredDescription = badWordsFilter.filter(values.description!);
-    const updatedValues = {
+    let updatedValues = {
       ...values,
       description: filteredDescription,
       location: selectedCity,
       category: selectedItems,
+      botLink: isTelegramChecked
+        ? "https://t.me/WechirkaBot"
+        : isViberChecked
+        ? "ссылка для Viber"
+        : "", // Устанавливаем ссылку в зависимости от выбранного чекбокса
     };
+
+    if (isPriceDisabled) {
+      delete updatedValues.price; // Удаляем поле "price" из объекта, если чекбокс "Договірний" выбран
+    }
 
     try {
       await axios.post("/orders", updatedValues);
@@ -87,10 +101,28 @@ const RequestForm = () => {
 
     setSubmitting(false);
   };
+
   const handleCheckboxChange = (e: {
     target: { checked: boolean | ((prevState: boolean) => boolean) };
   }) => {
     setIsPriceDisabled(e.target.checked);
+  };
+  const handleCheckboxSocialChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { id, checked } = e.target;
+
+    // Обработчик для чекбокса Telegram
+    if (id === "checkboxTelegarm") {
+      setIsTelegramChecked(checked);
+      setIsViberChecked(false); // Отключаем чекбокс Viber при выборе Telegram
+    }
+
+    // Обработчик для чекбокса Viber
+    if (id === "checkboxViber") {
+      setIsViberChecked(checked);
+      setIsTelegramChecked(false); // Отключаем чекбокс Telegram при выборе Viber
+    }
   };
   return (
     <div className={styles.form}>
@@ -155,7 +187,7 @@ const RequestForm = () => {
               </div>
               <div className={styles.titleLocation}>Локація</div>
               <div className={styles.locationWrapper}>
-                <AutocompleteComponent />
+                <AutocompleteComponent onCitySelect={handleCitySelect} />
                 <Field
                   type="text"
                   name="address"
@@ -220,11 +252,12 @@ const RequestForm = () => {
               <div className={styles.socialWrapper}>
                 <input
                   type="checkbox"
-                  onChange={handleCheckboxChange}
-                  id="checkboxId" // Добавь уникальный ID для чекбокса
+                  onChange={handleCheckboxSocialChange}
+                  checked={isTelegramChecked}
+                  id="checkboxTelegarm"
                 />
                 <label
-                  htmlFor="checkboxId"
+                  htmlFor="checkboxTelegarm"
                   className={styles.checkBoxLabel}>
                   Telegram
                   <Image
@@ -239,11 +272,12 @@ const RequestForm = () => {
               <div className={styles.socialWrapper}>
                 <input
                   type="checkbox"
-                  onChange={handleCheckboxChange}
-                  id="checkboxId" // Добавь уникальный ID для чекбокса
+                  onChange={handleCheckboxSocialChange}
+                  checked={isViberChecked}
+                  id="checkboxViber"
                 />
                 <label
-                  htmlFor="checkboxId"
+                  htmlFor="checkboxViber"
                   className={styles.checkBoxLabel}>
                   Viber{" "}
                   <Image
@@ -259,9 +293,9 @@ const RequestForm = () => {
             <div className={styles.btnContainer}>
               <button
                 type="submit"
-                className={styles.btn}
+                className={styles.submitButton}
                 disabled={isSubmitting}>
-                Створити запит
+                <div className={styles.textWrapper}> Створити запит</div>
               </button>
             </div>
           </Form>

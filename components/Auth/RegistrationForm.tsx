@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
-import styles from "@/styles/components/Auth/LoginForm.module.css";
-
+import Image from "next/image";
+import styles from "@/styles/components/Auth/RegistrationForm.module.css";
+import { PiEyeClosed } from "react-icons/pi";
+import { PiEye } from "react-icons/pi";
+import facebookLogo from "@/public/logo/facebookLogo.svg";
+import GoogleLogo from "@/public/logo/GoogleLogo.svg";
 // Определите тип для данных формы
 export type FormValues = {
+  name: string;
+  phone: string;
   email: string; // Заменено имя поля на "email"
   password: string;
   confirmPassword: string;
@@ -35,8 +41,12 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
 
   return (
     <div className={styles.container}>
+      <p className={styles.loginTitle}>Зареєструватись</p>
+
       <Formik
         initialValues={{
+          name: "",
+          phone: "",
           email: "", // Заменено имя поля на "email"
           password: "",
           confirmPassword: "",
@@ -49,74 +59,158 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
         }}>
         {({ isSubmitting }) => (
           <Form>
-            <div className={styles.formGroup}>
-              <label htmlFor="email">Почта</label>{" "}
-              {/* Заменено имя поля на "email" */}
-              <Field
-                type="text"
-                name="email" // Заменено имя поля на "email"
-                className="form-control"
-                placeholder="Введите адрес электронной почты"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-danger"
-              />
-            </div>
-
-            <div className={styles.formGroup}>
-              <label htmlFor="password">Пароль</label>
-              <div className="input-group">
-                <Field
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  className="form-control"
-                  placeholder="Введите пароль"
-                />
-                <div className="input-group-append">
-                  <button
-                    type="button"
-                    className="btn btn-outline-secondary"
-                    onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? "Скрыть" : "Показать"} пароль
-                  </button>
+            <div className={styles.form}>
+              <div className={styles.dangerContainer}>
+                <div className={styles.formGroup}>
+                  <label
+                    htmlFor="name"
+                    className={styles.inputTitle}>
+                    Ім’я
+                  </label>
+                  <Field
+                    type="text"
+                    name="name"
+                    className={styles.loginInput}
+                    placeholder="Ім’я"
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className={styles.textDanger}
+                  />
                 </div>
               </div>
-              <ErrorMessage
-                name="password"
-                component="div"
-                className="text-danger"
-              />
+              <div className={styles.dangerContainer}>
+                <div className={styles.formGroup}>
+                  <label
+                    htmlFor="phone"
+                    className={styles.inputTitle}>
+                    Номер телефону
+                  </label>
+                  <Field
+                    type="text"
+                    name="phone"
+                    className={styles.loginInput}
+                    placeholder="+380"
+                  />
+                  <ErrorMessage
+                    name="phone"
+                    component="div"
+                    className={styles.textDanger}
+                  />
+                </div>
+              </div>
+              <div className={styles.dangerContainer}>
+                <div className={styles.formGroup}>
+                  <label
+                    htmlFor="email"
+                    className={styles.inputTitle}>
+                    Електронна почта
+                  </label>
+                  <Field
+                    type="text"
+                    name="email"
+                    className={styles.loginInput}
+                    placeholder="exampl@exampl.com"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className={styles.textDanger}
+                  />
+                </div>
+              </div>
+              <div className={styles.dangerContainer}>
+                <div className={styles.formGroup}>
+                  <label
+                    htmlFor="password"
+                    className={styles.inputTitle}>
+                    Придумайте пароль
+                  </label>
+                  <div className={styles.inputGroup}>
+                    <Field
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      className={styles.passwordInput}
+                      placeholder=""
+                    />
+                    <div className="input-group-append">
+                      <button
+                        type="button"
+                        className={styles.showButton}
+                        onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? (
+                          <PiEye className={styles.showIcon} />
+                        ) : (
+                          <PiEyeClosed className={styles.showIcon} />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className={styles.textDangerPassword}
+                  />
+                </div>
+              </div>
+              <div className={styles.dangerContainer}>
+                <div className={styles.formGroup}>
+                  <label
+                    htmlFor="confirmPassword"
+                    className={styles.inputTitle}>
+                    Введіть пароль повторно
+                  </label>
+                  <Field
+                    type={showPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    className={styles.passwordInput}
+                    placeholder=""
+                  />
+                  <ErrorMessage
+                    name="confirmPassword"
+                    component="div"
+                    className={styles.textDangerPassword}
+                  />
+                </div>
+              </div>
+              <div className={styles.textRegister}>
+                Реєструючись, ви погоджуєтеся з умовами положення про збір і
+                захист персональних даних та угодою користувача
+              </div>
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={isSubmitting}>
+                <div className={styles.textWrapper}>Зареєструватись</div>
+              </button>
             </div>
-
-            <div className="form-group">
-              <label htmlFor="confirmPassword">Подтвердите пароль</label>
-              <Field
-                type={showPassword ? "text" : "password"}
-                name="confirmPassword"
-                className="form-control"
-                placeholder="Подтвердите пароль"
-              />
-              <ErrorMessage
-                name="confirmPassword"
-                component="div"
-                className="text-danger"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="btn btn-primary"
-              disabled={isSubmitting}>
-              Зарегистрироваться
-            </button>
           </Form>
         )}
       </Formik>
-      <div>
-        <p>Есть аккаунт</p>
-        <Link href={"/auth/login"}>Войти</Link>
+      <div className={styles.registerLink}>
+        <p>Зареєстровані?</p>
+        <Link href={"/auth/login"}>Увійти</Link>
+      </div>
+      <div className={styles.socialContainer}>
+        <Link
+          href={""}
+          className={styles.socialLink}>
+          Зареєструватись з допомогою
+          <Image
+            src={facebookLogo}
+            alt={""}
+          />
+        </Link>{" "}
+        <Link
+          href={""}
+          className={styles.socialLink}>
+          Зареєструватись з допомогою
+          <Image
+            src={GoogleLogo}
+            alt={""}
+          />
+        </Link>
       </div>
     </div>
   );
