@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchBarCategorySelect from "./SearchBarCategorySelect";
 import styles from "@/styles/components/Artist/ArtistSearchBar.module.css";
+import { BsSearch } from "react-icons/bs";
 
 interface ArtistSearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -31,23 +32,27 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
   };
 
   return (
-    <div className={styles.container}>
-      <input
-        type="text"
-        placeholder="пошук артистів"
-        value={searchTerm}
-        onChange={handleInputChange}
-      />
-      <button
-        type="button"
-        onClick={handleSearchClick}>
-        пошук
-      </button>
-      <button
-        type="button"
-        onClick={handleClearClick}>
-        очистити
-      </button>
+    <div>
+      <div className={styles.container}>
+        <input
+          type="text"
+          placeholder="пошук артистів"
+          value={searchTerm}
+          onChange={handleInputChange}
+          className={styles.inputSearch}
+        />
+        <button
+          className={styles.searchButton}
+          type="button"
+          onClick={handleSearchClick}>
+          <BsSearch className={styles.buttonIcon} />
+        </button>
+        <button
+          type="button"
+          onClick={handleClearClick}>
+          очистити
+        </button>
+      </div>
       <SearchBarCategorySelect
         onCategoryChange={onCategoryChange}
         onSubcategoryChange={onSubcategoryChange}

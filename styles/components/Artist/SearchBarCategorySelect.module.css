@@ -1,5 +1,20 @@
 .container {
+  margin-top: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 32px;
+}
+.selectCategorytext {
+  color: var(--white);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+}
+.selectCategory {
+  background-color: var(--white);
+  border-radius: 8px;
+  height: 31px;
+  width: 260px;
 }
