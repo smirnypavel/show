@@ -30,7 +30,6 @@ const Registry = () => {
 
   return (
     <div>
-      <h2>Регистрация</h2>
       <RegistrationForm onSubmit={handleRegistration} />
     </div>
   );
