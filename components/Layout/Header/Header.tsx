@@ -13,6 +13,7 @@ const Header = () => {
   const user = useSelector(getUser);
   return (
     <div className={styles.header}>
+<<<<<<< HEAD
       {/* <Image
         src={Wechirka}
         alt={"Logo"}
@@ -21,6 +22,13 @@ const Header = () => {
       <h1 className={styles.logo}>
         Wechirka. <span className={styles.logoSpan}>com</span>
       </h1>
+=======
+      <Image
+        src={Wechirka}
+        alt={"Logo"}
+        width={150}
+      />
+>>>>>>> 4349ac76c20f52edbfdb568972b5d5cef17d1ff8
       <div className={styles.headerNav}>
         <Link
           href={"/"}

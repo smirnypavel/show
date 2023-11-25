@@ -19,6 +19,13 @@ p {
   margin: 0;
   padding: 0;
 }
+<<<<<<< HEAD
+=======
+p {
+  margin: 0;
+  padding: 0;
+}
+>>>>>>> 4349ac76c20f52edbfdb568972b5d5cef17d1ff8
 html {
   /* Устанавливаем базовые стили для всего приложения */
   font-family: var(--main-font);

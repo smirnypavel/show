@@ -144,7 +144,10 @@
 }
 
 .textWrapper {
+<<<<<<< HEAD
   color: var(--);
+=======
+>>>>>>> 4349ac76c20f52edbfdb568972b5d5cef17d1ff8
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0;
