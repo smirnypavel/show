@@ -43,20 +43,23 @@ const Header = () => {
         {login ? (
           <Link
             href={"/profile"}
-            className={styles.link}>
-            <Image
-              src={user.master_photo}
-              alt={"user photo"}
-              width={20}
-              height={20}
-            />
+            className={styles.avatarLink}>
+            <div className={styles.avatarWrapper}>
+              <Image
+                src={user.master_photo}
+                alt={"user photo"}
+                fill
+                sizes="(min-width: 808px) 50vw, 100vw"
+                className={styles.avatar}
+              />
+            </div>
             {user.firstName}
           </Link>
         ) : (
           <Link
             href={"/auth/login"}
             className={styles.link}>
-            Auth
+            Я артист
           </Link>
         )}
       </div>

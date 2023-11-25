@@ -29,10 +29,11 @@
   width: 357px;
   height: 312px;
   position: relative;
+  border-radius: 8px;
 }
 .image {
   position: absolute;
-  border-radius: 8px;
+  border-radius: 8px 0px 0px 8px;
   object-fit: cover;
 }
 .cardInfo {
@@ -70,7 +71,6 @@
   position: relative;
 }
 .avatar {
-  position: absolute;
   border-radius: 50%;
   object-fit: cover;
 }
