@@ -20,11 +20,6 @@ p {
   padding: 0;
 }
 
-p {
-  margin: 0;
-  padding: 0;
-}
-
 html {
   /* Устанавливаем базовые стили для всего приложения */
   font-family: var(--main-font);
