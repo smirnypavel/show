@@ -79,9 +79,9 @@
   margin-left: 8px;
   display: flex;
   overflow: auto;
+  gap: 8px;
 }
 .categoryArtist {
-  margin-right: 8px;
   height: 40px;
   width: auto;
   display: flex;
@@ -102,7 +102,6 @@
   width: 812px;
   height: 192px;
   padding: 16px;
-  border-radius: 0px 0px 10px 0px;
   border: none;
 }
 .descriptionTitle {
@@ -110,8 +109,6 @@
   font-family: "Inter-Medium", Helvetica;
   font-size: 20px;
   font-weight: 500;
-  left: 0;
-  letter-spacing: 0;
   line-height: normal;
 }
 .descriptionText {
@@ -120,8 +117,6 @@
   font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
-  left: 0;
-  letter-spacing: 0;
   line-height: normal;
   overflow-wrap: break-word;
 }

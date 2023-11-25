@@ -65,7 +65,9 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                   </div>
                   <div className={styles.descriptionContainer}>
                     <p className={styles.descriptionTitle}>{artist.title}</p>
-                    <p className={styles.descriptionText}>{artist.description}</p>
+                    <p className={styles.descriptionText}>
+                      {artist.description}
+                    </p>
                   </div>
                 </div>
               </div>
