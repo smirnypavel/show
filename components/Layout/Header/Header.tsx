@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <h1 className={styles.logo}>
-        Wechirka qqqqqq. <span className={styles.logoSpan}>com</span>
+        Wechirka. <span className={styles.logoSpan}>com</span>
       </h1>
       <div className={styles.headerNav}>
         <Link
