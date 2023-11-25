@@ -6,14 +6,16 @@ import styles from "@/styles/Home/Home.module.css";
 
 const Home = () => {
   return (
-    <div className={styles.homepage}>
-      <HomeSearchBar />
-      <HomeTopBanner />
-      <div className={styles.container}>
-        <RequestForm />
-        <TopContainer />
+    <>
+      <div className={styles.homepage}>
+        <HomeSearchBar />
+        <HomeTopBanner />
+        <div className={styles.container}>
+          <RequestForm />
+          <TopContainer />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
