@@ -63,9 +63,11 @@ const SearchBarCategorySelect: React.FC<SearchBarCategorySelectProps> = ({
 
   return (
     <div className={styles.container}>
-      <p>Оберіть категорію:</p>
-      <select onChange={(e) => handleCategoryChange(e.target.value)}>
-        <option value="">Оберіть категорію</option>
+      <p className={styles.selectCategorytext}>Оберіть потрібну категорію</p>
+      <select
+        onChange={(e) => handleCategoryChange(e.target.value)}
+        className={styles.selectCategory}>
+        <option value="">Категорія</option>
         {categories.map((category) => (
           <option
             key={category._id}
@@ -74,22 +76,20 @@ const SearchBarCategorySelect: React.FC<SearchBarCategorySelectProps> = ({
           </option>
         ))}
       </select>
-
-      {selectedCategory && selectedCategory.subcategories && (
-        <div className={styles.container}>
-          <p>Оберіть підкатегорії:</p>
-          <select onChange={(e) => handleSubcategoryChange(e.target.value)}>
-            <option value="">Оберіть підкатегорії</option>
-            {selectedCategory.subcategories.map((subCategory) => (
-              <option
-                key={subCategory.id}
-                value={subCategory.id}>
-                {subCategory.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
+      <select
+        onChange={(e) => handleSubcategoryChange(e.target.value)}
+        className={styles.selectCategory}>
+        <option value="">Підкатегорія</option>
+        {selectedCategory &&
+          selectedCategory.subcategories &&
+          selectedCategory.subcategories.map((subCategory) => (
+            <option
+              key={subCategory.id}
+              value={subCategory.id}>
+              {subCategory.name}
+            </option>
+          ))}
+      </select>
     </div>
   );
 };

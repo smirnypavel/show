@@ -1,0 +1,17 @@
+.title {
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+.name {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 31px;
+  width: 260px;
+  border: none;
+  padding-left: 20px;
+  margin-bottom: 12px;
+}

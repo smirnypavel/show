@@ -1,0 +1,29 @@
+.bannerContainer {
+  width: 473px;
+  height: 260px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--white);
+  padding: 44px 0 0 20px;
+}
+.bannerTitle {
+  text-align: center;
+  color: var(--black);
+  font-family: "Inter-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+
+  top: 0;
+}
+.bannerList {
+  margin-top: 44px;
+}
+.bannerListItem {
+  margin-bottom: 20px;
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+}

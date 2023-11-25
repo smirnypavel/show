@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "@/styles/Profile/YouTubeIFrame.module.css";
 
 export interface Ilink {
   url: string;
@@ -25,14 +26,15 @@ const YouTubeEmbed = ({ url }: Ilink) => {
     : "";
 
   return (
-    <div className="video-responsive">
+    <div>
       {videoId && (
         <iframe
-          width="200"
-          height="100"
+          width="199"
+          height="129"
           src={embeddedUrl}
           title="YouTube video player"
           frameBorder="0"
+          className={styles.videoFrame}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen></iframe>
       )}

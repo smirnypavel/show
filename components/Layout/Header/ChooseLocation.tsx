@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import { LoadScript, Autocomplete } from "@react-google-maps/api";
 import styles from "@/styles/Layout/Header/city.module.css";
 
-const AutocompleteComponent = () => {
+interface AutocompleteProps {
+  onCitySelect: (city: string) => void;
+}
+
+const AutocompleteComponent: React.FC<AutocompleteProps> = ({
+  onCitySelect,
+}) => {
   const [selectedPlace, setSelectedPlace] = useState("");
+  console.log(selectedPlace);
 
   const handlePlaceChanged = () => {
     const autocomplete = document.getElementById(
@@ -14,6 +21,7 @@ const AutocompleteComponent = () => {
       const place = autocomplete.value;
       console.log(place); // Process the selected city or region
       setSelectedPlace(place);
+      onCitySelect(place);
     }
   };
 
@@ -72,12 +80,10 @@ const AutocompleteComponent = () => {
           <input
             id="autocomplete"
             type="text"
-            placeholder="Введіть місто чи область"
+            placeholder="Введіть назву міста"
             className={styles.input}
           />
         </Autocomplete>
-        {/* Результат выбранного места */}
-        <p>Вибране місто чи область: {selectedPlace}</p>
       </div>
     </LoadScript>
   );

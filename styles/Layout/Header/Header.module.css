@@ -1,10 +1,62 @@
 .header {
-  margin-top: 20px;
-  height: 40px;
-  border-bottom: 2px solid #67676723;
-  text-align: center;
+  height: 84px;
+  border-bottom: 1px solid var(--white);
+  display: flex; /* Добавляем flex-контейнер */
+  justify-content: center; /* Выравниваем содержимое по центру по горизонтали */
+  align-items: center; /* Выравниваем содержимое по центру по вертикали */
 }
+
 .headerNav {
   display: flex;
   justify-content: space-evenly;
+  align-items: center; /* Чтобы элементы выравнивались по вертикали внутри headerNav */
+  gap: 78px;
+}
+/* .headerNav > * {
+  margin: 0 88px; 
+} */
+
+.link {
+  color: var(--white);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  white-space: nowrap;
+  width: fit-content;
+}
+.logo {
+  font-family: "Bungee Spice", sans-serif;
+  margin-right: 50px;
+}
+.logoSpan {
+  font-size: 20px;
+  margin-left: -5px;
+}
+.avatarLink {
+  color: var(--white);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  white-space: nowrap;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.avatarWrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
 }

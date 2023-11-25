@@ -6,57 +6,134 @@ import Image from "next/image";
 import Link from "next/link";
 import YouTubeEmbed from "@/components/User/YouTubeIFrame";
 import styles from "@/styles/components/Profile/UserProfile.module.css";
+import { TbPencil } from "react-icons/tb";
+import { HiOutlinePhone } from "react-icons/hi";
+import { SiMaildotru } from "react-icons/si";
+import { IoArrowRedoOutline } from "react-icons/io5";
 
 const UserProfile = () => {
   const user = useSelector(getUser);
 
   return (
     <div className={styles.container}>
-      <p>Profile</p>
       <div className={styles.profileContainer}>
+        <div className={styles.avatarContainer}>
+          <div className={styles.avatarWrapper}>
+            <Image
+              src={user.master_photo}
+              alt={"user photo"}
+              fill
+              className={styles.avatar}
+              sizes="(min-width: 808px) 50vw, 100vw"
+            />
+          </div>
+          <div className={styles.updateLinkContainer}>
+            <Link
+              href={"/profile/update"}
+              className={styles.updateLink}>
+              <TbPencil className={styles.updateLinkIcon} />
+              Налаштування профілю
+            </Link>
+          </div>
+        </div>
+        <div className={styles.profileInfoContainer}>
+          <p className={styles.username}>{user.firstName}</p>
+          <p className={styles.usertitle}>{user.title}</p>
+          <div className={styles.userContactsContainer}>
+            <p className={styles.userContacts}>
+              <HiOutlinePhone className={styles.userContactsIcon} />
+              {user.phone}
+            </p>
+            <p className={styles.userContacts}>
+              <SiMaildotru className={styles.userContactsIcon} />
+              {user.email}
+            </p>
+          </div>
+          {/* <div className={styles.userContactsContainer}>
+            <p className={styles.userContacts}>
+              <HiOutlinePhone className={styles.userContactsIcon} />
+              {user.telegram}
+            </p>
+            <p className={styles.userContacts}>
+              <SiMaildotru className={styles.userContactsIcon} />
+              {user.viber}
+            </p>
+          </div> */}
+
+          <p className={styles.price}> ₴{user.price}</p>
+          <div className="">
+            <p className={styles.locationTitle}>Місто</p>
+            <p className={styles.location}>{user.location}</p>
+          </div>
+        </div>
         <div>
-          <Image
-            src={user.master_photo}
-            alt={"user photo"}
-            width={200}
-            height={200}
-          />
+          <p className={styles.shareLink}>
+            <IoArrowRedoOutline className={styles.shareIcon} />
+            Поділитись
+          </p>
+        </div>
+      </div>
+      <div>
+        <p className={styles.descriptionTitle}>Про себе</p>
+        <div className={styles.descriptionWrapper}>{user.description}</div>
+      </div>
+      <div>
+        <p className={styles.descriptionTitle}>Категорії надання послуг</p>
+        <div className={styles.categoryContainer}>
+          {user.category.map((cat) => (
+            <div
+              className={styles.categoryArtist}
+              key={cat._id}>
+              {cat.name}
+            </div>
+          ))}
+        </div>
+        <p className={styles.descriptionTitle}>Підкатегорія</p>
+
+        <div className={styles.categoryContainer}>
+          {user.category.map((cat) =>
+            cat.subcategories.map((subCat) => (
+              <div
+                className={styles.categoryArtist}
+                key={subCat.id}>
+                {subCat.name}
+              </div>
+            ))
+          )}
+        </div>
+        <div className={styles.portfolioContainer}>
+          <p className={styles.portfolioTitle}>Портфоліо</p>
+
           <ul className={styles.photoListContainer}>
             {user.photo.map((item) => (
-              <li key={item.publicId}>
+              <li
+                key={item.publicId}
+                className={styles.photoListItem}>
                 <Image
                   src={item.url}
                   alt={"user photo"}
-                  width={50}
-                  height={50}
+                  fill
+                  sizes="(min-width: 808px) 50vw, 100vw"
+                  className={styles.photo}
+                  // width={50}
+                  // height={50}
                 />
               </li>
             ))}
           </ul>
         </div>
-        <div>
-          <p>{user.title}</p>
-          <p>{user.firstName}</p>
-          <p>{user.location}</p>
-          <p>{user.description}</p>
-          <p> Price:{user.price}</p>
-          <p>Email:{user.email}</p>
-          <p>Whatsapp:{user.whatsapp}</p>
-          <p>Phone:{user.phone}</p>
-          <p>Telegram:{user.telegram}</p>
-          <p>Viber:{user.viber}</p>
+        <div className={styles.videoContainer}>
+          <ul className={styles.videoListContainer}>
+            {user.video.map((item, index) => (
+              <li
+                key={index}
+                className={styles.videoListItem}>
+                <YouTubeEmbed url={item} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      <p>Відео плейліст</p>
-      <ul className={styles.videoListContainer}>
-        {user.video.map((item, index) => (
-          <li key={index}>
-            <YouTubeEmbed url={item} />
-          </li>
-        ))}
-      </ul>
-      {/* */}
-      <Link href={"/profile/update"}>Настройки профиля</Link>
     </div>
   );
 };

@@ -1,0 +1,44 @@
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+.imageList {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.imageItemContainer {
+  width: 98px;
+  height: 125px;
+  padding: 4px 8px 0 8px;
+}
+.imageItem {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.image {
+  border-radius: 10px;
+  object-fit: cover;
+}
+.artistName {
+  margin-top: 4px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: var(--black);
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+.artistTitle {
+  margin-top: 4px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: normal;
+}

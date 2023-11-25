@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-
+import Wechirka from "@/public/logo/Wechirka.png";
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
@@ -13,25 +13,56 @@ const Header = () => {
   const user = useSelector(getUser);
   return (
     <div className={styles.header}>
+      <h1 className={styles.logo}>
+        Wechirka. <span className={styles.logoSpan}>com</span>
+      </h1>
       <div className={styles.headerNav}>
-        <Link href={"/"}>Home</Link>
-        <Link href={"/artists"}>Artists</Link>
-        <Link href={"/auth/login"}>Auth</Link>
-        <Link href={"/about"}>About</Link>
-        <MyGeolocation />
-        <AutocompleteComponent />
-      </div>
-      {login && (
-        <Link href={"/profile"}>
-          <Image
-            src={user.master_photo}
-            alt={"user photo"}
-            width={20}
-            height={20}
-          />
-          {user.firstName}
+        <Link
+          href={"/"}
+          className={styles.link}>
+          Головна
         </Link>
-      )}
+        <Link
+          href={"/artists"}
+          className={styles.link}>
+          Артисти
+        </Link>
+
+        <Link
+          href={"/about"}
+          className={styles.link}>
+          Про нас
+        </Link>
+        <Link
+          href={"/blog"}
+          className={styles.link}>
+          Блог
+        </Link>
+        {/* <MyGeolocation />
+        <AutocompleteComponent /> */}
+        {login ? (
+          <Link
+            href={"/profile"}
+            className={styles.avatarLink}>
+            <div className={styles.avatarWrapper}>
+              <Image
+                src={user.master_photo}
+                alt={"user photo"}
+                fill
+                sizes="(min-width: 808px) 50vw, 100vw"
+                className={styles.avatar}
+              />
+            </div>
+            {user.firstName}
+          </Link>
+        ) : (
+          <Link
+            href={"/auth/login"}
+            className={styles.link}>
+            Я артист
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,198 @@
+.container {
+  width: 770px;
+  height: 777px;
+  border-radius: 16px;
+  background: var(--accent-color);
+  margin: 0 auto;
+  margin-top: 40px;
+  padding-top: 40px;
+}
+.loginContainer {
+  width: 100%;
+}
+
+.loginTitle {
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+.inputTitle {
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-bottom: 4px;
+}
+.loginInput {
+  background-color: var(--white);
+  border-radius: 8px;
+  height: 45px;
+  border: none;
+  width: 298px;
+  padding-left: 15px;
+  margin-bottom: 12px;
+}
+.inputGroup {
+  position: relative;
+}
+.passwordInput {
+  background-color: var(--white);
+  border-radius: 8px;
+  height: 45px;
+  border: none;
+  width: 298px;
+  padding-left: 15px;
+  margin-bottom: 12px;
+}
+.showButton {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+.showIcon {
+  width: 24px;
+  height: 24px;
+}
+.dangerContainer {
+  position: relative;
+}
+.textDanger {
+  color: #f32b2b;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  top: 85%;
+  left: 10px;
+}
+.textDangerPassword {
+  color: #f32b2b;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+
+.textRegister {
+  color: #000000;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: normal;
+  width: 282px;
+  margin-bottom: 28px;
+}
+
+.serviceContainer {
+  display: flex;
+  width: 298px;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.rememberPasswordCheckbox {
+  margin: 0;
+  padding: 0;
+}
+.rememberedContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.rememberedText {
+  color: #202327;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+}
+.forgotPassword {
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: -0.5px;
+}
+.forgotPasswordContainer {
+  border-bottom-style: solid;
+  border-bottom-width: 0.5px;
+  border-color: #000000;
+  padding: 4px 8px;
+}
+.submitButton {
+  all: unset;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 12px 24px;
+  margin-bottom: 24px;
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 24px;
+  cursor: pointer; /* Добавим указатель при наведении */
+}
+
+.textWrapper {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+  transition: color 0.3s ease;
+}
+
+.submitButton:hover {
+  box-shadow: 0px 4px 8px #00000040;
+}
+
+.submitButton:active {
+  box-shadow: 0px 4px 12px #00000040;
+}
+
+.registerLink {
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 66px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.socialContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+.socialLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
