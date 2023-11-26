@@ -21,6 +21,7 @@ export interface IUserAuth {
   token: string;
   verify: boolean;
   ban: boolean;
+  avatar?: IAvatar;
   photo: IPhoto[];
   video: string[];
   category: ICategory[];
@@ -36,6 +37,10 @@ export interface IUserAuth {
 }
 
 export interface IPhoto {
+  publicId: string;
+  url: string;
+}
+export interface IAvatar {
   publicId: string;
   url: string;
 }

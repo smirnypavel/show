@@ -1,0 +1,12 @@
+.mainContainer {
+  margin: 0 auto;
+  display: flex;
+  margin-top: 35px;
+  width: 1168px;
+  height: 816px;
+  border-radius: 16px;
+  background-color: var(--accent-color);
+}
+.content {
+  flex-grow: 1;
+}

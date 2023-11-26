@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import YouTubeEmbed from "./YouTubeIFrame";
+import YouTubeEmbed from "../../User/YouTubeIFrame";
 interface UploadVideoProps {
   onVideoUrlsUpdate: (videoUrls: string[]) => void;
 }

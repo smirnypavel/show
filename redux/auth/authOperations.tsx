@@ -109,6 +109,7 @@ export const googleAuth = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
+  console.log("logout Operation");
   try {
     await axios.post("/users/logout");
     clearAuthHeader();

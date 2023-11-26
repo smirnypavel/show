@@ -3,8 +3,11 @@ import axios from "axios";
 import { ICategory, ISubcategory } from "@/types/IAuth";
 import { useAppDispatch } from "@/redux/hooks";
 import { updateUser } from "@/redux/auth/authOperations";
+import styles from "@/styles/components/Profile/UpdateProfile/CategorySelector.module.css";
 
-const CategorySelector: React.FC = () => {
+const CategorySelector: React.FC<{
+  onItemsSelected: (items: ICategory[]) => void;
+}> = ({ onItemsSelected }) => {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>(
@@ -37,6 +40,10 @@ const CategorySelector: React.FC = () => {
       setSubcategories(selectedCategoryItem.subcategories);
     }
   }, [selectedCategory, categories]);
+
+  useEffect(() => {
+    onItemsSelected(selectedItems);
+  }, [selectedItems]);
 
   const handleCategoryChange = (categoryId: string) => {
     setSelectedCategory(categoryId);
@@ -74,14 +81,13 @@ const CategorySelector: React.FC = () => {
     }
   };
 
-  const handleUpdateUserCategory = () => {
-    dispatch(updateUser({ category: selectedItems }));
-  };
+  // const handleUpdateUserCategory = () => {};
 
   return (
-    <div>
-      <h2>Оберіть категорію:</h2>
-      <select onChange={(e) => handleCategoryChange(e.target.value)}>
+    <div className={styles.categoryContainer}>
+      <select
+        onChange={(e) => handleCategoryChange(e.target.value)}
+        className={styles.name}>
         <option value="">Оберіть категорію</option>
         {categories.map((category) => (
           <option
@@ -91,41 +97,34 @@ const CategorySelector: React.FC = () => {
           </option>
         ))}
       </select>
-
-      {selectedCategory && subcategoriesVisible && (
-        <div>
-          <h3>Оберіть підкатегорії:</h3>
-          {subcategories.map((subCategory) => (
-            <div key={subCategory.id}>
-              <input
-                type="checkbox"
-                id={subCategory.id}
-                checked={selectedSubcategories.includes(subCategory.id)}
-                onChange={() => handleSubcategoryChange(subCategory.id)}
-              />
-              <label htmlFor={subCategory.id}>{subCategory.name}</label>
-            </div>
-          ))}
-          <button onClick={handleAddItems}>Обрати</button>
-        </div>
+      {subcategoriesVisible && (
+        <>
+          <div className={styles.subcategoryContainer}>
+            {subcategories.map((subCategory) => (
+              <div key={subCategory.id}>
+                <input
+                  type="checkbox"
+                  id={subCategory.id}
+                  checked={selectedSubcategories.includes(subCategory.id)}
+                  onChange={() => handleSubcategoryChange(subCategory.id)}
+                />
+                <label htmlFor={subCategory.id}>{subCategory.name}</label>
+              </div>
+            ))}
+          </div>
+          <button
+            onClick={handleAddItems}
+            className={styles.buttonSubmit}>
+            Обрати
+          </button>
+        </>
       )}
 
-      <h3>Вибрані Категорії:</h3>
-      <ul>
-        {selectedItems.map((item, index) => (
-          <li key={index}>
-            Категорія: {item.name}, Підкатегорії:{" "}
-            {item.subcategories
-              .map((subCategory) => subCategory.name)
-              .join(", ")}
-          </li>
-        ))}
-      </ul>
-      <button
+      {/* <button
         type="button"
         onClick={handleUpdateUserCategory}>
         Зберегти
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -1,0 +1,45 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 273px;
+  height: 816px;
+  background-color: #f6f6f6;
+  border-radius: 16px 0px 0px 16px;
+  padding: 58px 0px 76px 10px;
+}
+.sidebarButton {
+  color: #000000;
+  background-color: transparent;
+  font-family: var(--h2-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+  font-style: var(--h2-regular-font-style);
+  font-weight: var(--h2-regular-font-weight);
+  letter-spacing: var(--h2-regular-letter-spacing);
+  line-height: var(--h2-regular-line-height);
+  border: none;
+  width: fit-content;
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.sidebarButton::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: 0.5px;
+  background-color: transparent; /* По умолчанию скрываем полоску */
+  transition: background-color 0.3s ease; /* Добавляем анимацию для перехода цвета */
+}
+
+.sidebarButton:hover::after,
+.sidebarButton.active::after {
+  background-color: #0000006e; /* Цвет полоски при ховере и активном состоянии */
+}
+.exitingButtonContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

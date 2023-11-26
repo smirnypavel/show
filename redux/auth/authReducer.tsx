@@ -26,6 +26,7 @@ const initialState: IAuthState = {
     verify: false,
     ban: false,
     photo: [{ publicId: "", url: "" }],
+    avatar: { publicId: "", url: "" },
     video: [""],
     category: [{ _id: "", name: "", subcategories: [{ id: "", name: "" }] }],
     genre: [],
@@ -97,6 +98,9 @@ export const authSlice = createSlice({
       })
       .addCase(logOut.rejected, (state) => {
         state.isLoading = false;
+        state.user = initialState.user;
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
       })
       .addCase(logOut.fulfilled, (state) => {
         state.user = initialState.user;

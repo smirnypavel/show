@@ -24,7 +24,7 @@ const UserProfile = () => {
               alt={"user photo"}
               fill
               className={styles.avatar}
-              sizes="(min-width: 808px) 50vw, 100vw"
+              sizes="100%"
             />
           </div>
           <div className={styles.updateLinkContainer}>
@@ -113,10 +113,8 @@ const UserProfile = () => {
                   src={item.url}
                   alt={"user photo"}
                   fill
-                  sizes="(min-width: 808px) 50vw, 100vw"
+                  sizes="100%"
                   className={styles.photo}
-                  // width={50}
-                  // height={50}
                 />
               </li>
             ))}

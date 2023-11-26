@@ -2,10 +2,13 @@ import LoginForm from "@/components/Auth/LoginForm";
 import { signIn } from "@/redux/auth/authOperations";
 import { useAppDispatch } from "@/redux/hooks";
 import React from "react";
+import { useRouter } from "next/router";
+
 import styles from "@/styles/components/Auth/LoginForm.module.css";
 
 const Login = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   // Определите тип onSubmit в соответствии с ожидаемыми данными из формы
   const handleLogin: (formData: {
@@ -17,7 +20,7 @@ const Login = () => {
       await dispatch(
         signIn({ email: formData.email, password: formData.password })
       );
-      // router.push("/account/settings");
+      router.push("/profile");
     } catch (error) {}
   };
 
