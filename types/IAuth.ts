@@ -21,7 +21,7 @@ export interface IUserAuth {
   token: string;
   verify: boolean;
   ban: boolean;
-  avatar?: IAvatar;
+  avatar: IAvatar;
   photo: IPhoto[];
   video: string[];
   category: ICategory[];
