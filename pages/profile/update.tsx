@@ -1,6 +1,5 @@
 import React from "react";
 
-//
 import styles from "../../styles/Profile/ProfileUpdate.module.css";
 import UpdateProfile from "@/components/Profile/UpdateProfile/UpdateProfile";
 
