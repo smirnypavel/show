@@ -31,7 +31,7 @@ const ArtistPage: React.FC<ArtistPageProps> = ({ artist }) => {
       <p>ArtistPage</p>
       <div className={styles.artistItem}>
         <Image
-          src={artist.master_photo}
+          src={artist.master_photo.url}
           alt={"user photo"}
           width={200}
           height={200}
