@@ -12,7 +12,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { updateUser } from "@/redux/auth/authOperations";
 import { useSelector } from "react-redux";
 import { getUser } from "@/redux/auth/authSelectors";
-import UploadVideo from "@/components/Profile/UpdateProfile/UploadVideo";
+import UploadVideo from "@/components/Profile/UpdateProfile/UploadMedia/UploadVideo";
 import CategorySelected from "@/components/Category/CategorySelected";
 import UpdateProfile from "@/components/Profile/UpdateProfile/UpdateProfile";
 

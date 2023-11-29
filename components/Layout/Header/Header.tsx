@@ -46,7 +46,7 @@ const Header = () => {
             className={styles.avatarLink}>
             <div className={styles.avatarWrapper}>
               <Image
-                src={user.master_photo}
+                src={user.avatar.url}
                 alt={"user photo"}
                 fill
                 sizes="(min-width: 808px) 50vw, 100vw"

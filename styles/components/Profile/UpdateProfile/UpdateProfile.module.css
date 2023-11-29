@@ -3,7 +3,7 @@
   display: flex;
   margin-top: 35px;
   width: 1168px;
-  height: 816px;
+  min-height: 816px;
   border-radius: 16px;
   background-color: var(--accent-color);
 }

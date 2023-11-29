@@ -6,6 +6,9 @@ import {
   updateUser,
   getUser,
   googleAuth,
+  uploadAvatar,
+  uploadImage,
+  deletePhoto,
 } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
@@ -19,7 +22,7 @@ const initialState: IAuthState = {
     viber: "",
     whatsapp: "",
     location: "",
-    master_photo: "",
+    master_photo: { publicId: "", url: "" },
     isOnline: false,
     paid: false,
     trial: false,
@@ -27,7 +30,7 @@ const initialState: IAuthState = {
     ban: false,
     photo: [{ publicId: "", url: "" }],
     avatar: { publicId: "", url: "" },
-    video: [""],
+    video: [{ publicId: "", url: "" }],
     category: [{ _id: "", name: "", subcategories: [{ id: "", name: "" }] }],
     genre: [],
     createdAt: "",
@@ -78,6 +81,7 @@ export const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isLoading = false;
+        state.isLoading = false;
       })
       .addCase(googleAuth.pending, (state) => {
         state.isLoading = true;
@@ -91,6 +95,7 @@ export const authSlice = createSlice({
       .addCase(googleAuth.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isLoading = false;
         state.isLoading = false;
       })
       .addCase(logOut.pending, (state) => {
@@ -119,6 +124,46 @@ export const authSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.isLoading = false;
+      })
+      .addCase(uploadImage.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(uploadImage.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "";
+      })
+      .addCase(uploadImage.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.isLoading = false;
+      })
+      .addCase(uploadAvatar.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(uploadAvatar.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "";
+      })
+      .addCase(uploadAvatar.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.isLoading = false;
+      })
+      .addCase(deletePhoto.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deletePhoto.rejected, (state, action) => {
+        state.isLoading = false;
+        // state.error = action.error.message || "";
+      })
+      .addCase(deletePhoto.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.isLoading = false;
       })
       .addCase(getUser.pending, (state) => {
         state.isLoading = true;
@@ -129,6 +174,7 @@ export const authSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.user = action.payload.data.posts;
+        state.isLoading = false;
         state.isLoading = false;
       });
     // .addCase(signInGoogle.pending, (state) => {

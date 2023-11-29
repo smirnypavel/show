@@ -1,10 +1,9 @@
 // components/UserUpdateForm.tsx
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import CitySearch from "../../helpers/searchCity";
+// import CitySearch from "../../helpers/searchCity";
 import styles from "@/styles/components/Profile/UpdateProfile/UserUpdateForm.module.css";
-import { CloudinaryImage } from "./UploadImage";
 import { useSelector } from "react-redux";
 import { getUser } from "@/redux/auth/authSelectors";
 import AutocompleteComponent from "@/components/Layout/Header/ChooseLocation";
@@ -12,7 +11,7 @@ import { TbPencil } from "react-icons/tb";
 import { FaCheck } from "react-icons/fa6";
 import { FiPlus } from "react-icons/fi";
 
-import RequestFormCategorySelect from "@/components/Home/RequestFormCategorySelect";
+// import RequestFormCategorySelect from "@/components/Home/RequestFormCategorySelect";
 import { ICategory } from "@/types/IAuth";
 import CategorySelector from "@/components/Category/CategorySelected";
 import { useAppDispatch } from "@/redux/hooks";

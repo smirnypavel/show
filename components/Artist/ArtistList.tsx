@@ -25,7 +25,7 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                 {/* <Link href={`/artists/${artist._id}`}> */}
                 <div className={styles.imageContainer}>
                   <Image
-                    src={artist.master_photo}
+                    src={artist.master_photo.url}
                     alt={"user photo"}
                     fill
                     className={styles.image}
@@ -42,7 +42,7 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                     <div className={styles.artistProfile}>
                       <div className={styles.avatarContainer}>
                         <Image
-                          src={artist.master_photo}
+                          src={artist.avatar.url}
                           alt={"user photo"}
                           fill
                           className={styles.avatar}

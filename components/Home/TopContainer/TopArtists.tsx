@@ -32,7 +32,7 @@ const TopArtists: React.FC = () => {
             className={styles.imageItemContainer}>
             <li className={styles.imageItem}>
               <Image
-                src={artist.master_photo}
+                src={artist.master_photo.url}
                 alt={""}
                 fill
                 className={styles.image}

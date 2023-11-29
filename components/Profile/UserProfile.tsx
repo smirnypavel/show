@@ -20,7 +20,7 @@ const UserProfile = () => {
         <div className={styles.avatarContainer}>
           <div className={styles.avatarWrapper}>
             <Image
-              src={user.master_photo}
+              src={user.avatar.url}
               alt={"user photo"}
               fill
               className={styles.avatar}
@@ -122,11 +122,11 @@ const UserProfile = () => {
         </div>
         <div className={styles.videoContainer}>
           <ul className={styles.videoListContainer}>
-            {user.video.map((item, index) => (
+            {user.video.map((item) => (
               <li
-                key={index}
+                key={item.publicId}
                 className={styles.videoListItem}>
-                <YouTubeEmbed url={item} />
+                <YouTubeEmbed url={item.url} />
               </li>
             ))}
           </ul>

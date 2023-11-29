@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Component1 from "@/components/Profile/UpdateProfile/ProfileUpdateInfo"; // Подключи компоненты, которые тебе нужны
-import Component3, {
-  CloudinaryImage,
-} from "@/components/Profile/UpdateProfile/UploadImage";
+import Component3 from "@/components/Profile/UpdateProfile/UploadMedia/UpdateMedia";
 import styles from "@/styles/components/Profile/UpdateProfile/UpdateProfile.module.css";
 
 const UpdateProfile: React.FC = () => {
@@ -17,13 +15,7 @@ const UpdateProfile: React.FC = () => {
       />
       <div className={styles.content}>
         {activeComponent === "Component1" && <Component1 />}
-        {activeComponent === "Component3" && (
-          <Component3
-            onImagesUpload={function (images: CloudinaryImage[]): void {
-              throw new Error("Function not implemented.");
-            }}
-          />
-        )}
+        {activeComponent === "Component3" && <Component3 />}
         {/* Добавь другие компоненты с помощью условий, если нужно */}
       </div>
     </div>

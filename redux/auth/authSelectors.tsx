@@ -1,4 +1,4 @@
-import { IUserAuth } from "../../types/IAuth";
+import { ILink, IPhoto, IUserAuth } from "../../types/IAuth";
 
 export const getUser = (state: { auth: { user: IUserAuth } }) =>
   state.auth.user;
@@ -11,6 +11,10 @@ export const isLoading = (state: { auth: { isLoading: boolean } }) =>
 
 export const selectToken = (state: { auth: { user: { token: string } } }) =>
   state.auth.user.token;
+export const getUserPhoto = (state: { auth: { user: { photo: IPhoto[] } } }) =>
+  state.auth.user.photo;
+export const getUserVideo = (state: { auth: { user: { video: ILink[] } } }) =>
+  state.auth.user.video;
 
 // export const getRole = (state: { auth: { user: IUserAuth } }) =>
 //   state.auth.user.role;
