@@ -3,8 +3,8 @@ import { IUserAuth } from "@/types/IAuth";
 import Image from "next/image";
 import styles from "@/styles/components/Artist/ArtistList.module.css";
 import { GrLocation } from "react-icons/gr";
-// import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
-import NoPhoto from "@/public/user/NoPhoto.jpeg";
+import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
+// import NoPhoto from "@/public/user/NoPhoto.jpeg";
 export interface ItemListProps {
   artists: IUserAuth[];
 }
@@ -35,7 +35,7 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                     />
                   ) : (
                     <Image
-                      src={NoPhoto}
+                      src={NoPhoto_PNG}
                       alt={"default user photo"}
                       fill
                       className={styles.image}

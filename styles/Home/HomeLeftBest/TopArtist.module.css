@@ -23,6 +23,7 @@
 .image {
   border-radius: 10px;
   object-fit: cover;
+  background-color: var(--white);
 }
 .artistName {
   margin-top: 4px;
