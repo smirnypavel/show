@@ -36,7 +36,7 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
       <div className={styles.container}>
         <input
           type="text"
-          placeholder="пошук артистів"
+          placeholder="Знайти виконавця"
           value={searchTerm}
           onChange={handleInputChange}
           className={styles.inputSearch}

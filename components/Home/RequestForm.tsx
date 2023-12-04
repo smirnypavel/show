@@ -73,8 +73,6 @@ const RequestForm = () => {
   };
   const handleDateTimeSelect = (selectedDate: string) => {
     setSelectedDate(selectedDate);
-    // Здесь вы можете обрабатывать выбранную дату, например, сохранять её в состоянии или передавать в другие функции
-    console.log(selectedDate); // Это пример, где вы можете использовать выбранную дату
   };
   const handleSubmit = async (
     values: FormValues,
@@ -152,7 +150,9 @@ const RequestForm = () => {
               <div className={styles.containerInfoCategory}>
                 <div className={styles.inputContainer}>
                   <div className={styles.dangerContainer}>
-                    <div className={styles.titleInfo}>Особиста інформація</div>
+                    <div className={styles.titleInfo}>
+                      Особиста інформація *
+                    </div>
                     <Field
                       type="text"
                       name="name"
@@ -185,7 +185,7 @@ const RequestForm = () => {
                 Ваша особиста інформація не є доступною для інших користувачів
               </p>
               <div className={styles.description}>
-                <div className={styles.titleInfo}>Опис</div>
+                <div className={styles.titleInfo}>Опис *</div>
                 <Field
                   as="textarea"
                   name="description"
@@ -199,7 +199,7 @@ const RequestForm = () => {
                   className={styles.textDanger}
                 />
               </div>
-              <div className={styles.titleLocation}>Локація</div>
+              <div className={styles.titleLocation}>Локація *</div>
               <div className={styles.locationWrapper}>
                 <AutocompleteComponent onCitySelect={handleCitySelect} />
                 <Field
@@ -214,7 +214,7 @@ const RequestForm = () => {
                   className={styles.textDanger}
                 />
               </div>
-              <div className={styles.titleLocation}>Гонорар</div>
+              <div className={styles.titleLocation}>Гонорар *</div>
               <div className={styles.priceWrapper}>
                 <Field
                   type="text"
@@ -246,12 +246,12 @@ const RequestForm = () => {
             </div>
             <div className={styles.calendarBtn}>
               <label className={styles.textWrapper7}>
-                Оберіть потрібну дату та час
+                Оберіть потрібну дату та час *
               </label>
               <DateTimePicker onDateTimeSelect={handleDateTimeSelect} />
             </div>
             <div className={styles.socialTitle}>
-              Оберіть зручний для Вас месенджер
+              Оберіть зручний для Вас месенджер *
             </div>
             <div className={styles.social}>
               <div className={styles.socialWrapper}>

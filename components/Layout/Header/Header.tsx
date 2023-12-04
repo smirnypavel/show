@@ -13,9 +13,13 @@ const Header = () => {
   const user = useSelector(getUser);
   return (
     <div className={styles.header}>
-      <h1 className={styles.logo}>
-        Wechirka. <span className={styles.logoSpan}>com</span>
-      </h1>
+      <Link href={"/"}>
+        {" "}
+        <h1 className={styles.logo}>
+          Wechirka. <span className={styles.logoSpan}>com</span>
+        </h1>
+      </Link>
+
       <div className={styles.headerNav}>
         <Link
           href={"/"}

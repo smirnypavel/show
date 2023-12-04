@@ -22,7 +22,7 @@ const HomeSearchBar = () => {
       onSubmit={handleSearchSubmit}>
       <input
         type="text"
-        placeholder="Пошук"
+        placeholder="Знайти виконавця"
         value={searchTerm}
         onChange={handleInputChange}
         className={styles.inputSearch}
