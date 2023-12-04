@@ -29,7 +29,7 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                     alt={"user photo"}
                     fill
                     className={styles.image}
-                    sizes="(min-width: 808px) 50vw, 100vw"
+                    // sizes="(min-width: 808px) 50vw, 100vw"
                   />
                 </div>
                 <div className={styles.cardInfo}>
