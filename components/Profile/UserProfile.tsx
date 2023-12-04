@@ -2,7 +2,7 @@ import React from "react";
 import { getUser } from "@/redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-// import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
+import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import Link from "next/link";
 import YouTubeEmbed from "@/components/User/YouTubeIFrame";
 import styles from "@/styles/components/Profile/UserProfile.module.css";
@@ -10,6 +10,7 @@ import { TbPencil } from "react-icons/tb";
 import { HiOutlinePhone } from "react-icons/hi";
 import { SiMaildotru } from "react-icons/si";
 import { IoArrowRedoOutline } from "react-icons/io5";
+// import ReactPlayer from "react-player/lazy";
 
 const UserProfile = () => {
   const user = useSelector(getUser);
@@ -19,13 +20,23 @@ const UserProfile = () => {
       <div className={styles.profileContainer}>
         <div className={styles.avatarContainer}>
           <div className={styles.avatarWrapper}>
-            <Image
-              src={user.avatar.url}
-              alt={"user photo"}
-              fill
-              className={styles.avatar}
-              sizes="100%"
-            />
+            {user.avatar.url ? (
+              <Image
+                src={user.avatar.url}
+                alt={"user photo"}
+                fill
+                className={styles.avatar}
+                sizes="100%"
+              />
+            ) : (
+              <Image
+                src={UserNoPhoto}
+                alt={"user photo"}
+                fill
+                className={styles.avatar}
+                sizes="100%"
+              />
+            )}
           </div>
           <div className={styles.updateLinkContainer}>
             <Link
@@ -113,7 +124,7 @@ const UserProfile = () => {
                   src={item.url}
                   alt={"user photo"}
                   fill
-                  sizes="100%"
+                  sizes="(min-width: 808px) 50vw, 100vw"
                   className={styles.photo}
                 />
               </li>
@@ -127,6 +138,13 @@ const UserProfile = () => {
                 key={item.publicId}
                 className={styles.videoListItem}>
                 <YouTubeEmbed url={item.url} />
+                {/* <ReactPlayer
+                  className="react-player"
+                  url={item.url}
+                  width="100%"
+                  height="100%"
+                  controls={false}
+                /> */}
               </li>
             ))}
           </ul>

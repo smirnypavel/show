@@ -75,6 +75,7 @@ const AutocompleteComponent: React.FC<AutocompleteProps> = ({
           onPlaceChanged={handlePlaceChanged}
           options={{
             types: ["(regions)"],
+            componentRestrictions: { country: "ua" },
             // other options if needed
           }}>
           <input

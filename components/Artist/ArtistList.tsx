@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "@/styles/components/Artist/ArtistList.module.css";
 import { GrLocation } from "react-icons/gr";
 import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
-// import NoPhoto from "@/public/user/NoPhoto.jpeg";
+import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 export interface ItemListProps {
   artists: IUserAuth[];
 }
@@ -52,13 +52,23 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                     <p>₴ {artist.price}</p>
                     <div className={styles.artistProfile}>
                       <div className={styles.avatarContainer}>
-                        <Image
-                          src={artist.avatar.url}
-                          alt={"user photo"}
-                          fill
-                          className={styles.avatar}
-                          sizes="(min-width: 808px) 50vw, 100vw"
-                        />
+                        {artist.avatar.url ? (
+                          <Image
+                            src={artist.avatar.url}
+                            alt={"user avatar"}
+                            fill
+                            className={styles.avatar}
+                            sizes="(min-width: 808px) 50vw, 100vw"
+                          />
+                        ) : (
+                          <Image
+                            src={UserNoPhoto}
+                            alt={"default user avatar"}
+                            fill
+                            className={styles.avatar}
+                            sizes="(min-width: 808px) 50vw, 100vw"
+                          />
+                        )}
                       </div>
                       <p> {artist.firstName}</p>
                     </div>

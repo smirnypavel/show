@@ -39,7 +39,7 @@ const validationSchema = Yup.object().shape({
 const UserUpdateForm = () => {
   const user = useSelector(getUser);
   const dispatch = useAppDispatch();
-  const [selectedCity, setSelectedCity] = useState(user.location); // Состояние для выбранного города
+  const [selectedCity, setSelectedCity] = useState(""); // Состояние для выбранного города
   const [searchCity, setSearchCity] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [userCategory, setUserCategory] = useState<ICategory[]>(user.category);
@@ -64,7 +64,6 @@ const UserUpdateForm = () => {
     // Удаляем пустые значения из объекта значений
     let filteredValues = removeEmptyValues({
       ...values,
-      category: selectedItems,
     });
 
     if (selectedCity.trim() !== "") {
@@ -176,7 +175,11 @@ const UserUpdateForm = () => {
                       )}
                     </label>
                     {/* <CitySearch onSelectCity={updateLocationField} /> */}
-                    <p className={styles.input}>{selectedCity}</p>
+                    <p className={styles.input}>
+                      {selectedCity.trim() !== ""
+                        ? selectedCity
+                        : user?.location ?? "Введіть назву міста"}
+                    </p>
                     <ErrorMessage
                       name="location"
                       component="div"

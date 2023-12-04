@@ -38,6 +38,22 @@
 .download:disabled .downloadText {
   color: rgba(29, 28, 28, 0.363);
 }
+
+.uploadIcon {
+  width: 24px;
+  height: 24px;
+  animation: spin 1s infinite linear; /* Анимация вращения */
+}
+
+/* Анимация вращения */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .containerImages {
   margin-top: 20px;
   display: flex;
@@ -57,6 +73,7 @@
   position: absolute;
   border-radius: 8px;
   object-fit: cover;
+  background-color: var(--white);
 }
 .deleteButton {
   width: 32px;
