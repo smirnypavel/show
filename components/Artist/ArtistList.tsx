@@ -25,7 +25,7 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
               <div className={styles.cardContainer}>
                 {/* <Link href={`/artists/${artist._id}`}> */}
                 <div className={styles.imageContainer}>
-                  {artist.master_photo.url && (
+                  {artist.master_photo.url ? (
                     <Image
                       src={artist.master_photo.url}
                       alt={"user photo"}
@@ -33,8 +33,7 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                       className={styles.image}
                       sizes="(min-width: 808px) 50vw, 100vw"
                     />
-                  )}
-                  {!artist.master_photo.url && (
+                  ) : (
                     <Image
                       src={NoPhoto}
                       alt={"default user photo"}
