@@ -3,6 +3,8 @@ import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import Image from "next/image";
 import styles from "@/styles/Home/HomeLeftBest/TopArtist.module.css";
+// import NoPhoto from "@/public/user/NoPhoto.jpeg";
+import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
 
 const TopArtists: React.FC = () => {
   const [artists, setArtists] = useState<IUserAuth[]>([]);
@@ -31,13 +33,23 @@ const TopArtists: React.FC = () => {
             key={artist._id}
             className={styles.imageItemContainer}>
             <li className={styles.imageItem}>
-              <Image
-                src={artist.master_photo.url}
-                alt={""}
-                fill
-                className={styles.image}
-                sizes="(min-width: 808px) 50vw, 100vw"
-              />
+              {artist.master_photo.url ? (
+                <Image
+                  src={artist.master_photo.url}
+                  alt={"user photo"}
+                  fill
+                  className={styles.image}
+                  sizes="(min-width: 808px) 50vw, 100vw"
+                />
+              ) : (
+                <Image
+                  src={NoPhoto_PNG}
+                  alt={"default user photo"}
+                  fill
+                  className={styles.image}
+                  sizes="(min-width: 808px) 50vw, 100vw"
+                />
+              )}
             </li>
             <p className={styles.artistName}>{artist.firstName}</p>
             <p className={styles.artistTitle}>{artist.title}</p>
