@@ -26,7 +26,11 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                 {/* <Link href={`/artists/${artist._id}`}> */}
                 <div className={styles.imageContainer}>
                   <Image
-                    src={artist.master_photo.url || NoPhoto}
+                    src={
+                      artist.master_photo.url !== undefined
+                        ? artist.master_photo.url
+                        : NoPhoto
+                    }
                     alt={"user photo"}
                     fill
                     className={styles.image}
