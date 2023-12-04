@@ -3,6 +3,7 @@ import { IUserAuth } from "@/types/IAuth";
 import Image from "next/image";
 import styles from "@/styles/components/Artist/ArtistList.module.css";
 import { GrLocation } from "react-icons/gr";
+import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
 
 export interface ItemListProps {
   artists: IUserAuth[];
@@ -25,11 +26,11 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                 {/* <Link href={`/artists/${artist._id}`}> */}
                 <div className={styles.imageContainer}>
                   <Image
-                    src={artist.master_photo.url}
+                    src={artist.master_photo.url || NoPhoto_PNG}
                     alt={"user photo"}
                     fill
                     className={styles.image}
-                    // sizes="(min-width: 808px) 50vw, 100vw"
+                    sizes="(min-width: 808px) 50vw, 100vw"
                   />
                 </div>
                 <div className={styles.cardInfo}>
