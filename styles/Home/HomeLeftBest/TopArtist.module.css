@@ -24,7 +24,7 @@
   border-radius: 10px;
   object-fit: cover;
   background-color: var(--white);
-  border: 0.5px solid var(--gray);
+  /* border: 0.5px solid var(--gray); */
 }
 .artistName {
   margin-top: 4px;

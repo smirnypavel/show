@@ -19,8 +19,9 @@ const Sidebar: React.FC<SidebarProps> = ({
   };
   const router = useRouter();
   const handleLogout = () => {
-    router.push("/");
-    dispatch(logOut());
+    router.push("/").then(() => {
+      dispatch(logOut());
+    });
   };
   return (
     <div className={styles.sidebar}>
