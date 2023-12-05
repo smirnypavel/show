@@ -49,7 +49,10 @@ const UserProfile = () => {
         </div>
         <div className={styles.profileInfoContainer}>
           <p className={styles.username}>{user.firstName}</p>
-          <p className={styles.usertitle}>{user.title}</p>
+          <p className={styles.usertitle}>
+            {" "}
+            {user.title ? user.title : " Додайте назву свого колектива"}
+          </p>
           <div className={styles.userContactsContainer}>
             <p className={styles.userContacts}>
               <HiOutlinePhone className={styles.userContactsIcon} />
@@ -71,10 +74,15 @@ const UserProfile = () => {
             </p>
           </div> */}
 
-          <p className={styles.price}> ₴{user.price}</p>
+          <p className={styles.price}>
+            {" "}
+            ₴{user.price ? user.price : "Ціна не вказана"}
+          </p>
           <div className="">
             <p className={styles.locationTitle}>Місто</p>
-            <p className={styles.location}>{user.location}</p>
+            <p className={styles.location}>
+              {user.location ? user.location : "Оберіть місто"}
+            </p>
           </div>
         </div>
         <div>
@@ -86,67 +94,85 @@ const UserProfile = () => {
       </div>
       <div>
         <p className={styles.descriptionTitle}>Про себе</p>
-        <div className={styles.descriptionWrapper}>{user.description}</div>
+        <div className={styles.descriptionWrapper}>
+          {" "}
+          {user.description
+            ? user.description
+            : "Напишіть про те чим ви займаетесь, для того щоб корістувачам було зручніше Вас знайти"}
+        </div>
       </div>
       <div>
         <p className={styles.descriptionTitle}>Категорії надання послуг</p>
         <div className={styles.categoryContainer}>
-          {user.category.map((cat) => (
-            <div
-              className={styles.categoryArtist}
-              key={cat._id}>
-              {cat.name}
-            </div>
-          ))}
+          {user.category.length === 0 ? (
+            <div className={styles.categoryArtist}>Категорії не обрані</div>
+          ) : (
+            user.category.map((cat) => (
+              <div
+                className={styles.categoryArtist}
+                key={cat._id}>
+                {cat.name}
+              </div>
+            ))
+          )}
         </div>
         <p className={styles.descriptionTitle}>Підкатегорія</p>
 
         <div className={styles.categoryContainer}>
-          {user.category.map((cat) =>
-            cat.subcategories.map((subCat) => (
-              <div
-                className={styles.categoryArtist}
-                key={subCat.id}>
-                {subCat.name}
-              </div>
-            ))
+          {user.category.length === 0 ? (
+            <div className={styles.categoryArtist}>Підкатегорії не обрані</div>
+          ) : (
+            user.category.map((cat) =>
+              cat.subcategories.map((subCat) => (
+                <div
+                  className={styles.categoryArtist}
+                  key={subCat.id}>
+                  {subCat.name}
+                </div>
+              ))
+            )
           )}
         </div>
         <div className={styles.portfolioContainer}>
           <p className={styles.portfolioTitle}>Портфоліо</p>
 
           <ul className={styles.photoListContainer}>
-            {user.photo.map((item) => (
-              <li
-                key={item.publicId}
-                className={styles.photoListItem}>
-                <Image
-                  src={item.url}
-                  alt={"user photo"}
-                  fill
-                  sizes="(min-width: 808px) 50vw, 100vw"
-                  className={styles.photo}
-                />
-              </li>
-            ))}
+            {user.photo.length === 0 ? (
+              <div className={styles.categoryArtist}>
+                Додайте фото Ваших виступів
+              </div>
+            ) : (
+              user.photo.map((item) => (
+                <li
+                  key={item.publicId}
+                  className={styles.photoListItem}>
+                  <Image
+                    src={item.url}
+                    alt={"user photo"}
+                    fill
+                    sizes="(min-width: 808px) 50vw, 100vw"
+                    className={styles.photo}
+                  />
+                </li>
+              ))
+            )}
           </ul>
         </div>
         <div className={styles.videoContainer}>
           <ul className={styles.videoListContainer}>
-            {user.video.map((item) => (
-              <li
-                key={item.publicId}
-                className={styles.videoListItem}>
-                <YouTubeEmbed url={item.url} />
-                {/* <ReactPlayer
-                  className="react-player"
-                  url={item.url}
-                  width="100%"
-                  height="100%"
-                  controls={false}
-                /> */}
-              </li>
-            ))}
+            {user.video.length === 0 ? (
+              <div className={styles.categoryArtist}>
+                Додайте відео з YouTube Ваших виступів
+              </div>
+            ) : (
+              user.video.map((item) => (
+                <li
+                  key={item.publicId}
+                  className={styles.videoListItem}>
+                  <YouTubeEmbed url={item.url} />
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </div>
