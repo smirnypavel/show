@@ -46,10 +46,15 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                 <div className={styles.cardInfo}>
                   <div className={styles.cardTopContainer}>
                     <p className={styles.locationContainer}>
-                      <GrLocation />
-                      {artist.location}
+                      <GrLocation className={styles.geoIcon} />
+                      {
+                        artist.location
+                          ? artist.location // Если есть местоположение, отобразить его
+                          : "Місто не обрано" // Если нет, вывести сообщение
+                      }
                     </p>
-                    <p>₴ {artist.price}</p>
+                    <p>₴ {artist.price ? artist.price : "Ціна не вказана"}</p>
+
                     <div className={styles.artistProfile}>
                       <div className={styles.avatarContainer}>
                         {artist.avatar.url ? (
@@ -74,20 +79,28 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                     </div>
                   </div>
                   <div className={styles.categoryContainer}>
-                    {artist.category.map((cat) =>
-                      cat.subcategories.map((subCat) => (
-                        <div
-                          className={styles.categoryArtist}
-                          key={subCat.id}>
-                          {subCat.name}
-                        </div>
-                      ))
+                    {artist.category.length === 0 ? (
+                      <div className={styles.categoryArtist}>
+                        Категорії не обрані
+                      </div>
+                    ) : (
+                      artist.category.map((cat) =>
+                        cat.subcategories.map((subCat) => (
+                          <div
+                            className={styles.categoryArtist}
+                            key={subCat.id}>
+                            {subCat.name}
+                          </div>
+                        ))
+                      )
                     )}
                   </div>
                   <div className={styles.descriptionContainer}>
                     <p className={styles.descriptionTitle}>{artist.title}</p>
                     <p className={styles.descriptionText}>
-                      {artist.description}
+                      {artist.description
+                        ? artist.description
+                        : "Опис не надано"}
                     </p>
                   </div>
                 </div>

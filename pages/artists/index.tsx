@@ -26,6 +26,9 @@ const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
     setSelectedSubcategoryId(subcategoryId);
     handleSearch(subcategoryId);
   };
+  const handleCityChange = (city: string) => {
+    console.log(city);
+  };
 
   const handleSearch = async (
     categoryId: string = "",
@@ -69,6 +72,7 @@ const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
         }}
         onCategoryChange={handleCategoryChange}
         onSubcategoryChange={handleSubcategoryChange}
+        onSelectedCity={handleCityChange}
       />
       <div>
         <ArtistList artists={filteredArtists} />

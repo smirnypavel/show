@@ -239,7 +239,7 @@ const RequestForm = () => {
                   <label
                     htmlFor="checkboxId"
                     className={styles.checkBoxLabel}>
-                    Договірний
+                    За домовленістю
                   </label>
                 </div>
               </div>

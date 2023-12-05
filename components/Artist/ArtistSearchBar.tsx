@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import SearchBarCategorySelect from "./SearchBarCategorySelect";
 import styles from "@/styles/components/Artist/ArtistSearchBar.module.css";
 import { BsSearch } from "react-icons/bs";
+import ChooseLocationArtist from "./ChooseLocationArtist";
 
 interface ArtistSearchBarProps {
   onSearch: (searchTerm: string) => void;
   onCategoryChange: (categoryId: string) => void;
   onSubcategoryChange: (subcategoryId: string) => void;
+  onSelectedCity: (location: string) => void;
 }
 
 const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
   onSearch,
   onCategoryChange,
   onSubcategoryChange,
+  onSelectedCity,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -30,17 +33,24 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
     setSearchTerm(""); // Очищаем ввод
     onSearch(""); // Отправляем пустой запрос
   };
+  const handleCitySelect = (city: string) => {
+    onSelectedCity(city);
+    console.log(city);
+  };
 
   return (
     <div>
       <div className={styles.container}>
-        <input
-          type="text"
-          placeholder="Знайти виконавця"
-          value={searchTerm}
-          onChange={handleInputChange}
-          className={styles.inputSearch}
-        />
+        <div className={styles.inputLocationContainer}>
+          <input
+            type="text"
+            placeholder="Знайти виконавця"
+            value={searchTerm}
+            onChange={handleInputChange}
+            className={styles.inputSearch}
+          />
+          <ChooseLocationArtist onCitySelect={handleCitySelect} />
+        </div>
         <button
           className={styles.searchButton}
           type="button"

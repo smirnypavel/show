@@ -1,0 +1,55 @@
+/* styles.module.css */
+
+.autocompleteContainer {
+  position: absolute;
+  /* position: relative; */
+  right: 0;
+  top: 0;
+}
+
+.inputContainer {
+  height: 45px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  padding-left: 8px;
+  transition: width 0.3s ease; /* Добавляем анимацию перехода для плавного изменения ширины */
+}
+.inputContainer:focus-within {
+  width: 230px;
+}
+
+.inputContainer:focus-within .autocompleteContainer {
+  transform: translateX(
+    -100px
+  ); /* Используем transform для сдвига контейнера autocomplete */
+}
+
+.input {
+  background-color: var(--white);
+  height: 45px;
+  width: 98px;
+  border: none;
+  padding: 8px;
+  transition: width 0.3s ease; /* Анимация перехода ширины инпута */
+}
+.input:focus {
+  width: 198px;
+}
+.autocompleteContainer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: transform 0.3s ease; /* Анимация перехода сдвига контейнера autocomplete */
+}
+.geoIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.geoIconActive {
+  width: 24px;
+  height: 24px;
+  color: var(--button-bg-color);
+}
