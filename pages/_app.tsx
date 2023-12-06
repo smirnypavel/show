@@ -8,12 +8,14 @@ import { restoreToken } from "../redux/auth/authOperations";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import Layout from "@/components/Layout/Layout";
-import { useState } from "react";
+
 import "../styles/globals.css"; // Путь к вашему файлу globals.css
 
 function MyApp({ Component, pageProps }: AppProps) {
   // Остальной код без изменений
-
+  useEffect(() => {
+    restoreToken();
+  }, []);
   return (
     <Provider store={store}>
       <PersistGate

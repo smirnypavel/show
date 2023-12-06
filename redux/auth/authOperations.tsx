@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { ILink } from "@/types/IAuth";
+import { useRouter } from "next/router";
 
-axios.defaults.baseURL = "https://events-4qv2.onrender.com";
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_BEC_URL;
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -30,7 +30,7 @@ axios.interceptors.response.use(
       const refreshToken = localStorage.getItem("refreshToken");
       if (!refreshToken) {
         // Если отсутствует refresh-токен, делаем выход пользователя
-        return Promise.reject(error);
+        return Promise.reject();
       }
 
       try {
@@ -40,11 +40,11 @@ axios.interceptors.response.use(
         originalRequest.headers["Authorization"] = `Bearer ${data.token}`;
         return axios(originalRequest); // Повторяем исходный запрос с обновленным токеном
       } catch (error) {
-        // toast.error("An error occurred during authentication");
-        return Promise.reject(error);
+        toast.error("An error occurred during authentication");
+        return Promise.reject();
       }
     }
-    return Promise.reject(error);
+    return Promise.reject();
   }
 );
 
@@ -75,6 +75,7 @@ export const signIn = createAsyncThunk(
       setAuthHeader(data.token);
       localStorage.setItem("refreshToken", data.token);
       // toast.success("Welcome!");
+
       return data;
     } catch (error: any) {
       if (error.response.status === 404) {

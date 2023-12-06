@@ -32,10 +32,11 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
     e.preventDefault();
     setSearchTerm(""); // Очищаем ввод
     onSearch(""); // Отправляем пустой запрос
+    onCategoryChange(""); // Сбрасываем выбранную категорию
+    onSubcategoryChange("");
   };
   const handleCitySelect = (city: string) => {
     onSelectedCity(city);
-    console.log(city);
   };
 
   return (

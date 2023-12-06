@@ -17,7 +17,7 @@ import { PersistPartial } from "redux-persist/es/persistReducer";
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["isLoggedIn", "refreshToken"],
+  whitelist: ["user", "isLoggedIn", "refreshToken"],
 };
 
 // Define explicit types for state and action

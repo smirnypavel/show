@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { LoadScript, Autocomplete, Libraries } from "@react-google-maps/api";
 import styles from "@/styles/components/Artist/ChoseCity.module.css";
-// import { GrLocation } from "react-icons/gr";
-import { HiOutlineLocationMarker } from "react-icons/hi";
+import { HiOutlineLocationMarker, HiX } from "react-icons/hi";
 
 interface AutocompleteProps {
   onCitySelect: (city: string) => void;
 }
 
-const libraries: Libraries = ["places"]; // Массив строк обернут в массив объектов типа Library
+const libraries: Libraries = ["places"];
 
 const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
   onCitySelect,
 }) => {
   const [selectedPlace, setSelectedPlace] = useState("");
   const [isCitySelected, setIsCitySelected] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handlePlaceChanged = () => {
-    const autocomplete = document.getElementById(
-      "autocomplete"
-    ) as HTMLInputElement;
+    const autocomplete = inputRef.current;
 
     if (autocomplete) {
       const place = autocomplete.value;
@@ -28,6 +26,15 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
       setIsCitySelected(true);
     } else {
       setIsCitySelected(false);
+    }
+  };
+
+  const handleClearInput = () => {
+    setSelectedPlace("");
+    onCitySelect(""); // Отправка пустой строки для очистки локации
+    setIsCitySelected(false);
+    if (inputRef.current) {
+      inputRef.current.value = ""; // Очистка поля ввода
     }
   };
 
@@ -68,7 +75,7 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
 
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyDC3bqKHvQCfyZKUCLbkj-J-it_jomt0vg"
+      googleMapsApiKey="YOUR_API_KEY"
       language="uk"
       libraries={libraries}>
       <div className={styles.autocompleteContainer}>
@@ -84,11 +91,25 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
               className={isCitySelected ? styles.geoIconActive : styles.geoIcon}
             />
             <input
+              ref={inputRef}
               id="autocomplete"
               type="text"
               placeholder="Вся Україна"
               className={styles.input}
+              onFocus={() => {
+                inputRef.current?.dispatchEvent(
+                  new Event("input", { bubbles: true })
+                );
+              }}
             />
+            {selectedPlace && (
+              <button
+                onClick={handleClearInput}
+                className={styles.clearButton}
+                tabIndex={-1}>
+                <HiX />
+              </button>
+            )}
           </div>
         </Autocomplete>
       </div>
