@@ -6,9 +6,9 @@ import { HiOutlineLocationMarker, HiX } from "react-icons/hi";
 interface AutocompleteProps {
   onCitySelect: (city: string) => void;
 }
+const googleMapsApiKey: string = process.env.NEXT_PUBLIC_GOOGLE_KEY || "";
 
 const libraries: Libraries = ["places"];
-
 const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
   onCitySelect,
 }) => {
@@ -75,7 +75,7 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
 
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyDC3bqKHvQCfyZKUCLbkj-J-it_jomt0vg"
+      googleMapsApiKey={googleMapsApiKey}
       language="uk"
       libraries={libraries}>
       <div className={styles.autocompleteContainer}>

@@ -13,13 +13,29 @@
   position: relative;
 }
 .inputSearch {
+  position: relative;
   width: 870px;
   height: 45px;
   border-radius: 8px 0px 0px 8px;
   background: #f3f3f3;
   border: none;
-  padding-left: 16px;
+  padding-left: 30px;
   outline: none; /* Дополнительная строка для поддержки браузеров */
+  font-family: var(--h3-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+  font-style: var(--h3-regular-font-style);
+  font-weight: var(--h3-regular-font-weight);
+  letter-spacing: var(--h3-regular-letter-spacing);
+  line-height: var(--h3-regular-line-height);
+}
+.inputSearch::placeholder {
+  color: #6e6e6e;
+  font-family: var(--h3-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+  font-style: var(--h3-regular-font-style);
+  font-weight: var(--h3-regular-font-weight);
+  letter-spacing: var(--h3-regular-letter-spacing);
+  line-height: var(--h3-regular-line-height);
 }
 .inputSearch:focus {
   outline: none; /* Дополнительная строка для поддержки браузеров */
@@ -41,5 +57,30 @@
   color: var(--white);
 }
 .buttonClear {
-  margin: auto;
+  position: absolute; /* Делаем кнопку абсолютно позиционированной */
+  left: 5px; /* Позиционируем ее слева */
+  top: 50%; /* Выравниваем по вертикали по центру контейнера */
+  transform: translateY(-50%); /* Корректируем положение по вертикали */
+  background: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  padding: 0;
+
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.buttonIconClear {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.buttonClear:hover .buttonIconClear {
+  transform: scale(1.2); /* Увеличиваем масштаб иконки при наведении */
 }

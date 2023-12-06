@@ -1,12 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Wechirka from "@/public/logo/Wechirka.png";
+import logo123 from "@/public/logo/logo123.svg";
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
-import MyGeolocation from "./Geolocation";
-import AutocompleteComponent from "./ChooseLocation";
 
 const Header = () => {
   const login = useSelector(isLoggedIn);
@@ -15,9 +13,14 @@ const Header = () => {
     <div className={styles.header}>
       <Link href={"/"}>
         {" "}
-        <h1 className={styles.logo}>
+        {/* <h1 className={styles.logo}>
           Wechirka. <span className={styles.logoSpan}>com</span>
-        </h1>
+        </h1> */}
+        <Image
+          src={logo123}
+          alt={""}
+          className={styles.logo}
+        />
       </Link>
 
       <div className={styles.headerNav}>
