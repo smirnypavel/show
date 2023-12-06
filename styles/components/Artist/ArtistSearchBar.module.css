@@ -24,6 +24,7 @@
 .inputSearch:focus {
   outline: none; /* Дополнительная строка для поддержки браузеров */
 }
+/* ghbdtn */
 .searchButton {
   border-radius: 0px 8px 8px 0px;
   background: var(--button-bg-color);
@@ -38,4 +39,7 @@
   width: 24px;
   height: 24px;
   color: var(--white);
+}
+.buttonClear {
+  margin: auto;
 }

@@ -75,7 +75,7 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
 
   return (
     <LoadScript
-      googleMapsApiKey="YOUR_API_KEY"
+      googleMapsApiKey="AIzaSyDC3bqKHvQCfyZKUCLbkj-J-it_jomt0vg"
       language="uk"
       libraries={libraries}>
       <div className={styles.autocompleteContainer}>
