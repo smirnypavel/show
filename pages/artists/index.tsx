@@ -182,7 +182,7 @@ const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
       <MetaTags
         title="Wechirka | Пошук"
         description="Пошук артистів"
-        keywords="Пошук артистів"
+        keywords=""
       />
       <ArtistSearchBar
         onSearch={(searchTerm: string) => {

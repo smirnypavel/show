@@ -40,7 +40,7 @@ const UserUpdateForm = () => {
   const user = useSelector(getUser);
   const dispatch = useAppDispatch();
   const [selectedCity, setSelectedCity] = useState(""); // Состояние для выбранного города
-  const [searchCity, setSearchCity] = useState(false);
+  // const [searchCity, setSearchCity] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [userCategory, setUserCategory] = useState<ICategory[]>(user.category);
 
@@ -82,11 +82,14 @@ const UserUpdateForm = () => {
     dispatch(updateUser(filteredValues));
   };
 
-  const showCitySearch = () => {
-    if (!searchCity) {
-      setSearchCity(true);
-    }
-  };
+  // const showCitySearch = (
+  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  // ) => {
+  //   event.stopPropagation();
+  //   if (!searchCity) {
+  //     setSearchCity(true);
+  //   }
+  // };
   const handleItemsSelect = (items: ICategory[]) => {
     const updatedCategories = [...userCategory, ...items];
     setSelectedItems(items);
@@ -163,28 +166,16 @@ const UserUpdateForm = () => {
                       htmlFor="location"
                       className={styles.formInputTitle}>
                       Місто
-                      <button
-                        onClick={showCitySearch}
-                        className={styles.updateLink}>
-                        <TbPencil className={styles.updateLinkIcon} />
-                      </button>
-                      {searchCity && (
-                        <AutocompleteComponent
-                          onCitySelect={updateLocationField}
-                        />
-                      )}
+                      <AutocompleteComponent
+                        onCitySelect={updateLocationField}
+                      />
                     </label>
-                    {/* <CitySearch onSelectCity={updateLocationField} /> */}
+
                     <p className={styles.input}>
                       {selectedCity.trim() !== ""
                         ? selectedCity
                         : user?.location ?? "Введіть назву міста"}
                     </p>
-                    <ErrorMessage
-                      name="location"
-                      component="div"
-                      className="text-danger"
-                    />
                   </div>
                 </div>
                 <button
