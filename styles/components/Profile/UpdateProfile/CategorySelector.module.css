@@ -1,0 +1,36 @@
+.categoryContainer {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+.subcategoryContainer {
+  display: flex;
+  flex-direction: column;
+}
+.name {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  height: 40px;
+  width: 260px;
+  border: none;
+  padding-left: 8px;
+  margin-bottom: 12px;
+}
+.buttonSubmit {
+  height: 40px;
+  background-color: var(--white);
+  border: none;
+  padding: 8px;
+  gap: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: #000000;
+  font-family: var(--h2-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+  font-style: var(--h2-regular-font-style);
+  font-weight: var(--h2-regular-font-weight);
+  letter-spacing: var(--h2-regular-letter-spacing);
+  line-height: var(--h2-regular-line-height);
+}

@@ -13,6 +13,8 @@ const TopContainer = () => {
           src={bannerBest}
           alt={""}
           fill
+          priority
+          sizes="(min-width: 808px) 50vw, 100vw"
         />
       </div>
       <div className={styles.bannerTitleContainer}>

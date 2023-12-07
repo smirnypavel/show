@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
-import { LoadScript, Autocomplete } from "@react-google-maps/api";
+import React, { useEffect, useState } from "react";
+import { LoadScript, Autocomplete, Libraries } from "@react-google-maps/api";
 import styles from "@/styles/Layout/Header/city.module.css";
 
 interface AutocompleteProps {
   onCitySelect: (city: string) => void;
 }
 
+const libraries: Libraries = ["places"]; // Массив строк обернут в массив объектов типа Library
+
 const AutocompleteComponent: React.FC<AutocompleteProps> = ({
   onCitySelect,
 }) => {
   const [selectedPlace, setSelectedPlace] = useState("");
-  console.log(selectedPlace);
 
   const handlePlaceChanged = () => {
     const autocomplete = document.getElementById(
@@ -19,7 +20,6 @@ const AutocompleteComponent: React.FC<AutocompleteProps> = ({
 
     if (autocomplete) {
       const place = autocomplete.value;
-      console.log(place); // Process the selected city or region
       setSelectedPlace(place);
       onCitySelect(place);
     }
@@ -46,13 +46,11 @@ const AutocompleteComponent: React.FC<AutocompleteProps> = ({
         padding: 3px 5px;
         cursor: pointer;
         color: white;
-
       }
 
       .pac-item:hover {
         background-color: #ea17174b;
         color: white;
-
       }
     `;
     document.head.appendChild(style);
@@ -66,16 +64,14 @@ const AutocompleteComponent: React.FC<AutocompleteProps> = ({
     <LoadScript
       googleMapsApiKey="AIzaSyDC3bqKHvQCfyZKUCLbkj-J-it_jomt0vg"
       language="uk"
-      libraries={["places"]}>
+      libraries={libraries}>
       <div className={styles.autocompleteContainer}>
         <Autocomplete
-          onLoad={(autocomplete) => {
-            console.log("Autocomplete loaded:", autocomplete);
-          }}
+          onLoad={(autocomplete) => {}}
           onPlaceChanged={handlePlaceChanged}
           options={{
             types: ["(regions)"],
-            // other options if needed
+            componentRestrictions: { country: "ua" },
           }}>
           <input
             id="autocomplete"

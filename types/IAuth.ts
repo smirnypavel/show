@@ -14,15 +14,16 @@ export interface IUserAuth {
   viber: string;
   whatsapp: string;
   location: string;
-  master_photo: string;
+  master_photo: IMasterPhoto;
   isOnline: boolean;
   paid: boolean;
   trial: boolean;
   token: string;
   verify: boolean;
   ban: boolean;
+  avatar: IAvatar;
   photo: IPhoto[];
-  video: string[];
+  video: ILink[];
   category: ICategory[];
   genre: any[];
   createdAt: string;
@@ -39,6 +40,14 @@ export interface IPhoto {
   publicId: string;
   url: string;
 }
+export interface IAvatar {
+  publicId: string;
+  url: string;
+}
+export interface IMasterPhoto {
+  publicId: string;
+  url: string;
+}
 export interface ICategory {
   _id: string;
   name: string;
@@ -48,4 +57,8 @@ export interface ICategory {
 export interface ISubcategory {
   id: string;
   name: string;
+}
+export interface ILink {
+  publicId: string;
+  url: string;
 }

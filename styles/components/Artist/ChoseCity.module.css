@@ -1,0 +1,73 @@
+.autocompleteContainer {
+  position: absolute;
+  /* position: relative; */
+  right: 0;
+  top: 0;
+}
+
+.inputContainer {
+  position: relative;
+  height: 45px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  padding-left: 8px;
+  transition: width 0.3s ease; /* Добавляем анимацию перехода для плавного изменения ширины */
+}
+
+.inputContainer:focus-within {
+  width: 430px;
+}
+
+.inputContainer:focus-within .autocompleteContainer {
+  transform: translateX(
+    -100px
+  ); /* Используем transform для сдвига контейнера autocomplete */
+  transition: transform 0.3s ease; /* Анимация перехода сдвига контейнера autocomplete */
+}
+
+.input {
+  background-color: var(--white);
+  height: 45px;
+  width: 98px;
+  border: none;
+  padding: 8px;
+  transition: width 0.3s ease; /* Анимация перехода ширины инпута */
+}
+
+.input:focus {
+  width: 398px;
+}
+
+.geoIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.geoIconActive {
+  width: 24px;
+  height: 24px;
+  color: var(--button-bg-color);
+}
+
+.clearButton {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  visibility: hidden; /* Скрываем кнопку изначально */
+  transition: visibility 0s linear 0.3s; /* Добавляем задержку для видимости */
+}
+
+.inputContainer:focus-within .clearButton {
+  visibility: visible; /* Показываем кнопку при фокусе на контейнере */
+  transition: visibility 0s linear; /* Убираем задержку, чтобы кнопка появилась мгновенно */
+}
+
+.clearButton:focus {
+  outline: none;
+}

@@ -3,7 +3,8 @@ import { IUserAuth } from "@/types/IAuth";
 import Image from "next/image";
 import styles from "@/styles/components/Artist/ArtistList.module.css";
 import { GrLocation } from "react-icons/gr";
-
+import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
+import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 export interface ItemListProps {
   artists: IUserAuth[];
 }
@@ -24,49 +25,82 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
               <div className={styles.cardContainer}>
                 {/* <Link href={`/artists/${artist._id}`}> */}
                 <div className={styles.imageContainer}>
-                  <Image
-                    src={artist.master_photo}
-                    alt={"user photo"}
-                    fill
-                    className={styles.image}
-                    sizes="(min-width: 808px) 50vw, 100vw"
-                  />
+                  {artist.master_photo.url ? (
+                    <Image
+                      src={artist.master_photo.url}
+                      alt={"user photo"}
+                      fill
+                      className={styles.image}
+                      sizes="(min-width: 808px) 50vw, 100vw"
+                    />
+                  ) : (
+                    <Image
+                      src={NoPhoto_PNG}
+                      alt={"default user photo"}
+                      fill
+                      className={styles.image}
+                      sizes="(min-width: 808px) 50vw, 100vw"
+                    />
+                  )}
                 </div>
                 <div className={styles.cardInfo}>
                   <div className={styles.cardTopContainer}>
                     <p className={styles.locationContainer}>
-                      <GrLocation />
-                      {artist.location}
+                      <GrLocation className={styles.geoIcon} />
+                      {
+                        artist.location
+                          ? artist.location // Если есть местоположение, отобразить его
+                          : "Місто не обрано" // Если нет, вывести сообщение
+                      }
                     </p>
-                    <p>₴ {artist.price}</p>
+                    <p>₴ {artist.price ? artist.price : "Ціна не вказана"}</p>
+
                     <div className={styles.artistProfile}>
                       <div className={styles.avatarContainer}>
-                        <Image
-                          src={artist.master_photo}
-                          alt={"user photo"}
-                          fill
-                          className={styles.avatar}
-                          sizes="(min-width: 808px) 50vw, 100vw"
-                        />
+                        {artist.avatar.url ? (
+                          <Image
+                            src={artist.avatar.url}
+                            alt={"user avatar"}
+                            fill
+                            className={styles.avatar}
+                            sizes="(min-width: 808px) 50vw, 100vw"
+                          />
+                        ) : (
+                          <Image
+                            src={UserNoPhoto}
+                            alt={"default user avatar"}
+                            fill
+                            className={styles.avatar}
+                            sizes="(min-width: 808px) 50vw, 100vw"
+                          />
+                        )}
                       </div>
                       <p> {artist.firstName}</p>
                     </div>
                   </div>
                   <div className={styles.categoryContainer}>
-                    {artist.category.map((cat) =>
-                      cat.subcategories.map((subCat) => (
-                        <div
-                          className={styles.categoryArtist}
-                          key={subCat.id}>
-                          {subCat.name}
-                        </div>
-                      ))
+                    {artist.category.length === 0 ? (
+                      <div className={styles.categoryArtist}>
+                        Категорії не обрані
+                      </div>
+                    ) : (
+                      artist.category.map((cat) =>
+                        cat.subcategories.map((subCat) => (
+                          <div
+                            className={styles.categoryArtist}
+                            key={subCat.id}>
+                            {subCat.name}
+                          </div>
+                        ))
+                      )
                     )}
                   </div>
                   <div className={styles.descriptionContainer}>
                     <p className={styles.descriptionTitle}>{artist.title}</p>
                     <p className={styles.descriptionText}>
-                      {artist.description}
+                      {artist.description
+                        ? artist.description
+                        : "Опис не надано"}
                     </p>
                   </div>
                 </div>

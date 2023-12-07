@@ -4,12 +4,20 @@ interface MetaTagsProps {
   title: string;
   description: string;
   keywords: string;
+  ogTitle?: string; // Новый параметр для метатегов Open Graph
+  ogDescription?: string; // Новый параметр для метатегов Open Graph
+  ogImage?: string; // Новый параметр для метатегов Open Graph
+  ogUrl?: string; // Новый параметр для метатегов Open Graph
 }
 
 const MetaTags: React.FC<MetaTagsProps> = ({
   title,
   description,
   keywords,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogUrl,
 }) => {
   return (
     <Head>
@@ -22,7 +30,23 @@ const MetaTags: React.FC<MetaTagsProps> = ({
         name="keywords"
         content={keywords}
       />
-      {/* Дополнительные метатеги, которые вы хотите добавить */}
+      {/* Метатеги Open Graph */}
+      <meta
+        property="og:title"
+        content={ogTitle}
+      />
+      <meta
+        property="og:description"
+        content={ogDescription}
+      />
+      <meta
+        property="og:image"
+        content={ogImage}
+      />
+      <meta
+        property="og:url"
+        content={ogUrl}
+      />
     </Head>
   );
 };

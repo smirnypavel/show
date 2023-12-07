@@ -1,0 +1,6 @@
+.container {
+  padding: 48px 32px;
+}
+.profileInfoContainer {
+  display: flex;
+}

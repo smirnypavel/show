@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "@/styles/Profile/YouTubeIFrame.module.css";
+import { ILink } from "@/types/IAuth";
 
-export interface Ilink {
+interface IUrl {
   url: string;
 }
 
-const YouTubeEmbed = ({ url }: Ilink) => {
+const YouTubeEmbed = ({ url }: IUrl) => {
   // Функция для извлечения videoId из ссылки в формате "https://www.youtube.com/watch?v=XaTwnKLQi4A"
   const getVideoId = (url: string): string | undefined => {
-    if (url) {
+    if (typeof url === "string") {
       const match = url.match(
         /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
       );

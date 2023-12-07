@@ -12,6 +12,7 @@ import AutocompleteComponent from "../Layout/Header/ChooseLocation";
 import Telegramlogo from "@/public/logo/Telegramlogo.svg";
 import Viberlogo from "@/public/logo/Viberlogo.svg";
 import Image from "next/image";
+import DateTimePicker from "../helpers/DateTimePicker";
 const badWordsFilter = new BadWordsNext();
 badWordsFilter.add(require("bad-words-next/data/ru.json")); // Добавляем словарь для русского языка
 badWordsFilter.add(require("bad-words-next/data/ua.json")); // Добавляем словарь для украинского языка
@@ -37,7 +38,7 @@ const initialValues: FormValues = {
 
 const validationSchema = Yup.object().shape({
   phone: Yup.string()
-    .matches(/^\+?\d{1,15}$/, "Невірний формат телефона")
+    .matches(/^\+?\d{11,15}$/, "Невірний формат телефона")
     .required("Обов'язкове поле"),
   name: Yup.string()
     .min(3, "Мінімальна довжина – 3 символи")
@@ -57,6 +58,7 @@ const validationSchema = Yup.object().shape({
 
 const RequestForm = () => {
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [isPriceDisabled, setIsPriceDisabled] = useState(false);
   const [isTelegramChecked, setIsTelegramChecked] = useState(false);
@@ -69,17 +71,26 @@ const RequestForm = () => {
   const handleCitySelect = (city: string) => {
     setSelectedCity(city);
   };
-
+  const handleDateTimeSelect = (selectedDate: string) => {
+    setSelectedDate(selectedDate);
+  };
   const handleSubmit = async (
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
     const filteredDescription = badWordsFilter.filter(values.description!);
+    let phone = values.phone;
+    if (phone.startsWith("+")) {
+      phone = phone.substring(1); // Обрезаем плюс
+    }
+    const phoneAsNumber = +phone;
     let updatedValues = {
       ...values,
       description: filteredDescription,
+      date: selectedDate,
       location: selectedCity,
       category: selectedItems,
+      phone: phoneAsNumber,
       botLink: isTelegramChecked
         ? "https://t.me/WechirkaBot"
         : isViberChecked
@@ -124,6 +135,7 @@ const RequestForm = () => {
       setIsTelegramChecked(false); // Отключаем чекбокс Telegram при выборе Viber
     }
   };
+
   return (
     <div className={styles.form}>
       <div className={styles.title}>Форма створення запиту</div>
@@ -138,7 +150,9 @@ const RequestForm = () => {
               <div className={styles.containerInfoCategory}>
                 <div className={styles.inputContainer}>
                   <div className={styles.dangerContainer}>
-                    <div className={styles.titleInfo}>Особиста інформація</div>
+                    <div className={styles.titleInfo}>
+                      Особиста інформація *
+                    </div>
                     <Field
                       type="text"
                       name="name"
@@ -171,7 +185,7 @@ const RequestForm = () => {
                 Ваша особиста інформація не є доступною для інших користувачів
               </p>
               <div className={styles.description}>
-                <div className={styles.titleInfo}>Опис</div>
+                <div className={styles.titleInfo}>Опис *</div>
                 <Field
                   as="textarea"
                   name="description"
@@ -185,7 +199,7 @@ const RequestForm = () => {
                   className={styles.textDanger}
                 />
               </div>
-              <div className={styles.titleLocation}>Локація</div>
+              <div className={styles.titleLocation}>Локація *</div>
               <div className={styles.locationWrapper}>
                 <AutocompleteComponent onCitySelect={handleCitySelect} />
                 <Field
@@ -200,7 +214,7 @@ const RequestForm = () => {
                   className={styles.textDanger}
                 />
               </div>
-              <div className={styles.titleLocation}>Гонорар</div>
+              <div className={styles.titleLocation}>Гонорар *</div>
               <div className={styles.priceWrapper}>
                 <Field
                   type="text"
@@ -225,28 +239,19 @@ const RequestForm = () => {
                   <label
                     htmlFor="checkboxId"
                     className={styles.checkBoxLabel}>
-                    Договірний
+                    За домовленістю
                   </label>
                 </div>
               </div>
             </div>
             <div className={styles.calendarBtn}>
               <label className={styles.textWrapper7}>
-                Оберіть потрібну дату та час
+                Оберіть потрібну дату та час *
               </label>
-              <Field
-                type="datetime-local"
-                id="datetime"
-                name="date"
-              />
-              <ErrorMessage
-                name="date"
-                component="div"
-                className="text-danger"
-              />
+              <DateTimePicker onDateTimeSelect={handleDateTimeSelect} />
             </div>
             <div className={styles.socialTitle}>
-              Оберіть зручний для Вас месенджер
+              Оберіть зручний для Вас месенджер *
             </div>
             <div className={styles.social}>
               <div className={styles.socialWrapper}>

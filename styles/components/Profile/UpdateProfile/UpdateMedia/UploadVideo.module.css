@@ -1,0 +1,87 @@
+.inputContainer {
+  display: flex;
+  align-items: center;
+}
+.videoInput {
+  background-color: #f6f6f6;
+  border-radius: 8px;
+  height: 40px;
+  width: 639px;
+  border: none;
+  padding: 8px;
+}
+.videoInputButton {
+  align-items: center;
+  background-color: #ececec;
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  padding: 8px;
+  border: none;
+  margin-left: -70px;
+  cursor: pointer;
+}
+.inputButtonText {
+  color: #000000;
+  font-family: var(--h2-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+  font-style: var(--h2-regular-font-style);
+  font-weight: var(--h2-regular-font-weight);
+  letter-spacing: var(--h2-regular-letter-spacing);
+  line-height: var(--h2-regular-line-height);
+  white-space: nowrap;
+  width: fit-content;
+}
+.videoInputButton:hover {
+  box-shadow: 0px 4px 8px #00000040;
+}
+.videoList {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.videListItem {
+  position: relative;
+}
+.deleteButton {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 8px;
+  top: 8px;
+  background-color: #d1d1d1b7;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.deleteButton:hover {
+  background-color: #d1d1d1;
+}
+.deleteButtonIcon {
+  width: 24px;
+  height: 24px;
+}
+.deleteButton::before {
+  content: "Видалити відео"; /* Текст для подсказки */
+  position: absolute;
+  top: -30px; /* Расположение подсказки по вертикали */
+  left: 50%; /* Расположение подсказки по горизонтали */
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0; /* По умолчанию скрываем подсказку */
+  transition: opacity 0.3s ease;
+}
+
+/* Показываем подсказку при наведении */
+.deleteButton:hover::before {
+  opacity: 1;
+}

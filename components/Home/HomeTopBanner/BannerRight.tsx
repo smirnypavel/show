@@ -8,10 +8,10 @@ const BannerRight = () => {
     <div className={styles.bannerContainer}>
       <Image
         src={AdBanner}
-        alt={""}
+        alt={"banner"}
         fill
-        // width={671}
-        // height={260}
+        priority
+        sizes="(min-width: 808px) 50vw, 100vw"
         className={styles.banner}
       />
     </div>

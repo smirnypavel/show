@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import SearchBarCategorySelect from "./SearchBarCategorySelect";
 import styles from "@/styles/components/Artist/ArtistSearchBar.module.css";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsX } from "react-icons/bs";
+import ChooseLocationArtist from "./ChooseLocationArtist";
 
 interface ArtistSearchBarProps {
   onSearch: (searchTerm: string) => void;
   onCategoryChange: (categoryId: string) => void;
   onSubcategoryChange: (subcategoryId: string) => void;
+  onSelectedCity: (location: string) => void;
 }
 
 const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
   onSearch,
   onCategoryChange,
   onSubcategoryChange,
+  onSelectedCity,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -29,28 +32,39 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
     e.preventDefault();
     setSearchTerm(""); // Очищаем ввод
     onSearch(""); // Отправляем пустой запрос
+    onCategoryChange(""); // Сбрасываем выбранную категорию
+    onSubcategoryChange("");
   };
-
+  const handleCitySelect = (city: string) => {
+    onSelectedCity(city);
+  };
+  const clearButton = searchTerm ? ( // Условие для отображения кнопки крестика
+    <button
+      type="button"
+      onClick={handleClearClick}
+      className={styles.buttonClear}>
+      <BsX className={styles.buttonIconClear} /> {/* Иконка крестика */}
+    </button>
+  ) : null;
   return (
     <div>
       <div className={styles.container}>
-        <input
-          type="text"
-          placeholder="пошук артистів"
-          value={searchTerm}
-          onChange={handleInputChange}
-          className={styles.inputSearch}
-        />
+        <div className={styles.inputLocationContainer}>
+          {clearButton}
+          <input
+            type="text"
+            placeholder="Знайти виконавця"
+            value={searchTerm}
+            onChange={handleInputChange}
+            className={styles.inputSearch}
+          />
+          <ChooseLocationArtist onCitySelect={handleCitySelect} />
+        </div>
         <button
           className={styles.searchButton}
           type="button"
           onClick={handleSearchClick}>
           <BsSearch className={styles.buttonIcon} />
-        </button>
-        <button
-          type="button"
-          onClick={handleClearClick}>
-          очистити
         </button>
       </div>
       <SearchBarCategorySelect

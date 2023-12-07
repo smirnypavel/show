@@ -1,6 +1,29 @@
 .footer {
   margin-top: 20px;
-  height: 40px;
+  min-height: 40px;
   border-top: 2px solid #67676723;
-  text-align: center;
+}
+.containerMap {
+  display: flex;
+  gap: 10px;
+}
+.title {
+  color: #000000;
+  font-family: var(--h3-regular-font-family);
+  font-size: var(--h3-regular-font-size);
+  font-style: var(--h3-regular-font-style);
+  font-weight: 700;
+  letter-spacing: var(--h3-regular-letter-spacing);
+  line-height: var(--h3-regular-line-height);
+}
+.listItem {
+}
+.link {
+  color: #000000;
+  font-family: var(--h3-regular-font-family);
+  font-size: var(--h5-regular-font-size);
+  font-style: var(--h3-regular-font-style);
+  font-weight: var(--h3-regular-font-weight);
+  letter-spacing: var(--h3-regular-letter-spacing);
+  line-height: var(--h3-regular-line-height);
 }

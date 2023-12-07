@@ -66,7 +66,7 @@ const CategorySelector: React.FC<CategorySelectorProps> = ({
 
   return (
     <div>
-      <p className={styles.title}>Оберіть потрібну категорію</p>
+      <p className={styles.title}>Оберіть потрібну категорію *</p>
       <select
         onChange={(e) => handleCategoryChange(e.target.value)}
         className={styles.name}>

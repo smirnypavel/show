@@ -8,6 +8,7 @@ const nextConfig = {
       "lh3.googleusercontent.com",
       "res.cloudinary.com",
       "ldsound.info",
+      "via.placeholder.com",
     ],
   },
 };

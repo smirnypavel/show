@@ -58,6 +58,10 @@
   align-items: center;
   gap: 8px;
 }
+.geoIcon {
+  width: 24px;
+  height: 24px;
+}
 .artistProfile {
   display: flex;
   justify-content: center;
@@ -103,6 +107,7 @@
   height: 192px;
   padding: 16px;
   border: none;
+  border-radius: 0px 0px 8px 0px;
 }
 .descriptionTitle {
   color: var(--black);
