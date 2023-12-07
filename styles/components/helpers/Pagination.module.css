@@ -1,0 +1,103 @@
+.paginateContainer {
+  width: 432px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+}
+.buttonStart {
+  border: none;
+
+  background-color: var(--white);
+  border: 0.5px solid;
+  border-color: var(--gray-light);
+  border-radius: 8px 0px 0px 8px;
+  height: 48px;
+  width: 72px;
+}
+.buttonPrevious {
+  border: none;
+
+  align-items: center;
+  background-color: var(--white);
+  border: 0.5px solid;
+  border-color: var(--gray-light);
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+  width: 48px;
+}
+.buttonNext {
+  border: none;
+
+  align-items: center;
+  background-color: var(--white);
+  border: 0.5px solid;
+  border-color: var(--gray-light);
+  display: flex;
+  gap: 8px;
+  height: 48px;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+  width: 48px;
+}
+.buttonEnd {
+  border: none;
+
+  background-color: var(--white);
+  border: 0.5px solid;
+  border-color: var(--gray-light);
+  border-radius: 0px 8px 8px 0px;
+  height: 48px;
+  position: relative;
+  width: 72px;
+}
+.buttoPages {
+  border: none;
+  align-items: center;
+  background-color: var(--white);
+  border: 0.5px solid;
+  border-color: var(--gray-light);
+  display: flex;
+  flex-direction: column;
+  height: 48px;
+  justify-content: center;
+  padding: 8px;
+  width: 48px;
+  color: var(--black);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+
+  white-space: nowrap;
+}
+.buttonPagesActive {
+  border: none;
+
+  align-items: center;
+  background-color: var(--white);
+  border: 0.5px solid;
+  border-color: var(--gray-light);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 48px;
+  justify-content: center;
+  padding: 8px;
+  width: 48px;
+  color: var(--accent-color-2);
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+}
