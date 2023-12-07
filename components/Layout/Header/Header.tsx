@@ -12,13 +12,10 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <Link href={"/"}>
-        {" "}
-        {/* <h1 className={styles.logo}>
-          Wechirka. <span className={styles.logoSpan}>com</span>
-        </h1> */}
         <Image
           src={logo123}
           alt={""}
+          priority
           className={styles.logo}
         />
       </Link>

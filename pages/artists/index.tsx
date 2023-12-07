@@ -115,6 +115,7 @@ import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
 import ArtistList from "@/components/Artist/ArtistList";
+import MetaTags from "@/components/Meta/MetaTags";
 
 export interface ItemsPageProps {
   artists: IUserAuth[];
@@ -178,6 +179,11 @@ const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
 
   return (
     <div className={styles.container}>
+      <MetaTags
+        title="Wechirka | Пошук"
+        description="Пошук артистів"
+        keywords="Пошук артистів"
+      />
       <ArtistSearchBar
         onSearch={(searchTerm: string) => {
           setSearchTerm(searchTerm);

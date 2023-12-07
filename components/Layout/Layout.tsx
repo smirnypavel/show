@@ -1,12 +1,13 @@
 import React from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
+import styles from "@/styles/Layout/Layout.module.css"; // импортируем файл со стилями
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Header />
-      <div>{children}</div>
+      <div className={styles.content}>{children}</div>
       <Footer />
     </div>
   );
