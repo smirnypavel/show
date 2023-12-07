@@ -18,7 +18,7 @@ export default function Document() {
       />
       <meta
         property="og:url"
-        content="https://show-swart.vercel.app/"
+        content="https://wechirka.com"
       />
       <body>
         <Main />
