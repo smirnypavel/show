@@ -53,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // Здесь вы должны получить все возможные id артистов с вашего бекенда
   // Например, используя запрос к API или базе данных
   const response = await axios.get("/users");
-  const artists: IUserAuth[] = response.data;
+  const artists: IUserAuth[] = response.data.data;
 
   // Создаем массив путей для всех артистов
   const paths = artists.map((artist) => ({
