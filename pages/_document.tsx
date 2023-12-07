@@ -18,7 +18,7 @@ export default function Document() {
       />
       <meta
         property="og:url"
-        content="https://wechirka.com"
+        content="https://www.wechirka.com"
       />
       <body>
         <Main />
