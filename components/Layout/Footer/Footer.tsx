@@ -60,7 +60,7 @@ const Footer = () => {
               <Link
                 href={"/profile/update"}
                 className={styles.link}>
-                Змінити профіль
+                Налаштувати профіль
               </Link>
             </li>
             <li>
@@ -83,14 +83,8 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              {/* <Link
-                href={"/public/privacy/privacy_offer.pdf"}
-                target="_blank"
-                className={styles.link}>
-                Конфіденційність
-              </Link> */}
               <a
-                href="/privacy/privacy_offer.pdf"
+                href="/public/privacy/privacy_offer.pdf"
                 target="_blank"
                 className={styles.link}>
                 Конфіденційність
