@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LoadScript, Autocomplete, Libraries } from "@react-google-maps/api";
 import styles from "@/styles/Layout/Header/city.module.css";
+// import { TbPencil } from "react-icons/tb";
 
 interface AutocompleteProps {
   onCitySelect: (city: string) => void;
@@ -61,27 +62,29 @@ const AutocompleteComponent: React.FC<AutocompleteProps> = ({
   }, []);
 
   return (
-    <LoadScript
-      googleMapsApiKey="AIzaSyDC3bqKHvQCfyZKUCLbkj-J-it_jomt0vg"
-      language="uk"
-      libraries={libraries}>
-      <div className={styles.autocompleteContainer}>
-        <Autocomplete
-          onLoad={(autocomplete) => {}}
-          onPlaceChanged={handlePlaceChanged}
-          options={{
-            types: ["(regions)"],
-            componentRestrictions: { country: "ua" },
-          }}>
-          <input
-            id="autocomplete"
-            type="text"
-            placeholder="Введіть назву міста"
-            className={styles.input}
-          />
-        </Autocomplete>
-      </div>
-    </LoadScript>
+    <>
+      <LoadScript
+        googleMapsApiKey="AIzaSyDC3bqKHvQCfyZKUCLbkj-J-it_jomt0vg"
+        language="uk"
+        libraries={libraries}>
+        <div className={styles.autocompleteContainer}>
+          <Autocomplete
+            onLoad={(autocomplete) => {}}
+            onPlaceChanged={handlePlaceChanged}
+            options={{
+              types: ["(regions)"],
+              componentRestrictions: { country: "ua" },
+            }}>
+            <input
+              id="autocomplete"
+              type="text"
+              placeholder="Введіть назву міста"
+              className={styles.input}
+            />
+          </Autocomplete>
+        </div>
+      </LoadScript>
+    </>
   );
 };
 

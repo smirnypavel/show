@@ -7,7 +7,6 @@ import styles from "@/styles/components/Profile/UpdateProfile/UserUpdateForm.mod
 import { useSelector } from "react-redux";
 import { getUser } from "@/redux/auth/authSelectors";
 import AutocompleteComponent from "@/components/Layout/Header/ChooseLocation";
-import { TbPencil } from "react-icons/tb";
 import { FaCheck } from "react-icons/fa6";
 import { FiPlus } from "react-icons/fi";
 
@@ -40,7 +39,6 @@ const UserUpdateForm = () => {
   const user = useSelector(getUser);
   const dispatch = useAppDispatch();
   const [selectedCity, setSelectedCity] = useState(""); // Состояние для выбранного города
-  // const [searchCity, setSearchCity] = useState(false);
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [userCategory, setUserCategory] = useState<ICategory[]>(user.category);
 

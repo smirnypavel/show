@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/Artist/Artist.module.css";
-import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import { GetServerSideProps } from "next/types";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
-import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
-import ArtistList from "@/components/Artist/ArtistList";
 import MetaTags from "@/components/Meta/MetaTags";
+import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
+import ArtistList from "@/components/Artist/ArtistList";
 import Pagination from "@/components/Artist/Pagination";
+import { IUserAuth } from "@/types/IAuth";
+import styles from "@/styles/Artist/Artist.module.css";
 
-export interface ItemsPageProps {
+interface ArtistsProps {
   artists: IUserAuth[];
   totalPages: number;
 }
 
-const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
+const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
   const [filteredArtists, setFilteredArtists] = useState<IUserAuth[]>(artists);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedCity, setSelectedCity] = useState<string>("");
@@ -23,7 +24,7 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
     useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPagesState, setTotalPages] = useState<number>(totalPages);
-  console.log(totalPagesState);
+  const router = useRouter();
 
   const handleSearch = async (page: number = 1) => {
     try {
@@ -50,6 +51,24 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
 
       setFilteredArtists(data);
       setTotalPages(totalPages);
+
+      // Update the address bar with the search queries
+      const searchParams = new URLSearchParams();
+      if (selectedCity) {
+        searchParams.set("loc", selectedCity);
+      }
+      if (selectedCategoryId) {
+        searchParams.set("cat", selectedCategoryId);
+      }
+      if (selectedSubcategoryId) {
+        searchParams.set("subcat", selectedSubcategoryId);
+      }
+      if (searchTerm.trim() !== "") {
+        searchParams.set("req", searchTerm);
+      }
+      searchParams.set("page", page.toString());
+
+      router.replace(`${router.pathname}?${searchParams.toString()}`);
     } catch (error) {
       toast.error(`Nothing found for your request ${searchTerm}`);
       setFilteredArtists([]);
@@ -57,8 +76,9 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
     }
   };
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = (page: number): void => {
     setCurrentPage(page);
+    router.push(`/artists?page=${page}`);
   };
 
   useEffect(() => {
@@ -75,6 +95,11 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
     if (categoryParam) setSelectedCategoryId(categoryParam);
     if (subcategoryParam) setSelectedSubcategoryId(subcategoryParam);
     if (reqParam) setSearchTerm(reqParam);
+
+    const pageFromQuery = params.get("page")
+      ? parseInt(params.get("page") as string, 10)
+      : 1;
+    setCurrentPage(pageFromQuery);
   }, [artists]);
 
   useEffect(() => {
@@ -95,22 +120,16 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
         keywords=""
       />
       <ArtistSearchBar
-        onSearch={(searchTerm: string) => {
-          setSearchTerm(searchTerm);
-        }}
-        onCategoryChange={(categoryId: string) => {
-          setSelectedCategoryId(categoryId);
-        }}
-        onSubcategoryChange={(subcategoryId: string) => {
-          setSelectedSubcategoryId(subcategoryId);
-        }}
-        onSelectedCity={(city: string) => {
-          setSelectedCity(city);
-        }}
+        onSearch={setSearchTerm}
+        onCategoryChange={setSelectedCategoryId}
+        onSubcategoryChange={setSelectedSubcategoryId}
+        onSelectedCity={setSelectedCity}
       />
-
       <div>
-        <ArtistList artists={filteredArtists} />
+        <ArtistList
+          artists={filteredArtists}
+          currentPage={currentPage}
+        />
       </div>
       <div className={styles.pagination}>
         <Pagination
@@ -123,11 +142,11 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<ItemsPageProps> = async ({
+export const getServerSideProps: GetServerSideProps<ArtistsProps> = async ({
   query,
 }) => {
   try {
-    const page = query.page || 1;
+    const { page = 1 } = query;
     const response = await axios.get(`/users?page=${page}`);
     const artists: IUserAuth[] = response.data.data;
     const totalPages: number = response.data.totalPages;
