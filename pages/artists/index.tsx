@@ -1,160 +1,84 @@
-// import ArtistList from "@/components/Artist/ArtistList";
-// import { useRouter } from "next/router";
-// import React, { useEffect, useState } from "react";
-// import styles from "@/styles/Artist/Artist.module.css";
-// import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
-// import { GetServerSideProps } from "next/types";
-// import axios from "axios";
-// import { IUserAuth } from "@/types/IAuth";
-// import toast from "react-hot-toast";
-// export interface ItemsPageProps {
-//   artists: IUserAuth[];
-// }
-// const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
-//   const [filteredArtists, setFilteredArtists] = useState<IUserAuth[]>(artists);
-//   const [searchTerm, setSearchTerm] = useState<string>("");
-//   const [selectedCity, setSelectedCity] = useState<string>("");
-//   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
-//   const [selectedSubcategoryId, setSelectedSubcategoryId] =
-//     useState<string>("");
-//   const router = useRouter();
-//   const handleCategoryChange = (categoryId: string) => {
-//     setSelectedCategoryId(categoryId);
-//     handleSearch(categoryId, selectedSubcategoryId);
-//   };
-
-//   const handleSubcategoryChange = (subcategoryId: string) => {
-//     setSelectedSubcategoryId(subcategoryId);
-//     handleSearch(subcategoryId);
-//   };
-//   const handleCityChange = (city: string) => {
-//     setSelectedCity(city);
-//     handleSearch(city, selectedSubcategoryId, selectedCategoryId);
-//   };
-
-//   const handleSearch = async (
-//     categoryId: string = "",
-//     subcategoryId: string = "",
-//     city: string = ""
-//   ) => {
-//     try {
-//       let url = "/users";
-
-//       if (searchTerm.trim() !== "") {
-//         url += `/?req=${searchTerm}&loc=${city}`;
-//       } else if (categoryId) {
-//         url += `/?req=${categoryId}&loc=${city}`;
-//       } else if (subcategoryId) {
-//         url += `/?req=${subcategoryId}&loc=${city}`;
-//       }
-
-//       const response = await axios.get(url);
-//       setFilteredArtists(response.data);
-//     } catch (error) {
-//       toast.error(`Nothing found for your request ${searchTerm}`);
-//       setFilteredArtists([]); // В случае ошибки, установите пустой массив
-//     }
-//   };
-//   useEffect(() => {
-//     setFilteredArtists(artists); // Установить начальные результаты
-//     const { search } = router.query;
-//     if (search && typeof search === "string") {
-//       setSearchTerm(search);
-//     }
-//   }, [router.query]);
-//   useEffect(() => {
-//     handleSearch();
-//   }, [searchTerm]); // Добавьте searchTerm в зависимости
-
-//   return (
-//     <div className={styles.container}>
-//       <ArtistSearchBar
-//         onSearch={(searchTerm: string) => {
-//           setSearchTerm(searchTerm);
-//           handleSearch();
-//         }}
-//         onCategoryChange={handleCategoryChange}
-//         onSubcategoryChange={handleSubcategoryChange}
-//         onSelectedCity={handleCityChange}
-//       />
-//       <div>
-//         <ArtistList artists={filteredArtists} />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export const getServerSideProps: GetServerSideProps<
-//   ItemsPageProps
-// > = async () => {
-//   try {
-//     // Запрос на все элементы
-//     const response = await axios.get(`/users/`);
-//     const artists: IUserAuth[] = response.data;
-//     return {
-//       props: {
-//         artists,
-//       },
-//     };
-//   } catch (error) {
-//     console.log("Ошибка:", error);
-//     return {
-//       props: {
-//         artists: [],
-//       },
-//       revalidate: 10,
-//     };
-//   }
-// };
-// export default Artists;
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/Artist/Artist.module.css";
-import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import { GetServerSideProps } from "next/types";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
-import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
-import ArtistList from "@/components/Artist/ArtistList";
 import MetaTags from "@/components/Meta/MetaTags";
+import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
+import ArtistList from "@/components/Artist/ArtistList";
+import Pagination from "@/components/Artist/Pagination";
+import { IUserAuth } from "@/types/IAuth";
+import styles from "@/styles/Artist/Artist.module.css";
 
-export interface ItemsPageProps {
+interface ArtistsProps {
   artists: IUserAuth[];
+  totalPages: number;
 }
 
-const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
+const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
   const [filteredArtists, setFilteredArtists] = useState<IUserAuth[]>(artists);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
   const [selectedSubcategoryId, setSelectedSubcategoryId] =
     useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPagesState, setTotalPages] = useState<number>(totalPages);
+  const router = useRouter();
 
-  const handleSearch = async () => {
+  const handleSearch = async (page: number = 1) => {
     try {
-      let url = "/users?";
+      let url = `/users?page=${page}`;
       const queryParams = [];
 
       if (selectedCity) {
         queryParams.push(`loc=${selectedCity}`);
       }
       if (selectedCategoryId) {
-        queryParams.push(`req=${selectedCategoryId}`);
+        queryParams.push(`cat=${selectedCategoryId}`);
       }
       if (selectedSubcategoryId) {
-        queryParams.push(`req=${selectedSubcategoryId}`);
+        queryParams.push(`subcat=${selectedSubcategoryId}`);
       }
       if (searchTerm.trim() !== "") {
         queryParams.push(`req=${searchTerm}`);
       }
 
-      url += queryParams.join("&");
+      url += queryParams.length > 0 ? `&${queryParams.join("&")}` : "";
 
       const response = await axios.get(url);
-      setFilteredArtists(response.data);
+      const { data, totalPages } = response.data;
+
+      setFilteredArtists(data);
+      setTotalPages(totalPages);
+
+      // Update the address bar with the search queries
+      const searchParams = new URLSearchParams();
+      if (selectedCity) {
+        searchParams.set("loc", selectedCity);
+      }
+      if (selectedCategoryId) {
+        searchParams.set("cat", selectedCategoryId);
+      }
+      if (selectedSubcategoryId) {
+        searchParams.set("subcat", selectedSubcategoryId);
+      }
+      if (searchTerm.trim() !== "") {
+        searchParams.set("req", searchTerm);
+      }
+      searchParams.set("page", page.toString());
+
+      router.replace(`${router.pathname}?${searchParams.toString()}`);
     } catch (error) {
       toast.error(`Nothing found for your request ${searchTerm}`);
       setFilteredArtists([]);
+      setTotalPages(1);
     }
+  };
+
+  const handlePageChange = (page: number): void => {
+    setCurrentPage(page);
+    router.push(`/artists?page=${page}`);
   };
 
   useEffect(() => {
@@ -163,64 +87,82 @@ const Artists: React.FC<ItemsPageProps> = ({ artists }) => {
     const params = new URLSearchParams(search);
 
     const cityParam = params.get("loc");
-    const categoryParam = params.get("req");
-    const subcategoryParam = params.get("req");
+    const categoryParam = params.get("cat");
+    const subcategoryParam = params.get("subcat");
     const reqParam = params.get("req");
 
     if (cityParam) setSelectedCity(cityParam);
     if (categoryParam) setSelectedCategoryId(categoryParam);
     if (subcategoryParam) setSelectedSubcategoryId(subcategoryParam);
     if (reqParam) setSearchTerm(reqParam);
+
+    const pageFromQuery = params.get("page")
+      ? parseInt(params.get("page") as string, 10)
+      : 1;
+    setCurrentPage(pageFromQuery);
   }, [artists]);
 
   useEffect(() => {
-    handleSearch();
-  }, [searchTerm, selectedCity, selectedCategoryId, selectedSubcategoryId]);
+    handleSearch(currentPage);
+  }, [
+    searchTerm,
+    selectedCity,
+    selectedCategoryId,
+    selectedSubcategoryId,
+    currentPage,
+  ]);
 
   return (
     <div className={styles.container}>
       <MetaTags
         title="Wechirka | Пошук"
         description="Пошук артистів"
-        keywords="Пошук артистів"
+        keywords=""
       />
       <ArtistSearchBar
-        onSearch={(searchTerm: string) => {
-          setSearchTerm(searchTerm);
-        }}
-        onCategoryChange={(categoryId: string) => {
-          setSelectedCategoryId(categoryId);
-        }}
-        onSubcategoryChange={(subcategoryId: string) => {
-          setSelectedSubcategoryId(subcategoryId);
-        }}
-        onSelectedCity={(city: string) => {
-          setSelectedCity(city);
-        }}
+        onSearch={setSearchTerm}
+        onCategoryChange={setSelectedCategoryId}
+        onSubcategoryChange={setSelectedSubcategoryId}
+        onSelectedCity={setSelectedCity}
       />
       <div>
-        <ArtistList artists={filteredArtists} />
+        <ArtistList
+          artists={filteredArtists}
+          currentPage={currentPage}
+        />
+      </div>
+      <div className={styles.pagination}>
+        <Pagination
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+          totalPages={totalPagesState}
+        />
       </div>
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps<
-  ItemsPageProps
-> = async () => {
+export const getServerSideProps: GetServerSideProps<ArtistsProps> = async ({
+  query,
+}) => {
   try {
-    const response = await axios.get(`/users/`);
-    const artists: IUserAuth[] = response.data;
+    const { page = 1 } = query;
+    const response = await axios.get(`/users?page=${page}`);
+    const artists: IUserAuth[] = response.data.data;
+    const totalPages: number = response.data.totalPages;
+
     return {
       props: {
         artists,
+        totalPages,
       },
     };
   } catch (error) {
-    console.log("Ошибка:", error);
+    console.log("Error:", error);
     return {
       props: {
         artists: [],
+        totalPages: 1,
       },
       revalidate: 10,
     };

@@ -84,7 +84,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="/public/privacy/privacy_offer.pdf"
+                href="/privacy/privacy_offer.pdf"
                 target="_blank"
                 className={styles.link}>
                 Конфіденційність

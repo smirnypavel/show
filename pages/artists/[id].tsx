@@ -26,7 +26,10 @@ const ArtistPage: React.FC<ArtistPageProps> = ({ artist }) => {
       <MetaTags
         title={artist.title}
         description={artist.description}
-        keywords={artist.category[0].subcategories[0].name}
+        keywords={
+          artist.category?.[0]?.subcategories?.[0]?.name ||
+          "Значение по умолчанию"
+        }
       />
       <p>ArtistPage</p>
       <div className={styles.artistItem}>
@@ -50,20 +53,27 @@ const ArtistPage: React.FC<ArtistPageProps> = ({ artist }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Здесь вы должны получить все возможные id артистов с вашего бекенда
-  // Например, используя запрос к API или базе данных
-  const response = await axios.get("/users");
-  const artists: IUserAuth[] = response.data;
+  // const currentPage = context.page || 1;
 
-  // Создаем массив путей для всех артистов
-  const paths = artists.map((artist) => ({
-    params: { id: artist._id.toString() }, // Преобразуем id в строку
-  }));
+  try {
+    const response = await axios.get(`/users`);
+    const artists: IUserAuth[] = response.data.data;
 
-  return {
-    paths,
-    fallback: true, // Если true, Next.js будет генерировать страницу на сервере при первом запросе
-  };
+    const paths = artists.map((artist) => ({
+      params: { id: artist._id.toString() },
+    }));
+
+    return {
+      paths,
+      fallback: true,
+    };
+  } catch (error) {
+    console.error("Ошибка при получении данных:", error);
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
 };
 
 export const getStaticProps: GetStaticProps<ArtistPageProps> = async ({

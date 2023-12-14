@@ -1,15 +1,18 @@
-import Link from "next/link";
 import { IUserAuth } from "@/types/IAuth";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 import styles from "@/styles/components/Artist/ArtistList.module.css";
 import { GrLocation } from "react-icons/gr";
 import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
 import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 export interface ItemListProps {
   artists: IUserAuth[];
+  currentPage: number;
 }
 
-const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
+const ArtistList: React.FC<ItemListProps> = ({ artists, currentPage }) => {
   if (!artists || artists.length === 0) {
     return <p>No artists found</p>; // Заглушка или сообщение об отсутствии данных
   }
@@ -23,26 +26,27 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
               key={artist._id}
               className={styles.artistItem}>
               <div className={styles.cardContainer}>
-                {/* <Link href={`/artists/${artist._id}`}> */}
-                <div className={styles.imageContainer}>
-                  {artist.master_photo.url ? (
-                    <Image
-                      src={artist.master_photo.url}
-                      alt={"user photo"}
-                      fill
-                      className={styles.image}
-                      sizes="(min-width: 808px) 50vw, 100vw"
-                    />
-                  ) : (
-                    <Image
-                      src={NoPhoto_PNG}
-                      alt={"default user photo"}
-                      fill
-                      className={styles.image}
-                      sizes="(min-width: 808px) 50vw, 100vw"
-                    />
-                  )}
-                </div>
+                <Link href={`/artists/${artist._id}?page=${currentPage}`}>
+                  <div className={styles.imageContainer}>
+                    {artist.master_photo.url ? (
+                      <Image
+                        src={artist.master_photo.url}
+                        alt={"user photo"}
+                        fill
+                        className={styles.image}
+                        sizes="(min-width: 808px) 50vw, 100vw"
+                      />
+                    ) : (
+                      <Image
+                        src={NoPhoto_PNG}
+                        alt={"default user photo"}
+                        fill
+                        className={styles.image}
+                        sizes="(min-width: 808px) 50vw, 100vw"
+                      />
+                    )}
+                  </div>
+                </Link>
                 <div className={styles.cardInfo}>
                   <div className={styles.cardTopContainer}>
                     <p className={styles.locationContainer}>
@@ -105,7 +109,6 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                   </div>
                 </div>
               </div>
-              {/* </Link> */}
             </li>
           ))}
       </ul>

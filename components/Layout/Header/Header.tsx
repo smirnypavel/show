@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo123 from "@/public/logo/logo123.svg";
+import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
+
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
@@ -49,13 +51,23 @@ const Header = () => {
             href={"/profile"}
             className={styles.avatarLink}>
             <div className={styles.avatarWrapper}>
-              <Image
-                src={user.avatar.url}
-                alt={"user photo"}
-                fill
-                sizes="(min-width: 808px) 50vw, 100vw"
-                className={styles.avatar}
-              />
+              {user.avatar.url ? (
+                <Image
+                  src={user.avatar.url}
+                  alt={"user photo"}
+                  fill
+                  sizes="(min-width: 808px) 50vw, 100vw"
+                  className={styles.avatar}
+                />
+              ) : (
+                <Image
+                  src={UserNoPhoto}
+                  alt={"user photo"}
+                  fill
+                  sizes="(min-width: 808px) 50vw, 100vw"
+                  className={styles.avatar}
+                />
+              )}
             </div>
             {user.firstName}
           </Link>

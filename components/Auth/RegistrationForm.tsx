@@ -10,7 +10,7 @@ import facebookLogo from "@/public/logo/facebookLogo.svg";
 import GoogleLogo from "@/public/logo/GoogleLogo.svg";
 // Определите тип для данных формы
 export type FormValues = {
-  name: string;
+  firstName: string;
   phone: string;
   email: string; // Заменено имя поля на "email"
   password: string;
@@ -45,7 +45,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
 
       <Formik
         initialValues={{
-          name: "",
+          firstName: "",
           phone: "",
           email: "", // Заменено имя поля на "email"
           password: "",
@@ -63,18 +63,18 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
               <div className={styles.dangerContainer}>
                 <div className={styles.formGroup}>
                   <label
-                    htmlFor="name"
+                    htmlFor="firstName"
                     className={styles.inputTitle}>
                     Ім’я
                   </label>
                   <Field
                     type="text"
-                    name="name"
+                    name="firstName"
                     className={styles.loginInput}
                     placeholder="Ім’я"
                   />
                   <ErrorMessage
-                    name="name"
+                    name="firstName"
                     component="div"
                     className={styles.textDanger}
                   />

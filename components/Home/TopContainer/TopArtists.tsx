@@ -3,7 +3,6 @@ import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import Image from "next/image";
 import styles from "@/styles/Home/HomeLeftBest/TopArtist.module.css";
-// import NoPhoto from "@/public/user/NoPhoto.jpeg";
 import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
 
 const TopArtists: React.FC = () => {
@@ -13,7 +12,7 @@ const TopArtists: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/users/");
-        const fetchedArtists: IUserAuth[] = response.data;
+        const fetchedArtists: IUserAuth[] = response.data.data;
         setArtists(fetchedArtists.slice(0, 3)); // Установка первых трех артистов
       } catch (error) {
         console.error("Ошибка получения данных:", error);
