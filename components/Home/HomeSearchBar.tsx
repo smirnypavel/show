@@ -1,11 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "@/styles/Home/HomeSearch.module.css";
 import { BsSearch } from "react-icons/bs";
+import { useAppDispatch } from "@/redux/hooks";
+import { googleAuth } from "@/redux/auth/authOperations";
 
 const HomeSearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const token = router.query.token;
+
+  console.log(token);
+  useEffect(() => {
+    const authenticateWithGoogle = async () => {
+      try {
+        if (typeof token === "string") {
+          await dispatch(googleAuth(token));
+        }
+      } catch (error) {
+        console.error("Ошибка при входе:", error);
+      }
+    };
+
+    if (token) {
+      authenticateWithGoogle();
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);

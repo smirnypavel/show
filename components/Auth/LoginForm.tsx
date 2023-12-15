@@ -158,7 +158,7 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
           />
         </Link>{" "}
         <Link
-          href={""}
+          href="https://events-4qv2.onrender.com/users/google/login"
           className={styles.socialLink}>
           Войти с помощью{" "}
           <Image
