@@ -2,15 +2,15 @@ import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { IUserAuth } from "@/types/IAuth";
 import { useRouter } from "next/router";
-import styles from "@/styles/components/Artist/ArtistList.module.css";
-import Image from "next/image";
+import styles from "@/styles/components/Artist/ArtistPage.module.css";
 import MetaTags from "@/components/Meta/MetaTags";
+import ArtistPage from "@/components/Artist/ArtistPage";
 
 export interface ArtistPageProps {
   artist: IUserAuth;
 }
 
-const ArtistPage: React.FC<ArtistPageProps> = ({ artist }) => {
+const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -31,23 +31,7 @@ const ArtistPage: React.FC<ArtistPageProps> = ({ artist }) => {
           "Значение по умолчанию"
         }
       />
-      <p>ArtistPage</p>
-      <div className={styles.artistItem}>
-        <Image
-          src={artist.master_photo.url}
-          alt={"user photo"}
-          width={200}
-          height={200}
-        />
-        <div>
-          <p> Назва: {artist.title}</p>
-          <p>Імя: {artist.firstName}</p>
-        </div>
-        <div>
-          <p> Опис: {artist.description}</p>
-          <p>Ціна: {artist.price}</p>
-        </div>
-      </div>
+      <ArtistPage artist={artist} />
     </div>
   );
 };
@@ -112,4 +96,4 @@ export const getStaticProps: GetStaticProps<ArtistPageProps> = async ({
   }
 };
 
-export default ArtistPage;
+export default Artist;

@@ -1,9 +1,7 @@
 /* Глобальные стили */
-
-@import url("https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Kdam+Thmor+Pro&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,900;1,500&family=Roboto:wght@300;400;500;700;900&display=swap");
 :root {
-  --main-font: Helvetica, sans-serif;
+  --main-font: "Roboto", sans-serif;
   --bg-color: #094356;
   --button-bg-color: rgb(232, 149, 89);
   --button-text-color: #333;
@@ -14,61 +12,64 @@
   --black: rgba(24, 24, 24, 1);
   --gray: rgba(144, 143, 143, 1);
   --gray-light: rgba(217, 217, 217, 1);
-  --h1-medium-font-family: "Inter-Medium", Helvetica;
+  --h1-medium-font-family: "Poppins", sans-serif;
   --h1-medium-font-size: 20px;
   --h1-medium-font-style: normal;
   --h1-medium-font-weight: 500;
   --h1-medium-letter-spacing: 0px;
   --h1-medium-line-height: normal;
-  --h1-regular-font-family: "Inter-Regular", Helvetica;
+  --h1-regular-font-family: "Poppins", sans-serif;
   --h1-regular-font-size: 20px;
   --h1-regular-font-style: normal;
   --h1-regular-font-weight: 400;
   --h1-regular-letter-spacing: 0px;
   --h1-regular-line-height: normal;
-  --h2-medium-font-family: "Inter-Medium", Helvetica;
+  --h2-medium-font-family: "Poppins", sans-serif;
   --h2-medium-font-size: 16px;
   --h2-medium-font-style: normal;
   --h2-medium-font-weight: 500;
   --h2-medium-letter-spacing: 0px;
   --h2-medium-line-height: normal;
-  --h2-regular-font-family: "Inter-Regular", Helvetica;
+  --h2-regular-font-family: "Poppins", sans-serif;
+
   --h2-regular-font-size: 16px;
   --h2-regular-font-style: normal;
   --h2-regular-font-weight: 400;
   --h2-regular-letter-spacing: 0px;
   --h2-regular-line-height: normal;
-  --h3-medium-font-family: "Inter-Medium", Helvetica;
+  --h3-medium-font-family: "Poppins", sans-serif;
   --h3-medium-font-size: 14px;
   --h3-medium-font-style: normal;
   --h3-medium-font-weight: 500;
   --h3-medium-letter-spacing: 0px;
   --h3-medium-line-height: normal;
-  --h3-regular-font-family: "Inter-Regular", Helvetica;
+  --h3-regular-font-family: "Poppins", sans-serif;
   --h3-regular-font-size: 14px;
   --h3-regular-font-style: normal;
   --h3-regular-font-weight: 400;
   --h3-regular-letter-spacing: 0px;
   --h3-regular-line-height: normal;
-  --h4-medium-font-family: "Inter-Medium", Helvetica;
+  --h4-medium-font-family: "Poppins", sans-serif;
   --h4-medium-font-size: 13px;
   --h4-medium-font-style: normal;
   --h4-medium-font-weight: 500;
   --h4-medium-letter-spacing: 0px;
   --h4-medium-line-height: normal;
-  --h5-medium-font-family: "Inter-Medium", Helvetica;
+  --h5-medium-font-family: "Poppins", sans-serif;
   --h5-medium-font-size: 12px;
   --h5-medium-font-style: normal;
   --h5-medium-font-weight: 500;
   --h5-medium-letter-spacing: 0px;
   --h5-medium-line-height: normal;
-  --h5-regular-font-family: "Inter-Regular", Helvetica;
+  --h5-regular-font-family: "Poppins", sans-serif;
+
   --h5-regular-font-size: 12px;
   --h5-regular-font-style: normal;
   --h5-regular-font-weight: 400;
   --h5-regular-letter-spacing: 0px;
   --h5-regular-line-height: normal;
-  --h6-regular-font-family: "Inter-Regular", Helvetica;
+  --h6-regular-font-family: "Poppins", sans-serif;
+
   --h6-regular-font-size: 10px;
   --h6-regular-font-style: normal;
   --h6-regular-font-weight: 400;
