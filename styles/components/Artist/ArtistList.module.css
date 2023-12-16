@@ -78,14 +78,11 @@
   border-radius: 50%;
   object-fit: cover;
 }
-
 .categoryContainer {
   margin-top: 8px;
   margin-left: 8px;
   display: flex;
-  overflow: auto;
-  margin-bottom: -20px; /* Создает небольшой отрицательный отступ */
-  padding-bottom: 20px;
+  overflow: -moz-hidden-unscrollable;
   gap: 8px;
 }
 .categoryArtist {
