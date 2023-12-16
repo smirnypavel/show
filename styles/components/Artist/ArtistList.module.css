@@ -84,9 +84,15 @@
   display: flex;
   overflow: auto;
   gap: 8px;
+  /* position: relative; */
 }
 .categoryContainer::-webkit-scrollbar {
-  display: none;
+  /* position: absolute; */
+  left: 0;
+  top: 0;
+  background-color: turquoise;
+  width: 0;
+  height: 0;
 }
 .categoryArtist {
   height: 40px;
