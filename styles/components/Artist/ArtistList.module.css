@@ -78,21 +78,14 @@
   border-radius: 50%;
   object-fit: cover;
 }
-.categoriesWrapper {
-  width: 812px; /* Фиксированная ширина блока категорий */
-  overflow-x: auto;
-  margin-top: 8px;
-}
 
-.categoryScroll {
-  display: flex;
-  gap: 8px;
-}
 .categoryContainer {
   margin-top: 8px;
   margin-left: 8px;
   display: flex;
-  /* overflow: auto; */
+  overflow: auto;
+  margin-bottom: -20px; /* Создает небольшой отрицательный отступ */
+  padding-bottom: 20px;
   gap: 8px;
 }
 .categoryArtist {

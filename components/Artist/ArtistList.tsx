@@ -82,26 +82,22 @@ const ArtistList: React.FC<ItemListProps> = ({ artists, currentPage }) => {
                       <p> {artist.firstName}</p>
                     </div>
                   </div>
-                  <div className={styles.categoriesWrapper}>
-                    <div className={styles.categoryContainer}>
-                      {artist.category.length === 0 ? (
-                        <div className={styles.categoryArtist}>
-                          Категорії не обрані
-                        </div>
-                      ) : (
-                        <div className={styles.categoryScroll}>
-                          {artist.category.map((cat) =>
-                            cat.subcategories.map((subCat) => (
-                              <div
-                                className={styles.categoryArtist}
-                                key={subCat.id}>
-                                {subCat.name}
-                              </div>
-                            ))
-                          )}
-                        </div>
-                      )}
-                    </div>
+                  <div className={styles.categoryContainer}>
+                    {artist.category.length === 0 ? (
+                      <div className={styles.categoryArtist}>
+                        Категорії не обрані
+                      </div>
+                    ) : (
+                      artist.category.map((cat) =>
+                        cat.subcategories.map((subCat) => (
+                          <div
+                            className={styles.categoryArtist}
+                            key={subCat.id}>
+                            {subCat.name}
+                          </div>
+                        ))
+                      )
+                    )}
                   </div>
                   <div className={styles.descriptionContainer}>
                     <p className={styles.descriptionTitle}>{artist.title}</p>
