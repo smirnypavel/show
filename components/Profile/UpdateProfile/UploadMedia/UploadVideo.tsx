@@ -14,11 +14,11 @@ const UploadVideo = () => {
   const formik = useFormik({
     initialValues: {
       url: "",
-      publicId: uuidv4(),
+      publicId: "",
     },
     onSubmit: async (values, { resetForm }) => {
       await dispatch(
-        updateUser({ video: [{ publicId: values.publicId, url: values.url }] })
+        updateUser({ video: [{ publicId: uuidv4(), url: values.url }] })
       );
       resetForm(); // Clear the form after successful submission
     },
