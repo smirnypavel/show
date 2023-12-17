@@ -108,7 +108,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
               <ul className={styles.photoListContainer}>
                 {artist.photo.length === 0 ? (
                   <div className={styles.categoryArtist}>
-                    Додайте фото Ваших виступів
+                    Фото виступівне не додане
                   </div>
                 ) : (
                   artist.photo.map((item) => (
@@ -132,7 +132,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
               <ul className={styles.videoListContainer}>
                 {artist.video.length === 0 ? (
                   <div className={styles.categoryArtist}>
-                    Додайте відео з YouTube Ваших виступів
+                    Відео з YouTube не додане
                   </div>
                 ) : (
                   artist.video.map((item) => (
