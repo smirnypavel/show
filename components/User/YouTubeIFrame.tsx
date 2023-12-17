@@ -30,8 +30,8 @@ const YouTubeEmbed = ({ url }: IUrl) => {
     <div>
       {videoId && (
         <iframe
-          width="199"
-          height="129"
+          width="250"
+          height="180"
           src={embeddedUrl}
           title="YouTube video player"
           frameBorder="0"

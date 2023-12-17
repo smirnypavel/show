@@ -1,0 +1,173 @@
+.artistPromo {
+  width: 830px;
+  /* height: 100%; */
+  min-height: 1219px;
+
+  background-color: var(--accent-color-1);
+  border-radius: 16px 0px 0px 16px;
+  padding: 36px 32px;
+}
+.artistPromoHeader {
+  display: flex;
+}
+.artistPromoMasterPhoto {
+  height: 252px;
+  width: 252px;
+  border-radius: 10px;
+  object-fit: cover;
+  position: relative;
+}
+.image {
+  border-radius: 8px;
+  width: 100%;
+  object-fit: cover;
+}
+.artistPromoHeaderTextContainer {
+  margin-top: 8px;
+  margin-left: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+.artistPromoHeaderText {
+  font-size: var(--h1-regular-font-size);
+  font-style: var(--h1-regular-font-style);
+  font-weight: var(--h1-regular-font-weight);
+  letter-spacing: var(--h1-regular-letter-spacing);
+  line-height: var(--h1-regular-line-height);
+}
+.artistPromoHeaderLocationTitle {
+  font-family: var(--h3-regular-font-family);
+  font-size: var(--h3-regular-font-size);
+  font-style: var(--h3-regular-font-style);
+  font-weight: var(--h3-regular-font-weight);
+  letter-spacing: var(--h3-regular-letter-spacing);
+  line-height: var(--h3-regular-line-height);
+  margin-left: 8px;
+}
+.artistPromoHeaderLocation {
+  margin-top: 16px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--white);
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  white-space: nowrap;
+  width: fit-content;
+}
+.descriptionWrapper {
+  margin-top: 16px;
+  background-color: var(--white);
+  border-radius: 8px;
+  min-height: 172px;
+  padding: 8px;
+  width: 100%;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+}
+.categoryTitle {
+  margin-top: 32px;
+  margin-left: 8px;
+  color: var(--black);
+  font-family: var(--h3-regular-font-family);
+  font-size: var(--h3-regular-font-size);
+  font-style: var(--h3-regular-font-style);
+  font-weight: var(--h3-regular-font-weight);
+  letter-spacing: var(--h3-regular-letter-spacing);
+  line-height: var(--h3-regular-line-height);
+}
+.categoryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.categoryArtist {
+  margin-top: 16px;
+  height: 40px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--white);
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+.buttonsContainer {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.portfolioButton {
+  color: var(--gray);
+  width: 274px;
+  height: 48px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: var(--h1-regular-font-size);
+  font-style: var(--h1-regular-font-style);
+  font-weight: var(--h1-regular-font-weight);
+  letter-spacing: var(--h1-regular-letter-spacing);
+  line-height: var(--h1-regular-line-height);
+}
+.portfolioButtonActive {
+  color: var(--black);
+  border-bottom: 0.5px solid var(--gray);
+}
+.portfolioContainer {
+  margin-top: 47px;
+}
+.portfolioTitle {
+  margin-left: 8px;
+  color: var(--black);
+  font-family: var(--h1-medium-font-family);
+  font-size: var(--h1-medium-font-size);
+  font-style: var(--h1-medium-font-style);
+  font-weight: var(--h1-medium-font-weight);
+  letter-spacing: var(--h1-medium-letter-spacing);
+  line-height: var(--h1-medium-line-height);
+}
+.photoListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.photoListItem {
+  margin-top: 28px;
+  position: relative;
+  width: 250px;
+  height: 180px;
+}
+.photo {
+  border-radius: 8px;
+  object-fit: cover;
+}
+.videoContainer {
+  margin-top: 42px;
+}
+.videoListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.videoListItem {
+  width: 250px;
+  height: 180px;
+  border-radius: 8px;
+  order: 3;
+}

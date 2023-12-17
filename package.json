@@ -21,6 +21,7 @@
     "eslint-config-next": "13.4.19",
     "formik": "^2.4.4",
     "geoip-lite": "^1.4.8",
+    "liqpay": "^0.0.1",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-datepicker": "^4.24.0",
