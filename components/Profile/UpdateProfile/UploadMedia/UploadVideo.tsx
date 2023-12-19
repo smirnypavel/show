@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import YouTubeEmbed from "../../../User/YouTubeIFrame";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getUserVideo } from "@/redux/auth/authSelectors";
-import { updateUser } from "@/redux/auth/authOperations";
+import { deleteVideo, updateUser } from "@/redux/auth/authOperations";
 import { v4 as uuidv4 } from "uuid";
 import styles from "@/styles/components/Profile/UpdateProfile/UpdateMedia/UploadVideo.module.css";
 import { IoClose } from "react-icons/io5";
@@ -23,7 +23,9 @@ const UploadVideo = () => {
       resetForm(); // Clear the form after successful submission
     },
   });
-
+  const handleDeleteVideo = (publicId: string) => {
+    dispatch(deleteVideo(publicId));
+  };
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -52,9 +54,9 @@ const UploadVideo = () => {
                 className={styles.videListItem}>
                 <YouTubeEmbed url={item.url} />
                 <button
+                  type="button"
                   className={styles.deleteButton}
-                  // onClick={() => handleDeletePhoto(photo.publicId)}
-                >
+                  onClick={() => handleDeleteVideo(item.publicId)}>
                   <IoClose className={styles.deleteButtonIcon} />
                 </button>
               </li>

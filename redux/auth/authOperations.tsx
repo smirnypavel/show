@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useRouter } from "next/router";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_BEC_URL;
 
@@ -212,6 +211,23 @@ export const deletePhoto = createAsyncThunk(
     try {
       console.log(credentials);
       const { data } = await axios.put(`/users/photo/`, credentials);
+      console.log(data);
+      return data;
+    } catch (error: any) {
+      // toast.error('An error occurred while fetching user data');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const deleteVideo = createAsyncThunk(
+  "auth/deleteVideo",
+  async (credentials: any, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.delete(`/users/video/${credentials}`);
       console.log(data);
       return data;
     } catch (error: any) {
