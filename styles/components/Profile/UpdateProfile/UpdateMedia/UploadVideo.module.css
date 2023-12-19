@@ -44,6 +44,8 @@
 }
 .videListItem {
   position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .deleteButton {
   width: 32px;

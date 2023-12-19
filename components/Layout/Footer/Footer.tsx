@@ -44,7 +44,7 @@ const Footer = () => {
           <ul>
             <li>
               <Link
-                href={"/"}
+                href={"/public/info-artist"}
                 className={styles.link}>
                 Як зареєструватись
               </Link>

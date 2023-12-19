@@ -1,12 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
-import YouTubeEmbed from "../../../User/YouTubeIFrame";
+// import YouTube from "../../../User/YouTubeIFrame";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getUserVideo } from "@/redux/auth/authSelectors";
 import { deleteVideo, updateUser } from "@/redux/auth/authOperations";
 import { v4 as uuidv4 } from "uuid";
 import styles from "@/styles/components/Profile/UpdateProfile/UpdateMedia/UploadVideo.module.css";
 import { IoClose } from "react-icons/io5";
+import YouTube2 from "@/components/helpers/Youtube";
 
 const UploadVideo = () => {
   const video = useAppSelector(getUserVideo);
@@ -52,7 +53,8 @@ const UploadVideo = () => {
               <li
                 key={item.publicId}
                 className={styles.videListItem}>
-                <YouTubeEmbed url={item.url} />
+                {/* <YouTube url={item.url} /> */}
+                <YouTube2 url={item.url} />
                 <button
                   type="button"
                   className={styles.deleteButton}

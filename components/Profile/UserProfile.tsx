@@ -10,6 +10,7 @@ import { TbPencil } from "react-icons/tb";
 import { HiOutlinePhone } from "react-icons/hi";
 import { SiMaildotru } from "react-icons/si";
 import { IoArrowRedoOutline } from "react-icons/io5";
+import YouTube2 from "../helpers/Youtube";
 // import ReactPlayer from "react-player/lazy";
 
 const UserProfile = () => {
@@ -169,7 +170,8 @@ const UserProfile = () => {
                 <li
                   key={item.publicId}
                   className={styles.videoListItem}>
-                  <YouTubeEmbed url={item.url} />
+                  {/* <YouTubeEmbed url={item.url} /> */}
+                  <YouTube2 url={item.url} />
                 </li>
               ))
             )}

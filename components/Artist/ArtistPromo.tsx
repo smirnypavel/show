@@ -2,16 +2,27 @@ import React, { useState } from "react";
 import styles from "@/styles/components/Artist/ArtistPromo.module.css";
 import { ArtistPageProps } from "./ArtistPage";
 import Image from "next/image";
-import YouTubeEmbed from "../User/YouTubeIFrame";
+import Modal from "@/components/helpers/Modal";
+
+import YouTube2 from "../helpers/Youtube";
 
 const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
   const [showPhotos, setShowPhotos] = useState(true); // состояние для отслеживания отображения фотографий/видео
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpenIndex, setModalOpenIndex] = useState<number | null>(null);
   const handleShowPhotos = () => {
     setShowPhotos(true);
   };
 
   const handleShowVideos = () => {
     setShowPhotos(false);
+  };
+  const openModal = (index: number) => {
+    setModalOpenIndex(index);
+  };
+
+  const closeModal = () => {
+    setModalOpenIndex(null);
   };
 
   return (
@@ -111,18 +122,34 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                     Фото виступівне не додане
                   </div>
                 ) : (
-                  artist.photo.map((item) => (
-                    <li
-                      key={item.publicId}
-                      className={styles.photoListItem}>
-                      <Image
-                        src={item.url}
-                        alt={"user photo"}
-                        fill
-                        sizes="(min-width: 808px) 50vw, 100vw"
-                        className={styles.photo}
-                      />
-                    </li>
+                  artist.photo.map((item, index) => (
+                    <>
+                      <li
+                        key={item.publicId}
+                        className={styles.photoListItem}>
+                        <Image
+                          src={item.url}
+                          alt={"user photo"}
+                          fill
+                          sizes="(min-width: 808px) 50vw, 100vw"
+                          className={styles.photo}
+                          onClick={() => openModal(index)}
+                        />
+                      </li>
+                      {modalOpenIndex === index && (
+                        <Modal onClose={closeModal}>
+                          <li className={styles.photoBigItem}>
+                            <Image
+                              src={item.url}
+                              alt={"user photo"}
+                              fill
+                              sizes="(min-width: 808px) 50vw, 100vw"
+                              className={styles.photo}
+                            />
+                          </li>
+                        </Modal>
+                      )}
+                    </>
                   ))
                 )}
               </ul>
@@ -139,7 +166,8 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                     <li
                       key={item.publicId}
                       className={styles.videoListItem}>
-                      <YouTubeEmbed url={item.url} />
+                      {/* <YouTube url={item.url} /> */}
+                      <YouTube2 url={item.url} />
                     </li>
                   ))
                 )}

@@ -1,6 +1,6 @@
 .container {
   width: 1168px;
-  height: 1292px;
+  min-height: 1292px;
   margin: 0 auto;
   background-color: var(--accent-color);
   padding: 49px 72px 40px 72px;
@@ -224,8 +224,7 @@
   gap: 8px;
 }
 .videoListItem {
-  height: 129px;
-  width: 199px;
-  border-radius: 8px;
+  border-radius: 10px;
+  overflow: hidden;
   order: 3;
 }

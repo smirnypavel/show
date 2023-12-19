@@ -157,6 +157,13 @@
   border-radius: 8px;
   object-fit: cover;
 }
+.photoBigItem {
+  margin-top: 28px;
+  position: relative;
+  width: 700px;
+  height: 550px;
+}
+
 .videoContainer {
   margin-top: 42px;
 }
@@ -166,8 +173,6 @@
   gap: 8px;
 }
 .videoListItem {
-  width: 250px;
-  height: 180px;
-  border-radius: 8px;
-  order: 3;
+  border-radius: 10px;
+  overflow: hidden;
 }
