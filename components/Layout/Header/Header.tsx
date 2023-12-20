@@ -7,8 +7,10 @@ import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   const login = useSelector(isLoggedIn);
   const user = useSelector(getUser);
   return (
@@ -25,23 +27,31 @@ const Header = () => {
       <div className={styles.headerNav}>
         <Link
           href={"/"}
-          className={styles.link}>
+          className={`${styles.link} ${
+            router.pathname === "/" ? styles.active : ""
+          }`}>
           Головна
         </Link>
         <Link
           href={"/artists"}
-          className={styles.link}>
+          className={`${styles.link} ${
+            router.pathname === "/artists" ? styles.active : ""
+          }`}>
           Артисти
         </Link>
 
         <Link
           href={"/about"}
-          className={styles.link}>
+          className={`${styles.link} ${
+            router.pathname === "/about" ? styles.active : ""
+          }`}>
           Про нас
         </Link>
         <Link
           href={"/blog"}
-          className={styles.link}>
+          className={`${styles.link} ${
+            router.pathname === "/blog" ? styles.active : ""
+          }`}>
           Блог
         </Link>
         {/* <MyGeolocation />

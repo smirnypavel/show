@@ -1,8 +1,7 @@
 import { IUserAuth } from "@/types/IAuth";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-
 import styles from "@/styles/components/Artist/ArtistList.module.css";
 import { GrLocation } from "react-icons/gr";
 import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
@@ -16,7 +15,6 @@ const ArtistList: React.FC<ItemListProps> = ({ artists, currentPage }) => {
   if (!artists || artists.length === 0) {
     return <p>No artists found</p>; // Заглушка или сообщение об отсутствии данных
   }
-
   return (
     <div className={styles.container}>
       <ul className={styles.artistList}>

@@ -17,9 +17,11 @@
   height: 312px;
   gap: 10px;
   border-radius: 8px;
-
   background-color: var(--white);
   color: black;
+  -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
 }
 .cardContainer {
   display: flex;

@@ -17,6 +17,8 @@
 } */
 
 .link {
+  position: relative;
+
   color: var(--white);
   font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
@@ -26,6 +28,20 @@
   margin-top: -1px;
   white-space: nowrap;
   width: fit-content;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -10px; /* Отступ полоски от нижней части headerNav */
+  left: 0; /* Начало полоски */
+  height: 1px; /* Высота полоски */
+  background-color: #ffffff4f; /* Цвет полоски */
+  transition: width 0.2s ease-in-out; /* Добавляем плавный переход для изменения ширины */
+  width: 0; /* Начальная ширина полоски (будет увеличиваться) */
+}
+
+.link.active::after {
+  width: 100%; /* Увеличиваем ширину полоски до 100% при активной ссылке */
 }
 
 .logo {
