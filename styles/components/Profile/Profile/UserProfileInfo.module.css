@@ -13,7 +13,6 @@
 .artistInfoContainer {
   display: flex;
   flex-direction: column;
-  margin-top: px;
   justify-content: center;
   gap: 8px;
 }

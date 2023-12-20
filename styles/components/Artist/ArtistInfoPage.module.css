@@ -12,9 +12,8 @@
 }
 .artistInfoContainer {
   display: flex;
-  margin-top: px;
+  flex-direction: column;
   justify-content: center;
-
   gap: 8px;
 }
 .artistAvatarContainer {

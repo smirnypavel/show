@@ -5,12 +5,43 @@
   align-items: center;
   justify-content: center;
 }
+.content {
+}
+
 .artistList {
-  margin-top: 10px;
+  margin-top: 24px;
   text-align: start;
   display: flex;
   flex-direction: column;
   row-gap: 32px;
+  position: relative;
+}
+.buttonBackContainer {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: -32px;
+  left: 32px;
+}
+.buttonBack {
+  color: white;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--h1-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+}
+
+.buttonBackText {
+  color: white;
+  font-family: var(--h1-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+  background-color: transparent;
+  border: none;
+  cursor: default;
 }
 .artistItem {
   width: 1168px;
@@ -23,6 +54,7 @@
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
 }
+
 .cardContainer {
   display: flex;
 }

@@ -6,3 +6,31 @@
   justify-content: center;
   margin-top: 10px;
 }
+
+.buttonBackContainer {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: -32px;
+  left: 32px;
+}
+.buttonBack {
+  color: white;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--h1-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+}
+
+.buttonBackText {
+  color: white;
+  font-family: var(--h1-regular-font-family);
+  font-size: var(--h2-regular-font-size);
+  background-color: transparent;
+  border: none;
+  cursor: default;
+}

@@ -6,18 +6,33 @@ import styles from "@/styles/components/Artist/ArtistList.module.css";
 import { GrLocation } from "react-icons/gr";
 import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
 import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
+import { IoIosArrowForward } from "react-icons/io";
 export interface ItemListProps {
   artists: IUserAuth[];
   currentPage: number;
 }
 
 const ArtistList: React.FC<ItemListProps> = ({ artists, currentPage }) => {
+  const router = useRouter();
+
+  const handleGoBack = () => {
+    router.back(); // Переход назад на предыдущую страницу
+  };
   if (!artists || artists.length === 0) {
     return <p>No artists found</p>; // Заглушка или сообщение об отсутствии данных
   }
   return (
     <div className={styles.container}>
       <ul className={styles.artistList}>
+        <div className={styles.buttonBackContainer}>
+          <button
+            onClick={handleGoBack}
+            className={styles.buttonBack}>
+            <div> Головна</div>
+          </button>
+          <IoIosArrowForward />
+          <button className={styles.buttonBackText}>Артисти</button>
+        </div>
         {artists &&
           artists.map((artist) => (
             <li

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 import styles from "@/styles/Artist/Artist.module.css";
 import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import { GetServerSideProps } from "next/types";
@@ -8,6 +10,7 @@ import toast from "react-hot-toast";
 import ArtistList from "@/components/Artist/ArtistList";
 import MetaTags from "@/components/Meta/MetaTags";
 import Pagination from "@/components/Artist/Pagination";
+import { IoIosArrowForward } from "react-icons/io";
 
 export interface ItemsPageProps {
   artists: IUserAuth[];
@@ -93,6 +96,7 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
         description="Пошук артистів"
         keywords=""
       />
+
       <ArtistSearchBar
         onSearch={(searchTerm: string) => {
           setSearchTerm(searchTerm);
@@ -108,7 +112,7 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
         }}
       />
 
-      <div>
+      <div className={styles.content}>
         <ArtistList
           artists={filteredArtists}
           currentPage={currentPage}
