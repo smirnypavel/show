@@ -24,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   const renderPageButtons = () => {
     const pageButtons = [];
-    const maxVisibleButtons = 4; // Максимальное количество отображаемых кнопок
+    const maxVisibleButtons = 5; // Максимальное количество отображаемых кнопок
 
     // Пример: Если totalPages = 10, currentPage = 3, maxVisibleButtons = 5
     // Должны отображаться кнопки 1 2 3 4 5

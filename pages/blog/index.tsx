@@ -3,7 +3,6 @@ import styles from "@/styles/Artist/Artist.module.css";
 import ArticleList from "@/components/Blog/ArticlesList";
 import { GetServerSideProps } from "next/types";
 import axios from "axios";
-
 import { IArticle } from "@/types/IArticles";
 
 export interface ItemsPageProps {

@@ -6,6 +6,9 @@
   margin: 0 auto;
   margin-top: 40px;
   padding-top: 40px;
+  -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
 }
 .loginContainer {
   width: 100%;

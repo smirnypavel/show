@@ -44,7 +44,7 @@ const Footer = () => {
           <ul>
             <li>
               <Link
-                href={"/"}
+                href={"/public/info-artist"}
                 className={styles.link}>
                 Як зареєструватись
               </Link>
@@ -106,7 +106,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href={"/"}
+                href={"/public/public-offer"}
                 className={styles.link}>
                 Договір публічної оферти
               </Link>

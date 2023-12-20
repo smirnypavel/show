@@ -6,7 +6,7 @@ interface IUrl {
   url: string;
 }
 
-const YouTubeEmbed = ({ url }: IUrl) => {
+const YouTube = ({ url }: IUrl) => {
   // Функция для извлечения videoId из ссылки в формате "https://www.youtube.com/watch?v=XaTwnKLQi4A"
   const getVideoId = (url: string): string | undefined => {
     if (typeof url === "string") {
@@ -30,8 +30,8 @@ const YouTubeEmbed = ({ url }: IUrl) => {
     <div>
       {videoId && (
         <iframe
-          width="199"
-          height="129"
+          width="250"
+          height="180"
           src={embeddedUrl}
           title="YouTube video player"
           frameBorder="0"
@@ -43,4 +43,4 @@ const YouTubeEmbed = ({ url }: IUrl) => {
   );
 };
 
-export default YouTubeEmbed;
+export default YouTube;

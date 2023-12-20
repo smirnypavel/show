@@ -11,9 +11,10 @@ const HomeSearchBar = () => {
   const dispatch = useAppDispatch();
   const token = router.query.token;
 
-  console.log(token);
+  // console.log(token);
   useEffect(() => {
     const authenticateWithGoogle = async () => {
+      console.log(token);
       try {
         if (typeof token === "string") {
           await dispatch(googleAuth(token));
@@ -22,11 +23,10 @@ const HomeSearchBar = () => {
         console.error("Ошибка при входе:", error);
       }
     };
-
     if (token) {
       authenticateWithGoogle();
     }
-  }, []);
+  }, [token]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);

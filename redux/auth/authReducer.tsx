@@ -9,6 +9,7 @@ import {
   uploadAvatar,
   uploadImage,
   deletePhoto,
+  deleteVideo,
 } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
@@ -165,6 +166,19 @@ export const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = false;
       })
+      .addCase(deleteVideo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteVideo.rejected, (state, action) => {
+        state.isLoading = false;
+        // state.error = action.error.message || "";
+      })
+      .addCase(deleteVideo.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.isLoading = false;
+      })
       .addCase(getUser.pending, (state) => {
         state.isLoading = true;
       })
@@ -177,20 +191,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isLoading = false;
       });
-    // .addCase(signInGoogle.pending, (state) => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(signInGoogle.rejected, (state, action) => {
-    //   state.user.token = "";
-    //   state.isLoggedIn = false;
-    //   state.isLoading = false;
-    //   state.error = action.error.message || "";
-    // })
-    // .addCase(signInGoogle.fulfilled, (state, action) => {
-    //   state.user = action.payload;
-    //   state.isLoggedIn = true;
-    //   state.isLoading = false;
-    // });
   },
 });
 

@@ -1,12 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
-import YouTubeEmbed from "../../../User/YouTubeIFrame";
+// import YouTube from "../../../User/YouTubeIFrame";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getUserVideo } from "@/redux/auth/authSelectors";
-import { updateUser } from "@/redux/auth/authOperations";
+import { deleteVideo, updateUser } from "@/redux/auth/authOperations";
 import { v4 as uuidv4 } from "uuid";
 import styles from "@/styles/components/Profile/UpdateProfile/UpdateMedia/UploadVideo.module.css";
 import { IoClose } from "react-icons/io5";
+import YouTube2 from "@/components/helpers/Youtube";
 
 const UploadVideo = () => {
   const video = useAppSelector(getUserVideo);
@@ -14,16 +15,18 @@ const UploadVideo = () => {
   const formik = useFormik({
     initialValues: {
       url: "",
-      publicId: uuidv4(),
+      publicId: "",
     },
     onSubmit: async (values, { resetForm }) => {
       await dispatch(
-        updateUser({ video: [{ publicId: values.publicId, url: values.url }] })
+        updateUser({ video: [{ publicId: uuidv4(), url: values.url }] })
       );
       resetForm(); // Clear the form after successful submission
     },
   });
-
+  const handleDeleteVideo = (publicId: string) => {
+    dispatch(deleteVideo(publicId));
+  };
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
@@ -50,11 +53,12 @@ const UploadVideo = () => {
               <li
                 key={item.publicId}
                 className={styles.videListItem}>
-                <YouTubeEmbed url={item.url} />
+                {/* <YouTube url={item.url} /> */}
+                <YouTube2 url={item.url} />
                 <button
+                  type="button"
                   className={styles.deleteButton}
-                  // onClick={() => handleDeletePhoto(photo.publicId)}
-                >
+                  onClick={() => handleDeleteVideo(item.publicId)}>
                   <IoClose className={styles.deleteButtonIcon} />
                 </button>
               </li>
