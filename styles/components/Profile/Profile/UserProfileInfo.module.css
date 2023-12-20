@@ -12,9 +12,9 @@
 }
 .artistInfoContainer {
   display: flex;
+  flex-direction: column;
   margin-top: px;
   justify-content: center;
-
   gap: 8px;
 }
 .artistAvatarContainer {
@@ -38,7 +38,14 @@
   letter-spacing: var(--h1-medium-letter-spacing);
   line-height: var(--h1-medium-line-height);
 }
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
 .rating {
+  color: var(--black);
 }
 .contactButton {
   color: var(--white);

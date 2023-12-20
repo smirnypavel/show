@@ -106,7 +106,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href={"/"}
+                href={"/public/public-offer"}
                 className={styles.link}>
                 Договір публічної оферти
               </Link>

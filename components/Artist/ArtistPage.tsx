@@ -5,6 +5,7 @@ import styles from "@/styles/components/Artist/ArtistPage.module.css";
 import React from "react";
 import ArtistInfoPage from "./ArtistInfoPage";
 import ArtistPromo from "./ArtistPromo";
+import { IoIosArrowForward } from "react-icons/io";
 
 export interface ArtistPageProps {
   artist: IUserAuth;
@@ -19,8 +20,14 @@ const ArtistPage: React.FC<ArtistPageProps> = ({ artist }) => {
 
   return (
     <div className={styles.artistContainer}>
-      <div>
-        <button onClick={handleGoBack}>Назад</button>
+      <div className={styles.buttonBackContainer}>
+        <button
+          onClick={handleGoBack}
+          className={styles.buttonBack}>
+          <div> Артисти</div>
+        </button>
+        <IoIosArrowForward />
+        <button className={styles.buttonBackText}> {artist.title}</button>
       </div>
       <ArtistPromo artist={artist} />
       <ArtistInfoPage artist={artist} />

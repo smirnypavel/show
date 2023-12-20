@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,900;1,500&family=Roboto:wght@300;400;500;700;900&display=swap");
 :root {
   --main-font: "Roboto", sans-serif;
-  --bg-color: #094356;
+  --bg-color: rgb(9, 67, 86);
   --button-bg-color: rgb(232, 149, 89);
   --button-text-color: #333;
   --accent-color: #ebdfca;
@@ -31,7 +31,6 @@
   --h2-medium-letter-spacing: 0px;
   --h2-medium-line-height: normal;
   --h2-regular-font-family: "Poppins", sans-serif;
-
   --h2-regular-font-size: 16px;
   --h2-regular-font-style: normal;
   --h2-regular-font-weight: 400;

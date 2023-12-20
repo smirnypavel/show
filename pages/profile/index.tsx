@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/Profile/Profile.module.css";
-import UserProfile from "@/components/Profile/UserProfile";
+import UserProfile from "@/components/Profile/UserProfile/UserProfile";
 import PrivateRoute from "@/redux/PrivateRoute";
 
 const Profile = () => {
