@@ -9,6 +9,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "ldsound.info",
       "via.placeholder.com",
+      "platform-lookaside.fbsbx.com",
     ],
   },
 };
