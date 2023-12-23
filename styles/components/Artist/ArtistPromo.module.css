@@ -168,6 +168,8 @@
   position: relative;
   width: 250px;
   height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
   -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
@@ -181,6 +183,9 @@
   position: relative;
   width: 700px;
   height: 550px;
+  -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
 }
 
 .videoContainer {

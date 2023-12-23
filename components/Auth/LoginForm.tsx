@@ -10,6 +10,7 @@ import GoogleLogo from "@/public/logo/GoogleLogo.svg";
 import { PiEyeClosed } from "react-icons/pi";
 import { PiEye } from "react-icons/pi";
 import Image from "next/image";
+import Modal from "../helpers/Modal";
 
 export type FormValues = {
   email: string;
@@ -33,6 +34,27 @@ const validationSchema = Yup.object().shape({
 const LoginForm: React.FC<Props> = ({ onSubmit }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberPassword, setRememberPassword] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailSent, setEmailSent] = useState(false); // Добавленное состояние
+  const OpenModal = () => {
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+    setEmailSent(false); // Сбрасываем состояние после закрытия модального окна
+  };
+  const sendEmail = async () => {
+    await fetch("https://events-4qv2.onrender.com/users/forgot-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    setEmailSent(true); // Устанавливаем состояние после отправки письма
+  };
 
   return (
     <div className={styles.container}>
@@ -126,11 +148,12 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
                   </label>
                 </div>
                 <div className={styles.forgotPasswordContainer}>
-                  <Link
-                    href={""}
+                  <button
+                    type="button"
+                    onClick={OpenModal}
                     className={styles.forgotPassword}>
                     Забули пароль?
-                  </Link>
+                  </button>
                 </div>
               </div>
 
@@ -167,6 +190,50 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
           />
         </Link>
       </div>
+      {showModal && (
+        <Modal onClose={closeModal}>
+          <div className={styles.forgotPasswordModal}>
+            <p className={styles.forgotPasswordTitle}>Відновлення паролю</p>
+
+            {emailSent ? ( // Проверяем состояние, чтобы показать сообщение после отправки
+              <div className={styles.forgotPasswordForm}>
+                <p className={styles.forgotPasswordTitle}>
+                  Лист з новим паролем відправлено на вашу пошту
+                </p>
+                <button
+                  type="button"
+                  className={styles.forgotPasswordSubmitButton}
+                  onClick={closeModal}>
+                  <div className={styles.textWrapper}>Закрити</div>
+                </button>
+              </div>
+            ) : (
+              <div>
+                <p className={styles.forgotPasswordText}>
+                  Введіть адресу електронної пошти, пов’язану з вашим акаунтом.
+                  Ми надішлемо вам новий пароль.
+                </p>
+                <div className={styles.forgotPasswordForm}>
+                  <input
+                    type="email"
+                    name="email"
+                    className={styles.forgotPasswordInput}
+                    placeholder="Введіть пошту"
+                    autoComplete="current-email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className={styles.forgotPasswordSubmitButton}
+                    onClick={sendEmail}>
+                    <div className={styles.textWrapper}>Відправити</div>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
