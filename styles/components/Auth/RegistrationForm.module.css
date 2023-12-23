@@ -48,6 +48,9 @@
   width: 298px;
   padding-left: 15px;
   margin-bottom: 12px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 .inputGroup {
   position: relative;
@@ -60,6 +63,9 @@
   width: 298px;
   padding-left: 15px;
   margin-bottom: 12px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 .showButton {
   width: 24px;
@@ -154,6 +160,9 @@
   transition: box-shadow 0.3s ease;
   margin-bottom: 24px;
   cursor: pointer; /* Добавим указатель при наведении */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 
 .textWrapper {
