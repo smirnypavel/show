@@ -47,24 +47,6 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
     router.back(); // Переход назад на предыдущую страницу
   };
 
-  // const handleSearch = (
-  //   searchTerm: string,
-  //   selectedCategoryId: string,
-  //   selectedSubcategoryId: string,
-  //   selectedCity: string
-  // ) => {
-  //   router.push({
-  //     pathname: "/artists",
-  //     query: {
-  //       ...router.query,
-  //       searchTerm,
-  //       selectedCategoryId,
-  //       selectedSubcategoryId,
-  //       selectedCity,
-  //     },
-  //   });
-  // };
-
   return (
     <div className={styles.container}>
       <MetaTags
@@ -123,11 +105,12 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
         <div className={styles2.container}>
           <ul className={styles2.artistList}>
             <div className={styles2.buttonBackContainer}>
-              <button
-                onClick={handleGoBack}
+              <Link
+                href="/"
+                // onClick={handleGoBack}
                 className={styles2.buttonBack}>
                 <div> Головна</div>
-              </button>
+              </Link>
               <IoIosArrowForward />
               <button className={styles2.buttonBackText}>Артисти</button>
             </div>

@@ -43,7 +43,7 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
         cat: "",
         subcat: "",
         req: "",
-        // searchTerm: "",
+        searchTerm: "",
         // selectedCategoryId: "",
         // selectedSubcategoryId: "",
         // selectedCity: "",
