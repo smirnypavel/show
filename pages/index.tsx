@@ -20,10 +20,10 @@ const Home = () => {
         title="Wechirka | Головна"
         description="Пошук артистів"
         keywords=""
-        // ogTitle="Wechirka пошук артистів"
-        // ogDescription="Іноваційний підхід до пошуку людей якм працють у сфері розваг"
-        // ogImage="https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
-        // ogUrl="https://show-swart.vercel.app/"
+        ogTitle="Wechirka пошук артистів"
+        ogDescription="Іноваційний підхід до пошуку людей якм працють у сфері розваг"
+        ogImage="https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
+        ogUrl="https://show-swart.vercel.app/"
       />
       <div className={styles.homepage}>
         <HomeSearchBar />

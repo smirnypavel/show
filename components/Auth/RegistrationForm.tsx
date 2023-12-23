@@ -194,7 +194,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
       </div>
       <div className={styles.socialContainer}>
         <Link
-          href={""}
+          href="https://events-4qv2.onrender.com/users/facebook/login"
           className={styles.socialLink}>
           Зареєструватись з допомогою
           <Image
@@ -203,7 +203,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
           />
         </Link>{" "}
         <Link
-          href={""}
+          href="https://events-4qv2.onrender.com/users/google/login"
           className={styles.socialLink}>
           Зареєструватись з допомогою
           <Image
