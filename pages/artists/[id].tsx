@@ -30,10 +30,6 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
           artist.category?.[0]?.subcategories?.[0]?.name ||
           "Значение по умолчанию"
         }
-        ogImage={artist.master_photo.url}
-        ogUrl={`https://www.wechirka.com/artists/${artist._id}`}
-        ogTitle={artist.title}
-        ogDescription={artist.description}
       />
       <ArtistPage artist={artist} />
     </div>
