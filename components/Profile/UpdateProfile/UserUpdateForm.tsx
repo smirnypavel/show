@@ -201,10 +201,10 @@ const UserUpdateForm = () => {
                     className="text-danger"
                   />
                   <div>
-                    <button className={styles.addButton}>
+                    <div className={styles.addButton}>
                       <FiPlus className={styles.addIcon} />
                       Додати категорії
-                    </button>
+                    </div>
                     <CategorySelector onItemsSelected={handleItemsSelect} />
                   </div>
                   <p className={styles.formInputTitle}>
