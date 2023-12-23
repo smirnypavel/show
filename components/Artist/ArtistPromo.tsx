@@ -110,7 +110,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                 ? `${styles.portfolioButton} ${styles.portfolioButtonActive}`
                 : styles.portfolioButton
             }>
-            Фідео
+            Відео
           </button>
         </div>
         <div>

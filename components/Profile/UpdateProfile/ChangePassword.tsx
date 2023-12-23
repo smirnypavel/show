@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import styles from "@/styles/components/Profile/UpdateProfile/ChangePassword.module.css";
+import { useAppDispatch } from "@/redux/hooks";
+import { updatePassword } from "@/redux/auth/authOperations";
 
 interface FormValues {
   oldPassword: string;
@@ -9,6 +11,7 @@ interface FormValues {
   confirmPassword: string;
 }
 const ChangePassword = () => {
+  const dispatch = useAppDispatch();
   const initialValues: FormValues = {
     oldPassword: "",
     password: "",
@@ -30,6 +33,12 @@ const ChangePassword = () => {
     { resetForm }: FormikHelpers<FormValues>
   ) => {
     // Действия при отправке формы, например, отправка данных на сервер
+    dispatch(
+      updatePassword({
+        oldPassword: values.oldPassword,
+        password: values.password,
+      })
+    );
     console.log(values);
     // resetForm(); // Опционально для сброса значений формы после успешной отправки
   };

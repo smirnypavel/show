@@ -10,6 +10,7 @@ import {
   uploadImage,
   deletePhoto,
   deleteVideo,
+  updatePassword,
 } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
@@ -122,6 +123,19 @@ export const authSlice = createSlice({
         state.error = action.error.message || "";
       })
       .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.isLoading = false;
+      })
+      .addCase(updatePassword.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updatePassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "";
+      })
+      .addCase(updatePassword.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
