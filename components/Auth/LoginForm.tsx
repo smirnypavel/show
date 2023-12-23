@@ -226,7 +226,9 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
                     type="button"
                     className={styles.forgotPasswordSubmitButton}
                     onClick={sendEmail}>
-                    <div className={styles.textWrapper}>Відправити</div>
+                    <div className={styles.forgotPasswordTextWrapper}>
+                      Відправити
+                    </div>
                   </button>
                 </div>
               </div>

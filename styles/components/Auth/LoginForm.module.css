@@ -102,6 +102,7 @@
   width: 298px;
   justify-content: space-between;
   margin-bottom: 32px;
+  align-items: center;
 }
 .rememberPasswordCheckbox {
   margin: 0;
@@ -110,27 +111,30 @@
 .rememberedContainer {
   display: flex;
   align-items: center;
+  cursor: pointer;
   gap: 12px;
 }
 .rememberedText {
-  color: #202327;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 12px;
-  font-weight: 400;
+  color: var(--black);
+  font-family: var(--h5-regular-font-family);
+  font-size: var(--h5-regular-font-size);
+  font-weight: var(--h5-regular-font-weight);
+  margin: 0;
+  padding: 0;
 }
 .forgotPassword {
   color: var(--black);
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 12px;
-  font-weight: 400;
-  margin-top: -0.5px;
+  font-family: var(--h5-medium-font-family);
+  font-size: var(--h5-medium-font-size);
+  font-weight: var(--h5-regular-font-weight);
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 .forgotPasswordContainer {
   border-bottom-style: solid;
   border-bottom-width: 0.5px;
-  border-color: #000000;
+  border-color: #00000076;
   padding: 4px 8px;
 }
 .submitButton {
@@ -245,4 +249,15 @@
 }
 .forgotPasswordSubmitButton:hover {
   box-shadow: 0px 4px 8px #00000040;
+}
+.forgotPasswordTextWrapper {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+  transition: color 0.3s ease;
 }
