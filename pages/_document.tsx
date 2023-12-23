@@ -22,20 +22,20 @@ export default function Document() {
         />
         <meta
           property="og:type"
-          content="app"
-        />{" "}
+          content="website"
+        />
         <meta
           property="fb:app_id"
           content="302462449359607"
-        />{" "}
+        />
         <meta
           property="og:locale"
           content="uk_UA"
-        />{" "}
+        />
         <meta
           property="og:site_name"
           content="Wechirka"
-        />{" "}
+        />
       </Head>
       <body>
         <Main />
