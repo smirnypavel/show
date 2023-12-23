@@ -20,6 +20,22 @@ export default function Document() {
           property="og:url"
           content="https://www.wechirka.com"
         />
+        <meta
+          property="og:type"
+          content="app"
+        />{" "}
+        <meta
+          property="fb:app_id"
+          content="302462449359607"
+        />{" "}
+        <meta
+          property="og:locale"
+          content="uk_UA"
+        />{" "}
+        <meta
+          property="og:site_name"
+          content="Wechirka"
+        />{" "}
       </Head>
       <body>
         <Main />
