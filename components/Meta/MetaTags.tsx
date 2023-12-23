@@ -30,7 +30,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({
         name="keywords"
         content={keywords}
       />
-      {/* Метатеги Open Graph */}
+      {/* Метатеги Open Graph
       <meta
         property="og:title"
         content={ogTitle}
@@ -46,7 +46,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       <meta
         property="og:url"
         content={ogUrl}
-      />
+      /> */}
     </Head>
   );
 };
