@@ -39,8 +39,8 @@ const ChangePassword = () => {
         password: values.password,
       })
     );
-    console.log(values);
-    // resetForm(); // Опционально для сброса значений формы после успешной отправки
+
+    resetForm(); // Опционально для сброса значений формы после успешной отправки
   };
 
   return (

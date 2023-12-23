@@ -146,7 +146,7 @@ export const updatePassword = createAsyncThunk(
       setAuthHeader(initialToken);
     }
     try {
-      const { data } = await axios.put("/users/change-password", credentials);
+      const { data } = await axios.patch("/users/change-password", credentials);
       toast.success("Password updated successfully");
       return data;
     } catch (error: any) {
