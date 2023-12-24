@@ -80,14 +80,6 @@ const UserUpdateForm = () => {
     dispatch(updateUser(filteredValues));
   };
 
-  // const showCitySearch = (
-  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  // ) => {
-  //   event.stopPropagation();
-  //   if (!searchCity) {
-  //     setSearchCity(true);
-  //   }
-  // };
   const handleItemsSelect = (items: ICategory[]) => {
     const updatedCategories = [...userCategory, ...items];
     setSelectedItems(items);

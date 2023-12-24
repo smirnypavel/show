@@ -17,8 +17,8 @@ const CategorySelector: React.FC<{
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [subcategoriesVisible, setSubcategoriesVisible] =
     useState<boolean>(false);
-  const dispatch = useAppDispatch();
 
+  console.log(selectedItems);
   useEffect(() => {
     const fetchCategories = async () => {
       try {

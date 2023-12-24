@@ -23,16 +23,24 @@ type Props = {
 };
 
 const validationSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(3, "Мінімальна довжина - 3 символи")
+    .max(50, "Максимальна довжина - 50 символів")
+    .required("Обов'язкове поле"),
+  phone: Yup.string()
+    .min(10, "Мінімальна довжина - 10 символів")
+    .max(13, "Максимальна довжина - 13 символів")
+    .required("Обов'язкове поле"),
   email: Yup.string() // Заменено имя поля на "email"
-    .email("Некорректный адрес электронной почты")
-    .required("Обязательное поле"),
+    .email("Некоректна адреса електронної пошти")
+    .required("Обов'язкове поле"),
   password: Yup.string()
-    .min(8, "Минимальная длина пароля - 8 символов")
-    .max(50, "Максимальная длина пароля - 50 символов")
-    .required("Обязательное поле"),
+    .min(8, "Мінімальна довжина пароля - 8 символів")
+    .max(50, "Максимальна довжина пароля - 50 символів")
+    .required("Обов'язкове поле"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Пароли должны совпадать")
-    .required("Обязательное поле"),
+    .oneOf([Yup.ref("password")], "Паролі повинні збігатися")
+    .required("Обов'язкове поле"),
 });
 
 const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
@@ -175,8 +183,21 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
                 </div>
               </div>
               <div className={styles.textRegister}>
-                Реєструючись, ви погоджуєтеся з умовами положення про збір і
-                захист персональних даних та угодою користувача
+                Реєструючись, ви погоджуєтеся з умовами{" "}
+                <Link
+                  href="/privacy/privacy_offer.pdf"
+                  target="_blank"
+                  className={styles.linkPrivacy}>
+                  {" "}
+                  положення про збір, захист персональних даних
+                </Link>{" "}
+                та{" "}
+                <Link
+                  href="/public/public-offer"
+                  target="_blank"
+                  className={styles.linkPrivacy}>
+                  угодою користувача
+                </Link>
               </div>
               <button
                 type="submit"

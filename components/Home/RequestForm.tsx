@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Field, Form, Formik, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import BadWordsNext from "bad-words-next";
-import CitySearch from "@/components/helpers/searchCity";
 import RequestFormCategorySelect from "@/components/Home/RequestFormCategorySelect";
 import { ICategory } from "@/types/IAuth";
 import { toast } from "react-hot-toast";
@@ -13,6 +12,8 @@ import Telegramlogo from "@/public/logo/Telegramlogo.svg";
 import Viberlogo from "@/public/logo/Viberlogo.svg";
 import Image from "next/image";
 import DateTimePicker from "../helpers/DateTimePicker";
+import Modal from "../helpers/Modal";
+import SmsCodeInput from "../helpers/SmsCodeInput";
 const badWordsFilter = new BadWordsNext();
 badWordsFilter.add(require("bad-words-next/data/ru.json")); // Добавляем словарь для русского языка
 badWordsFilter.add(require("bad-words-next/data/ua.json")); // Добавляем словарь для украинского языка
@@ -63,6 +64,7 @@ const RequestForm = () => {
   const [isPriceDisabled, setIsPriceDisabled] = useState(false);
   const [isTelegramChecked, setIsTelegramChecked] = useState(false);
   const [isViberChecked, setIsViberChecked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleItemsSelect = (items: ICategory[]) => {
     setSelectedItems(items);
@@ -103,8 +105,9 @@ const RequestForm = () => {
     }
 
     try {
-      await axios.post("/orders", updatedValues);
+      // await axios.post("/orders", updatedValues);
       toast.success("Дані успішно відправлені на сервер");
+      setIsModalOpen(true);
     } catch (error) {
       toast.error("Помилка при відправці даних на сервер:");
       console.error("Помилка при відправці даних на сервер:", error);
@@ -306,6 +309,11 @@ const RequestForm = () => {
           </Form>
         )}
       </Formik>
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <SmsCodeInput />
+        </Modal>
+      )}
     </div>
   );
 };

@@ -77,13 +77,13 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
                   <label
                     htmlFor="email"
                     className={styles.inputTitle}>
-                    Номер телефону або ел. почта
+                    Електронна пошта
                   </label>
                   <Field
                     type="email"
                     name="email"
                     className={styles.loginInput}
-                    placeholder="+380"
+                    placeholder="exempl@exp.exp"
                     autoComplete="current-email"
                   />
                   <ErrorMessage
