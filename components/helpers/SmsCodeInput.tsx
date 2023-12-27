@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "@/styles/components/helpers/SmsCodeInput.module.css";
 import Link from "next/link";
+import Image from "next/image";
+import ViberQrcode from "@/public/QRCode/ViberQrcode.png";
+import TelegramQrcode from "@/public/QRCode/TelegramQrcode.png";
 
 const SmsCodeInput = () => {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
@@ -97,18 +100,32 @@ const SmsCodeInput = () => {
         на Чат-бот. Запуск Чат-боту необхідний для подальшого отримання відгуків
         на ваш запит.
       </p>
-      <Link
-        className={styles.linkBot}
-        href="viber://pa?chatURI=wechirka"
-        target="_blank">
-        viber
-      </Link>
-      <Link
-        className={styles.linkBot}
-        href="https://t.me/WechirkaBot"
-        target="_blank">
-        telegram
-      </Link>
+      <div className={styles.linkContainer}>
+        <Link
+          className={styles.linkBot}
+          href="viber://pa?chatURI=wechirka"
+          target="_blank">
+          <Image
+            src={ViberQrcode}
+            fill
+            alt={"qr code viber"}
+            className={styles.qrCode}
+          />
+          viber
+        </Link>
+        <Link
+          className={styles.linkBot}
+          href="https://t.me/WechirkaBot"
+          target="_blank">
+          <Image
+            src={TelegramQrcode}
+            fill
+            alt={"qr code viber"}
+            className={styles.qrCode}
+          />
+          telegram
+        </Link>
+      </div>
     </div>
   );
 };
