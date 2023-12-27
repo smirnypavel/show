@@ -99,12 +99,14 @@ const SmsCodeInput = () => {
       </p>
       <Link
         className={styles.linkBot}
-        href="https://pa?chatURI=wechirka">
+        href="viber://pa?chatURI=wechirka"
+        target="_blank">
         viber
       </Link>
       <Link
         className={styles.linkBot}
-        href="https://t.me/wechirka">
+        href="https://t.me/WechirkaBot"
+        target="_blank">
         telegram
       </Link>
     </div>
