@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "@/styles/components/helpers/SmsCodeInput.module.css";
+import Link from "next/link";
 
 const SmsCodeInput = () => {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
@@ -96,6 +97,16 @@ const SmsCodeInput = () => {
         на Чат-бот. Запуск Чат-боту необхідний для подальшого отримання відгуків
         на ваш запит.
       </p>
+      <Link
+        className={styles.linkBot}
+        href="https://pa?chatURI=wechirka">
+        viber
+      </Link>
+      <Link
+        className={styles.linkBot}
+        href="https://t.me/wechirka">
+        telegram
+      </Link>
     </div>
   );
 };
