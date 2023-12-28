@@ -138,6 +138,23 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+export const updatePassword = createAsyncThunk(
+  "auth/updatePassword",
+  async (credentials: {}, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.patch("/users/change-password", credentials);
+      toast.success("Password updated successfully");
+      return data;
+    } catch (error: any) {
+      toast.error("An error occurred during password update");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const getUser = createAsyncThunk(
   "auth/getUser",

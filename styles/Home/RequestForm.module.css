@@ -1,7 +1,7 @@
 .form {
   background-color: var(--accent-color);
   border-radius: 16px;
-  height: 729px;
+  min-height: 729px;
   width: 756px;
   position: relative;
   -webkit-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
@@ -22,7 +22,6 @@
 .info {
   display: flex;
   flex-direction: column;
-
   padding-left: 80px;
 }
 
@@ -62,6 +61,9 @@
   border: none;
   padding-left: 16px;
   box-sizing: border-box;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 .field {
   background-color: #f4f4f4;
@@ -73,6 +75,9 @@
   resize: none;
   padding: 8px 16px 16px 8px;
   box-sizing: border-box; /* Учитываем padding в общих размерах */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 .textWrapper2 {
   color: var(--gray);
@@ -93,7 +98,11 @@
   padding-left: 16px;
   margin-top: 12px;
   box-sizing: border-box;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
+
 .description {
   margin-top: 20px;
   height: 113px;
@@ -134,6 +143,9 @@
   margin-bottom: 12px;
   box-sizing: border-box;
   margin-left: 40px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 
 .disabled {
@@ -147,7 +159,6 @@
 }
 .checkboxWrapper {
   display: flex;
-  align-items: center;
   margin-left: 40px;
 }
 
@@ -170,14 +181,20 @@
 
 /* Стили для отображения выбранного чекбокса */
 .checkboxWrapper input[type="checkbox"]:checked + label::before {
-  background-color: #2195f3; /* Цвет фона при выборе чекбокса */
+  background-color: var(--button-bg-color);
+  width: 18px; /* Задаем ширину круглого чекбокса */
+  height: 18px; /* Задаем высоту круглого чекбокса */
+  border: none;
+  margin-right: 9px; /* Отступ между чекбоксом и текстом */
 }
 .checkBoxLabel {
   color: var(--black);
   font-family: "Inter-Medium", Helvetica;
   font-size: 16px;
   font-weight: 500;
-  margin-left: 4px;
+  /* margin-left: 4px; */
+  display: flex;
+  align-items: center;
 }
 .divWrapper {
   background-color: #f4f4f4;
@@ -259,9 +276,12 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-left: 200px;
+  margin-left: 80px;
   justify-content: center;
   padding: 10px 28px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 
 .textWrapper7 {
@@ -323,6 +343,9 @@
   margin-bottom: 24px;
   transition: box-shadow 0.3s ease;
   cursor: pointer; /* Добавим указатель при наведении */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 
 .textWrapper {

@@ -34,7 +34,7 @@ const HomeSearchBar = () => {
 
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(`/artists?search=${searchTerm}`);
+    router.push(`/artists?req=${searchTerm}`);
   };
 
   return (

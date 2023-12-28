@@ -1,7 +1,7 @@
 .container {
   margin-left: 40px;
   width: 372px;
-  height: 729px;
+  height: 745px;
   border-radius: 16px;
   overflow: hidden;
   background: var(--white);
@@ -48,7 +48,7 @@
   line-height: normal;
 }
 .topArtists {
-  margin-top: 16px;
+  margin-top: 36px;
   display: flex;
   width: 373px;
   height: 161px;

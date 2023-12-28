@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Field, Form, Formik, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import BadWordsNext from "bad-words-next";
-import CitySearch from "@/components/helpers/searchCity";
 import RequestFormCategorySelect from "@/components/Home/RequestFormCategorySelect";
 import { ICategory } from "@/types/IAuth";
 import { toast } from "react-hot-toast";
@@ -13,6 +12,8 @@ import Telegramlogo from "@/public/logo/Telegramlogo.svg";
 import Viberlogo from "@/public/logo/Viberlogo.svg";
 import Image from "next/image";
 import DateTimePicker from "../helpers/DateTimePicker";
+import Modal from "../helpers/Modal";
+import SmsCodeInput from "../helpers/SmsCodeInput";
 const badWordsFilter = new BadWordsNext();
 badWordsFilter.add(require("bad-words-next/data/ru.json")); // Добавляем словарь для русского языка
 badWordsFilter.add(require("bad-words-next/data/ua.json")); // Добавляем словарь для украинского языка
@@ -33,12 +34,11 @@ const initialValues: FormValues = {
   description: "",
   date: "",
   price: "",
-  botLink: "",
 };
 
 const validationSchema = Yup.object().shape({
   phone: Yup.string()
-    .matches(/^\+?\d{11,15}$/, "Невірний формат телефона")
+    .matches(/^\+?\d{10,15}$/, "Невірний формат телефона")
     .required("Обов'язкове поле"),
   name: Yup.string()
     .min(3, "Мінімальна довжина – 3 символи")
@@ -61,8 +61,7 @@ const RequestForm = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [isPriceDisabled, setIsPriceDisabled] = useState(false);
-  const [isTelegramChecked, setIsTelegramChecked] = useState(false);
-  const [isViberChecked, setIsViberChecked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleItemsSelect = (items: ICategory[]) => {
     setSelectedItems(items);
@@ -91,11 +90,6 @@ const RequestForm = () => {
       location: selectedCity,
       category: selectedItems,
       phone: phoneAsNumber,
-      botLink: isTelegramChecked
-        ? "https://t.me/WechirkaBot"
-        : isViberChecked
-        ? "ссылка для Viber"
-        : "", // Устанавливаем ссылку в зависимости от выбранного чекбокса
     };
 
     if (isPriceDisabled) {
@@ -103,8 +97,9 @@ const RequestForm = () => {
     }
 
     try {
-      await axios.post("/orders", updatedValues);
+      // await axios.post("/orders", updatedValues);
       toast.success("Дані успішно відправлені на сервер");
+      setIsModalOpen(true);
     } catch (error) {
       toast.error("Помилка при відправці даних на сервер:");
       console.error("Помилка при відправці даних на сервер:", error);
@@ -117,23 +112,6 @@ const RequestForm = () => {
     target: { checked: boolean | ((prevState: boolean) => boolean) };
   }) => {
     setIsPriceDisabled(e.target.checked);
-  };
-  const handleCheckboxSocialChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const { id, checked } = e.target;
-
-    // Обработчик для чекбокса Telegram
-    if (id === "checkboxTelegarm") {
-      setIsTelegramChecked(checked);
-      setIsViberChecked(false); // Отключаем чекбокс Viber при выборе Telegram
-    }
-
-    // Обработчик для чекбокса Viber
-    if (id === "checkboxViber") {
-      setIsViberChecked(checked);
-      setIsTelegramChecked(false); // Отключаем чекбокс Telegram при выборе Viber
-    }
   };
 
   return (
@@ -250,51 +228,7 @@ const RequestForm = () => {
               </label>
               <DateTimePicker onDateTimeSelect={handleDateTimeSelect} />
             </div>
-            <div className={styles.socialTitle}>
-              Оберіть зручний для Вас месенджер *
-            </div>
-            <div className={styles.social}>
-              <div className={styles.socialWrapper}>
-                <input
-                  type="checkbox"
-                  onChange={handleCheckboxSocialChange}
-                  checked={isTelegramChecked}
-                  id="checkboxTelegarm"
-                />
-                <label
-                  htmlFor="checkboxTelegarm"
-                  className={styles.checkBoxLabel}>
-                  Telegram
-                  <Image
-                    src={Telegramlogo}
-                    alt="logo telegram"
-                    width={24}
-                    height={24}
-                    className={styles.TelegramIcon}
-                  />
-                </label>
-              </div>
-              <div className={styles.socialWrapper}>
-                <input
-                  type="checkbox"
-                  onChange={handleCheckboxSocialChange}
-                  checked={isViberChecked}
-                  id="checkboxViber"
-                />
-                <label
-                  htmlFor="checkboxViber"
-                  className={styles.checkBoxLabel}>
-                  Viber{" "}
-                  <Image
-                    src={Viberlogo}
-                    alt="logo Viber"
-                    width={24}
-                    height={24}
-                    className={styles.ViberIcon}
-                  />
-                </label>
-              </div>
-            </div>
+
             <div className={styles.btnContainer}>
               <button
                 type="submit"
@@ -306,6 +240,11 @@ const RequestForm = () => {
           </Form>
         )}
       </Formik>
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <SmsCodeInput />
+        </Modal>
+      )}
     </div>
   );
 };

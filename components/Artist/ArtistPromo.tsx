@@ -110,7 +110,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                 ? `${styles.portfolioButton} ${styles.portfolioButtonActive}`
                 : styles.portfolioButton
             }>
-            Фідео
+            Відео
           </button>
         </div>
         <div>
@@ -123,10 +123,8 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                   </div>
                 ) : (
                   artist.photo.map((item, index) => (
-                    <>
-                      <li
-                        key={item.publicId}
-                        className={styles.photoListItem}>
+                    <div key={item.publicId}>
+                      <li className={styles.photoListItem}>
                         <Image
                           src={item.url}
                           alt={"user photo"}
@@ -149,7 +147,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                           </li>
                         </Modal>
                       )}
-                    </>
+                    </div>
                   ))
                 )}
               </ul>

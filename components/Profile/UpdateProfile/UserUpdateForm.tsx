@@ -80,14 +80,6 @@ const UserUpdateForm = () => {
     dispatch(updateUser(filteredValues));
   };
 
-  // const showCitySearch = (
-  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  // ) => {
-  //   event.stopPropagation();
-  //   if (!searchCity) {
-  //     setSearchCity(true);
-  //   }
-  // };
   const handleItemsSelect = (items: ICategory[]) => {
     const updatedCategories = [...userCategory, ...items];
     setSelectedItems(items);
@@ -201,10 +193,10 @@ const UserUpdateForm = () => {
                     className="text-danger"
                   />
                   <div>
-                    <button className={styles.addButton}>
+                    <div className={styles.addButton}>
                       <FiPlus className={styles.addIcon} />
                       Додати категорії
-                    </button>
+                    </div>
                     <CategorySelector onItemsSelected={handleItemsSelect} />
                   </div>
                   <p className={styles.formInputTitle}>

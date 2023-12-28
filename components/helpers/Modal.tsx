@@ -20,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
         <button
           className={styles.closeButton}
           onClick={onClose}>
-          Close
+          Закрити
         </button>
         {children}
       </div>

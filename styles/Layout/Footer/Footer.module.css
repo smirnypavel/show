@@ -4,8 +4,10 @@
   border-top: 2px solid #67676723;
 }
 .containerMap {
+  width: 100%;
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  gap: 50px;
 }
 .title {
   color: #000000;

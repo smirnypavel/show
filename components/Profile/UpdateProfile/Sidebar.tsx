@@ -56,6 +56,13 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Добавь кнопки для других компонентов, если нужно */}
       <div className={styles.exitingButtonContainer}>
         <button
+          className={`${styles.sidebarButton} ${
+            activeComponent === "Component5" ? styles.active : ""
+          }`}
+          onClick={() => handleComponentChange("Component5")}>
+          Змінити пароль
+        </button>
+        <button
           className={styles.sidebarButton}
           onClick={handleLogout}>
           Вийти

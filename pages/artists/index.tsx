@@ -1,66 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
 import styles from "@/styles/Artist/Artist.module.css";
 import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
-import { GetServerSideProps } from "next/types";
 import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
 import ArtistList from "@/components/Artist/ArtistList";
 import MetaTags from "@/components/Meta/MetaTags";
 import Pagination from "@/components/Artist/Pagination";
+import { GetServerSideProps } from "next/types";
+import Image from "next/image";
+import Link from "next/link";
+import styles2 from "@/styles/components/Artist/ArtistList.module.css";
+import { GrLocation } from "react-icons/gr";
+import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
+import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { IoIosArrowForward } from "react-icons/io";
 
-export interface ItemsPageProps {
+interface ArtistsProps {
   artists: IUserAuth[];
   totalPages: number;
 }
 
-const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
+const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
   const [filteredArtists, setFilteredArtists] = useState<IUserAuth[]>(artists);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [selectedCity, setSelectedCity] = useState<string>("");
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string>("");
-  const [selectedSubcategoryId, setSelectedSubcategoryId] =
-    useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPagesState, setTotalPages] = useState<number>(totalPages);
-
-  const handleSearch = async (page: number = 1) => {
-    try {
-      let url = `/users?page=${page}`;
-      const queryParams = [];
-
-      if (selectedCity) {
-        queryParams.push(`loc=${selectedCity}`);
-      }
-      if (selectedCategoryId) {
-        queryParams.push(`cat=${selectedCategoryId}`);
-      }
-      if (selectedSubcategoryId) {
-        queryParams.push(`subcat=${selectedSubcategoryId}`);
-      }
-      if (searchTerm.trim() !== "") {
-        queryParams.push(`req=${searchTerm}`);
-      }
-
-      url += queryParams.join("&");
-
-      const response = await axios.get(url);
-      const { data, totalPages } = response.data;
-
-      setFilteredArtists(data);
-      setTotalPages(totalPages);
-    } catch (error) {
-      toast.error(`Nothing found for your request ${searchTerm}`);
-      setFilteredArtists([]);
-      setTotalPages(1);
-    }
-  };
+  const router = useRouter();
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    router.push(`/artists?page=${page}`);
   };
 
   useEffect(() => {
@@ -68,26 +37,15 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
     const { search } = window.location;
     const params = new URLSearchParams(search);
 
-    const cityParam = params.get("loc");
-    const categoryParam = params.get("cat");
-    const subcategoryParam = params.get("subcat");
-    const reqParam = params.get("req");
-
-    if (cityParam) setSelectedCity(cityParam);
-    if (categoryParam) setSelectedCategoryId(categoryParam);
-    if (subcategoryParam) setSelectedSubcategoryId(subcategoryParam);
-    if (reqParam) setSearchTerm(reqParam);
+    const pageFromQuery = params.get("page")
+      ? parseInt(params.get("page") as string, 10)
+      : 1;
+    setCurrentPage(pageFromQuery);
   }, [artists]);
 
-  useEffect(() => {
-    handleSearch(currentPage);
-  }, [
-    searchTerm,
-    selectedCity,
-    selectedCategoryId,
-    selectedSubcategoryId,
-    currentPage,
-  ]);
+  const handleGoBack = () => {
+    router.back(); // Переход назад на предыдущую страницу
+  };
 
   return (
     <div className={styles.container}>
@@ -98,44 +56,218 @@ const Artists: React.FC<ItemsPageProps> = ({ artists, totalPages }) => {
       />
 
       <ArtistSearchBar
-        onSearch={(searchTerm: string) => {
-          setSearchTerm(searchTerm);
+        onSearch={(req: string) => {
+          router.push({
+            pathname: "/artists",
+            query: {
+              ...router.query,
+              req,
+            },
+          });
+          // setSearchTerm(searchTerm);
         }}
-        onCategoryChange={(categoryId: string) => {
-          setSelectedCategoryId(categoryId);
+        onCategoryChange={(cat: string) => {
+          router.push({
+            pathname: "/artists",
+            query: {
+              ...router.query,
+
+              cat,
+            },
+          });
+          // setSelectedCategoryId(categoryId);
         }}
-        onSubcategoryChange={(subcategoryId: string) => {
-          setSelectedSubcategoryId(subcategoryId);
+        onSubcategoryChange={(subcat: string) => {
+          router.push({
+            pathname: "/artists",
+            query: {
+              ...router.query,
+
+              subcat,
+            },
+          });
+          // setSelectedSubcategoryId(subcategoryId);
         }}
-        onSelectedCity={(city: string) => {
-          setSelectedCity(city);
+        onSelectedCity={(loc: string) => {
+          router.push({
+            pathname: "/artists",
+            query: {
+              ...router.query,
+
+              loc,
+            },
+          });
+          // setSelectedCity(city);
         }}
       />
 
       <div className={styles.content}>
-        <ArtistList
-          artists={filteredArtists}
-          currentPage={currentPage}
-        />
+        <div className={styles2.container}>
+          <ul className={styles2.artistList}>
+            <div className={styles2.buttonBackContainer}>
+              <Link
+                href="/"
+                // onClick={handleGoBack}
+                className={styles2.buttonBack}>
+                <div> Головна</div>
+              </Link>
+              <IoIosArrowForward />
+              <button className={styles2.buttonBackText}>Артисти</button>
+            </div>
+            {filteredArtists &&
+              filteredArtists.map((artist) => (
+                <li
+                  key={artist._id}
+                  className={styles2.artistItem}>
+                  <div className={styles2.cardContainer}>
+                    <Link href={`/artists/${artist._id}?page=${currentPage}`}>
+                      <div className={styles2.imageContainer}>
+                        {artist.master_photo.url ? (
+                          <Image
+                            src={artist.master_photo.url}
+                            alt={"user photo"}
+                            fill
+                            className={styles2.image}
+                            sizes="(min-width: 808px) 50vw, 100vw"
+                          />
+                        ) : (
+                          <Image
+                            src={NoPhoto_PNG}
+                            alt={"default user photo"}
+                            fill
+                            className={styles2.image}
+                            sizes="(min-width: 808px) 50vw, 100vw"
+                          />
+                        )}
+                      </div>
+                    </Link>
+                    <div className={styles2.cardInfo}>
+                      <div className={styles2.cardTopContainer}>
+                        <p className={styles2.locationContainer}>
+                          <GrLocation className={styles2.geoIcon} />
+                          {
+                            artist.location
+                              ? artist.location // Если есть местоположение, отобразить его
+                              : "Місто не обрано" // Если нет, вывести сообщение
+                          }
+                        </p>
+                        <p>
+                          ₴ {artist.price ? artist.price : "Ціна не вказана"}
+                        </p>
+
+                        <div className={styles2.artistProfile}>
+                          <div className={styles2.avatarContainer}>
+                            {artist.avatar.url ? (
+                              <Image
+                                src={artist.avatar.url}
+                                alt={"user avatar"}
+                                fill
+                                className={styles2.avatar}
+                                sizes="(min-width: 808px) 50vw, 100vw"
+                              />
+                            ) : (
+                              <Image
+                                src={UserNoPhoto}
+                                alt={"default user avatar"}
+                                fill
+                                className={styles2.avatar}
+                                sizes="(min-width: 808px) 50vw, 100vw"
+                              />
+                            )}
+                          </div>
+                          <p> {artist.firstName}</p>
+                        </div>
+                      </div>
+                      <div className={styles2.categoryContainer}>
+                        {artist.category.length === 0 ? (
+                          <div className={styles2.categoryArtist}>
+                            Категорії не обрані
+                          </div>
+                        ) : (
+                          artist.category.map((cat) =>
+                            cat.subcategories.map((subCat) => (
+                              <div
+                                className={styles2.categoryArtist}
+                                key={subCat.id}>
+                                {subCat.name}
+                              </div>
+                            ))
+                          )
+                        )}
+                      </div>
+                      <div className={styles2.descriptionContainer}>
+                        <p className={styles2.descriptionTitle}>
+                          {artist.title}
+                        </p>
+                        <p className={styles2.descriptionText}>
+                          {artist.description
+                            ? artist.description
+                            : "Опис не надано"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
       <div className={styles.pagination}>
         <Pagination
           currentPage={currentPage}
           onPageChange={handlePageChange}
-          totalPages={totalPagesState}
+          totalPages={totalPages}
         />
       </div>
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps<ItemsPageProps> = async ({
+export const getServerSideProps: GetServerSideProps<ArtistsProps> = async ({
   query,
 }) => {
   try {
     const page = query.page || 1;
-    const response = await axios.get(`/users?page=${page}`);
-    const artists: IUserAuth[] = response.data.data;
+    const {
+      loc,
+      cat,
+      subcat,
+      req,
+      searchTerm,
+      selectedCategoryId,
+      selectedSubcategoryId,
+      selectedCity,
+    } = query;
+
+    let url = `/users?page=${page}`;
+
+    if (loc) {
+      url += `&loc=${loc}`;
+    }
+    if (cat) {
+      url += `&cat=${cat}`;
+    }
+    if (subcat) {
+      url += `&subcat=${subcat}`;
+    }
+    if (req) {
+      url += `&req=${req}`;
+    }
+    if (searchTerm) {
+      url += `&searchTerm=${searchTerm}`;
+    }
+    if (selectedCategoryId) {
+      url += `&selectedCategoryId=${selectedCategoryId}`;
+    }
+    if (selectedSubcategoryId) {
+      url += `&selectedSubcategoryId=${selectedSubcategoryId}`;
+    }
+    if (selectedCity) {
+      url += `&selectedCity=${selectedCity}`;
+    }
+
+    const response = await axios.get(url);
+    const artists: any[] = response.data.data;
     const totalPages: number = response.data.totalPages;
 
     return {
@@ -145,7 +277,7 @@ export const getServerSideProps: GetServerSideProps<ItemsPageProps> = async ({
       },
     };
   } catch (error) {
-    console.log("Error:", error);
+    console.error("Error:", error);
     return {
       props: {
         artists: [],

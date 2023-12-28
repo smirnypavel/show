@@ -14,7 +14,7 @@ export interface ItemListProps {
 
 const ArtistList: React.FC<ItemListProps> = ({ artists, currentPage }) => {
   const router = useRouter();
-
+  console.log("artistsList", artists);
   const handleGoBack = () => {
     router.back(); // Переход назад на предыдущую страницу
   };

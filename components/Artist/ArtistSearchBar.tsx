@@ -3,6 +3,7 @@ import SearchBarCategorySelect from "./SearchBarCategorySelect";
 import styles from "@/styles/components/Artist/ArtistSearchBar.module.css";
 import { BsSearch, BsX } from "react-icons/bs";
 import ChooseLocationArtist from "./ChooseLocationArtist";
+import { useRouter } from "next/router";
 
 interface ArtistSearchBarProps {
   onSearch: (searchTerm: string) => void;
@@ -18,6 +19,7 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
   onSelectedCity,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -34,18 +36,34 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
     onSearch(""); // Отправляем пустой запрос
     onCategoryChange(""); // Сбрасываем выбранную категорию
     onSubcategoryChange("");
+    router.push({
+      pathname: "/artists",
+      query: {
+        loc: "",
+        cat: "",
+        subcat: "",
+        req: "",
+        searchTerm: "",
+        // selectedCategoryId: "",
+        // selectedSubcategoryId: "",
+        // selectedCity: "",
+      },
+    });
   };
+
   const handleCitySelect = (city: string) => {
     onSelectedCity(city);
   };
-  const clearButton = searchTerm ? ( // Условие для отображения кнопки крестика
+
+  const clearButton = searchTerm ? (
     <button
       type="button"
       onClick={handleClearClick}
       className={styles.buttonClear}>
-      <BsX className={styles.buttonIconClear} /> {/* Иконка крестика */}
+      <BsX className={styles.buttonIconClear} />
     </button>
   ) : null;
+
   return (
     <div>
       <div className={styles.container}>

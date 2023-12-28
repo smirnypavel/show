@@ -10,7 +10,7 @@ export default function Document() {
         />
         <meta
           property="og:description"
-          content="Іноваційний підхід до пошуку людей якм працють у сфері розваг"
+          content="Іноваційний підхід до пошуку людей які працють у сфері розваг"
         />
         <meta
           property="og:image"
