@@ -22,7 +22,6 @@
 .info {
   display: flex;
   flex-direction: column;
-
   padding-left: 80px;
 }
 
@@ -76,6 +75,9 @@
   resize: none;
   padding: 8px 16px 16px 8px;
   box-sizing: border-box; /* Учитываем padding в общих размерах */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 .textWrapper2 {
   color: var(--gray);
@@ -107,9 +109,6 @@
   width: 337px;
   margin-bottom: 20px;
   position: relative;
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
 }
 .description::placeholder {
   color: var(--gray);
@@ -160,7 +159,6 @@
 }
 .checkboxWrapper {
   display: flex;
-  align-items: center;
   margin-left: 40px;
 }
 
@@ -183,14 +181,20 @@
 
 /* Стили для отображения выбранного чекбокса */
 .checkboxWrapper input[type="checkbox"]:checked + label::before {
-  background-color: #2195f3; /* Цвет фона при выборе чекбокса */
+  background-color: var(--button-bg-color);
+  width: 18px; /* Задаем ширину круглого чекбокса */
+  height: 18px; /* Задаем высоту круглого чекбокса */
+  border: none;
+  margin-right: 9px; /* Отступ между чекбоксом и текстом */
 }
 .checkBoxLabel {
   color: var(--black);
   font-family: "Inter-Medium", Helvetica;
   font-size: 16px;
   font-weight: 500;
-  margin-left: 4px;
+  /* margin-left: 4px; */
+  display: flex;
+  align-items: center;
 }
 .divWrapper {
   background-color: #f4f4f4;
@@ -272,7 +276,7 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-left: 200px;
+  margin-left: 80px;
   justify-content: center;
   padding: 10px 28px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);

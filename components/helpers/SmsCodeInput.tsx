@@ -22,6 +22,8 @@ const SmsCodeInput = () => {
 
     if (value && index < 5) {
       inputRefs.current[index + 1]?.focus();
+    } else if (!value && index > 0) {
+      inputRefs.current[index - 1]?.focus();
     }
   };
 
