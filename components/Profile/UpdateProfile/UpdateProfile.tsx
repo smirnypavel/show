@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Sidebar from "./Sidebar";
 import Component1 from "@/components/Profile/UpdateProfile/ProfileUpdateInfo"; // Подключи компоненты, которые тебе нужны
+import Component2 from "@/components/Profile/UpdateProfile/UpdateContacts";
 import Component3 from "@/components/Profile/UpdateProfile/UploadMedia/UpdateMedia";
 import Component4 from "@/components/Profile/UpdateProfile/payment";
 import Component5 from "@/components/Profile/UpdateProfile/ChangePassword";
@@ -32,6 +33,7 @@ const UpdateProfile: React.FC = () => {
         />
         <div className={styles.content}>
           {activeComponent === "Component1" && <Component1 />}
+          {activeComponent === "Component2" && <Component2 />}
           {activeComponent === "Component3" && <Component3 />}
           {activeComponent === "Component4" && <Component4 />}
           {activeComponent === "Component5" && <Component5 />}

@@ -1,0 +1,36 @@
+.contactsContainer {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: flex;
+  width: 100%;
+}
+.contactsTitle {
+  font-size: var(--h1-medium-font-size);
+  font-weight: var(--h1-medium-font-weight);
+  font-family: var(--h1-medium-font-family);
+  color: var(--black);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.contactLabel {
+  font-size: var(--h2-regular-font-size);
+  font-weight: var(--h2-regular-font-weight);
+  font-family: var(--h2-regular-font-family);
+  color: var(--black);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.contactIcon {
+  height: 24px;
+  width: 24px;
+  /* font-size: 24px; */
+}
+.contactIconWhatsapp {
+  padding: 0;
+  margin: 0;
+  height: 30px;
+  width: 30px;
+  /* font-size: 10px; */
+}

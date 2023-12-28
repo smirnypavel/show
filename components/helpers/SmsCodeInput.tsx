@@ -31,25 +31,25 @@ const SmsCodeInput = () => {
     console.log("Sending code:", code.join(""));
   };
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
+  // useEffect(() => {
+  //   let interval: NodeJS.Timeout | null = null;
 
-    if (isTimerRunning) {
-      interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
-      }, 1000);
-    }
+  //   if (isTimerRunning) {
+  //     interval = setInterval(() => {
+  //       setTimer((prevTimer) => prevTimer - 1);
+  //     }, 1000);
+  //   }
 
-    if (timer === 0) {
-      setIsTimerRunning(false);
-    }
+  //   if (timer === 0) {
+  //     setIsTimerRunning(false);
+  //   }
 
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
-  }, [isTimerRunning, timer]);
+  //   return () => {
+  //     if (interval) {
+  //       clearInterval(interval);
+  //     }
+  //   };
+  // }, [isTimerRunning, timer]);
 
   const handleResendClick = () => {
     setTimer(60);
@@ -66,18 +66,20 @@ const SmsCodeInput = () => {
   return (
     <div className={styles.smsForm}>
       <p className={styles.label}>
-        Для завершення публікації вашого запиту введіть код з СМС
+        Для завершення публікації вашого запиту введіть код який вам надійшов у
+        боті
       </p>
-      <p className={styles.labelResend}>Відправити СМС повторно через</p>
+      {/* <p className={styles.labelResend}>Відправити СМС повторно через</p>
       <button
         onClick={handleResendClick}
         className={styles.resendButton}
         disabled={isTimerRunning}>
         {isTimerRunning ? `00 : ${timer}` : "Відправити повторно"}
-      </button>
+      </button> */}
       <div className={styles.smsCodeInput}>
         {Array.from({ length: 6 }, (_, index) => (
           <input
+            autoFocus={index === 0}
             key={index}
             type="text"
             maxLength={1}
@@ -96,9 +98,9 @@ const SmsCodeInput = () => {
         Далі
       </button>
       <p className={styles.labelResend}>
-        На ваш номер телефону +380 983 628 324 прийде повідомлення з посиланням
-        на Чат-бот. Запуск Чат-боту необхідний для подальшого отримання відгуків
-        на ваш запит.
+        Для того щоб відправити запит до виконавців вам потрібно активувати бот
+        та ввести код який ви отримаєте в боті. В подальшому в боті ви будете
+        отримувати відгуки від виконавців.
       </p>
       <div className={styles.linkContainer}>
         <Link

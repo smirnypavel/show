@@ -34,6 +34,7 @@ export interface IUserAuth {
   googleId: string;
   description: string;
   price: string;
+  social: Social;
 }
 
 export interface IPhoto {
@@ -61,4 +62,16 @@ export interface ISubcategory {
 export interface ILink {
   publicId: string;
   url: string;
+}
+export interface Social {
+  Instagram?: string;
+  Facebook?: string;
+  Youtube?: string;
+  TikTok?: string;
+  Vimeo?: string;
+  SoundCloud?: string;
+  Spotify?: string;
+  AppleMusic?: string;
+  Deezer?: string;
+  WebSite?: string;
 }
