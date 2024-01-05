@@ -253,3 +253,20 @@ export const deleteVideo = createAsyncThunk(
     }
   }
 );
+export const updateCategory = createAsyncThunk(
+  "auth/updateCategory",
+  async (credentials: {}, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.put("/users/update-category", credentials);
+      toast.success("Category updated successfully");
+      return data;
+    } catch (error: any) {
+      toast.error("An error Category update");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
