@@ -11,7 +11,7 @@ import { FaCheck } from "react-icons/fa6";
 import { FiPlus } from "react-icons/fi";
 
 // import RequestFormCategorySelect from "@/components/Home/RequestFormCategorySelect";
-import { ICategory } from "@/types/IAuth";
+// import { ICategory } from "@/types/IAuth";
 import CategorySelector from "@/components/Category/CategorySelected";
 import { useAppDispatch } from "@/redux/hooks";
 import { updateUser } from "@/redux/auth/authOperations";
@@ -39,8 +39,8 @@ const UserUpdateForm = () => {
   const user = useSelector(getUser);
   const dispatch = useAppDispatch();
   const [selectedCity, setSelectedCity] = useState(""); // Состояние для выбранного города
-  const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
-  const [userCategory, setUserCategory] = useState<ICategory[]>(user.category);
+  // const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
+  // const [userCategory, setUserCategory] = useState<ICategory[]>(user.category);
 
   // Функция обновления локации
   const updateLocationField = (selectedCity: string) => {
@@ -70,21 +70,21 @@ const UserUpdateForm = () => {
         location: selectedCity,
       };
     }
-    if (selectedItems.length !== 0) {
-      filteredValues = {
-        ...filteredValues,
-        category: selectedItems,
-      };
-    }
+    // if (selectedItems.length !== 0) {
+    //   filteredValues = {
+    //     ...filteredValues,
+    //     category: selectedItems,
+    //   };
+    // }
     // Вызываем onSubmit с обновленными значениями
     dispatch(updateUser(filteredValues));
   };
 
-  const handleItemsSelect = (items: ICategory[]) => {
-    const updatedCategories = [...userCategory, ...items];
-    setSelectedItems(items);
-    setUserCategory(updatedCategories);
-  };
+  // const handleItemsSelect = (items: ICategory[]) => {
+  //   const updatedCategories = [...userCategory, ...items];
+  //   setSelectedItems(items);
+  //   setUserCategory(updatedCategories);
+  // };
 
   return (
     <div>
@@ -197,13 +197,14 @@ const UserUpdateForm = () => {
                       <FiPlus className={styles.addIcon} />
                       Додати категорії
                     </div>
-                    <CategorySelector onItemsSelected={handleItemsSelect} />
+                    {/* <CategorySelector onItemsSelected={handleItemsSelect} /> */}
+                    <CategorySelector />
                   </div>
                   <p className={styles.formInputTitle}>
                     Категорії надання послуг
                   </p>
                   <div className={styles.categoryContainer}>
-                    {userCategory.map((cat) => (
+                    {user.category.map((cat) => (
                       <div
                         className={styles.categoryArtist}
                         key={cat._id}>
@@ -213,7 +214,7 @@ const UserUpdateForm = () => {
                   </div>
                   <p className={styles.catogoryTitle}>Підкатегорія</p>
                   <div className={styles.categoryContainer}>
-                    {userCategory.map((cat) =>
+                    {user.category.map((cat) =>
                       cat.subcategories.map((subCat) => (
                         <div
                           className={styles.categoryArtist}

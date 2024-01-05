@@ -5,14 +5,15 @@ import { useAppDispatch } from "@/redux/hooks";
 import { updateUser } from "@/redux/auth/authOperations";
 import styles from "@/styles/components/Profile/UpdateProfile/CategorySelector.module.css";
 
-const CategorySelector: React.FC<{
-  onItemsSelected: (items: ICategory[]) => void;
-}> = ({ onItemsSelected }) => {
+const CategorySelector = () => {
+  const dispatch = useAppDispatch();
+
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>(
     []
   );
+
   const [subcategories, setSubcategories] = useState<ISubcategory[]>([]);
   const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [subcategoriesVisible, setSubcategoriesVisible] =
@@ -41,12 +42,13 @@ const CategorySelector: React.FC<{
     }
   }, [selectedCategory, categories]);
 
-  useEffect(() => {
-    onItemsSelected(selectedItems);
-  }, [selectedItems]);
+  // useEffect(() => {
+  //   onItemsSelected(selectedItems);
+  // }, [selectedItems]);
 
   const handleCategoryChange = (categoryId: string) => {
     setSelectedCategory(categoryId);
+
     setSelectedSubcategories([]);
     setSubcategoriesVisible(true);
   };
@@ -78,10 +80,13 @@ const CategorySelector: React.FC<{
       setSelectedItems([...selectedItems, newItem]);
       setSelectedSubcategories([]);
       setSubcategoriesVisible(false);
+      handleUpdateUserCategory();
     }
   };
 
-  // const handleUpdateUserCategory = () => {};
+  const handleUpdateUserCategory = () => {
+    dispatch(updateUser({ categories: selectedItems }));
+  };
 
   return (
     <div className={styles.categoryContainer}>

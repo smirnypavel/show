@@ -11,6 +11,7 @@ import {
   deletePhoto,
   deleteVideo,
   updatePassword,
+  updateCategory,
 } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
@@ -215,6 +216,19 @@ export const authSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.user = action.payload.data.posts;
         state.isLoading = false;
+        state.isLoading = false;
+      })
+      .addCase(updateCategory.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateCategory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "";
+      })
+      .addCase(updateCategory.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
         state.isLoading = false;
       });
   },
