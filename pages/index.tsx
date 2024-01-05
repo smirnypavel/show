@@ -2,6 +2,7 @@ import HomeSearchBar from "@/components/Home/HomeSearchBar";
 import HomeTopBanner from "@/components/Home/HomeTopBanner/HomeTopBanner";
 import RequestForm from "@/components/Home/RequestForm";
 import TopContainer from "@/components/Home/TopContainer/TopContainer";
+
 import MetaTags from "@/components/Meta/MetaTags";
 import styles from "@/styles/Home/Home.module.css";
 

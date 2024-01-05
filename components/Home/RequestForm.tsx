@@ -97,7 +97,7 @@ const RequestForm = () => {
     }
 
     try {
-      // await axios.post("/orders", updatedValues);
+      await axios.post("/orders", updatedValues);
       toast.success("Дані успішно відправлені на сервер");
       setIsModalOpen(true);
     } catch (error) {

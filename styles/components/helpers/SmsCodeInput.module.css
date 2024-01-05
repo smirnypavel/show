@@ -87,7 +87,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 150px;
 }
 .linkBot {
   margin-top: 24px;
@@ -109,4 +109,117 @@
   -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+}
+.button {
+  all: unset;
+
+  font-family: inherit;
+  font-size: 20px;
+  background-color: var(--button-bg-color);
+  margin-top: 24px;
+  color: white;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.button .span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+.button .svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button:hover .svgWrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.button:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.button:hover span {
+  transform: translateX(5em);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+.error {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shakeInput 0.5s;
+}
+
+@keyframes shakeInput {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-3px);
+  }
+  40% {
+    transform: translateX(3px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.errorText {
+  margin-top: 20px;
+  color: #f32b2b;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 400;
+  top: 100%;
+  left: 10px;
 }

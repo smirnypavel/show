@@ -1,15 +1,18 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import styles from "@/styles/components/helpers/SmsCodeInput.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import ViberQrcode from "@/public/QRCode/ViberQrcode.png";
 import TelegramQrcode from "@/public/QRCode/TelegramQrcode.png";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const SmsCodeInput = () => {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
-  const [timer, setTimer] = useState(60);
-  const [isTimerRunning, setIsTimerRunning] = useState(false);
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
+  const [resp, setResp] = useState<any>([]);
+  const [error, setError] = useState(false);
+  const [shakeKey, setShakeKey] = useState(0);
 
   const handleCodeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -27,62 +30,40 @@ const SmsCodeInput = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // Send the code to the server
-    // You can implement the logic to send the code to the server here
-    console.log("Sending code:", code.join(""));
-  };
+  const handleSubmit = async () => {
+    const codeString = code.join("");
+    setError(false);
 
-  // useEffect(() => {
-  //   let interval: NodeJS.Timeout | null = null;
-
-  //   if (isTimerRunning) {
-  //     interval = setInterval(() => {
-  //       setTimer((prevTimer) => prevTimer - 1);
-  //     }, 1000);
-  //   }
-
-  //   if (timer === 0) {
-  //     setIsTimerRunning(false);
-  //   }
-
-  //   return () => {
-  //     if (interval) {
-  //       clearInterval(interval);
-  //     }
-  //   };
-  // }, [isTimerRunning, timer]);
-
-  const handleResendClick = () => {
-    setTimer(60);
-    setIsTimerRunning(true);
-    console.log("Resending code...");
-  };
-  useEffect(() => {
-    if (!isTimerRunning) {
-      setTimer(60);
-      setIsTimerRunning(true);
+    try {
+      const response = await axios.post(`/orders/verify/${codeString}`);
+      if (response.status === 200) {
+        setResp(response.data);
+        toast.success("Успешно отправлено");
+        setError(false);
+      } else {
+        toast.error("Ошибка при отправке данных");
+        setError(true);
+        setShakeKey((prevKey) => prevKey + 1);
+      }
+    } catch (error) {
+      toast.error("Ошибка при отправке данных");
+      setError(true);
+      setShakeKey((prevKey) => prevKey + 1);
     }
-  }, []); // Empty dependency array to run the effect only on mount
+  };
 
   return (
-    <div className={styles.smsForm}>
+    <div className={`${styles.smsForm} ${error ? styles.error : ""}`}>
       <p className={styles.label}>
         Для завершення публікації вашого запиту введіть код який вам надійшов у
         боті
       </p>
-      {/* <p className={styles.labelResend}>Відправити СМС повторно через</p>
-      <button
-        onClick={handleResendClick}
-        className={styles.resendButton}
-        disabled={isTimerRunning}>
-        {isTimerRunning ? `00 : ${timer}` : "Відправити повторно"}
-      </button> */}
+
       <div className={styles.smsCodeInput}>
         {Array.from({ length: 6 }, (_, index) => (
           <input
+            key={`${index}-${shakeKey}`} // Используем key для обновления анимации
             autoFocus={index === 0}
-            key={index}
             type="text"
             maxLength={1}
             value={code[index]}
@@ -90,14 +71,30 @@ const SmsCodeInput = () => {
             ref={(input) => {
               inputRefs.current[index] = input;
             }}
-            className={styles.inputField}
+            className={`${styles.inputField} ${error ? styles.shake : ""}`}
           />
         ))}
       </div>
       <button
-        onClick={handleSubmit}
-        className={styles.submitButton}>
-        Далі
+        className={styles.button}
+        onClick={handleSubmit}>
+        <div className="svg-wrapper-1">
+          <div className={styles.svgWrapper}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24">
+              <path
+                fill="none"
+                d="M0 0h24v24H0z"></path>
+              <path
+                fill="currentColor"
+                d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"></path>
+            </svg>
+          </div>
+        </div>
+        <span className={styles.span}>Send</span>
       </button>
       <p className={styles.labelResend}>
         Для того щоб відправити запит до виконавців вам потрібно активувати бот
@@ -115,7 +112,7 @@ const SmsCodeInput = () => {
             alt={"qr code viber"}
             className={styles.qrCode}
           />
-          viber
+          Viber
         </Link>
         <Link
           className={styles.linkBot}
@@ -127,7 +124,7 @@ const SmsCodeInput = () => {
             alt={"qr code viber"}
             className={styles.qrCode}
           />
-          telegram
+          Telegram
         </Link>
       </div>
     </div>
