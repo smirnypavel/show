@@ -169,3 +169,13 @@
 .submitButton:active {
   box-shadow: 0px 4px 12px #00000040;
 }
+
+.registerLink {
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+  @media (min-width: 768px) {
+    margin-bottom: 66px;
+  }
+}

@@ -210,6 +210,10 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
           </Form>
         )}
       </Formik>
+      <div className={styles.registerLink}>
+        <p>Зареєстровані?</p>
+        <Link href={"/auth/login"}>Увійти</Link>
+      </div>
       <SocialReg />
     </div>
   );
