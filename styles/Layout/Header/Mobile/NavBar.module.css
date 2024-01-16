@@ -1,0 +1,41 @@
+/* navBar */
+.navBar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color-1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: center;
+  padding: 4px 0px;
+  max-width: 432px;
+  min-width: 340px;
+  height: 90px;
+  /* width: 100%; Добавлено, чтобы занимать 100% ширины экрана */
+  z-index: 2; /* Установите z-index по вашему усмотрению */
+  -webkit-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
+  box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+.navBarLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: var(--h3-medium-font-size);
+  font-style: var(--h3-medium-font-style);
+  font-weight: var(--h3-medium-font-weight);
+}
+.navBarIcon {
+  width: 24px;
+  height: 24px;
+}
+.navBarActive {
+  color: var(--button-bg-color);
+}

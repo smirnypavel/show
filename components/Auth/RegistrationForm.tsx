@@ -8,6 +8,7 @@ import { PiEyeClosed } from "react-icons/pi";
 import { PiEye } from "react-icons/pi";
 import facebookLogo from "@/public/logo/facebookLogo.svg";
 import GoogleLogo from "@/public/logo/GoogleLogo.svg";
+import SocialReg from "./SocialReg";
 // Определите тип для данных формы
 export type FormValues = {
   firstName: string;
@@ -209,30 +210,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
           </Form>
         )}
       </Formik>
-      <div className={styles.registerLink}>
-        <p>Зареєстровані?</p>
-        <Link href={"/auth/login"}>Увійти</Link>
-      </div>
-      <div className={styles.socialContainer}>
-        <Link
-          href="https://events-4qv2.onrender.com/users/facebook/login"
-          className={styles.socialLink}>
-          Зареєструватись з допомогою
-          <Image
-            src={facebookLogo}
-            alt={""}
-          />
-        </Link>{" "}
-        <Link
-          href="https://events-4qv2.onrender.com/users/google/login"
-          className={styles.socialLink}>
-          Зареєструватись з допомогою
-          <Image
-            src={GoogleLogo}
-            alt={""}
-          />
-        </Link>
-      </div>
+      <SocialReg />
     </div>
   );
 };
