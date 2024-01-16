@@ -47,7 +47,7 @@ const NavBar = () => {
         {login ? (
           <Link
             href={"/profile"}
-            className={styles.avatarLink}>
+            className={styles.navBarLink}>
             <div className={styles.avatarWrapper}>
               {user.avatar.url ? (
                 <Image
@@ -67,7 +67,7 @@ const NavBar = () => {
                 />
               )}
             </div>
-            {user.firstName}
+            Профіль
           </Link>
         ) : (
           <Link

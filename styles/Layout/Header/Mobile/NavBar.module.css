@@ -39,3 +39,26 @@
 .navBarActive {
   color: var(--button-bg-color);
 }
+.avatarLink {
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.avatarWrapper {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+}
