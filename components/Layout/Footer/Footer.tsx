@@ -7,7 +7,7 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.containerMap}>
         <div>
-          <h3 className={styles.title}>Пошукачу</h3>
+          <p className={styles.title}>Пошукачу</p>
           <ul>
             <li>
               <Link
@@ -40,7 +40,7 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3 className={styles.title}>Артисту</h3>
+          <p className={styles.title}>Артисту</p>
           <ul>
             <li>
               <Link
@@ -73,7 +73,7 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3 className={styles.title}>Wechirka.com</h3>
+          <p className={styles.title}>Wechirka.com</p>
           <ul>
             <li>
               <Link
@@ -114,7 +114,7 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3 className={styles.title}>Куточок</h3>
+          <p className={styles.title}>Куточок</p>
           <ul>
             <li>
               <Link

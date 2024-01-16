@@ -1,7 +1,10 @@
 .container {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
+  display: none;
+  @media (min-width: 768px) {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
 }
 .inputSearch {
   width: 870px;

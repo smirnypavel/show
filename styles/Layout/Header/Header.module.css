@@ -1,9 +1,71 @@
+.mobileHeader {
+  padding-left: 24px;
+  padding-right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+.burger {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.close {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.search {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+.burgerIcon {
+  color: var(--white);
+  width: 100%;
+  height: auto;
+}
+.cearchIcon {
+  color: var(--white);
+  width: 100%;
+  height: auto;
+}
+.mobileLogo {
+  color: var(--white);
+  font-family: var(--logo-font);
+  font-size: 32px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: 0;
+}
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
 .header {
-  height: 84px;
-  border-bottom: 1px solid var(--white);
-  display: flex; /* Добавляем flex-контейнер */
-  justify-content: center; /* Выравниваем содержимое по центру по горизонтали */
-  align-items: center; /* Выравниваем содержимое по центру по вертикали */
+  display: none;
+  @media (min-width: 768px) {
+    height: 84px;
+    border-bottom: 1px solid var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .headerNav {
@@ -12,9 +74,6 @@
   align-items: center; /* Чтобы элементы выравнивались по вертикали внутри headerNav */
   gap: 78px;
 }
-/* .headerNav > * {
-  margin: 0 88px; 
-} */
 
 .link {
   position: relative;
