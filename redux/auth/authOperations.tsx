@@ -256,6 +256,7 @@ export const deleteVideo = createAsyncThunk(
 export const updateCategory = createAsyncThunk(
   "auth/updateCategory",
   async (credentials: {}, thunkAPI) => {
+    console.log(credentials);
     const initialToken = localStorage.getItem("refreshToken");
     if (initialToken) {
       setAuthHeader(initialToken);

@@ -15,6 +15,7 @@ const TopContainer = () => {
           fill
           priority
           sizes="(min-width: 808px) 50vw, 100vw"
+          className={styles.banner}
         />
       </div>
       <div className={styles.bannerTitleContainer}>
@@ -25,9 +26,8 @@ const TopContainer = () => {
       <div className={styles.bannerCategory}>
         <p className={styles.bannerCategoryText}>Найкращі з категорії</p>
       </div>
-      <div className={styles.topArtists}>
-        <TopArtists />
-      </div>
+
+      <TopArtists />
     </div>
   );
 };

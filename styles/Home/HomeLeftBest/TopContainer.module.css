@@ -1,60 +1,73 @@
 .container {
-  margin-left: 40px;
-  width: 372px;
-  height: 745px;
+  max-width: 432px;
+  min-height: 443px;
   border-radius: 16px;
-  overflow: hidden;
-  background: var(--white);
-  position: relative;
+  background: var(--accent-color);
   -webkit-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
   box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
+  @media (min-width: 768px) {
+    margin-left: 40px;
+    width: 372px;
+    height: 745px;
+  }
 }
 .bannerContainer {
-  width: 373px;
-  height: 423px;
-  flex-shrink: 0;
+  max-width: 432px;
+  height: 153px;
   position: relative;
+  @media (min-width: 768px) {
+    width: 373px;
+    height: 423px;
+    /* position: relative; */
+  }
+}
+.banner {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
 }
 .bannerTitleContainer {
   margin: 0 auto;
-  margin-top: 28px;
-  width: 351px;
+  margin-top: 16px;
+  max-width: 351px;
   height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding-left: 8px;
   padding-right: 8px;
+  @media (min-width: 768px) {
+    margin-top: 28px;
+  }
 }
 .bannerTitle {
   color: var(--black);
   text-align: center;
-  font-family: "Inter-Medium", Helvetica;
   font-size: 16px;
   font-weight: 500;
 }
 .bannerCategory {
   margin-top: 32px;
   height: 31px;
-  margin-left: 8px;
+  margin-left: 24px;
+  @media (min-width: 768px) {
+    margin-top: 32px;
+    height: 31px;
+    margin-left: 8px;
+  }
 }
 .bannerCategoryText {
-  font-family: "Inter-Regular", Helvetica;
-  font-weight: 400;
+  font-size: var(--h4-medium-font-size);
+  font-style: var(--h4-medium-font-style);
+  font-weight: var(--h4-medium-font-weight);
+
   color: var(--black);
   font-size: 12px;
   letter-spacing: 0;
   line-height: normal;
 }
-.topArtists {
-  margin-top: 36px;
-  display: flex;
-  width: 373px;
-  height: 161px;
-  justify-content: center;
-  /* gap: 20px;
-  padding: 12px 20px; */
-  background-color: #c9c9c9;
+/* .topArtists {
+  background-color: var(--white);
   border-radius: 0px 0px 16px 16px;
-}
+} */

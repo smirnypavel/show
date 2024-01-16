@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ICategory, ISubcategory } from "@/types/IAuth";
 import { useAppDispatch } from "@/redux/hooks";
-import { updateUser } from "@/redux/auth/authOperations";
+import { updateCategory } from "@/redux/auth/authOperations";
 import styles from "@/styles/components/Profile/UpdateProfile/CategorySelector.module.css";
 
 const CategorySelector = () => {
@@ -15,11 +15,10 @@ const CategorySelector = () => {
   );
 
   const [subcategories, setSubcategories] = useState<ISubcategory[]>([]);
-  const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
+  // const [selectedItems, setSelectedItems] = useState<ICategory[]>([]);
   const [subcategoriesVisible, setSubcategoriesVisible] =
     useState<boolean>(false);
 
-  console.log(selectedItems);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -42,13 +41,8 @@ const CategorySelector = () => {
     }
   }, [selectedCategory, categories]);
 
-  // useEffect(() => {
-  //   onItemsSelected(selectedItems);
-  // }, [selectedItems]);
-
   const handleCategoryChange = (categoryId: string) => {
     setSelectedCategory(categoryId);
-
     setSelectedSubcategories([]);
     setSubcategoriesVisible(true);
   };
@@ -77,15 +71,11 @@ const CategorySelector = () => {
         subcategories: selectedSubcategoryItems,
       };
 
-      setSelectedItems([...selectedItems, newItem]);
+      dispatch(updateCategory(newItem));
+
       setSelectedSubcategories([]);
       setSubcategoriesVisible(false);
-      handleUpdateUserCategory();
     }
-  };
-
-  const handleUpdateUserCategory = () => {
-    dispatch(updateUser({ categories: selectedItems }));
   };
 
   return (
@@ -124,12 +114,6 @@ const CategorySelector = () => {
           </button>
         </>
       )}
-
-      {/* <button
-        type="button"
-        onClick={handleUpdateUserCategory}>
-        Зберегти
-      </button> */}
     </div>
   );
 };

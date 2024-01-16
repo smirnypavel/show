@@ -1,6 +1,12 @@
 .chatContainer {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 27px;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 0px;
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

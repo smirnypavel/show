@@ -13,7 +13,7 @@ const TopArtists: React.FC = () => {
       try {
         const response = await axios.get("/users/");
         const fetchedArtists: IUserAuth[] = response.data.data;
-        setArtists(fetchedArtists.slice(0, 3)); // Установка первых трех артистов
+        setArtists(fetchedArtists.slice(0, 4)); // Установка первых трех артистов
       } catch (error) {
         console.error("Ошибка получения данных:", error);
         setArtists([]); // Если произошла ошибка, установить пустой массив
@@ -25,13 +25,12 @@ const TopArtists: React.FC = () => {
 
   return (
     <div className={styles.imageContainer}>
-      {/* Вывод данных об артистах */}
       <ul className={styles.imageList}>
         {artists.map((artist) => (
-          <div
+          <li
             key={artist._id}
-            className={styles.imageItemContainer}>
-            <li className={styles.imageItem}>
+            className={styles.artistItem}>
+            <div className={styles.imageItem}>
               {artist.master_photo.url ? (
                 <Image
                   src={artist.master_photo.url}
@@ -49,10 +48,10 @@ const TopArtists: React.FC = () => {
                   sizes="(min-width: 808px) 50vw, 100vw"
                 />
               )}
-            </li>
+            </div>
             <p className={styles.artistName}>{artist.firstName}</p>
             <p className={styles.artistTitle}>{artist.title}</p>
-          </div>
+          </li>
         ))}
       </ul>
     </div>
