@@ -5,12 +5,11 @@ import Link from "next/link";
 import styles from "@/styles/components/Auth/LoginForm.module.css";
 import { FcGoogle } from "react-icons/fc";
 // import { BsFacebook } from "react-icons/bs";
-import facebookLogo from "@/public/logo/facebookLogo.svg";
-import GoogleLogo from "@/public/logo/GoogleLogo.svg";
+
 import { PiEyeClosed } from "react-icons/pi";
 import { PiEye } from "react-icons/pi";
-import Image from "next/image";
 import Modal from "../helpers/Modal";
+import SocialReg from "./SocialReg";
 
 export type FormValues = {
   email: string;
@@ -170,26 +169,7 @@ const LoginForm: React.FC<Props> = ({ onSubmit }) => {
       <div className={styles.registerLink}>
         <Link href={"/auth/registry"}>Зареєструватись</Link>
       </div>
-      <div className={styles.socialContainer}>
-        <Link
-          href="https://events-4qv2.onrender.com/users/facebook/login"
-          className={styles.socialLink}>
-          Увійти з допомогою
-          <Image
-            src={facebookLogo}
-            alt={""}
-          />
-        </Link>{" "}
-        <Link
-          href="https://events-4qv2.onrender.com/users/google/login"
-          className={styles.socialLink}>
-          Увійти з допомогою
-          <Image
-            src={GoogleLogo}
-            alt={""}
-          />
-        </Link>
-      </div>
+      <SocialReg />
       {showModal && (
         <Modal onClose={closeModal}>
           <div className={styles.forgotPasswordModal}>

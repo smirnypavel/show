@@ -1,11 +1,12 @@
 .container {
-  width: 770px;
-  height: 540px;
+  max-width: 770px;
+  max-height: 540px;
   border-radius: 16px;
   background: var(--accent-color);
   margin: 0 auto;
   margin-top: 40px;
   padding-top: 40px;
+  padding-bottom: 40px;
   -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
@@ -15,8 +16,6 @@
 }
 
 .loginTitle {
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 400;
   text-align: center;
@@ -32,8 +31,6 @@
   flex-direction: column;
 }
 .inputTitle {
-  color: var(--black);
-  font-family: "Inter-Regular", Helvetica;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0;
@@ -182,24 +179,15 @@
 
 .registerLink {
   color: var(--black);
-  font-family: "Inter-Regular", Helvetica;
   font-size: 20px;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 66px;
+  margin-bottom: 20px;
+  @media (min-width: 768px) {
+    margin-bottom: 66px;
+  }
 }
-.socialContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-}
-.socialLink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
+
 .forgotPasswordModal {
   width: 100%;
   height: 100%;
