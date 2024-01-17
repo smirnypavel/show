@@ -97,9 +97,13 @@ html {
   height: 100%;
 }
 html {
-  /* Устанавливаем базовые стили для всего приложения */
   font-family: var(--main-font);
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
+  background-image: url(../public/gradient2.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 li {
   list-style: none;
