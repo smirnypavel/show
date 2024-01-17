@@ -7,9 +7,16 @@ import { ICategory } from "@/types/IAuth";
 const MobileCat = () => {
   const [isCatContainerVisible, setIsCatContainerVisible] = useState(false);
   const [categories, setCategories] = useState<ICategory[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(
+    null
+  );
 
   const toggleCatContainer = () => {
     setIsCatContainerVisible(!isCatContainerVisible);
+    setSelectedCategory(null);
+  };
+  const returnButton = () => {
+    setSelectedCategory(null);
   };
   useEffect(() => {
     const fetchCategories = async () => {
@@ -24,6 +31,14 @@ const MobileCat = () => {
 
     fetchCategories();
   }, []);
+  const handleCategoryChange = (categoryId: string) => {
+    // onCategoryChange(categoryId); // Передаем идентификатор категории в родительский компонент
+    const selectedCategory = categories.find(
+      (category) => category._id === categoryId
+    );
+    setSelectedCategory(selectedCategory || null);
+    // setSelectedSubcategory(null);
+  };
 
   return (
     <div>
@@ -39,21 +54,50 @@ const MobileCat = () => {
           isCatContainerVisible && styles.show
         }`}>
         <div className={styles.catContainerNav}>
-          <button className={styles.buttonNav}>
+          <button
+            className={styles.buttonNav}
+            onClick={returnButton}>
             <IoIosArrowBack className={styles.buttonNavIcon} />
           </button>
           <button className={styles.buttonNav}>Скасувати</button>
         </div>
         <div className={styles.catListContainer}>
-          <ul className={styles.catList}>
+          <ul
+            className={`${styles.catList} ${
+              selectedCategory ? styles.hide : ""
+            }`}>
             {categories.map((category) => (
               <li
                 key={category._id}
+                onClick={(e) => handleCategoryChange(category._id)}
                 className={styles.catListItem}>
                 <p className={styles.catListText}>{category.name}</p>
                 <IoIosArrowBack className={styles.catListIcon} />
               </li>
             ))}
+          </ul>
+          <ul
+            className={`${styles.subCatList} ${
+              selectedCategory ? styles.show : ""
+            }`}>
+            {selectedCategory && (
+              <p className={styles.catListItem}> {selectedCategory?.name}</p>
+            )}
+            {selectedCategory && (
+              <p className={styles.subCatTitle}>
+                Все в {selectedCategory?.name}
+              </p>
+            )}
+            {selectedCategory &&
+              selectedCategory.subcategories &&
+              selectedCategory.subcategories.map((subCategory) => (
+                <li
+                  key={subCategory.id}
+                  className={styles.subCatItem}
+                  value={subCategory.id}>
+                  {subCategory.name}
+                </li>
+              ))}
           </ul>
         </div>
       </div>
