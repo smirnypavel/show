@@ -3,6 +3,7 @@ import styles from "@/styles/components/Artist/Mobile/MobileCat.module.css";
 import { IoIosArrowBack } from "react-icons/io";
 import axios from "axios";
 import { ICategory } from "@/types/IAuth";
+import { useRouter } from "next/router";
 
 const MobileCat = () => {
   const [isCatContainerVisible, setIsCatContainerVisible] = useState(false);
@@ -10,7 +11,7 @@ const MobileCat = () => {
   const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(
     null
   );
-
+  const router = useRouter();
   const toggleCatContainer = () => {
     setIsCatContainerVisible(!isCatContainerVisible);
     setSelectedCategory(null);
@@ -31,13 +32,27 @@ const MobileCat = () => {
 
     fetchCategories();
   }, []);
-  const handleCategoryChange = (categoryId: string) => {
+  const handleCategoryChange = (cat: string) => {
     // onCategoryChange(categoryId); // Передаем идентификатор категории в родительский компонент
+
     const selectedCategory = categories.find(
-      (category) => category._id === categoryId
+      (category) => category._id === cat
     );
+    router.push({
+      pathname: "/artists",
+      query: {
+        ...router.query,
+        cat,
+      },
+    });
     setSelectedCategory(selectedCategory || null);
     // setSelectedSubcategory(null);
+  };
+  const handleCancel = () => {
+    router.push({
+      pathname: "/artists",
+    });
+    setIsCatContainerVisible(false);
   };
 
   return (
@@ -59,7 +74,11 @@ const MobileCat = () => {
             onClick={returnButton}>
             <IoIosArrowBack className={styles.buttonNavIcon} />
           </button>
-          <button className={styles.buttonNav}>Скасувати</button>
+          <button
+            className={styles.buttonNav}
+            onClick={handleCancel}>
+            Скасувати
+          </button>
         </div>
         <div className={styles.catListContainer}>
           <ul
@@ -84,7 +103,9 @@ const MobileCat = () => {
               <p className={styles.catListItem}> {selectedCategory?.name}</p>
             )}
             {selectedCategory && (
-              <p className={styles.subCatTitle}>
+              <p
+                className={styles.subCatTitle}
+                onClick={toggleCatContainer}>
                 Все в {selectedCategory?.name}
               </p>
             )}
