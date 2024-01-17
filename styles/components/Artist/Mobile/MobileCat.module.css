@@ -9,4 +9,44 @@
   color: var(--white);
   font-size: var(--h2-medium-font-size);
   font-weight: var(--h2-medium-font-weight);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Добавляем плавный переход */
+}
+
+.buttonCat.show {
+  background-color: var(--white);
+  color: var(--accent-color-2);
+}
+
+.catContainer {
+  margin-top: 23px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(41, 91, 108, 0.427);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  z-index: 1;
+
+  left: -100%; /* Начальное положение вне экрана */
+  transition: left 0.3s ease-in-out; /* Анимация изменения положения */
+}
+
+.catContainer.show {
+  left: 0; /* Конечное положение внутри экрана */
+  z-index: 1;
+}
+.catContainerNav {
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.buttonNav {
+  color: var(--white);
+  border: none;
+  background: transparent;
+  font-size: var(--h2-regular-font-size);
+  font-weight: var(--h2-regular-font-weight);
+}
+.buttonNavIcon {
+  width: 32px;
+  height: 32px;
 }
