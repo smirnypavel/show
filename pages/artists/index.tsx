@@ -5,7 +5,6 @@ import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
-import ArtistList from "@/components/Artist/ArtistList";
 import MetaTags from "@/components/Meta/MetaTags";
 import Pagination from "@/components/Artist/Pagination";
 import { GetServerSideProps } from "next/types";
@@ -16,6 +15,8 @@ import { GrLocation } from "react-icons/gr";
 import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
 import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { IoIosArrowForward } from "react-icons/io";
+import MobileSort from "@/components/Artist/Mobile/MobileSort";
+import MobileCat from "@/components/Artist/Mobile/MobileCat";
 
 interface ArtistsProps {
   artists: IUserAuth[];
@@ -54,7 +55,10 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
         description="Пошук артистів"
         keywords=""
       />
-
+      <div className={styles.mobileBar}>
+        <MobileCat />
+        <MobileSort />
+      </div>
       <ArtistSearchBar
         onSearch={(req: string) => {
           router.push({
@@ -136,7 +140,7 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
                             alt={"default user photo"}
                             fill
                             className={styles2.image}
-                            sizes="(min-width: 808px) 50vw, 100vw"
+                            sizes="(min-width: 768px) 50vw, 100vw"
                           />
                         )}
                       </div>
@@ -147,7 +151,7 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
                           <GrLocation className={styles2.geoIcon} />
                           {
                             artist.location
-                              ? artist.location // Если есть местоположение, отобразить его
+                              ? artist.location.split(",")[0] // Если есть местоположение, отобразить его
                               : "Місто не обрано" // Если нет, вывести сообщение
                           }
                         </p>

@@ -1,9 +1,12 @@
 .container {
-  margin-top: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
+  display: none;
+  @media (min-width: 768px) {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
 }
 .selectCategorytext {
   color: var(--white);

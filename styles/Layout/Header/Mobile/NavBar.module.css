@@ -8,13 +8,14 @@
   border-radius: 16px;
   display: flex;
   align-items: center;
-  gap: 24px;
-  justify-content: center;
+  /* gap: 24px; */
+  justify-content: space-evenly;
   padding: 4px 0px;
-  max-width: 432px;
-  min-width: 340px;
+
+  width: 90%;
+
   height: 90px;
-  /* width: 100%; Добавлено, чтобы занимать 100% ширины экрана */
+
   z-index: 2; /* Установите z-index по вашему усмотрению */
   -webkit-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
