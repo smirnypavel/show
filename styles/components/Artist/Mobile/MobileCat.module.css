@@ -1,0 +1,135 @@
+.buttonCat {
+  height: 52px;
+  padding: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  background-color: var(--accent-color-2);
+  border-radius: 16px;
+  color: var(--white);
+  font-size: var(--h2-medium-font-size);
+  font-weight: var(--h2-medium-font-weight);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Добавляем плавный переход */
+}
+
+.buttonCat.show {
+  background-color: var(--white);
+  color: var(--accent-color-2);
+}
+
+.catContainer {
+  overflow: hidden;
+  margin-top: 23px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(41, 91, 108, 0.427);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  z-index: 3;
+  left: -200%;
+  transition: left 0.3s ease-in-out;
+}
+
+.catContainer.show {
+  left: 0; /* Конечное положение внутри экрана */
+  z-index: 3;
+}
+.catContainerNav {
+  padding: 10px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.buttonNav {
+  color: var(--white);
+  border: none;
+  background: transparent;
+  font-size: var(--h2-regular-font-size);
+  font-weight: var(--h2-regular-font-weight);
+}
+.buttonNavIcon {
+  width: 32px;
+  height: 32px;
+}
+.catListContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.catList {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: absolute;
+  transition: opacity 0.3s ease-in-out; /* Adjusted transition properties */
+}
+.catList.hide {
+  opacity: 0; /* Added opacity property */
+}
+.catList.show {
+  opacity: 1; /* Added opacity property */
+}
+.catListItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color-1);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: var(--h1-medium-font-size);
+  font-weight: var(--h1-medium-font-weight);
+}
+.catListText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.catListIcon {
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  color: var(--bg-color);
+  transform: rotate(180deg);
+}
+.subCatList {
+  width: 100%;
+  padding: 0px 24px;
+  right: -200%; /* Keep 'right' for sliding in from the right */
+  position: absolute;
+  transition: right 0.3s ease-in-out; /* Adjust 'left' to 'right' */
+}
+
+.subCatList.show {
+  right: 0; /* Move to right: 0 for showing */
+  z-index: 4;
+}
+.subCatTitle {
+  text-align: center;
+  margin-top: 10px;
+  padding: 15px;
+  color: var(--white);
+  font-size: var(--h2-medium-font-size);
+  font-weight: var(--h2-medium-font-weight);
+  border: none;
+  border-bottom: 0.5px solid var(--white);
+}
+.subCatItem {
+  margin-top: 10px;
+  padding: 10px;
+  /* color: var(--white);
+  font-size: var(--h1-medium-font-size);
+  font-weight: var(--h1-medium-font-weight);
+  border: none;
+  border-bottom: 0.5px solid var(--white); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color-1);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: var(--h1-medium-font-size);
+  font-weight: var(--h1-medium-font-weight);
+}

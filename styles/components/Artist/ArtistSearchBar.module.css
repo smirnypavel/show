@@ -1,13 +1,11 @@
-/* .container {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-} */
 .container {
-  position: relative;
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
+  display: none;
+  @media (min-width: 768px) {
+    position: relative;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
 }
 .inputLocationContainer {
   position: relative;

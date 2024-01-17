@@ -1,6 +1,14 @@
 .container {
   width: 100%;
 }
+.mobileBar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
 .pagination {
   display: flex;
   justify-content: center;

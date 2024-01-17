@@ -1,0 +1,17 @@
+.buttonSort {
+  height: 52px;
+  padding: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--accent-color-2);
+  border-radius: 16px;
+  color: var(--white);
+  font-size: var(--h2-medium-font-size);
+  font-weight: var(--h2-medium-font-weight);
+}
+.sortIcon {
+  width: 24px;
+  height: 24px;
+}

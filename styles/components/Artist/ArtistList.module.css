@@ -1,14 +1,18 @@
 .container {
   width: 100%;
-  margin-top: 10px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.content {
+  @media (min-width: 768px) {
+    margin-top: 10px;
+  }
+  /* padding-left: 24px;
+  padding-right: 24px; */
 }
 
 .artistList {
+  width: 100%;
   margin-top: 24px;
   text-align: start;
   display: flex;
@@ -17,13 +21,16 @@
   position: relative;
 }
 .buttonBackContainer {
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: absolute;
-  top: -32px;
-  left: 32px;
+  display: none;
+  @media (min-width: 768px) {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    top: -32px;
+    left: 32px;
+  }
 }
 .buttonBack {
   color: white;
@@ -44,48 +51,69 @@
   cursor: default;
 }
 .artistItem {
-  width: 1168px;
-  height: 312px;
+  width: 100%;
+  height: auto;
   gap: 10px;
-  border-radius: 8px;
-  background-color: var(--white);
-  color: black;
+  border-radius: 16px;
+  background-color: var(--accent-color);
   -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  @media (min-width: 768px) {
+    border-radius: 8px;
+    max-width: 1168px;
+    background-color: var(--white);
+  }
 }
 
 .cardContainer {
-  display: flex;
+  @media (min-width: 768px) {
+    display: flex;
+  }
 }
 .imageContainer {
-  margin-left: -1px;
-  width: 357px;
   height: 312px;
   position: relative;
   border-radius: 8px;
+  @media (min-width: 768px) {
+    position: relative;
+    width: 356px;
+    margin-left: -1px;
+  }
 }
 .image {
-  position: absolute;
-  border-radius: 8px 0px 0px 8px;
   object-fit: cover;
+  border-radius: 16px 16px 0px 0px;
+
+  @media (min-width: 1200px) {
+    border-radius: 8px 0px 0px 8px;
+  }
 }
 .cardInfo {
   margin-top: 16px;
-  width: 811px;
+  max-width: 811px;
+  @media (min-width: 768px) {
+    max-width: 811px;
+  }
 }
 .cardTopContainer {
   display: flex;
+  justify-content: space-between;
+
   align-items: center;
-  gap: 24px;
-  color: var(--black);
-  font-family: "Inter-Medium", Helvetica;
-  font-size: 20px;
-  font-weight: 500;
-  left: 0;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-left: 16px;
+  padding: 0px 8px 0px 8px;
+  font-size: var(--h4-medium-font-size);
+  font-weight: var(--h4-medium-font-weight);
+  @media (min-width: 768px) {
+    gap: 24px;
+    margin-left: 16px;
+  }
+  @media (min-width: 1200px) {
+    justify-content: unset;
+    margin-left: 8px;
+    font-size: 20px;
+    font-weight: 500;
+  }
 }
 .locationContainer {
   display: flex;
@@ -103,10 +131,14 @@
   gap: 8px;
 }
 .avatarContainer {
-  margin-left: -1px;
-  width: 48px;
-  height: 48px;
   position: relative;
+  width: 32px;
+  height: 32px;
+  margin-left: -1px;
+  @media (min-width: 768px) {
+    width: 48px;
+    height: 48px;
+  }
 }
 .avatar {
   border-radius: 50%;
@@ -116,51 +148,66 @@
   margin-top: 8px;
   margin-left: 8px;
   display: flex;
+  flex-wrap: wrap;
   overflow: auto;
   gap: 8px;
+  @media (min-width: 1200px) {
+    width: 785px;
+    flex-wrap: nowrap;
+  }
 }
 .categoryContainer::-webkit-scrollbar {
   display: none;
 }
 .categoryArtist {
-  height: 40px;
+  height: 23px;
+  font-size: var(--h5-regular-font-size);
+  font-weight: var(--h5-regular-font-weight);
   width: auto;
   display: flex;
   align-items: center;
   padding: 8px;
   border-radius: 8px;
-  background: #e8e8e8;
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: normal;
-  white-space: nowrap;
+  background: var(--white);
+  @media (min-width: 768px) {
+    white-space: nowrap;
+    font-size: var(--h1-regular-font-size);
+    font-weight: var(--h1-regular-font-weight);
+    height: 40px;
+    background: var(--gray-light);
+  }
 }
 .descriptionContainer {
   margin-top: 8px;
-  background-color: var(--accent-color);
-  width: 812px;
-  height: 192px;
+  background-color: var(--white);
+  max-width: 812px;
+  height: 137px;
   padding: 16px;
   border: none;
-  border-radius: 0px 0px 8px 0px;
+  border-radius: 0px 0px 16px 16px;
   overflow: hidden;
   text-overflow: ellipsis; /* Отображение многоточия */
+  @media (min-width: 768px) {
+    background-color: var(--accent-color);
+    height: 192px;
+    width: 365px;
+    border-radius: 0px 0px 8px 0px;
+    text-overflow: ellipsis; /* Отображение многоточия */
+  }
+  @media (min-width: 1200px) {
+    width: 797px;
+  }
 }
 .descriptionTitle {
-  color: var(--black);
-  font-family: "Inter-Medium", Helvetica;
   font-size: 20px;
   font-weight: 500;
   line-height: normal;
 }
 .descriptionText {
   margin-top: 24px;
-  color: var(--black);
-  font-family: "Inter-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
   line-height: normal;
   overflow-wrap: break-word;
+  text-overflow: ellipsis; /* Отображение многоточия */
 }
