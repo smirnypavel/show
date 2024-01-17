@@ -56,15 +56,11 @@
   gap: 10px;
   border-radius: 16px;
   background-color: var(--accent-color);
-  @media (min-width: 768px) {
-    border-radius: 8px;
-  }
-
   -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
-  scroll-snap-align: start;
   @media (min-width: 768px) {
+    border-radius: 8px;
     max-width: 1168px;
     background-color: var(--white);
   }
@@ -103,20 +99,21 @@
 .cardTopContainer {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  font-weight: 500;
+
   align-items: center;
   padding: 0px 8px 0px 8px;
   font-size: var(--h4-medium-font-size);
   font-weight: var(--h4-medium-font-weight);
   @media (min-width: 768px) {
-    margin-left: 8px;
     gap: 24px;
     margin-left: 16px;
   }
-  /* @media (min-width: 1200px) {
-    flex-wrap: nowrap;
-  } */
+  @media (min-width: 1200px) {
+    justify-content: unset;
+    margin-left: 8px;
+    font-size: 20px;
+    font-weight: 500;
+  }
 }
 .locationContainer {
   display: flex;
@@ -173,9 +170,11 @@
   border-radius: 8px;
   background: var(--white);
   @media (min-width: 768px) {
+    white-space: nowrap;
     font-size: var(--h1-regular-font-size);
     font-weight: var(--h1-regular-font-weight);
     height: 40px;
+    background: var(--gray-light);
   }
 }
 .descriptionContainer {
@@ -191,7 +190,7 @@
   @media (min-width: 768px) {
     background-color: var(--accent-color);
     height: 192px;
-    max-width: 365px;
+    width: 365px;
     border-radius: 0px 0px 8px 0px;
     text-overflow: ellipsis; /* Отображение многоточия */
   }

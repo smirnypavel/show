@@ -28,7 +28,7 @@ const Header = () => {
     <>
       <div className={styles.mobileHeader}>
         <button
-          className={styles.close}
+          className={styles.burger}
           onClick={toggleMenu}>
           <AiOutlineMenu className={styles.burgerIcon} />
         </button>
@@ -127,7 +127,7 @@ const Header = () => {
       {menuOpen && (
         <div className={styles.mobileMenu}>
           <button
-            className={styles.burger}
+            className={styles.close}
             onClick={toggleMenu}>
             <IoClose className={styles.burgerIcon} />
           </button>
