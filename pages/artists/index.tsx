@@ -47,6 +47,11 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
   const handleGoBack = () => {
     router.back(); // Переход назад на предыдущую страницу
   };
+  const handleCancel = () => {
+    router.push({
+      pathname: "/artists",
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -107,121 +112,135 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
 
       <div className={styles.content}>
         <div className={styles2.container}>
-          <ul className={styles2.artistList}>
-            <div className={styles2.buttonBackContainer}>
-              <Link
-                href="/"
-                // onClick={handleGoBack}
-                className={styles2.buttonBack}>
-                <div> Головна</div>
-              </Link>
-              <IoIosArrowForward />
-              <button className={styles2.buttonBackText}>Артисти</button>
-            </div>
-            {filteredArtists &&
-              filteredArtists.map((artist) => (
-                <li
-                  key={artist._id}
-                  className={styles2.artistItem}>
-                  <div className={styles2.cardContainer}>
-                    <Link href={`/artists/${artist._id}?page=${currentPage}`}>
-                      <div className={styles2.imageContainer}>
-                        {artist.master_photo.url ? (
-                          <Image
-                            src={artist.master_photo.url}
-                            alt={"user photo"}
-                            fill
-                            className={styles2.image}
-                            sizes="(min-width: 808px) 50vw, 100vw"
-                          />
-                        ) : (
-                          <Image
-                            src={NoPhoto_PNG}
-                            alt={"default user photo"}
-                            fill
-                            className={styles2.image}
-                            sizes="(min-width: 768px) 50vw, 100vw"
-                          />
-                        )}
-                      </div>
-                    </Link>
-                    <div className={styles2.cardInfo}>
-                      <div className={styles2.cardTopContainer}>
-                        <p className={styles2.locationContainer}>
-                          <GrLocation className={styles2.geoIcon} />
-                          {
-                            artist.location
-                              ? artist.location.split(",")[0] // Если есть местоположение, отобразить его
-                              : "Місто не обрано" // Если нет, вывести сообщение
-                          }
-                        </p>
-                        <p>
-                          ₴ {artist.price ? artist.price : "Ціна не вказана"}
-                        </p>
+          {filteredArtists && filteredArtists.length > 0 ? (
+            <ul className={styles2.artistList}>
+              <div className={styles2.buttonBackContainer}>
+                <Link
+                  href="/"
+                  // onClick={handleGoBack}
+                  className={styles2.buttonBack}>
+                  <div> Головна</div>
+                </Link>
+                <IoIosArrowForward />
+                <button className={styles2.buttonBackText}>Артисти</button>
+              </div>
+              {filteredArtists &&
+                filteredArtists.map((artist) => (
+                  <li
+                    key={artist._id}
+                    className={styles2.artistItem}>
+                    <div className={styles2.cardContainer}>
+                      <Link href={`/artists/${artist._id}?page=${currentPage}`}>
+                        <div className={styles2.imageContainer}>
+                          {artist.master_photo.url ? (
+                            <Image
+                              src={artist.master_photo.url}
+                              alt={"user photo"}
+                              fill
+                              className={styles2.image}
+                              sizes="(min-width: 808px) 50vw, 100vw"
+                            />
+                          ) : (
+                            <Image
+                              src={NoPhoto_PNG}
+                              alt={"default user photo"}
+                              fill
+                              className={styles2.image}
+                              sizes="(min-width: 768px) 50vw, 100vw"
+                            />
+                          )}
+                        </div>
+                      </Link>
+                      <div className={styles2.cardInfo}>
+                        <div className={styles2.cardTopContainer}>
+                          <p className={styles2.locationContainer}>
+                            <GrLocation className={styles2.geoIcon} />
+                            {
+                              artist.location
+                                ? artist.location.split(",")[0] // Если есть местоположение, отобразить его
+                                : "Місто не обрано" // Если нет, вывести сообщение
+                            }
+                          </p>
+                          <p>
+                            ₴ {artist.price ? artist.price : "Ціна не вказана"}
+                          </p>
 
-                        <div className={styles2.artistProfile}>
-                          <div className={styles2.avatarContainer}>
-                            {artist.avatar.url ? (
-                              <Image
-                                src={artist.avatar.url}
-                                alt={"user avatar"}
-                                fill
-                                className={styles2.avatar}
-                                sizes="(min-width: 808px) 50vw, 100vw"
-                              />
-                            ) : (
-                              <Image
-                                src={UserNoPhoto}
-                                alt={"default user avatar"}
-                                fill
-                                className={styles2.avatar}
-                                sizes="(min-width: 808px) 50vw, 100vw"
-                              />
-                            )}
+                          <div className={styles2.artistProfile}>
+                            <div className={styles2.avatarContainer}>
+                              {artist.avatar.url ? (
+                                <Image
+                                  src={artist.avatar.url}
+                                  alt={"user avatar"}
+                                  fill
+                                  className={styles2.avatar}
+                                  sizes="(min-width: 808px) 50vw, 100vw"
+                                />
+                              ) : (
+                                <Image
+                                  src={UserNoPhoto}
+                                  alt={"default user avatar"}
+                                  fill
+                                  className={styles2.avatar}
+                                  sizes="(min-width: 808px) 50vw, 100vw"
+                                />
+                              )}
+                            </div>
+                            <p> {artist.firstName}</p>
                           </div>
-                          <p> {artist.firstName}</p>
+                        </div>
+                        <div className={styles2.categoryContainer}>
+                          {artist.category.length === 0 ? (
+                            <div className={styles2.categoryArtist}>
+                              Категорії не обрані
+                            </div>
+                          ) : (
+                            artist.category.map((cat) =>
+                              cat.subcategories.map((subCat) => (
+                                <div
+                                  className={styles2.categoryArtist}
+                                  key={subCat.id}>
+                                  {subCat.name}
+                                </div>
+                              ))
+                            )
+                          )}
+                        </div>
+                        <div className={styles2.descriptionContainer}>
+                          <p className={styles2.descriptionTitle}>
+                            {artist.title}
+                          </p>
+                          <p className={styles2.descriptionText}>
+                            {artist.description
+                              ? artist.description
+                              : "Опис не надано"}
+                          </p>
                         </div>
                       </div>
-                      <div className={styles2.categoryContainer}>
-                        {artist.category.length === 0 ? (
-                          <div className={styles2.categoryArtist}>
-                            Категорії не обрані
-                          </div>
-                        ) : (
-                          artist.category.map((cat) =>
-                            cat.subcategories.map((subCat) => (
-                              <div
-                                className={styles2.categoryArtist}
-                                key={subCat.id}>
-                                {subCat.name}
-                              </div>
-                            ))
-                          )
-                        )}
-                      </div>
-                      <div className={styles2.descriptionContainer}>
-                        <p className={styles2.descriptionTitle}>
-                          {artist.title}
-                        </p>
-                        <p className={styles2.descriptionText}>
-                          {artist.description
-                            ? artist.description
-                            : "Опис не надано"}
-                        </p>
-                      </div>
                     </div>
-                  </div>
-                </li>
-              ))}
-          </ul>
+                  </li>
+                ))}
+            </ul>
+          ) : (
+            <>
+              <p>
+                Вибачте але по Вашому запиту ні чого не знайдено. В свою чергу
+                ми працюемо над тим щоб задовольнити Усі Ваші запити
+              </p>
+              <button onClick={handleCancel}>
+                Скинути пошук та почати з початку
+              </button>
+            </>
+          )}
         </div>
       </div>
       <div className={styles.pagination}>
-        <Pagination
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-          totalPages={totalPages}
-        />
+        {totalPages > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            totalPages={totalPages}
+          />
+        )}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const TopArtists: React.FC = () => {
       try {
         const response = await axios.get("/users/");
         const fetchedArtists: IUserAuth[] = response.data.data;
-        setArtists(fetchedArtists.slice(0, 4)); // Установка первых трех артистов
+        setArtists(fetchedArtists.slice(0, 3)); // Установка первых трех артистов
       } catch (error) {
         console.error("Ошибка получения данных:", error);
         setArtists([]); // Если произошла ошибка, установить пустой массив
