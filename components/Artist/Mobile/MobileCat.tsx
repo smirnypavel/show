@@ -33,21 +33,29 @@ const MobileCat = () => {
     fetchCategories();
   }, []);
   const handleCategoryChange = (cat: string) => {
-    // onCategoryChange(categoryId); // Передаем идентификатор категории в родительский компонент
-
     const selectedCategory = categories.find(
       (category) => category._id === cat
     );
     router.push({
       pathname: "/artists",
       query: {
-        ...router.query,
+        // ...router.query,
         cat,
       },
     });
     setSelectedCategory(selectedCategory || null);
-    // setSelectedSubcategory(null);
   };
+  const handleSubCategoryChange = (subcat: string) => {
+    router.push({
+      pathname: "/artists",
+      query: {
+        ...router.query,
+        subcat,
+      },
+    });
+    setIsCatContainerVisible(false);
+  };
+
   const handleCancel = () => {
     router.push({
       pathname: "/artists",
@@ -115,7 +123,7 @@ const MobileCat = () => {
                 <li
                   key={subCategory.id}
                   className={styles.subCatItem}
-                  value={subCategory.id}>
+                  onClick={(e) => handleSubCategoryChange(subCategory.id)}>
                   {subCategory.name}
                 </li>
               ))}
