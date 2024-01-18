@@ -4,6 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import axios from "axios";
 import { ICategory } from "@/types/IAuth";
 import { useRouter } from "next/router";
+import MobileInfoPage from "./MobileInfoPage";
 
 const MobileCat = () => {
   const [isCatContainerVisible, setIsCatContainerVisible] = useState(false);
@@ -72,6 +73,7 @@ const MobileCat = () => {
         onClick={toggleCatContainer}>
         Обрати категорію
       </button>
+
       <div
         className={`${styles.catContainer} ${
           isCatContainerVisible && styles.show

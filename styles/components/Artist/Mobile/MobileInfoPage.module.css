@@ -1,17 +1,16 @@
 .artistInfo {
-  display: none;
+  max-width: 338px;
+  /* min-height: 100%; */
+  min-height: 1219px;
+  background-color: var(--accent-color-2);
+  border-radius: 0px 16px 16px 16px;
+  padding: 36px 36px;
+  color: var(--white);
+  -webkit-box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, 0.59);
+  box-shadow: -20px 20px 20px 0px rgba(0, 0, 0, 0.59);
   @media (min-width: 768px) {
-    display: unset;
-    margin-left: 5px;
-    max-width: 338px;
-    min-height: 1219px;
-    background-color: var(--accent-color-2);
-    border-radius: 0px 16px 16px 0px;
-    padding: 36px 36px;
-    color: var(--white);
-    -webkit-box-shadow: 11px 0px 21px 5px rgba(0, 0, 0, 0.59);
-    -moz-box-shadow: 11px 0px 21px 5px rgba(0, 0, 0, 0.59);
-    box-shadow: 11px 0px 21px 5px rgba(0, 0, 0, 0.59);
+    display: none;
   }
 }
 .artistInfoContainer {
