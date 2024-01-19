@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import uk from "date-fns/locale/uk";
@@ -6,7 +6,7 @@ import tablerIconCalendar from "@/public/logo/tablerIconCalendar.svg";
 import Image from "next/image";
 import styles from "@/styles/components/helpers/DateTimePicker.module.css";
 import { format } from "date-fns";
-import { useMediaQuery } from "react-responsive"; // Импорт из библиотеки react-responsive
+import { useMediaQuery } from "react-responsive";
 
 registerLocale("uk", uk);
 
@@ -19,7 +19,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
 }) => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-  const isMobile = useMediaQuery({ maxWidth: 767 }); // Определение, является ли устройство мобильным
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const handleDateChange = (date: Date | null) => {
     if (date) {
@@ -28,6 +28,20 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
       onDateTimeSelect(formattedDate);
     }
   };
+
+  const ExampleCustomInput = forwardRef(function ExampleCustomInput(
+    { value, onClick }: { value: any; onClick: () => void },
+    ref: React.Ref<HTMLButtonElement>
+  ) {
+    return (
+      <button
+        className={styles.customDatePicker}
+        onClick={onClick}
+        ref={ref}>
+        {value}
+      </button>
+    );
+  });
 
   const openDatePicker = () => {
     setShowDatePicker(true);
@@ -59,6 +73,14 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         <DatePicker
           selected={startDate}
           onChange={handleDateChange}
+          customInput={
+            <ExampleCustomInput
+              value={undefined}
+              onClick={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
+          }
           showTimeInput
           timeInputLabel="Час"
           timeFormat="HH:mm"
@@ -67,10 +89,8 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
           portalId="root-portal"
           dateFormat="dd MMMM yyyy HH:mm"
           locale="uk"
-          // popperPlacement="top"
           popperModifiers={[preventOverflowModifier]}
           minDate={new Date()}
-          className={styles.customDatePicker}
         />
       )}
     </div>
