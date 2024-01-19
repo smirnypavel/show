@@ -36,9 +36,9 @@ const NavBar = () => {
           Артисти
         </Link>
         <Link
-          href={"/artists"}
+          href={"/request"}
           className={`${styles.navBarLink} ${
-            router.pathname === "/artists" ? styles.navBarActive : ""
+            router.pathname === "/request" ? styles.navBarActive : ""
           }`}>
           <LuPlus className={styles.navBarIcon} />
           Залишити
