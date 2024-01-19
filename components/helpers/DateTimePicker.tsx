@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import uk from "date-fns/locale/uk"; // Импорт украинской локализации
+import uk from "date-fns/locale/uk";
 import tablerIconCalendar from "@/public/logo/tablerIconCalendar.svg";
 import Image from "next/image";
 import styles from "@/styles/components/helpers/DateTimePicker.module.css";
 import { format } from "date-fns";
+import { useMediaQuery } from "react-responsive"; // Импорт из библиотеки react-responsive
 
-// Регистрация украинской локализации
 registerLocale("uk", uk);
 
 interface DateTimePickerProps {
@@ -19,11 +19,12 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
 }) => {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 767 }); // Определение, является ли устройство мобильным
 
   const handleDateChange = (date: Date | null) => {
     if (date) {
       setStartDate(date);
-      const formattedDate = format(date, "dd MMMM yyyy HH:mm", { locale: uk }); // Форматирование даты
+      const formattedDate = format(date, "dd MMMM yyyy HH:mm", { locale: uk });
       onDateTimeSelect(formattedDate);
     }
   };
@@ -36,7 +37,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
     name: "preventOverflow",
     options: {
       enabled: true,
-      escapeWithReference: false,
+      escapeWithReference: true,
       boundariesElement: "viewport",
     },
   };
@@ -58,13 +59,15 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         <DatePicker
           selected={startDate}
           onChange={handleDateChange}
-          showTimeSelect
+          showTimeInput
+          timeInputLabel="Час"
           timeFormat="HH:mm"
           timeIntervals={15}
+          withPortal
+          portalId="root-portal"
           dateFormat="dd MMMM yyyy HH:mm"
-          timeCaption="Час"
-          locale="uk" // Применение украинской локализации
-          popperPlacement="bottom-start"
+          locale="uk"
+          // popperPlacement="top"
           popperModifiers={[preventOverflowModifier]}
           minDate={new Date()}
           className={styles.customDatePicker}
