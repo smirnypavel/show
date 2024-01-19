@@ -81,13 +81,13 @@ const Header = () => {
             }`}>
             Про нас
           </Link>
-          <Link
+          {/* <Link
             href={"/blog"}
             className={`${styles.link} ${
               router.pathname === "/blog" ? styles.active : ""
             }`}>
             Блог
-          </Link>
+          </Link> */}
           {/* <MyGeolocation />
         <AutocompleteComponent /> */}
           {login ? (
@@ -156,14 +156,14 @@ const Header = () => {
               }`}>
               Про нас
             </Link>
-            <Link
+            {/* <Link
               onClick={toggleMenu}
               href={"/blog"}
               className={`${styles.link} ${
                 router.pathname === "/blog" ? styles.active : ""
               }`}>
               Блог
-            </Link>
+            </Link> */}
             {login ? (
               <Link
                 onClick={toggleMenu}

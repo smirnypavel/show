@@ -11,7 +11,7 @@
   --accent-color-2: rgba(232, 149, 89, 1);
   --accent-color-3: rgba(9, 67, 86, 1);
   --black: rgba(24, 24, 24, 1);
-  --gray: rgba(144, 143, 143, 1);
+  --gray: rgb(144, 143, 143);
   --gray-light: rgba(217, 217, 217, 1);
   --h1-medium-font-family: "Inter", sans-serif;
   --h1-medium-font-size: 20px;

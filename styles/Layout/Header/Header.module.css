@@ -109,7 +109,7 @@
   position: absolute;
   bottom: -10px; /* Отступ полоски от нижней части headerNav */
   left: 0; /* Начало полоски */
-  height: 5px; /* Высота полоски */
+  height: 1px; /* Высота полоски */
   background-color: #ffffff8f; /* Цвет полоски */
   transition: width 0.2s ease-in-out; /* Добавляем плавный переход для изменения ширины */
   width: 0; /* Начальная ширина полоски (будет увеличиваться) */

@@ -9,7 +9,7 @@
   @media (min-width: 768px) {
     margin-left: 40px;
     width: 372px;
-    height: 745px;
+    height: 729px;
   }
 }
 .bannerContainer {
@@ -67,7 +67,3 @@
   letter-spacing: 0;
   line-height: normal;
 }
-/* .topArtists {
-  background-color: var(--white);
-  border-radius: 0px 0px 16px 16px;
-} */

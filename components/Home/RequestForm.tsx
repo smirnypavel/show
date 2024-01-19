@@ -8,9 +8,6 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import styles from "@/styles/Home/RequestForm.module.css";
 import AutocompleteComponent from "../Layout/Header/ChooseLocation";
-import Telegramlogo from "@/public/logo/Telegramlogo.svg";
-import Viberlogo from "@/public/logo/Viberlogo.svg";
-import Image from "next/image";
 import DateTimePicker from "../helpers/DateTimePicker";
 import Modal from "../helpers/Modal";
 import SmsCodeInput from "../helpers/SmsCodeInput";
@@ -53,7 +50,6 @@ const validationSchema = Yup.object().shape({
       "Опис містить нецензурні слова",
       (value) => !value || !badWordsFilter.check(value) // Проверка, если поле не пустое
     ),
-  // date: Yup.string().required("Обов'язкове поле"),
 });
 
 const RequestForm = () => {
@@ -123,7 +119,7 @@ const RequestForm = () => {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}>
         {({ isSubmitting }) => (
-          <Form>
+          <Form className={styles.formWrapper}>
             <div className={styles.info}>
               <div className={styles.containerInfoCategory}>
                 <div className={styles.inputContainer}>
@@ -197,8 +193,8 @@ const RequestForm = () => {
                 <Field
                   type="text"
                   name="price"
-                  placeholder="Вкажіть суму яку готові заплатити"
-                  className={`${styles.name} ${
+                  placeholder="Сума яку готові заплатити"
+                  className={`${styles.priceField} ${
                     isPriceDisabled ? styles.disabled : ""
                   }`}
                   disabled={isPriceDisabled}
@@ -217,18 +213,19 @@ const RequestForm = () => {
                   <label
                     htmlFor="checkboxId"
                     className={styles.checkBoxLabel}>
-                    За домовленістю
+                    Договірна
                   </label>
                 </div>
               </div>
             </div>
-            <div className={styles.calendarBtn}>
-              <label className={styles.textWrapper7}>
-                Оберіть потрібну дату та час *
-              </label>
-              <DateTimePicker onDateTimeSelect={handleDateTimeSelect} />
+            <div className={styles.calendarBtnContainer}>
+              <div className={styles.calendarBtn}>
+                <label className={styles.textWrapper7}>
+                  Оберіть потрібну дату та час *
+                </label>
+                <DateTimePicker onDateTimeSelect={handleDateTimeSelect} />
+              </div>
             </div>
-
             <div className={styles.btnContainer}>
               <button
                 type="submit"

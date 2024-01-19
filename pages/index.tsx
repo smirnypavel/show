@@ -18,7 +18,9 @@ const Home = () => {
         <HomeSearchBar />
         <HomeTopBanner />
         <div className={styles.container}>
-          <RequestForm />
+          <div className={styles.requestForm}>
+            <RequestForm />
+          </div>
           <TopContainer />
         </div>
       </div>
