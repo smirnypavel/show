@@ -1,0 +1,6 @@
+.p {
+  margin-top: 100px;
+  text-align: center;
+  font-size: var(--h1-medium-font-size);
+  font-weight: var(--h1-medium-font-weight);
+}

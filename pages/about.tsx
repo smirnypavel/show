@@ -1,11 +1,12 @@
-import SmsCodeInput from "@/components/helpers/SmsCodeInput";
 import React from "react";
+import styles from "@/styles/About/About.module.css";
 
 const About = () => {
   return (
     <div>
-      About
-      <SmsCodeInput />
+      <p className={styles.p}>
+        Вітаю Вас!!! Але ми ще працюємо над ціею стортнкою
+      </p>
     </div>
   );
 };

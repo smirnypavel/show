@@ -8,6 +8,7 @@
   -moz-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
   box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
   @media screen and (min-width: 768px) {
+    padding: 28px 80px;
     min-height: 729px;
     min-width: 756px;
   }
@@ -54,6 +55,7 @@
 .inputContainer {
   width: 100%;
   @media screen and (min-width: 768px) {
+    width: 260px;
     margin-right: 40px; /* Задаем относительное позиционирование для контейнера инпута */
   }
 }
@@ -131,6 +133,7 @@
 .locationWrapper {
   @media screen and (min-width: 768px) {
     display: flex;
+    align-items: center;
   }
 }
 .adressInput {
@@ -148,6 +151,7 @@
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   @media screen and (min-width: 768px) {
     margin-left: 40px;
+    width: 260px;
   }
 }
 
@@ -179,7 +183,9 @@
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   @media screen and (min-width: 768px) {
+    flex: none;
     padding-left: 16px;
+    width: 260px;
   }
 }
 .priceField::placeholder {
@@ -209,11 +215,11 @@
   content: "";
   background-color: transparent; /* Цвет фона при выборе чекбокса */
   display: inline-block;
-  width: 14px; /* Задаем ширину круглого чекбокса */
-  height: 14px; /* Задаем высоту круглого чекбокса */
-  border-radius: 12px; /* Делаем круглым */
+  width: 18px; /* Задаем ширину круглого чекбокса */
+  height: 18px; /* Задаем высоту круглого чекбокса */
+  border-radius: 50%; /* Делаем круглым */
   border: 0.5px solid #6f6f6f; /* Добавляем границу для круглого чекбокса */
-  margin-right: 8px; /* Отступ между чекбоксом и текстом */
+  margin-right: 7px;
 }
 
 /* Стили для отображения выбранного чекбокса */
@@ -221,8 +227,8 @@
   background-color: var(--button-bg-color);
   width: 18px; /* Задаем ширину круглого чекбокса */
   height: 18px; /* Задаем высоту круглого чекбокса */
-  border: none;
-  margin-right: 9px; /* Отступ между чекбоксом и текстом */
+  border: 0.5px solid var(--button-bg-color); /* Добавляем границу для круглого чекбокса */
+  margin-right: 7px;
 }
 .checkBoxLabel {
   color: #6f6f6f;
@@ -235,16 +241,10 @@
   height: 58px;
   width: 260px;
 }
-
-.radiobtn {
-  background-color: var(--x-neutral0-white);
-  border: 1px solid;
-  border-color: #62666a;
-  border-radius: 12px;
-  height: 18px;
-  width: 18px;
+.calendarBtnContainer {
+  display: flex;
+  justify-content: center;
 }
-
 .calendarBtn {
   width: 100%;
   margin-top: 20px;
@@ -260,7 +260,6 @@
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   @media screen and (min-width: 768px) {
     width: auto;
-    margin-left: 80px;
   }
 }
 
@@ -330,21 +329,6 @@
   width: 299px;
 }
 
-.frame2 {
-  align-items: center;
-  display: inline-flex;
-  gap: 8px;
-  justify-content: center;
-  padding: 8px;
-}
-
-.frame3 {
-  align-items: center;
-  display: inline-flex;
-  gap: 8px;
-  justify-content: center;
-  padding: 8px;
-}
 .textDanger {
   color: #f32b2b;
   font-family: Inter;
@@ -368,19 +352,4 @@
   margin-left: 80px;
   display: flex;
   gap: 88px;
-}
-.socialWrapper {
-  display: flex;
-  align-items: baseline;
-  position: relative;
-}
-.TelegramIcon {
-  position: absolute;
-  top: -3px;
-  left: 100px;
-}
-.ViberIcon {
-  position: absolute;
-  top: -3px;
-  left: 70px;
 }

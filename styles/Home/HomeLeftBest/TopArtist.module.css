@@ -4,7 +4,9 @@
   border-radius: 0px 0px 16px 16px;
   min-height: 169px;
   max-width: 432px;
-  /* overflow: auto; */
+  @media (min-width: 768px) {
+    min-height: 157px;
+  }
 }
 .artistItem {
   margin-top: 20px;

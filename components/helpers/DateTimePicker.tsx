@@ -81,6 +81,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
               }}
             />
           }
+          // showTimeSelect
           showTimeInput
           timeInputLabel="Час"
           timeFormat="HH:mm"

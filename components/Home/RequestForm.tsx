@@ -218,13 +218,14 @@ const RequestForm = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.calendarBtn}>
-              <label className={styles.textWrapper7}>
-                Оберіть потрібну дату та час *
-              </label>
-              <DateTimePicker onDateTimeSelect={handleDateTimeSelect} />
+            <div className={styles.calendarBtnContainer}>
+              <div className={styles.calendarBtn}>
+                <label className={styles.textWrapper7}>
+                  Оберіть потрібну дату та час *
+                </label>
+                <DateTimePicker onDateTimeSelect={handleDateTimeSelect} />
+              </div>
             </div>
-
             <div className={styles.btnContainer}>
               <button
                 type="submit"
