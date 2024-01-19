@@ -58,13 +58,14 @@
   max-width: 40px;
   border: none;
   text-align: center;
-  font-size: 40px;
+  font-size: 20px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   @media (min-width: 768px) {
     height: 70px;
     max-width: 70px;
+    font-size: 40px;
   }
 }
 
