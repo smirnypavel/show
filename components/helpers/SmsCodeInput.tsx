@@ -64,7 +64,7 @@ const SmsCodeInput = () => {
           <input
             key={`${index}-${shakeKey}`} // Используем key для обновления анимации
             autoFocus={index === 0}
-            type="text"
+            type="number"
             maxLength={1}
             value={code[index]}
             onChange={(event) => handleCodeChange(event, index)}
