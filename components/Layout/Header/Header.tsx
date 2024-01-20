@@ -20,33 +20,101 @@ const Header = () => {
   const login = useSelector(isLoggedIn);
   const user = useSelector(getUser);
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [req, setReq] = useState("");
+  const [isCatContainerVisible, setIsCatContainerVisible] = useState(false);
+  const toggleSearchContainer = () => {
+    setIsCatContainerVisible(!isCatContainerVisible);
+  };
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+  const handleInputChange = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setReq(event.target.value);
+  };
+  const handleSearch = () => {
+    if (router.pathname === "/artists") {
+      // Мы уже находимся на странице /artists
+      router.push({
+        pathname: "/artists",
+        query: {
+          ...router.query,
+          req,
+        },
+      });
+    } else {
+      // Мы на другой странице
+      router.push(`/artists?req=${req}`);
+    }
+  };
+  const handleResetSearch = () => {
+    router.push({
+      pathname: "/artists",
+    });
+    setReq("");
+  };
   return (
     <>
-      <div className={styles.mobileHeader}>
-        <button
-          className={styles.burger}
-          onClick={toggleMenu}>
-          <AiOutlineMenu className={styles.burgerIcon} />
-        </button>
-        <Link
-          href={"/"}
-          className={styles.mobileLogoLink}>
-          <Image
-            src={logo123}
-            alt={""}
-            priority
-            className={styles.logoMob}
-          />
-          <p className={styles.mobLogoText}>Wechirka</p>
-        </Link>
-        <button className={styles.search}>
-          <BsSearch className={styles.cearchIcon} />
-        </button>
+      <div className={styles.mobileContainer}>
+        <div className={styles.mobileHeader}>
+          <button
+            className={styles.burger}
+            onClick={toggleMenu}>
+            <AiOutlineMenu className={styles.burgerIcon} />
+          </button>
+          <Link
+            href={"/"}
+            className={styles.mobileLogoLink}>
+            <Image
+              src={logo123}
+              alt={""}
+              priority
+              className={styles.logoMob}
+            />
+            <p className={styles.mobLogoText}>Wechirka</p>
+          </Link>
+          <button className={styles.search}>
+            <BsSearch
+              className={styles.searchIcon}
+              onClick={toggleSearchContainer}
+            />
+          </button>
+        </div>
+        <div
+          className={`${styles.visibleContainer} ${
+            isCatContainerVisible && styles.move
+          }`}>
+          <div
+            className={`${styles.searchVisible} ${
+              isCatContainerVisible && styles.show
+            }`}>
+            <div className={styles.searchInputContainer}>
+              <input
+                className={styles.inputSearch}
+                type="text"
+                placeholder="Пошук"
+                value={req}
+                onChange={handleInputChange}
+              />
+              {req && (
+                <button
+                  className={styles.clearSearch}
+                  onClick={handleResetSearch}>
+                  <IoClose className={styles.clearSearchIcon} />
+                </button>
+              )}
+
+              <button
+                className={styles.buttonSearch}
+                onClick={handleSearch}>
+                Знайти
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div className={styles.header}>
         <Link
           href={"/"}
