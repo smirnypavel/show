@@ -41,13 +41,26 @@
   width: 100%;
   height: auto;
 }
-.mobileLogo {
+.mobileLogoLink {
   color: var(--white);
   font-family: var(--logo-font);
   font-size: 32px;
   font-weight: 500;
   left: 0;
   letter-spacing: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoMob {
+  width: 60px;
+  height: 60px;
+  margin-right: -45px;
+  /* transform: rotate(-30deg); */
+}
+.logoText {
+  position: relative;
+  z-index: 1;
 }
 .mobileMenu {
   display: flex;

@@ -1,6 +1,17 @@
-.artistContainer {
-  margin-top: 88px;
-  width: 1168px;
-  min-height: 1219px;
+.container {
+  width: 100%;
+  margin-top: 10px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.artistContainer {
+  width: 100%;
+  max-width: 1168px;
+  min-height: 1219px;
+  position: relative;
+  @media (min-width: 768px) {
+    margin-top: 88px;
+    display: flex;
+  }
 }
