@@ -41,20 +41,23 @@ const Header = () => {
             priority
             className={styles.logoMob}
           />
-          <p className={styles.logoText}>Wechirka</p>
+          <p className={styles.mobLogoText}>Wechirka</p>
         </Link>
         <button className={styles.search}>
           <BsSearch className={styles.cearchIcon} />
         </button>
       </div>
       <div className={styles.header}>
-        <Link href={"/"}>
+        <Link
+          href={"/"}
+          className={styles.logoLink}>
           <Image
             src={logo123}
             alt={""}
             priority
             className={styles.logo}
           />
+          <p className={styles.logoText}>Wechirka</p>
         </Link>
 
         <div className={styles.headerNav}>
