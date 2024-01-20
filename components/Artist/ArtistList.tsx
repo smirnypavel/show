@@ -7,6 +7,7 @@ import { GrLocation } from "react-icons/gr";
 import NoPhoto_PNG from "@/public/user/NoPhoto_PNG.png";
 import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { IoIosArrowForward } from "react-icons/io";
+import ScrollToTopButton from "../helpers/ScrollToTopButton";
 export interface ItemListProps {
   artists: IUserAuth[];
   currentPage: number;

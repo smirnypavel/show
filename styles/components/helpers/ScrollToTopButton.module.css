@@ -1,0 +1,16 @@
+/* ScrollToTopButton.module.css */
+.scrollToTopButton {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: rgba(232, 149, 89, 0.656);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.icon {
+  width: 32px;
+  height: 32px;
+}
