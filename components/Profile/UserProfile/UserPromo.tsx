@@ -3,13 +3,16 @@ import styles from "@/styles/components/Profile/Profile/UserPromo.module.css";
 import { ArtistPageProps } from "./UserProfile";
 import Image from "next/image";
 import Modal from "@/components/helpers/Modal";
-
-import YouTube2 from "@/components/helpers/Youtube";
+import { IoIosArrowForward } from "react-icons/io";
+import YouTube2 from "../../helpers/Youtube";
+import MobileInfoPage from "./Mobile/MobileUserInfo";
 
 const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
   const [showPhotos, setShowPhotos] = useState(true); // состояние для отслеживания отображения фотографий/видео
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalOpenIndex, setModalOpenIndex] = useState<number | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const handleShowPhotos = () => {
     setShowPhotos(true);
   };
@@ -25,9 +28,26 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
     setModalOpenIndex(null);
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className={styles.artistPromo}>
       <div className={styles.artistPromoContainer}>
+        <button
+          className={styles.buttonContact}
+          onClick={toggleMenu}>
+          Контакти
+        </button>
+        <div className={`${styles.mobileInfo} ${menuOpen && styles.show}`}>
+          <button
+            className={styles.buttonClose}
+            onClick={toggleMenu}>
+            <IoIosArrowForward className={styles.buttonCloseIcon} />
+          </button>
+          <MobileInfoPage artist={artist} />
+        </div>
         <div className={styles.artistPromoHeader}>
           <div className={styles.artistPromoMasterPhoto}>
             <Image
@@ -40,7 +60,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
           </div>
           <div className={styles.artistPromoHeaderTextContainer}>
             <div className={styles.artistPromoHeaderText}>{artist.title}</div>
-            <div className={styles.artistPromoHeaderText}>₴{artist.price}</div>
+            <div className={styles.artistPromoHeaderText}>₴ {artist.price}</div>
             <div>
               <p className={styles.artistPromoHeaderLocationTitle}>Місто</p>
               <div className={styles.artistPromoHeaderLocation}>
@@ -50,7 +70,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
             </div>
           </div>
         </div>
-        <div>
+        <div className={styles.descriptionContainer}>
           <div className={styles.descriptionWrapper}>
             {artist.description
               ? artist.description

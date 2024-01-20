@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { IUserAuth } from "@/types/IAuth";
 import styles from "@/styles/components/Artist/ArtistPage.module.css";

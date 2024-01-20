@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+.linkButton {
+  height: 52px;
+  padding: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--accent-color-2);
+  border-radius: 16px;
+  color: var(--white);
+  font-size: var(--h2-medium-font-size);
+  font-weight: var(--h2-medium-font-weight);
+  transition: background-color 0.3s ease, color 0.3s ease; /* Добавляем плавный переход */
+  @media (max-width: 400px) {
+    border-radius: 10px;
+    font-size: 14px;
+    height: 40px;
+    padding: 8px;
+  }
+}
+.linkIcon {
+  width: 28px;
+  height: 28px;
+}

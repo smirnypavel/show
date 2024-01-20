@@ -34,15 +34,14 @@ const Header = () => {
         </button>
         <Link
           href={"/"}
-          className={styles.mobileLogo}>
-          Wechirka
-          {/* <Image
+          className={styles.mobileLogoLink}>
+          <Image
             src={logo123}
             alt={""}
             priority
-            className={styles.logo}
-            
-          /> */}
+            className={styles.logoMob}
+          />
+          <p className={styles.logoText}>Wechirka</p>
         </Link>
         <button className={styles.search}>
           <BsSearch className={styles.cearchIcon} />
