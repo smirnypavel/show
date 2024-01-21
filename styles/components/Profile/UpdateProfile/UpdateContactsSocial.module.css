@@ -1,22 +1,39 @@
-.contactsContainer {
-  margin-top: 20px;
-  margin-left: 20px;
+.container {
+  padding: 20px;
+}
+.contactsContainer,
+.socialContainer {
+  /* margin-top: 20px; */
   display: flex;
   width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
 }
 .contactsTitle {
   font-size: var(--h1-medium-font-size);
   font-weight: var(--h1-medium-font-weight);
-  font-family: var(--h1-medium-font-family);
-  color: var(--black);
-  margin-bottom: 12px;
-  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.36);
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  margin-top: 20px;
+}
+.titleClose {
+  border-radius: 16px;
 }
 .contactLabel {
   font-size: var(--h2-regular-font-size);
   font-weight: var(--h2-regular-font-weight);
-  font-family: var(--h2-regular-font-family);
-  color: var(--black);
   margin-bottom: 12px;
   display: flex;
   gap: 10px;
@@ -25,12 +42,30 @@
 .contactIcon {
   height: 24px;
   width: 24px;
-  /* font-size: 24px; */
 }
 .contactIconWhatsapp {
-  padding: 0;
-  margin: 0;
   height: 30px;
   width: 30px;
-  /* font-size: 10px; */
+}
+
+.contactsContainer.show,
+.socialContainer.show {
+  padding: 20px;
+  max-height: 600px; /* Задайте максимальную высоту, которую вы считаете подходящей */
+}
+
+.contactsContainer.hide,
+.socialContainer.hide {
+  max-height: 0;
+}
+.iconArrow {
+  width: 32px;
+  height: 32px;
+  transform: rotate(180deg);
+
+  transition: transform 0.3s ease; /* Добавлен переход для свойства transform */
+}
+
+.up {
+  transform: rotate(0deg);
 }

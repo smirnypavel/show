@@ -13,7 +13,7 @@ const ProfileTabBar = () => {
         <IoStatsChartOutline className={styles.linkIcon} />
       </Link>
       <Link
-        href={""}
+        href={"/profile/update"}
         className={styles.linkButton}>
         <TbUserEdit className={styles.linkIcon} />
         Редагування
