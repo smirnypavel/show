@@ -17,6 +17,7 @@ import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { IoIosArrowForward } from "react-icons/io";
 import MobileSort from "@/components/Artist/Mobile/MobileSort";
 import MobileCat from "@/components/Artist/Mobile/MobileCat";
+import ScrollToTopButton from "@/components/helpers/ScrollToTopButton";
 
 interface ArtistsProps {
   artists: IUserAuth[];
@@ -242,6 +243,7 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
           />
         )}
       </div>
+      <ScrollToTopButton />
     </div>
   );
 };

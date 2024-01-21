@@ -4,17 +4,19 @@ import { FaCheck } from "react-icons/fa";
 import styles from "@/styles/components/Ui/InputUi.module.css";
 
 interface InputUiProps {
+  contactType?: string;
   initialValue?: string;
   onChange?: (value: string) => void;
-  onSubmit?: (value: string) => void;
-  placeholder?: string; // Добавлен prop для placeholder
+  onSubmit?: (value: string, contactType?: string) => void;
+  placeholder?: string;
 }
 
 const InputUi: React.FC<InputUiProps> = ({
+  contactType,
   initialValue = "",
   onChange,
   onSubmit,
-  placeholder = "", // Используем переданный placeholder или пустую строку по умолчанию
+  placeholder = "",
 }) => {
   const [value, setValue] = useState(initialValue);
   const [isEditing, setIsEditing] = useState(false);
@@ -33,7 +35,7 @@ const InputUi: React.FC<InputUiProps> = ({
   const handleSubmit = () => {
     setIsEditing(false);
     if (onSubmit) {
-      onSubmit(value); // Передача значения value
+      onSubmit(value, contactType); // Здесь передаем и contactType
     }
   };
 
@@ -41,7 +43,7 @@ const InputUi: React.FC<InputUiProps> = ({
     <div className={styles.inputGroup}>
       <input
         type="text"
-        placeholder={placeholder} // Используем placeholder из prop
+        placeholder={placeholder}
         value={value}
         onChange={handleChanges}
         disabled={!isEditing}
