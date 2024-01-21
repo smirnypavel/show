@@ -1,6 +1,8 @@
 // import "../styles/globals.css";
 
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
+
 import { Provider } from "react-redux";
 import { store, persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
@@ -25,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Layout>
           <div className="container">
             <Component {...pageProps} />
+            <Analytics />
           </div>
           {/* Компонент переключения темы */}
         </Layout>
