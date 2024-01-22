@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import styles from "@/styles/components/Profile/UpdateProfile/ChangePassword.module.css";
 import { useAppDispatch } from "@/redux/hooks";
 import { updatePassword } from "@/redux/auth/authOperations";
+import { PiEye, PiEyeClosed } from "react-icons/pi";
 
 interface FormValues {
   oldPassword: string;
@@ -11,6 +12,8 @@ interface FormValues {
   confirmPassword: string;
 }
 const ChangePassword = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useAppDispatch();
   const initialValues: FormValues = {
     oldPassword: "",
@@ -58,7 +61,7 @@ const ChangePassword = () => {
               </div>
               <Field
                 className={styles.changePasswordInput}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="oldPassword"
               />
               <ErrorMessage
@@ -73,7 +76,7 @@ const ChangePassword = () => {
               </div>
               <Field
                 className={styles.changePasswordInput}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
               />
               <ErrorMessage
@@ -86,11 +89,26 @@ const ChangePassword = () => {
               <div className={styles.changePasswordInputTitle}>
                 Повторіть новий пароль
               </div>
-              <Field
-                className={styles.changePasswordInput}
-                type="password"
-                name="confirmPassword"
-              />
+              <div className={styles.inputGroup}>
+                <Field
+                  className={styles.changePasswordInput}
+                  type={showPassword ? "text" : "password"}
+                  name="confirmPassword"
+                />
+                <div className="input-group-append">
+                  <button
+                    type="button"
+                    className={styles.showButton}
+                    onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? (
+                      <PiEye className={styles.showIcon} />
+                    ) : (
+                      <PiEyeClosed className={styles.showIcon} />
+                    )}
+                  </button>
+                </div>
+              </div>
+
               <ErrorMessage
                 name="confirmPassword"
                 component="div"

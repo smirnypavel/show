@@ -17,7 +17,7 @@ const Registry = () => {
   const handleRegistration = async (values: FormValues) => {
     try {
       // Регистрация пользователя
-      await dispatch(
+      const signUpResult = await dispatch(
         signUp({
           email: values.email,
           password: values.password,
@@ -25,20 +25,20 @@ const Registry = () => {
           firstName: values.firstName,
         })
       );
-      // После успешной регистрации попытка входа
-      const loginResult = await dispatch(
-        signIn({ email: values.email, password: values.password })
-      );
+      if (signUpResult.payload) {
+        // Если регистрация успешна, тогда попытка входа
+        const loginResult = await dispatch(
+          signIn({ email: values.email, password: values.password })
+        );
 
-      if (loginResult.payload) {
-        // Если вход успешен, переход на страницу профиля
-        router.push("/profile");
+        if (loginResult.payload) {
+          // Если вход успешен, переход на страницу профиля
+          router.push("/profile");
+        } else {
+        }
       } else {
-        console.log("Registration failed or login unsuccessful");
       }
-    } catch (error) {
-      // Обработка ошибок
-    }
+    } catch (error) {}
   };
 
   return (

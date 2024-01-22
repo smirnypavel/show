@@ -19,6 +19,7 @@ export interface IUserAuth {
   paid: boolean;
   trial: boolean;
   token: string;
+  refresh_token: string;
   verify: boolean;
   ban: boolean;
   avatar: IAvatar;

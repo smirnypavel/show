@@ -45,6 +45,7 @@ const initialState: IAuthState = {
     description: "",
     price: "",
     token: "",
+    refresh_token: "",
     social: {
       Instagram: "",
       Facebook: "",

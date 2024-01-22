@@ -44,13 +44,20 @@ const Sidebar: React.FC<SidebarProps> = ({
           activeComponent === "Component3" ? styles.active : ""
         }`}
         onClick={() => handleComponentChange("Component3")}>
-        Фото та відео
+        Соціальні сторінки
       </button>
       <button
         className={`${styles.sidebarButton} ${
           activeComponent === "Component4" ? styles.active : ""
         }`}
         onClick={() => handleComponentChange("Component4")}>
+        Фото та відео
+      </button>
+      <button
+        className={`${styles.sidebarButton} ${
+          activeComponent === "Component5" ? styles.active : ""
+        }`}
+        onClick={() => handleComponentChange("Component5")}>
         Підписка
       </button>
       {/* Добавь кнопки для других компонентов, если нужно */}
@@ -59,7 +66,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           className={`${styles.sidebarButton} ${
             activeComponent === "Component5" ? styles.active : ""
           }`}
-          onClick={() => handleComponentChange("Component5")}>
+          onClick={() => handleComponentChange("Component6")}>
           Змінити пароль
         </button>
         <button
