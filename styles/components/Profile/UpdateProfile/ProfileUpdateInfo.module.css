@@ -1,6 +1,12 @@
 .container {
-  padding: 48px 32px;
+  padding: 20px 10px;
+
+  @media (min-width: 768px) {
+    padding: 48px 32px;
+  }
 }
 .profileInfoContainer {
-  display: flex;
+  @media (min-width: 768px) {
+    display: flex;
+  }
 }

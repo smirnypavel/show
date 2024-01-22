@@ -4,10 +4,25 @@
   margin-bottom: 12px;
 }
 .input {
+  background-color: transparent;
+  border-radius: 8px;
+  height: 45px;
+  width: 100%;
+  border: none;
+  font-size: var(--h2-medium-font-size);
+  font-weight: var(--h2-medium-font-weight);
+}
+.input::placeholder {
+  color: var(--black);
+  font-size: var(--h1-medium-font-size);
+  font-weight: var(--h1-medium-font-weight);
+}
+.active {
   background-color: var(--white);
   border-radius: 8px;
   height: 45px;
   border: none;
+  width: 298px;
   padding-left: 15px;
   margin-bottom: 12px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
@@ -16,28 +31,13 @@
   color: var(--black);
   font-size: var(--h2-regular-font-size);
   font-weight: var(--h2-regular-font-weight);
-  font-family: var(--h2-regular-font-family);
-  @media (min-width: 768px) {
-    width: 298px;
-  }
 }
-.input::placeholder {
-  color: var(--black);
-  font-size: var(--h2-regular-font-size);
-  font-weight: var(--h2-regular-font-weight);
-  font-family: var(--h2-regular-font-family);
-}
-
 .buttonEdit {
   background-color: transparent;
   width: 45px;
   height: 45px;
   border: none;
   padding: 0;
-  /* @media (min-width: 768px) {
-    width: 45px;
-    height: 45px;
-  } */
 }
 .iconEdit {
   height: 24px;

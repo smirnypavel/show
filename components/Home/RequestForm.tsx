@@ -26,7 +26,7 @@ interface FormValues {
 }
 
 const initialValues: FormValues = {
-  phone: "",
+  phone: "+380",
   name: "",
   description: "",
   date: "",
@@ -143,7 +143,7 @@ const RequestForm = () => {
                     <Field
                       type="text"
                       name="phone"
-                      placeholder="Tелефон"
+                      placeholder="XXXXX XXXXXX"
                       className={styles.phone}
                     />
                     <ErrorMessage
@@ -229,8 +229,7 @@ const RequestForm = () => {
             <div className={styles.btnContainer}>
               <button
                 type="submit"
-                className={styles.submitButton}
-                disabled={isSubmitting}>
+                className={styles.submitButton}>
                 <div className={styles.textWrapper}> Створити запит</div>
               </button>
             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/components/Profile/UpdateProfile/SideBar.module.css";
+import styles from "@/styles/components/Profile/UpdateProfile/Mobile/MobileSideBar.module.css";
 import { useAppDispatch } from "@/redux/hooks";
 import { logOut } from "@/redux/auth/authOperations";
 import { useRouter } from "next/router";
@@ -7,15 +7,18 @@ import { useRouter } from "next/router";
 interface SidebarProps {
   setActiveComponent: (componentName: string) => void;
   activeComponent: string;
+  onButtonClick: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({
+const MobileSideBar: React.FC<SidebarProps> = ({
   setActiveComponent,
   activeComponent,
+  onButtonClick,
 }) => {
   const dispatch = useAppDispatch();
   const handleComponentChange = (componentName: string) => {
     setActiveComponent(componentName);
+    onButtonClick();
   };
   const router = useRouter();
   const handleLogout = () => {
@@ -80,4 +83,4 @@ const Sidebar: React.FC<SidebarProps> = ({
   );
 };
 
-export default Sidebar;
+export default MobileSideBar;

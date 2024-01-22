@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { UserUpdateFormValues } from "../Profile/UpdateProfile/UserUpdateForm";
-
 interface City {
   ref: number;
   description: string;
