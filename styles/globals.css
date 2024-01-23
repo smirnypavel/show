@@ -4,7 +4,7 @@
   --logo-font: "Kodchasan", sans-serif;
   --main-font: "Inter", sans-serif;
   --bg-color: #094356;
-  --button-bg-color: #e89559;
+  --button-bg-color: rgb(232, 149, 89);
   --button-text-color: #333;
   --accent-color: #ebdfca;
   --accent-color-1: rgba(235, 223, 202, 1);
@@ -98,23 +98,13 @@ html {
 }
 html {
   font-family: var(--main-font);
-  position: relative;
-  font-family: var(--main-font);
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
   background-image: url(../public/gradient2.png);
-  /* background: rgb(9, 67, 86);
-  background: radial-gradient(
-    circle,
-    rgba(9, 67, 86, 1) 42%,
-    rgba(232, 149, 89, 1) 100%
-  );
-  backdrop-filter: blur(10px); */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
 li {
   list-style: none;
   padding: 0;
