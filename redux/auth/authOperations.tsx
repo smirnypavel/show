@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { string } from "yup";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_BEC_URL;
 
@@ -123,9 +122,6 @@ export const updateUser = createAsyncThunk(
     }
     try {
       const { data } = await axios.put("/users", credentials);
-<<<<<<< HEAD
-
-      // Проверяем, что data существует и не пусто
       if (data) {
         toast.success("Користувач успішно оновлений");
         return data;
@@ -133,10 +129,6 @@ export const updateUser = createAsyncThunk(
         // Если data не существует или пусто, вызываем ошибку
         throw new Error("Отсутствуют данные после обновления пользователя");
       }
-=======
-      toast.success("Користувач успішно оновлений");
-      return data;
->>>>>>> 178618402991981dc475b4cbd3086ce28ff8f070
     } catch (error: any) {
       toast.error("Під час оновлення користувача сталася помилка");
       return thunkAPI.rejectWithValue(error.message);
@@ -267,7 +259,6 @@ export const updateCategory = createAsyncThunk(
     try {
       const { data } = await axios.put("/users/update-category", credentials);
       toast.success("Категорію успішно оновлено");
-<<<<<<< HEAD
       return data;
     } catch (error: any) {
       toast.error("Помилка оновлення категорії");
@@ -288,11 +279,6 @@ export const deleteCat = createAsyncThunk(
       return data;
     } catch (error: any) {
       toast.error("Сталася помилка при видаленні категорії");
-=======
-      return data;
-    } catch (error: any) {
-      toast.error("Помилка оновлення категорії");
->>>>>>> 178618402991981dc475b4cbd3086ce28ff8f070
       return thunkAPI.rejectWithValue(error.message);
     }
   }
