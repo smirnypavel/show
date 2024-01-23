@@ -16,38 +16,22 @@ import { updateUser } from "@/redux/auth/authOperations";
 
 const UpdateContacts = () => {
   const dispatch = useAppDispatch();
-<<<<<<< HEAD
 
-=======
-  // const [showContacts, setShowContacts] = useState(true);
->>>>>>> 178618402991981dc475b4cbd3086ce28ff8f070
   const [showSocial, setShowSocial] = useState(true);
   const user: IUserAuth = useAppSelector(getUser);
 
   const handleSubmitValue = (value: string, contactType: string) => {
-<<<<<<< HEAD
-=======
-    // Делай что-то с полученным значением value
-    // console.log("Submitted value:", value);
->>>>>>> 178618402991981dc475b4cbd3086ce28ff8f070
     const socialData = {
       social: { [contactType]: value },
     };
     dispatch(updateUser(socialData));
   };
-<<<<<<< HEAD
 
-  const handleShowSocial = () => {
-    setShowSocial(!showSocial);
-=======
   const handleShowContacts = () => {
-    // setShowContacts(!showContacts);
     setShowSocial(!showSocial);
   };
   const handleShowSocial = () => {
     setShowSocial(!showSocial);
-    // setShowContacts(!showContacts);
->>>>>>> 178618402991981dc475b4cbd3086ce28ff8f070
   };
 
   return (
