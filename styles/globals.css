@@ -98,7 +98,13 @@ html {
 }
 html {
   font-family: var(--main-font);
-  /* background-color: var(--bg-color); */
+  /* background: rgb(9, 67, 86);
+  background: radial-gradient(
+    circle,
+    rgba(9, 67, 86, 1) 42%,
+    rgba(232, 149, 89, 1) 100%
+  ); */
+  background-color: var(--bg-color);
   background-image: url(../public/gradient2.png);
   background-size: cover;
   background-position: center center;
