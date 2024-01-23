@@ -39,11 +39,11 @@
   width: 24px;
   height: 24px;
   border: none;
+  padding: 0px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: #d1d1d1b7;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -54,6 +54,10 @@
 .deleteButtonIcon {
   width: 24px;
   height: 24px;
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 }
 .deleteButton::before {
   content: "Видалити категорію"; /* Текст для подсказки */
