@@ -5,12 +5,10 @@
   justify-content: center;
 }
 .download {
-  align-items: center;
+  width: 100%;
   background-color: #ffffff;
   border-radius: 8px;
-  display: inline-flex;
   gap: 8px;
-  justify-content: center;
   padding: 8px;
   display: flex;
   justify-content: center;
@@ -25,8 +23,8 @@
   font-weight: var(--h2-regular-font-weight);
   letter-spacing: var(--h2-regular-letter-spacing);
   line-height: var(--h2-regular-line-height);
-  white-space: nowrap;
-  width: fit-content;
+  /* white-space: nowrap; */
+  /* width: fit-content; */
 }
 .downloadIcon {
   width: 24px;

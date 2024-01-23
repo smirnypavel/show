@@ -111,7 +111,7 @@ const PhotoPlaceholderComponent = () => {
         ) : (
           <HiOutlineDownload className={styles.downloadIcon} />
         )}
-        <p className={styles.downloadText}>Загрузити фото</p>
+        <p className={styles.downloadText}>Завантажити фото</p>
       </button>
       <div className={styles.containerImages}>{allPhotos}</div>
     </div>
