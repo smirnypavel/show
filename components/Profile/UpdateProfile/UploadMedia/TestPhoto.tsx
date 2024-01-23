@@ -93,7 +93,7 @@ const PhotoPlaceholderComponent = () => {
   const allPhotos = [...photos, ...photoPlaceholders];
 
   return (
-    <div>
+    <div className={styles.container}>
       <input
         type="file"
         accept="image/*"

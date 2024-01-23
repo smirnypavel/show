@@ -184,7 +184,6 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                     <li
                       key={item.publicId}
                       className={styles.videoListItem}>
-                      {/* <YouTube url={item.url} /> */}
                       <YouTube2 url={item.url} />
                     </li>
                   ))

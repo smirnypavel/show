@@ -64,7 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       <div className={styles.exitingButtonContainer}>
         <button
           className={`${styles.sidebarButton} ${
-            activeComponent === "Component5" ? styles.active : ""
+            activeComponent === "Component6" ? styles.active : ""
           }`}
           onClick={() => handleComponentChange("Component6")}>
           Змінити пароль

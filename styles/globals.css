@@ -106,6 +106,7 @@ html {
   ); */
   background-color: var(--bg-color);
   background-image: url(../public/gradient2.png);
+  backdrop-filter: 10px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
