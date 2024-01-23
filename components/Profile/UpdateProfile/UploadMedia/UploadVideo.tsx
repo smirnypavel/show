@@ -47,13 +47,12 @@ const UploadVideo = () => {
           </button>
         </div>
         <div>
-          <h4>Додані посилання:</h4>
+          <h4 className={styles.videoTitle}>Додані відео:</h4>
           <ul className={styles.videoList}>
             {video.map((item) => (
               <li
                 key={item.publicId}
                 className={styles.videListItem}>
-                {/* <YouTube url={item.url} /> */}
                 <YouTube2 url={item.url} />
                 <button
                   type="button"

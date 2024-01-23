@@ -6,8 +6,6 @@ import UploadVideo from "./UploadVideo";
 const UpdateMedia = () => {
   return (
     <div className={styles.container}>
-      {/* <ImageUploadComponent /> */}
-      {/* <CloudinaryImageUpload /> */}
       <PhotoPlaceholderComponent />
       <UploadVideo />
     </div>

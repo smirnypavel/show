@@ -3,7 +3,9 @@
   flex-direction: column;
   width: 273px;
   min-height: 816px;
-  background-color: #f6f6f6;
+  /* background-color: #f6f6f6; */
+  background-color: rgba(41, 91, 108, 0.427);
+  backdrop-filter: blur(10px);
   border-radius: 16px 16px 16px 16px;
   padding: 58px 0px 76px 10px;
   @media (min-width: 768px) {
@@ -11,10 +13,10 @@
   }
 }
 .sidebarButton {
-  color: #000000;
+  color: var(--white);
   background-color: transparent;
-  font-size: var(--h2-regular-font-size);
-  font-weight: var(--h2-regular-font-weight);
+  font-size: var(--h1-medium-font-size);
+  font-weight: var(--h1-medium-font-weight);
   border: none;
   width: fit-content;
   margin-bottom: 36px;
