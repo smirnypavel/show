@@ -8,7 +8,6 @@
   border-radius: 8px;
   height: 45px;
   border: none;
-  width: 298px;
   padding-left: 15px;
   margin-bottom: 12px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
@@ -18,6 +17,9 @@
   font-size: var(--h2-regular-font-size);
   font-weight: var(--h2-regular-font-weight);
   font-family: var(--h2-regular-font-family);
+  @media (min-width: 768px) {
+    width: 298px;
+  }
 }
 .input::placeholder {
   color: var(--black);
@@ -32,6 +34,10 @@
   height: 45px;
   border: none;
   padding: 0;
+  /* @media (min-width: 768px) {
+    width: 45px;
+    height: 45px;
+  } */
 }
 .iconEdit {
   height: 24px;

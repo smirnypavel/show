@@ -35,6 +35,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   ) {
     return (
       <button
+        type="button"
         className={styles.customDatePicker}
         onClick={onClick}
         ref={ref}>
@@ -60,6 +61,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
     <div>
       {!showDatePicker ? (
         <button
+          type="button"
           onClick={openDatePicker}
           className={styles.buttonDateTime}>
           <Image

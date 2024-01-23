@@ -27,15 +27,16 @@ axios.interceptors.response.use(
       originalRequest._retry = true; // Помечаем запрос, чтобы избежать бесконечного цикла повторов
 
       const refreshToken = localStorage.getItem("refreshToken");
+
       if (!refreshToken) {
         // Если отсутствует refresh-токен, делаем выход пользователя
         return Promise.reject();
       }
-
+      setAuthHeader(refreshToken);
       try {
         const { data } = await axios.patch("/users/refresh");
         setAuthHeader(data.token);
-        localStorage.setItem("refreshToken", data.token);
+        localStorage.setItem("token", data.token);
         originalRequest.headers["Authorization"] = `Bearer ${data.token}`;
         return axios(originalRequest); // Повторяем исходный запрос с обновленным токеном
       } catch (error) {
@@ -52,15 +53,9 @@ export const signUp = createAsyncThunk(
   async (credentials: {}, thunkAPI) => {
     try {
       const { data } = await axios.post("/users", credentials);
-      toast.success("Registration successful");
-      localStorage.setItem("refreshToken", data.token);
       return data;
     } catch (error: any) {
-      if (error.response.status === 409) {
-        toast.error("Email is already in use");
-      } else {
-        toast.error("Wrong login or password");
-      }
+      toast.error("Такий користувач вже існує");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -72,16 +67,12 @@ export const signIn = createAsyncThunk(
     try {
       const { data } = await axios.post("/users/login", credentials);
       setAuthHeader(data.token);
-      localStorage.setItem("refreshToken", data.token);
-      // toast.success("Welcome!");
-
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("refreshToken", data.refresh_token);
+      toast.success(`Ласкаво просимо ${data.firstName}!`);
       return data;
     } catch (error: any) {
-      if (error.response.status === 404) {
-        toast.error("Wrong login or password");
-      } else {
-        toast.error("Wrong login or password");
-      }
+      toast.error("Не вірний логін або пароль");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -93,14 +84,15 @@ export const googleAuth = createAsyncThunk(
       setAuthHeader(token);
       const { data } = await axios.patch("/users/refresh");
       setAuthHeader(data.token);
-      localStorage.setItem("refreshToken", data.token);
-      toast.success("Welcome!");
+      localStorage.setItem("token", data.token);
+
+      toast.success(`Ласкаво просимо ${data.firstName}!`);
       return data;
     } catch (error: any) {
       if (error.response.status === 404) {
-        toast.error("Wrong login or password");
+        toast.error("Не вірний логін або пароль");
       } else {
-        toast.error("Wrong login or password");
+        toast.error("Не вірний логін або пароль");
       }
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -113,10 +105,10 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
     await axios.post("/users/logout");
     clearAuthHeader();
     localStorage.clear();
-    toast.success("Logged out successfully");
+    toast.success("Успішно вийшов");
   } catch (error: any) {
     localStorage.clear();
-    toast.error("An error occurred during logout");
+    toast.error("Під час виходу сталася помилка");
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -124,16 +116,21 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
 export const updateUser = createAsyncThunk(
   "auth/updateUser",
   async (credentials: {}, thunkAPI) => {
-    const initialToken = localStorage.getItem("refreshToken");
+    const initialToken = localStorage.getItem("token");
     if (initialToken) {
       setAuthHeader(initialToken);
     }
     try {
       const { data } = await axios.put("/users", credentials);
-      toast.success("User updated successfully");
-      return data;
+      if (data) {
+        toast.success("Користувач успішно оновлений");
+        return data;
+      } else {
+        // Если data не существует или пусто, вызываем ошибку
+        throw new Error("Отсутствуют данные после обновления пользователя");
+      }
     } catch (error: any) {
-      toast.error("An error occurred during user update");
+      toast.error("Під час оновлення користувача сталася помилка");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -141,16 +138,16 @@ export const updateUser = createAsyncThunk(
 export const updatePassword = createAsyncThunk(
   "auth/updatePassword",
   async (credentials: {}, thunkAPI) => {
-    const initialToken = localStorage.getItem("refreshToken");
+    const initialToken = localStorage.getItem("token");
     if (initialToken) {
       setAuthHeader(initialToken);
     }
     try {
       const { data } = await axios.patch("/users/change-password", credentials);
-      toast.success("Password updated successfully");
+      toast.success("Пароль успішно оновлено");
       return data;
     } catch (error: any) {
-      toast.error("An error occurred during password update");
+      toast.error("Під час оновлення пароля сталася помилка");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -159,7 +156,7 @@ export const updatePassword = createAsyncThunk(
 export const getUser = createAsyncThunk(
   "auth/getUser",
   async (userId: string, thunkAPI) => {
-    const initialToken = localStorage.getItem("refreshToken");
+    const initialToken = localStorage.getItem("token");
     if (initialToken) {
       setAuthHeader(initialToken);
     }
@@ -167,7 +164,6 @@ export const getUser = createAsyncThunk(
       const { data } = await axios.get(`/users/?_id=${userId}`);
       return data;
     } catch (error: any) {
-      // toast.error('An error occurred while fetching user data');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -184,12 +180,11 @@ export const uploadImage = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
-      // Обработка успешной загрузки
-      console.log("Изображение успешно загружено!", data);
+
+      toast.success("Зображення успішно завантажено!");
       return data;
     } catch (error: any) {
-      // Обработка ошибок загрузки
-      console.error("Ошибка при загрузке изображения:", error);
+      toast.error("Помилка при завантаженні зображення:");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -207,13 +202,11 @@ export const uploadAvatar = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
-
-      // Обработка успешной загрузки аватара
-      console.log("Аватар успешно загружен!", data);
+      toast.success("Аватар успішно завантажений!");
       return data;
     } catch (error: any) {
       // Обработка ошибок загрузки
-      console.error("Ошибка при загрузке аватара:", error);
+      toast.error("Помилка при завантаженні аватара:");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -221,17 +214,18 @@ export const uploadAvatar = createAsyncThunk(
 export const deletePhoto = createAsyncThunk(
   "auth/deletePhoto",
   async (credentials: any, thunkAPI) => {
-    const initialToken = localStorage.getItem("refreshToken");
+    const initialToken = localStorage.getItem("token");
     if (initialToken) {
       setAuthHeader(initialToken);
     }
     try {
       console.log(credentials);
       const { data } = await axios.put(`/users/photo/`, credentials);
-      console.log(data);
+      toast.success("Зображення успішно видалене!");
+
       return data;
     } catch (error: any) {
-      // toast.error('An error occurred while fetching user data');
+      toast.error("Сталася помилка при видаленні фото");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -239,16 +233,17 @@ export const deletePhoto = createAsyncThunk(
 export const deleteVideo = createAsyncThunk(
   "auth/deleteVideo",
   async (credentials: any, thunkAPI) => {
-    const initialToken = localStorage.getItem("refreshToken");
+    const initialToken = localStorage.getItem("token");
     if (initialToken) {
       setAuthHeader(initialToken);
     }
     try {
       const { data } = await axios.delete(`/users/video/${credentials}`);
-      console.log(data);
+      toast.success("Відео успішно видалене!");
+
       return data;
     } catch (error: any) {
-      // toast.error('An error occurred while fetching user data');
+      toast.error("Сталася помилка при видаленні відео");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -257,16 +252,33 @@ export const updateCategory = createAsyncThunk(
   "auth/updateCategory",
   async (credentials: {}, thunkAPI) => {
     console.log(credentials);
-    const initialToken = localStorage.getItem("refreshToken");
+    const initialToken = localStorage.getItem("token");
     if (initialToken) {
       setAuthHeader(initialToken);
     }
     try {
       const { data } = await axios.put("/users/update-category", credentials);
-      toast.success("Category updated successfully");
+      toast.success("Категорію успішно оновлено");
       return data;
     } catch (error: any) {
-      toast.error("An error Category update");
+      toast.error("Помилка оновлення категорії");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const deleteCat = createAsyncThunk(
+  "auth/deleteCat",
+  async (credentials: any, thunkAPI) => {
+    const initialToken = localStorage.getItem("token");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.delete(`/users/category/${credentials}`);
+      toast.success("Категорія успішно видалена!");
+      return data;
+    } catch (error: any) {
+      toast.error("Сталася помилка при видаленні категорії");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

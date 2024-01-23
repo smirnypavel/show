@@ -8,8 +8,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 252px;
-  height: 252px;
+  width: 200px;
+  height: 200px;
+  @media (min-width: 768px) {
+    width: 252px;
+    height: 252px;
+  }
 }
 
 .avatar {
@@ -23,13 +27,9 @@
 .updateLink {
   text-align: center;
   background-color: transparent;
-  color: var(--black);
-  font-family: var(--h2-regular-font-family);
   font-size: var(--h2-regular-font-size);
   font-style: var(--h2-regular-font-style);
   font-weight: var(--h2-regular-font-weight);
-  letter-spacing: var(--h2-regular-letter-spacing);
-  line-height: var(--h2-regular-line-height);
   white-space: nowrap;
   display: flex;
   align-items: center;

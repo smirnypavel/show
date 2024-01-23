@@ -1,163 +1,38 @@
 .container {
-  margin-left: 56px;
-  flex-grow: 1;
+  flex: 1;
 }
-.infoContainer {
-  display: flex;
+.titleInput {
+  margin-left: 32px;
+  color: var(--gray);
+  font-size: var(--h4-medium-font-size);
+  font-weight: var(--h5-regular-font-weight);
 }
-.formGroup {
-  display: flex;
-  flex-direction: column;
-}
-.formInputTitle {
-  color: #000000;
-  font-family: var(--h3-regular-font-family);
-  font-size: var(--h3-regular-font-size);
-  font-style: var(--h3-regular-font-style);
-  font-weight: var(--h3-regular-font-weight);
-  left: 0;
-  letter-spacing: var(--h3-regular-letter-spacing);
-  line-height: var(--h3-regular-line-height);
-  margin-bottom: 4px;
+.locationContainer {
   display: flex;
   align-items: center;
 }
-.input {
-  background-color: #ffffff;
-  border-radius: 8px;
+.location {
   display: flex;
-  gap: 8px;
-  padding: 8px;
-  position: relative;
-  width: 224px;
-  height: 40px;
+  align-items: center;
+  height: 45px;
+  width: 100%;
   border: none;
-  margin-bottom: 20px;
-  align-items: center;
+  font-size: var(--h2-medium-font-size);
+  font-weight: var(--h2-medium-font-weight);
 }
-.input::placeholder {
-  color: #000000;
-  font-family: var(--h1-regular-font-family);
-  font-size: var(--h2-regular-font-size);
-  font-style: var(--h1-regular-font-style);
-  font-weight: var(--h1-regular-font-weight);
-}
-.updateLink {
-  text-align: center;
-  color: var(--black);
-  font-family: var(--h2-regular-font-family);
-  font-size: var(--h2-regular-font-size);
-  font-style: var(--h2-regular-font-style);
-  font-weight: var(--h2-regular-font-weight);
-  letter-spacing: var(--h2-regular-letter-spacing);
-  line-height: var(--h2-regular-line-height);
-  white-space: nowrap;
-  gap: 8px;
+.buttonEdit {
   background-color: transparent;
+  width: 45px;
+  height: 45px;
   border: none;
-  cursor: pointer;
+  padding: 0;
 }
-.updateLinkCity {
-  text-align: center;
-  color: var(--black);
-  font-family: var(--h2-regular-font-family);
-  font-size: var(--h2-regular-font-size);
-  font-style: var(--h2-regular-font-style);
-  font-weight: var(--h2-regular-font-weight);
-  letter-spacing: var(--h2-regular-letter-spacing);
-  line-height: var(--h2-regular-line-height);
-  white-space: nowrap;
-  gap: 8px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-.updateLinkIcon {
-  width: 24px;
+.iconEdit {
   height: 24px;
-}
-.updateLinkCityIcon {
   width: 24px;
+}
+.iconOk {
+  color: green;
   height: 24px;
-}
-.buttonSubmit {
-  margin-left: 177px;
-  width: 122px;
-  height: 40px;
-  background-color: var(--white);
-  border: none;
-  padding: 8px;
-  gap: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  color: #000000;
-  font-family: var(--h2-regular-font-family);
-  font-size: var(--h2-regular-font-size);
-  font-style: var(--h2-regular-font-style);
-  font-weight: var(--h2-regular-font-weight);
-  letter-spacing: var(--h2-regular-letter-spacing);
-  line-height: var(--h2-regular-line-height);
-}
-.descriptionContainer {
-  margin-top: 20px;
-  margin-left: -300px;
-}
-.description {
-  width: 598px;
-  height: 104px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  border: none;
-  gap: 8px;
-  padding: 8px;
-  resize: none;
-}
-.categoryContainer {
-  margin-top: 8px;
-  display: flex;
-  overflow: auto;
-  gap: 8px;
-}
-.catogoryTitle {
-  margin-top: 8px;
-  color: #000000;
-  font-family: var(--h3-regular-font-family);
-  font-size: var(--h3-regular-font-size);
-  font-style: var(--h3-regular-font-style);
-  font-weight: var(--h3-regular-font-weight);
-  left: 0;
-  letter-spacing: var(--h3-regular-letter-spacing);
-  line-height: var(--h3-regular-line-height);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-}
-.categoryArtist {
-  height: 30px;
-  width: auto;
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  border-radius: 8px;
-  background: var(--white);
-  color: #000000;
-  font-family: "Inter-Regular", Helvetica;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: normal;
-  white-space: nowrap;
-}
-.addButton {
-  margin-top: 20px;
-  border: none;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.addIcon {
   width: 24px;
-  height: 24px;
 }

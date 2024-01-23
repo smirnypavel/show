@@ -2,6 +2,8 @@ import React from "react";
 import ProfileUpdateAvatar from "./ProfileUpdateAvatar";
 import styles from "@/styles/components/Profile/UpdateProfile/ProfileUpdateInfo.module.css";
 import UserUpdateForm from "./UserUpdateForm";
+import UserCat from "./UserCat";
+import UserUpdateDescription from "./UserUpdateDescription";
 
 const ProfileUpdateInfo = () => {
   return (
@@ -10,6 +12,8 @@ const ProfileUpdateInfo = () => {
         <ProfileUpdateAvatar />
         <UserUpdateForm />
       </div>
+      <UserUpdateDescription />
+      <UserCat />
     </div>
   );
 };

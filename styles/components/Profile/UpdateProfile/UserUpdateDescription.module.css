@@ -1,0 +1,53 @@
+.inputGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.input {
+  background-color: var(--white);
+  border-radius: 8px;
+  height: 88px;
+  width: 100%;
+  border: none;
+  font-size: var(--h2-medium-font-size);
+  font-weight: var(--h2-medium-font-weight);
+  resize: none;
+}
+.input::placeholder {
+  color: var(--black);
+  font-size: var(--h1-medium-font-size);
+  font-weight: var(--h1-medium-font-weight);
+}
+.active {
+  background-color: var(--white);
+  border-radius: 8px;
+  height: 88px;
+  border: none;
+  width: 100%;
+
+  padding-left: 15px;
+  margin-bottom: 12px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  color: var(--black);
+  font-size: var(--h2-regular-font-size);
+  font-weight: var(--h2-regular-font-weight);
+}
+.buttonEdit {
+  background-color: transparent;
+  width: 45px;
+  height: 45px;
+  border: none;
+  padding: 0;
+}
+.iconEdit {
+  height: 24px;
+  width: 24px;
+}
+.iconOk {
+  color: green;
+  height: 24px;
+  width: 24px;
+}

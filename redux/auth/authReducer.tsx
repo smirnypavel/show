@@ -12,6 +12,7 @@ import {
   deleteVideo,
   updatePassword,
   updateCategory,
+  deleteCat,
 } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
@@ -45,6 +46,7 @@ const initialState: IAuthState = {
     description: "",
     price: "",
     token: "",
+    refresh_token: "",
     social: {
       Instagram: "",
       Facebook: "",
@@ -226,6 +228,19 @@ export const authSlice = createSlice({
         state.error = action.error.message || "";
       })
       .addCase(updateCategory.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.isLoading = false;
+      })
+      .addCase(deleteCat.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteCat.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "";
+      })
+      .addCase(deleteCat.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;

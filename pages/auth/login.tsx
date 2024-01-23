@@ -5,6 +5,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import styles from "@/styles/components/Auth/LoginForm.module.css";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -15,12 +16,14 @@ const Login = () => {
     email: string;
     password: string;
   }) => void = async (formData) => {
-    // Здесь вы можете выполнить логику аутентификации или другие действия
     try {
-      await dispatch(
+      const loginResult = await dispatch(
         signIn({ email: formData.email, password: formData.password })
       );
-      router.push("/profile");
+      if (loginResult.payload) {
+        router.push("/profile");
+      } else {
+      }
     } catch (error) {}
   };
 

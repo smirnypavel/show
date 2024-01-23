@@ -1,11 +1,14 @@
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 273px;
-  min-height: 816px;
-  background-color: #f6f6f6;
-  border-radius: 16px 0px 0px 16px;
-  padding: 58px 0px 76px 10px;
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 273px;
+    min-height: 816px;
+    background-color: #f6f6f6;
+    border-radius: 16px 0px 0px 16px;
+    padding: 58px 0px 76px 10px;
+  }
 }
 .sidebarButton {
   color: #000000;
