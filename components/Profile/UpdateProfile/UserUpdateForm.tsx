@@ -16,14 +16,13 @@ const UserUpdateForm = () => {
   const dispatch = useAppDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
-  console.log(selectedCity);
   const handleSubmitValue = (value: string, contactType: string) => {
     // Делай что-то с полученным значением value
     // console.log("Submitted value:", value);
-    // const data = {
-    //   social: { [contactType]: value },
-    // };
-    // dispatch(updateUser(data));
+    const data = {
+      social: { [contactType]: value },
+    };
+    dispatch(updateUser(data));
   };
   const handleEdit = () => {
     setIsEditing(true);
@@ -31,7 +30,6 @@ const UserUpdateForm = () => {
 
   const handleSubmit = async () => {
     setIsEditing(false);
-    // Здесь передаем и contactType
     if (selectedCity !== "") {
       await dispatch(updateUser({ location: selectedCity }));
       setSelectedCity("");

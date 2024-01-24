@@ -7,7 +7,7 @@
   border-radius: 8px;
   height: 45px;
   border: none;
-  width: 298px;
+  width: 100%;
   padding-left: 15px;
   margin-bottom: 12px;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
@@ -16,4 +16,7 @@
   color: var(--black);
   font-size: var(--h2-regular-font-size);
   font-weight: var(--h2-regular-font-weight);
+  @media (min-width: 768px) {
+    width: 298px;
+  }
 }
