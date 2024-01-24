@@ -18,10 +18,11 @@ const UserUpdateForm = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const handleSubmitValue = (value: string, contactType: string) => {
     // Делай что-то с полученным значением value
-    // console.log("Submitted value:", value);
+    console.log("Submitted value:", value);
     const data = {
-      social: { [contactType]: value },
+      [contactType]: value,
     };
+    console.log("Submitted data:", data);
     dispatch(updateUser(data));
   };
   const handleEdit = () => {
@@ -44,26 +45,21 @@ const UserUpdateForm = () => {
     <div className={styles.container}>
       <p className={styles.titleInput}>Ваше Ім’я:</p>
       <UpdateInputUi
+        initialValue={user.firstName}
         onSubmit={(value) => handleSubmitValue(value, "firstName")}
-        placeholder={
-          user?.firstName ? user.firstName : "Тут має бути Ваше Ім’я"
-        }
+        placeholder={"Тут має бути Ваше Ім’я"}
       />
       <p className={styles.titleInput}>Назва гурту:</p>
       <UpdateInputUi
+        initialValue={user.title}
         onSubmit={(value) => handleSubmitValue(value, "title")}
-        placeholder={
-          user?.title
-            ? user.title
-            : "Тут має бути назва Вашого гурту або назва Вашого "
-        }
+        placeholder={"Тут має бути назва Вашого гурту або назва Вашого "}
       />
       <p className={styles.titleInput}>Ціна:</p>
       <UpdateInputUi
+        initialValue={user.price}
         onSubmit={(value) => handleSubmitValue(value, "price")}
-        placeholder={`₴ ${
-          user?.price ? user.price : "Тут має бути ціна за годину або за виступ"
-        }`}
+        placeholder={`₴ ${"Тут має бути ціна за годину або за виступ"}`}
       />
 
       <p className={styles.titleInput}>Місто:</p>

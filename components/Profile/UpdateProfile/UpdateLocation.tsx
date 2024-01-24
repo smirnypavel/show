@@ -28,7 +28,8 @@ const UpdateLocation: React.FC<AutocompleteProps> = ({ onCitySelect }) => {
     const style = document.createElement("style");
     style.textContent = `
       .pac-container {
-        background-color: rgb(108, 103, 103);
+        // background-color: rgb(108, 103, 103);
+        background-color: transparent;
         padding: 5px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(247, 241, 241, 0.2);
@@ -36,19 +37,27 @@ const UpdateLocation: React.FC<AutocompleteProps> = ({ onCitySelect }) => {
         top: 100%;
         left: 0;
         z-index: 1000;
-        max-height: 200px;
+        max-height: 208px;
         overflow-y: auto;
-        color: white;
+      
+
+        // color: white;
       }
 
       .pac-item {
+        background-color:  white;
+        margin-bottom: 1px;
         padding: 3px 5px;
         cursor: pointer;
-        color: white;
+        // color: white;
+        border-radius: 8px;
+       
+
+
       }
 
       .pac-item:hover {
-        background-color: #ea17174b;
+        background-color: var(--button-bg-color);
         color: white;
       }
     `;

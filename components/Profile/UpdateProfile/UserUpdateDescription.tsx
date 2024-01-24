@@ -4,6 +4,7 @@ import { FaCheck } from "react-icons/fa6";
 import { LuPencil } from "react-icons/lu";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getUser } from "@/redux/auth/authSelectors";
+import { updateUser } from "@/redux/auth/authOperations";
 
 const UserUpdateDescription = () => {
   const user = useAppSelector(getUser);
@@ -21,7 +22,7 @@ const UserUpdateDescription = () => {
 
   const handleSubmit = async () => {
     setIsEditing(false);
-    // Здесь передаем и contactType
+    dispatch(updateUser({ description: value }));
   };
 
   return (
