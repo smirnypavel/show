@@ -4,6 +4,7 @@
 
 .input {
   background-color: var(--white);
+  /* background-color: transparent; */
   border-radius: 8px;
   height: 45px;
   border: none;
