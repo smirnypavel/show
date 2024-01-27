@@ -5,11 +5,11 @@ import TopContainer from "@/components/Home/TopContainer/TopContainer";
 
 import MetaTags from "@/components/Meta/MetaTags";
 import styles from "@/styles/Home/Home.module.css";
-import Head from "next/head";
 
 const Home = () => {
   return (
     <>
+      <MetaTags />
       <div className={styles.homepage}>
         <HomeSearchBar />
         <HomeTopBanner />
