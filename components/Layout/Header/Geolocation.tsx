@@ -6,6 +6,14 @@ const UserLocation: React.FC = () => {
   useEffect(() => {
     const apiKey = "AIzaSyDC3bqKHvQCfyZKUCLbkj-J-it_jomt0vg";
 
+    // Проверяем, есть ли значение города в localStorage
+    const storedCity = localStorage.getItem("userCity");
+    if (storedCity) {
+      setUserCity(storedCity);
+      return; // Завершаем выполнение эффекта, если значение уже есть
+    }
+
+    // Если значения нет в localStorage, выполняем запрос для определения местоположения
     fetch(`https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`, {
       method: "POST",
       headers: {
@@ -29,6 +37,7 @@ const UserLocation: React.FC = () => {
             )?.long_name;
 
             if (city) {
+              localStorage.setItem("userCity", city);
               setUserCity(city);
             } else {
               setUserCity("Информация о городе недоступна 1");
@@ -43,16 +52,11 @@ const UserLocation: React.FC = () => {
           });
       })
       .catch((error) => {
-        console.error("Ошибка при запросе к API:", error);
         setUserCity("Информация о городе недоступна 3");
       });
   }, []);
 
-  return (
-    <div>
-      <h2>Ваше місто: {userCity}</h2>
-    </div>
-  );
+  return <></>;
 };
 
 export default UserLocation;

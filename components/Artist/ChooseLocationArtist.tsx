@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { LoadScript, Autocomplete, Libraries } from "@react-google-maps/api";
 import styles from "@/styles/components/Artist/ChoseCity.module.css";
 import { HiOutlineLocationMarker, HiX } from "react-icons/hi";
+import { useRouter } from "next/router";
 
 interface AutocompleteProps {
   onCitySelect: (city: string) => void;
@@ -12,15 +13,33 @@ const libraries: Libraries = ["places"];
 const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
   onCitySelect,
 }) => {
+  const router = useRouter();
+
   const [selectedPlace, setSelectedPlace] = useState("");
   const [isCitySelected, setIsCitySelected] = useState(false);
+  const [userCity, setUserCity] = useState(localStorage.getItem("userCity"));
   const inputRef = useRef<HTMLInputElement>(null);
+  const loc: string | null = localStorage.getItem("userCity");
+
+  useEffect(() => {
+    if (loc) {
+      router.push({
+        pathname: "/artists",
+        query: {
+          ...router.query,
+          loc,
+        },
+      });
+    }
+  }, [loc]);
 
   const handlePlaceChanged = () => {
     const autocomplete = inputRef.current;
 
     if (autocomplete) {
       const place = autocomplete.value;
+      localStorage.setItem("userCity", place);
+      setUserCity(place);
       setSelectedPlace(place);
       onCitySelect(place);
       setIsCitySelected(true);
@@ -30,6 +49,9 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
   };
 
   const handleClearInput = () => {
+    setUserCity("Вся Україна");
+    localStorage.removeItem("userCity");
+    setUserCity("Вся Україна");
     setSelectedPlace("");
     onCitySelect(""); // Отправка пустой строки для очистки локации
     setIsCitySelected(false);
@@ -94,7 +116,8 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
               ref={inputRef}
               id="autocomplete"
               type="text"
-              placeholder="Вся Україна"
+              // value={storedCity || ""}
+              placeholder={userCity || "Вся Україна"}
               className={styles.input}
               onFocus={() => {
                 inputRef.current?.dispatchEvent(
@@ -102,14 +125,14 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
                 );
               }}
             />
-            {selectedPlace && (
-              <button
-                onClick={handleClearInput}
-                className={styles.clearButton}
-                tabIndex={-1}>
-                <HiX />
-              </button>
-            )}
+            {/* {selectedPlace && ( */}
+            <button
+              onClick={handleClearInput}
+              className={styles.clearButton}
+              tabIndex={-1}>
+              <HiX />
+            </button>
+            {/* )} */}
           </div>
         </Autocomplete>
       </div>

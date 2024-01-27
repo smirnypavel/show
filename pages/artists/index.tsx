@@ -60,6 +60,18 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
         title="Wechirka | Пошук"
         description="Пошук артистів"
         keywords=""
+        ogTitle={"Wechirka | Пошук"}
+        ogDescription={
+          "Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
+        }
+        ogImage={
+          "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
+        }
+        ogUrl={"https://www.wechirka.com/artists"}
+        fbApp_id={"302462449359607"}
+        ogLocale={"uk_UA"}
+        ogSiteName={"Wechirka"}
+        ogType={"website"}
       />
       <div className={styles.mobileBar}>
         <MobileCat />
@@ -207,14 +219,18 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
                           )}
                         </div>
                         <div className={styles2.descriptionContainer}>
-                          <p className={styles2.descriptionTitle}>
-                            {artist.title}
-                          </p>
-                          <p className={styles2.descriptionText}>
-                            {artist.description
-                              ? artist.description
-                              : "Опис не надано"}
-                          </p>
+                          {" "}
+                          <div className={styles2.wrapper}>
+                            <p className={styles2.descriptionTitle}>
+                              {artist.title}
+                            </p>
+
+                            <p className={styles2.descriptionText}>
+                              {artist.description
+                                ? artist.description
+                                : "Опис не надано"}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>

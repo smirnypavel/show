@@ -114,12 +114,15 @@ const ArtistList: React.FC<ItemListProps> = ({ artists, currentPage }) => {
                     )}
                   </div>
                   <div className={styles.descriptionContainer}>
-                    <p className={styles.descriptionTitle}>{artist.title}</p>
-                    <p className={styles.descriptionText}>
-                      {artist.description
-                        ? artist.description
-                        : "Опис не надано"}
-                    </p>
+                    <div className={styles.wrapper}>
+                      {/* <p className={styles.descriptionTitle}>{artist.title}</p> */}
+
+                      <p className={styles.descriptionText}>
+                        {artist.description
+                          ? artist.description
+                          : "Опис не надано"}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
