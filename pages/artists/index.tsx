@@ -5,7 +5,7 @@ import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
-// import MetaTags from "@/components/Meta/MetaTags";
+import MetaTags from "@/components/Meta/MetaTags";
 import Pagination from "@/components/Artist/Pagination";
 import { GetServerSideProps } from "next/types";
 import Image from "next/image";
@@ -56,11 +56,23 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
 
   return (
     <div className={styles.container}>
-      {/* <MetaTags
+      <MetaTags
         title="Wechirka | Пошук"
         description="Пошук артистів"
         keywords=""
-      /> */}
+        ogTitle={"Wechirka | Пошук"}
+        ogDescription={
+          "Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
+        }
+        ogImage={
+          "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
+        }
+        ogUrl={"https://www.wechirka.com/artists"}
+        fbApp_id={"302462449359607"}
+        ogLocale={"uk_UA"}
+        ogSiteName={"Wechirka"}
+        ogType={"website"}
+      />
       <div className={styles.mobileBar}>
         <MobileCat />
         <MobileSort />
