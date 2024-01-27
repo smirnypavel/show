@@ -14,62 +14,60 @@ interface MetaTagsProps {
   ogType?: string; // Новый параметр для метатегов Open Graph
 }
 
-const MetaTags: React.FC<MetaTagsProps> = ({
-  title,
-  description,
-  keywords,
-  ogTitle,
-  ogDescription,
-  ogImage,
-  ogUrl,
-  fbApp_id,
-  ogLocale,
-  ogSiteName,
-  ogType,
-}) => {
+const MetaTags = (
+  {
+    // title,
+    // description,
+    // keywords,
+    // ogTitle,
+    // ogDescription,
+    // ogImage,
+    // ogUrl,
+    // fbApp_id,
+    // ogLocale,
+    // ogSiteName,
+    // ogType,
+  }
+) => {
   return (
     <Head>
-      <title>{title}</title>
+      <title>Wechirka пошук артистів</title>
       <meta
-        name="description"
-        content={description}
+        property="description"
+        content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
       />
       <meta
-        name="keywords"
-        content={keywords}
-      />
-      {/* <meta
         property="og:title"
-        content={ogTitle}
+        content="Wechirka пошук артистів"
       />
       <meta
         property="og:description"
-        content={ogDescription}
+        content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
       />
       <meta
         property="og:image"
-        content={ogImage}
+        content="https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
       />
       <meta
         property="og:url"
-        content={ogUrl}
+        content="https://www.wechirka.com"
       />
       <meta
         property="og:type"
-        content={ogType}
+        content="website"
       />
       <meta
         property="fb:app_id"
-        content={fbApp_id}
+        content="302462449359607"
       />
       <meta
         property="og:locale"
-        content={ogLocale}
+        content="uk_UA"
       />
       <meta
         property="og:site_name"
-        content={ogSiteName}
-      /> */}
+        content="Wechirka"
+      />
     </Head>
   );
 };

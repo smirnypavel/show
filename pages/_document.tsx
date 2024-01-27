@@ -1,11 +1,12 @@
-// import MetaTags from "@/components/Meta/MetaTags";
+import MetaTags from "@/components/Meta/MetaTags";
 import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
     <Html lang="ua">
       <Head>
-        <title>Wechirka пошук артистів</title>
+        {/* <MetaTags /> */}
+        {/* <title>Wechirka пошук артистів</title>
         <meta
           property="description"
           content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
@@ -41,7 +42,7 @@ export default function Document() {
         <meta
           property="og:site_name"
           content="Wechirka"
-        />
+        /> */}
       </Head>
       <body>
         <Main />

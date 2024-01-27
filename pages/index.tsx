@@ -10,13 +10,6 @@ import Head from "next/head";
 const Home = () => {
   return (
     <>
-      <MetaTags
-        title={"Wechirka пошук артистів"}
-        description={
-          "Іноваційний підхід до пошуку людей які працють у сфері розваг"
-        }
-        keywords={""}
-      />
       <div className={styles.homepage}>
         <HomeSearchBar />
         <HomeTopBanner />
