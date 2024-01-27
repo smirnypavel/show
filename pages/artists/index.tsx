@@ -18,8 +18,8 @@ import { IoIosArrowForward } from "react-icons/io";
 import MobileSort from "@/components/Artist/Mobile/MobileSort";
 import MobileCat from "@/components/Artist/Mobile/MobileCat";
 import ScrollToTopButton from "@/components/helpers/ScrollToTopButton";
-import Head from "next/head";
-import MetaTags from "@/components/Meta/MetaTags";
+// import Head from "next/head";
+// import MetaTags from "@/components/Meta/MetaTags";
 
 interface ArtistsProps {
   artists: IUserAuth[];
@@ -58,7 +58,7 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
 
   return (
     <>
-      <MetaTags />
+      {/* <MetaTags /> */}
       <div className={styles.container}>
         {/* <MetaTags
         title={"Wechirka пошук артистів"}

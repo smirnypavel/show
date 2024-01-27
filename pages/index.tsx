@@ -17,8 +17,25 @@ const Home = () => {
           content="My page title"
           key="title"
         />
+      </Head>
+      <div className={styles.homepage}>
+        <HomeSearchBar />
+        <HomeTopBanner />
+        <div className={styles.container}>
+          <div className={styles.requestForm}>
+            <RequestForm />
+          </div>
+          <TopContainer />
+        </div>
+      </div>
+    </>
+  );
+};
 
-        {/* <title>Wechirka пошук артистів</title>
+export default Home;
+
+{
+  /* <title>Wechirka пошук артистів</title>
         <meta
           property="description"
           content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
@@ -54,20 +71,5 @@ const Home = () => {
         <meta
           property="og:site_name"
           content="Wechirka"
-        /> */}
-      </Head>
-      <div className={styles.homepage}>
-        <HomeSearchBar />
-        <HomeTopBanner />
-        <div className={styles.container}>
-          <div className={styles.requestForm}>
-            <RequestForm />
-          </div>
-          <TopContainer />
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default Home;
+        /> */
+}

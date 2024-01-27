@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { IUserAuth } from "@/types/IAuth";
 import { useRouter } from "next/router";
 import styles from "@/styles/components/Artist/ArtistPage.module.css";
-import MetaTags from "@/components/Meta/MetaTags";
+// import MetaTags from "@/components/Meta/MetaTags";
 import ArtistPage from "@/components/Artist/ArtistPage";
 
 export interface ArtistPageProps {
@@ -23,7 +23,7 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
 
   return (
     <>
-      <MetaTags />
+      {/* <MetaTags /> */}
       <div className={styles.container}>
         <ArtistPage artist={artist} />
       </div>
