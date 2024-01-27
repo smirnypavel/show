@@ -11,7 +11,14 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Wechirka пошук артистів</title>
+        <title>My page title</title>
+        <meta
+          property="og:title"
+          content="My page title"
+          key="title"
+        />
+
+        {/* <title>Wechirka пошук артистів</title>
         <meta
           property="description"
           content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
@@ -47,7 +54,7 @@ const Home = () => {
         <meta
           property="og:site_name"
           content="Wechirka"
-        />
+        /> */}
       </Head>
       <div className={styles.homepage}>
         <HomeSearchBar />
