@@ -4,14 +4,14 @@ interface MetaTagsProps {
   title: string;
   description: string;
   keywords: string;
-  ogTitle: string; // Новый параметр для метатегов Open Graph
-  ogDescription: string; // Новый параметр для метатегов Open Graph
-  ogImage: string; // Новый параметр для метатегов Open Graph
-  ogUrl: string; // Новый параметр для метатегов Open Graph
-  fbApp_id: string; // Новый параметр для метатегов Open Graph
-  ogLocale: string; // Новый параметр для метатегов Open Graph
-  ogSiteName: string; // Новый параметр для метатегов Open Graph
-  ogType: string; // Новый параметр для метатегов Open Graph
+  ogTitle?: string; // Новый параметр для метатегов Open Graph
+  ogDescription?: string; // Новый параметр для метатегов Open Graph
+  ogImage?: string; // Новый параметр для метатегов Open Graph
+  ogUrl?: string; // Новый параметр для метатегов Open Graph
+  fbApp_id?: string; // Новый параметр для метатегов Open Graph
+  ogLocale?: string; // Новый параметр для метатегов Open Graph
+  ogSiteName?: string; // Новый параметр для метатегов Open Graph
+  ogType?: string; // Новый параметр для метатегов Open Graph
 }
 
 const MetaTags: React.FC<MetaTagsProps> = ({
@@ -38,7 +38,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({
         name="keywords"
         content={keywords}
       />
-      <meta
+      {/* <meta
         property="og:title"
         content={ogTitle}
       />
@@ -69,7 +69,7 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       <meta
         property="og:site_name"
         content={ogSiteName}
-      />
+      /> */}
     </Head>
   );
 };
