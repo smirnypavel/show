@@ -5,7 +5,7 @@ import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
-import MetaTags from "@/components/Meta/MetaTags";
+// import MetaTags from "@/components/Meta/MetaTags";
 import Pagination from "@/components/Artist/Pagination";
 import { GetServerSideProps } from "next/types";
 import Image from "next/image";
@@ -56,11 +56,11 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
 
   return (
     <div className={styles.container}>
-      <MetaTags
+      {/* <MetaTags
         title="Wechirka | Пошук"
         description="Пошук артистів"
         keywords=""
-      />
+      /> */}
       <div className={styles.mobileBar}>
         <MobileCat />
         <MobileSort />
