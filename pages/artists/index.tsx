@@ -5,7 +5,7 @@ import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
-import MetaTags from "@/components/Meta/MetaTags";
+// import MetaTags from "@/components/Meta/MetaTags";
 import Pagination from "@/components/Artist/Pagination";
 import { GetServerSideProps } from "next/types";
 import Image from "next/image";
@@ -18,7 +18,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import MobileSort from "@/components/Artist/Mobile/MobileSort";
 import MobileCat from "@/components/Artist/Mobile/MobileCat";
 import ScrollToTopButton from "@/components/helpers/ScrollToTopButton";
-import { Head } from "next/dist/pages/_document";
+import Head from "next/head";
 
 interface ArtistsProps {
   artists: IUserAuth[];
@@ -92,13 +92,13 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
           content="Wechirka"
         />
       </Head>
-      <MetaTags
+      {/* <MetaTags
         title={"Wechirka пошук артистів"}
         description={
           "Іноваційний підхід до пошуку людей які працють у сфері розваг"
         }
         keywords={""}
-      />
+      /> */}
       {/* <MetaTags
         title="Wechirka | Пошук"
         description="Пошук артистів"
