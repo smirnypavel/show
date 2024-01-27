@@ -188,6 +188,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   @media (min-width: 768px) {
+    overflow: hidden;
     background-color: var(--accent-color);
     height: 192px;
     width: 365px;
@@ -203,12 +204,21 @@
   font-weight: 500;
   line-height: normal;
 }
+.wrapper {
+  height: 110px;
 
+  overflow: hidden;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  @media (min-width: 768px) {
+    height: 150px;
+  }
+}
 .descriptionText {
+  height: 50px;
   margin-top: 24px;
   font-size: 16px;
   font-weight: 400;
-  line-height: normal;
-  overflow-wrap: break-word;
-  text-overflow: ellipsis;
+  /* @media (min-width: 768px) {
+  } */
 }

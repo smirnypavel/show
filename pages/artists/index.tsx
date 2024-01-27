@@ -207,14 +207,18 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
                           )}
                         </div>
                         <div className={styles2.descriptionContainer}>
-                          <p className={styles2.descriptionTitle}>
-                            {artist.title}
-                          </p>
-                          <p className={styles2.descriptionText}>
-                            {artist.description
-                              ? artist.description
-                              : "Опис не надано"}
-                          </p>
+                          {" "}
+                          <div className={styles2.wrapper}>
+                            <p className={styles2.descriptionTitle}>
+                              {artist.title}
+                            </p>
+
+                            <p className={styles2.descriptionText}>
+                              {artist.description
+                                ? artist.description
+                                : "Опис не надано"}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>

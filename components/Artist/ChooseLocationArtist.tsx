@@ -125,14 +125,14 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
                 );
               }}
             />
-            {selectedPlace && (
-              <button
-                onClick={handleClearInput}
-                className={styles.clearButton}
-                tabIndex={-1}>
-                <HiX />
-              </button>
-            )}
+            {/* {selectedPlace && ( */}
+            <button
+              onClick={handleClearInput}
+              className={styles.clearButton}
+              tabIndex={-1}>
+              <HiX />
+            </button>
+            {/* )} */}
           </div>
         </Autocomplete>
       </div>
