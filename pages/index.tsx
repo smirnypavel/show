@@ -5,7 +5,7 @@ import TopContainer from "@/components/Home/TopContainer/TopContainer";
 
 // import MetaTags from "@/components/Meta/MetaTags";
 import styles from "@/styles/Home/Home.module.css";
-import Head from "next/dist/shared/lib/head";
+import Head from "next/head";
 
 const Home = () => {
   return (
