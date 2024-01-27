@@ -58,7 +58,11 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
   return (
     <>
       <Head>
-        {" "}
+        <title>Wechirka пошук артистів</title>
+        <meta
+          property="description"
+          content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
+        />
         <meta
           property="og:title"
           content="Wechirka пошук артистів"
