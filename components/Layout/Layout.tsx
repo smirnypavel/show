@@ -2,10 +2,12 @@ import React from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import styles from "@/styles/Layout/Layout.module.css"; // импортируем файл со стилями
+import UserLocation from "./Header/Geolocation";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className={styles.wrapper}>
+      <UserLocation />
       <Header />
       <div className={styles.content}>{children}</div>
       <Footer />

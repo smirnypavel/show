@@ -18,6 +18,7 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
   onSubcategoryChange,
   onSelectedCity,
 }) => {
+
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
 
@@ -44,9 +45,6 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
         subcat: "",
         req: "",
         searchTerm: "",
-        // selectedCategoryId: "",
-        // selectedSubcategoryId: "",
-        // selectedCity: "",
       },
     });
   };

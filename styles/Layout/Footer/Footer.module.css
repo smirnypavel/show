@@ -4,12 +4,19 @@
   margin-top: 20px;
   min-height: 40px;
   border-top: 2px solid #67676723;
+  margin-bottom: 90px;
+  color: var(--white);
+  /* text-decoration:; */
+  @media screen and (min-width: 768px) {
+    margin-bottom: 10px;
+  }
 }
 .containerMap {
   gap: 5px;
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   @media screen and (min-width: 768px) {
     width: 100%;
     display: flex;
@@ -19,17 +26,11 @@
 }
 .title {
   font-size: var(--h3-regular-font-size);
-  font-style: var(--h3-regular-font-style);
   font-weight: 700;
-  letter-spacing: var(--h3-regular-letter-spacing);
-  line-height: var(--h3-regular-line-height);
 }
 .listItem {
 }
 .link {
   font-size: var(--h5-regular-font-size);
-  font-style: var(--h3-regular-font-style);
   font-weight: var(--h3-regular-font-weight);
-  letter-spacing: var(--h3-regular-letter-spacing);
-  line-height: var(--h3-regular-line-height);
 }
