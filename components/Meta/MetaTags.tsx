@@ -4,73 +4,72 @@ interface MetaTagsProps {
   title: string;
   description: string;
   keywords: string;
-  ogTitle: string; // Новый параметр для метатегов Open Graph
-  ogDescription: string; // Новый параметр для метатегов Open Graph
-  ogImage: string; // Новый параметр для метатегов Open Graph
-  ogUrl: string; // Новый параметр для метатегов Open Graph
-  fbApp_id: string; // Новый параметр для метатегов Open Graph
-  ogLocale: string; // Новый параметр для метатегов Open Graph
-  ogSiteName: string; // Новый параметр для метатегов Open Graph
-  ogType: string; // Новый параметр для метатегов Open Graph
+  ogTitle?: string; // Новый параметр для метатегов Open Graph
+  ogDescription?: string; // Новый параметр для метатегов Open Graph
+  ogImage?: string; // Новый параметр для метатегов Open Graph
+  ogUrl?: string; // Новый параметр для метатегов Open Graph
+  fbApp_id?: string; // Новый параметр для метатегов Open Graph
+  ogLocale?: string; // Новый параметр для метатегов Open Graph
+  ogSiteName?: string; // Новый параметр для метатегов Open Graph
+  ogType?: string; // Новый параметр для метатегов Open Graph
 }
 
-const MetaTags: React.FC<MetaTagsProps> = ({
-  title,
-  description,
-  keywords,
-  ogTitle,
-  ogDescription,
-  ogImage,
-  ogUrl,
-  fbApp_id,
-  ogLocale,
-  ogSiteName,
-  ogType,
-}) => {
+const MetaTags = (
+  {
+    // title,
+    // description,
+    // keywords,
+    // ogTitle,
+    // ogDescription,
+    // ogImage,
+    // ogUrl,
+    // fbApp_id,
+    // ogLocale,
+    // ogSiteName,
+    // ogType,
+  }
+) => {
   return (
-    <Head>
-      <title>{title}</title>
-      <meta
-        name="description"
-        content={description}
-      />
-      <meta
-        name="keywords"
-        content={keywords}
-      />
-      <meta
-        property="og:title"
-        content={ogTitle}
-      />
-      <meta
-        property="og:description"
-        content={ogDescription}
-      />
-      <meta
-        property="og:image"
-        content={ogImage}
-      />
-      <meta
-        property="og:url"
-        content={ogUrl}
-      />
-      <meta
-        property="og:type"
-        content={ogType}
-      />
-      <meta
-        property="fb:app_id"
-        content={fbApp_id}
-      />
-      <meta
-        property="og:locale"
-        content={ogLocale}
-      />
-      <meta
-        property="og:site_name"
-        content={ogSiteName}
-      />
-    </Head>
+    <div></div>
+    // <Head>
+    //   <title>Wechirka пошук артистів</title>
+    //   <meta
+    //     property="description"
+    //     content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
+    //   />
+    //   <meta
+    //     property="og:title"
+    //     content="Wechirka пошук артистів"
+    //   />
+    //   <meta
+    //     property="og:description"
+    //     content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
+    //   />
+    //   <meta
+    //     property="og:image"
+    //     content="https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
+    //   />
+    //   <meta
+    //     property="og:url"
+    //     content="https://www.wechirka.com"
+    //   />
+    //   <meta
+    //     property="og:type"
+    //     content="website"
+    //   />
+    //   <meta
+    //     property="fb:app_id"
+    //     content="302462449359607"
+    //   />
+    //   <meta
+    //     property="og:locale"
+    //     content="uk_UA"
+    //   />
+    //   <meta
+    //     property="og:site_name"
+    //     content="Wechirka"
+    //   />
+    // </Head>
   );
 };
 

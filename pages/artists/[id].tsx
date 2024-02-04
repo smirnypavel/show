@@ -22,17 +22,12 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
   }
 
   return (
-    <div className={styles.container}>
-      {/* <MetaTags
-        title={artist.title}
-        description={artist.description}
-        keywords={
-          artist.category?.[0]?.subcategories?.[0]?.name ||
-          "Значение по умолчанию"
-        }
-      /> */}
-      <ArtistPage artist={artist} />
-    </div>
+    <>
+      {/* <MetaTags /> */}
+      <div className={styles.container}>
+        <ArtistPage artist={artist} />
+      </div>
+    </>
   );
 };
 

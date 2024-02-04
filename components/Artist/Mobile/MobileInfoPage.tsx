@@ -10,6 +10,10 @@ import ViberLogo from "@/public/icon/ViberLogo.svg";
 import YouTubeLogo from "@/public/icon/YouTubeLogo.svg";
 import { ArtistPageProps } from "../ArtistPage";
 
+import WhatsApp from "@/public/icon/WhatsApp.svg";
+import tiktokApp from "@/public/icon/tiktokApp.svg";
+import { CgWebsite } from "react-icons/cg";
+
 const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
   const [showContact, setShowContact] = useState(false);
   const handleShowContact = () => {
@@ -35,34 +39,41 @@ const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
           </div>
         </div>
       </div>
-      <button
-        onClick={handleShowContact}
-        className={styles.contactButton}>
-        Показати контакти
-      </button>
-      {showContact && (
-        <div className={styles.artistContact}>
-          <p className={styles.contactTitle}>Контактні данні</p>
+      <div className={styles.artistContact}>
+        <p className={styles.contactTitle}>Контактні данні</p>
+        {artist.phone && (
           <a
             href={`tel:${artist.phone}`}
             className={styles.contactItem}>
             <HiOutlinePhone className={styles.contactIcon} />
             {artist.phone}
           </a>
+        )}
+        {artist.email && (
           <a
             href={`mailto:${artist.email}`}
             className={styles.contactItem}>
             <SiMaildotru className={styles.contactIcon} />
             {artist.email}
           </a>
-          <p className={styles.contactTitle}>Месенджери</p>
+        )}
+
+        <p className={styles.contactTitle}>Месенджери</p>
+        {artist.whatsapp && (
           <a
             href={`https://wa.me/${artist.whatsapp}`}
             target="_blank"
             className={styles.contactItem}>
-            {/* <SiWhatsapp className={styles.contactIcon} /> */}
+            {/* <SiWhatsapp className={styles.contactIcon} /> */}{" "}
+            <Image
+              src={WhatsApp}
+              alt="WhatsApp Logo"
+              className={styles.contactIcon}
+            />
             {artist.whatsapp}
           </a>
+        )}
+        {artist.telegram && (
           <a
             href={`https://t.me/${artist.telegram}`}
             target="_blank"
@@ -75,6 +86,8 @@ const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
             />
             {artist.telegram}
           </a>
+        )}
+        {artist.telegram && (
           <a
             href={`viber://chat?number=${artist.viber}`}
             target="_blank"
@@ -87,43 +100,74 @@ const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
             />
             {artist.viber}
           </a>
-        </div>
-      )}
+        )}
+      </div>
       <p className={styles.contactTitle}>Соціальні сторінки</p>
       <div className={styles.artistSocial}>
-        <a
-          href="https://www.instagram.com/"
-          target="_blank"
-          className={styles.artistSocialItem}>
-          Instagram{" "}
-          <Image
-            src={instagram}
-            alt="Instagram Logo"
-            className={styles.socialIcon}
-          />
-        </a>
-        <a
-          href="https://www.facebook.com/"
-          target="_blank"
-          className={styles.artistSocialItem}>
-          Facebook{" "}
-          <Image
-            src={FacebookLogo}
-            alt="Facebook Logo"
-            className={styles.socialIcon}
-          />
-        </a>
-        <a
-          href="https://www.youtube.com/"
-          target="_blank"
-          className={styles.artistSocialItem}>
-          Youtube{" "}
-          <Image
-            src={YouTubeLogo}
-            alt="YouTube Logo"
-            className={styles.socialIcon}
-          />
-        </a>
+        {artist.social.Instagram && (
+          <a
+            href={artist.social.Instagram}
+            target="_blank"
+            className={styles.artistSocialItem}>
+            {" "}
+            <Image
+              src={instagram}
+              alt="Instagram Logo"
+              className={styles.socialIcon}
+            />
+            Instagram{" "}
+          </a>
+        )}
+        {artist.social.Facebook && (
+          <a
+            href={artist.social.Facebook}
+            target="_blank"
+            className={styles.artistSocialItem}>
+            <Image
+              src={FacebookLogo}
+              alt="Facebook Logo"
+              className={styles.socialIcon}
+            />
+            Facebook{" "}
+          </a>
+        )}
+        {artist.social.Youtube && (
+          <a
+            href={artist.social.Youtube}
+            target="_blank"
+            className={styles.artistSocialItem}>
+            {" "}
+            <Image
+              src={YouTubeLogo}
+              alt="YouTube Logo"
+              className={styles.socialIcon}
+            />
+            Youtube{" "}
+          </a>
+        )}
+        {artist.social.TikTok && (
+          <a
+            href={artist.social.TikTok}
+            target="_blank"
+            className={styles.artistSocialItem}>
+            {" "}
+            <Image
+              src={tiktokApp}
+              alt="tiktokApp Logo"
+              className={styles.socialIcon}
+            />
+            Tik Tok{" "}
+          </a>
+        )}
+        {artist.social.WebSite && (
+          <a
+            href={artist.social.WebSite}
+            target="_blank"
+            className={styles.artistSocialItem}>
+            <CgWebsite className={styles.socialIconWeb} />
+            Мій Вебсайт
+          </a>
+        )}
       </div>{" "}
     </div>
   );
