@@ -6,6 +6,7 @@ import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { IoMenu } from "react-icons/io5";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
+import { Kodchasan } from "next/font/google";
 
 import { BsSearch } from "react-icons/bs";
 
@@ -14,6 +15,7 @@ import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import NavBar from "./Mobile/NavBar";
+const kodchasan = Kodchasan({ weight: ["700", "500"], subsets: ["latin"] });
 
 const Header = () => {
   const router = useRouter();
@@ -72,7 +74,9 @@ const Header = () => {
               priority
               className={styles.logoMob}
             />
-            <p className={styles.mobLogoText}>Wechirka</p>
+            <p className={`${styles.mobLogoText} ${kodchasan.className}`}>
+              Wechirka
+            </p>
           </Link>
           <button className={styles.search}>
             <BsSearch
