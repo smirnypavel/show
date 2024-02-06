@@ -4,7 +4,11 @@ export default function Document() {
   return (
     <Html lang="ua">
       <Head>
-        <title>Wechirka пошук артистів</title>
+        {/* <title>Wechirka пошук артистів</title> */}
+        <meta
+          property="title"
+          content="Wechirka пошук артистів"
+        />
         <meta
           property="description"
           content="Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))"
