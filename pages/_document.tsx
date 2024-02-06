@@ -16,6 +16,7 @@ export default function Document() {
         <meta
           property="og:title"
           content="Wechirka пошук артистів"
+          key="title"
         />
         <meta
           property="og:description"

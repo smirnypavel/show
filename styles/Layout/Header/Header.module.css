@@ -131,7 +131,7 @@
 }
 .mobileLogoLink {
   color: var(--white);
-  font-family: var(--logo-font);
+  font-family: "Kodchasan", sans-serif;
   font-size: 32px;
   font-weight: 500;
   left: 0;
@@ -223,7 +223,9 @@
 .logoLink {
   color: rgba(0, 0, 0, 0.834);
   /* color: var(--button-bg-color); */
-  font-family: var(--logo-font);
+  /* font-family: var(--logo-font); */
+  font-family: "Kodchasan", sans-serif;
+
   font-size: 32px;
   font-weight: 700;
   left: 0;
