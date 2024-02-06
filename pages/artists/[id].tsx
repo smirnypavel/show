@@ -47,7 +47,7 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
         />
         <meta
           property="og:url"
-          content={`https://www.wechirka.com/artist/${artist._id}`}
+          content={`https://show-swart.vercel.app/artist/${artist._id}`}
         />
         <meta
           property="og:type"
