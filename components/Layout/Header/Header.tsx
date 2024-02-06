@@ -129,7 +129,9 @@ const Header = () => {
             priority
             className={styles.logo}
           />
-          <p className={styles.logoText}>Wechirka</p>
+          <p className={`${kodchasan.className}${styles.mobLogoText} `}>
+            Wechirka
+          </p>
         </Link>
 
         <div className={styles.headerNav}>
