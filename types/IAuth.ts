@@ -35,7 +35,7 @@ export interface IUserAuth {
   googleId: string;
   description: string;
   price: string;
-  social: Social;
+  social?: Social;
 }
 
 export interface IPhoto {
