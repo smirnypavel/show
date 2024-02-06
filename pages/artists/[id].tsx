@@ -3,7 +3,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { IUserAuth } from "@/types/IAuth";
 import { useRouter } from "next/router";
 import styles from "@/styles/components/Artist/ArtistPage.module.css";
-// import MetaTags from "@/components/Meta/MetaTags";
 import ArtistPage from "@/components/Artist/ArtistPage";
 import Head from "next/head";
 
@@ -15,17 +14,17 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
   const router = useRouter();
 
   if (router.isFallback) {
-    return <p>Loading...</p>; // Показывать загрузку во время генерации страницы на сервере
+    return <p>Loading...</p>;
   }
 
   if (!artist) {
-    return <p>Artist not found</p>; // Показывать сообщение, если артист не найден
+    return <p>Artist not found</p>;
   }
 
   return (
     <>
       <Head>
-        <title>{artist.title}</title>
+        <title key="title">{artist.title}</title>
         <meta
           property="og:title"
           content={artist.title}
@@ -72,7 +71,6 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
           key="ogsitename"
         />
       </Head>
-      {/* <MetaTags /> */}
       <div className={styles.container}>
         <ArtistPage artist={artist} />
       </div>
@@ -81,8 +79,6 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const currentPage = context.page || 1;
-
   try {
     const response = await axios.get(`/users`);
     const artists: IUserAuth[] = response.data.data;
@@ -96,7 +92,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       fallback: true,
     };
   } catch (error) {
-    console.error("Помилка при отриманні данних:", error);
+    console.error("Error fetching data:", error);
     return {
       paths: [],
       fallback: true,
@@ -107,7 +103,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ArtistPageProps> = async ({
   params,
 }) => {
-  const { id } = params || {}; // делаем params необязательным и присваиваем пустой объект, если params не определен
+  const { id } = params || {};
 
   if (!id) {
     return {
@@ -116,13 +112,12 @@ export const getStaticProps: GetStaticProps<ArtistPageProps> = async ({
   }
 
   try {
-    // Здесь вы должны получить данные конкретного артиста по его id
     const response = await axios.get(`/users/find/${id}`);
     const artist: IUserAuth = response.data;
 
     if (!artist) {
       return {
-        notFound: true, // Если артист не найден, покажем 404 страницу
+        notFound: true,
       };
     }
 
@@ -130,12 +125,12 @@ export const getStaticProps: GetStaticProps<ArtistPageProps> = async ({
       props: {
         artist,
       },
-      revalidate: 10, // Перегенерация страницы каждые 10 секунд
+      revalidate: 10,
     };
   } catch (error) {
-    console.error("Ошибка:", error);
+    console.error("Error:", error);
     return {
-      notFound: true, // Если возникла ошибка, покажем 404 страницу
+      notFound: true,
     };
   }
 };
