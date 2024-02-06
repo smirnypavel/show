@@ -36,6 +36,7 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
         <meta
           property="og:title"
           content={artist.title}
+          key="title"
         />
         <meta
           property="og:description"
