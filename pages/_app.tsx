@@ -24,10 +24,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         persistor={persistor}>
         <Toaster />
         <Layout>
-          <div className={`container ${inter.className}`}>
+          <main className={`container ${inter.className}`}>
             <Component {...pageProps} />
             <Analytics />
-          </div>
+          </main>
           {/* Компонент переключения темы */}
         </Layout>
       </PersistGate>
