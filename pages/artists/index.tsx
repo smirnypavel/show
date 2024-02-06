@@ -18,6 +18,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import MobileSort from "@/components/Artist/Mobile/MobileSort";
 import MobileCat from "@/components/Artist/Mobile/MobileCat";
 import ScrollToTopButton from "@/components/helpers/ScrollToTopButton";
+import Head from "next/head";
 // import Head from "next/head";
 // import MetaTags from "@/components/Meta/MetaTags";
 
@@ -60,13 +61,12 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
     <>
       {/* <MetaTags /> */}
       <div className={styles.container}>
-        {/* <MetaTags
-        title={"Wechirka пошук артистів"}
-        description={
-          "Іноваційний підхід до пошуку людей які працють у сфері розваг"
-        }
-        keywords={""}
-      /> */}
+        <Head>
+          title={"Wechirka пошук артистів"}
+          description=
+          {"Іноваційний підхід до пошуку людей які працють у сфері розваг"}
+          keywords={""}
+        </Head>
         {/* <MetaTags
         title="Wechirka | Пошук"
         description="Пошук артистів"
