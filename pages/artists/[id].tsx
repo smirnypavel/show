@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import styles from "@/styles/components/Artist/ArtistPage.module.css";
 // import MetaTags from "@/components/Meta/MetaTags";
 import ArtistPage from "@/components/Artist/ArtistPage";
+import Head from "next/head";
 
 export interface ArtistPageProps {
   artist: IUserAuth;
@@ -23,6 +24,48 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
 
   return (
     <>
+      <Head>
+        <meta
+          property="title"
+          content="Wechirka пошук артистів"
+        />
+        <meta
+          property="description"
+          content={artist.title}
+        />
+        <meta
+          property="og:title"
+          content={artist.title}
+        />
+        <meta
+          property="og:description"
+          content={artist.description}
+        />
+        <meta
+          property="og:image"
+          content={artist.master_photo.url}
+        />
+        <meta
+          property="og:url"
+          content={`https://www.wechirka.com/artist/${artist._id}`}
+        />
+        <meta
+          property="og:type"
+          content="website"
+        />
+        <meta
+          property="fb:app_id"
+          content="302462449359607"
+        />
+        <meta
+          property="og:locale"
+          content="uk_UA"
+        />
+        <meta
+          property="og:site_name"
+          content="Wechirka"
+        />
+      </Head>
       {/* <MetaTags /> */}
       <div className={styles.container}>
         <ArtistPage artist={artist} />
