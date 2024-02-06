@@ -111,7 +111,7 @@ const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
       </div>
       <p className={styles.contactTitle}>Соціальні сторінки</p>
       <div className={styles.artistSocial}>
-        {artist.social.Instagram && (
+        {artist && artist.social && artist.social.Instagram && (
           <a
             href={artist.social.Instagram}
             target="_blank"
@@ -125,7 +125,7 @@ const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
             Instagram{" "}
           </a>
         )}
-        {artist.social.Facebook && (
+        {artist && artist.social && artist.social.Facebook && (
           <a
             href={artist.social.Facebook}
             target="_blank"
@@ -138,7 +138,7 @@ const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
             Facebook{" "}
           </a>
         )}
-        {artist.social.Youtube && (
+        {artist && artist.social && artist.social.Youtube && (
           <a
             href={artist.social.Youtube}
             target="_blank"
@@ -152,7 +152,7 @@ const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
             Youtube{" "}
           </a>
         )}
-        {artist.social.TikTok && (
+        {artist && artist.social && artist.social.TikTok && (
           <a
             href={artist.social.TikTok}
             target="_blank"
@@ -166,7 +166,7 @@ const ArtistInfoPage: React.FC<ArtistPageProps> = ({ artist }) => {
             Tik Tok{" "}
           </a>
         )}
-        {artist.social.WebSite && (
+        {artist && artist.social && artist.social.WebSite && (
           <a
             href={artist.social.WebSite}
             target="_blank"
