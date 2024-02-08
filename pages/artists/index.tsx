@@ -20,26 +20,7 @@ import MobileCat from "@/components/Artist/Mobile/MobileCat";
 import ScrollToTopButton from "@/components/helpers/ScrollToTopButton";
 
 import type { Metadata } from "next";
-export const metadata: Metadata = {
-  title: "Wechirka | Пошук",
-  description: "Пошук артистів",
-  openGraph: {
-    // title: 'Blog',
-    title: "Wechirka | Пошук",
-    description:
-      "Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp",
-      },
-    ],
-    url: "https://www.wechirka.com/artists",
-    // fb:app_id: "302462449359607",
-    locale: "uk_UA",
-    siteName: "Wechirka",
-    type: "website",
-  },
-};
+
 interface ArtistsProps {
   artists: IUserAuth[];
   totalPages: number;
@@ -77,45 +58,13 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
 
   return (
     <>
-      {/* <Head>
-        <title>{metadata.title}</title>
+      <Head>
+        <title>Wechirka | Пошук</title>
         <meta
           name="description"
-          content={metadata.description}
+          content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
         />
-        <meta
-          property="og:title"
-          content={metadata.openGraph?.title}
-        />
-        <meta
-          property="og:description"
-          content={metadata.ogDescription}
-        />
-        <meta
-          property="og:image"
-          content={metadata.ogImage}
-        />
-        <meta
-          property="og:url"
-          content={metadata.ogUrl}
-        />
-        <meta
-          property="fb:app_id"
-          content={metadata.fbApp_id}
-        />
-        <meta
-          property="og:locale"
-          content={metadata.ogLocale}
-        />
-        <meta
-          property="og:site_name"
-          content={metadata.ogSiteName}
-        />
-        <meta
-          property="og:type"
-          content={metadata.ogType}
-        />
-      </Head> */}
+      </Head>
 
       <div className={styles.container}>
         <div className={styles.mobileBar}>

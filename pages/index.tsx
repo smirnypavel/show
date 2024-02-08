@@ -13,14 +13,9 @@ export const metadata: Metadata = {
 const Home = () => {
   return (
     <>
-      {/* <Head>
-        <title>My page title</title>
-        <meta
-          property="og:title"
-          content="My page title"
-          key="title"
-        />
-      </Head> */}
+      <Head>
+        <title>Wechirka</title>
+      </Head>
       <div className={styles.homepage}>
         <HomeSearchBar />
         <HomeTopBanner />
