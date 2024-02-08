@@ -124,10 +124,6 @@ export const getStaticProps: GetStaticProps<ArtistPageProps> = async ({
     return {
       props: {
         artist,
-        props: {
-          title: "Page one! ",
-          description: "Page One metadata",
-        },
       },
       revalidate: 10,
     };
