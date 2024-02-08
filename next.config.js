@@ -41,16 +41,6 @@ const nextConfig = {
       },
     ],
   },
-
-  // remotePatterns: [
-  //   "https://fakestoreapi.com/*",
-  //   "https://cdn-icons-png.flaticon.com/*",
-  //   "https://lh3.googleusercontent.com/*",
-  //   "https://res.cloudinary.com/*",
-  //   "https://ldsound.info/*",
-  //   "https://via.placeholder.com/*",
-  //   "https://platform-lookaside.fbsbx.com/*",
-  // ],
 };
 
 module.exports = nextConfig;

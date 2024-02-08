@@ -6,19 +6,91 @@ import { Provider } from "react-redux";
 import { store, persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { restoreToken } from "../redux/auth/authOperations";
-import { useEffect } from "react";
+import { ClassAttributes, JSX, MetaHTMLAttributes, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import Layout from "@/components/Layout/Layout";
 const inter = Inter({ weight: ["400", "500"], subsets: ["latin"] });
 import "../styles/globals.css"; // Путь к вашему файлу globals.css
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // Остальной код без изменений
+  // console.log("pageProps", pageProps.artist);
+  // let artist = pageProps.artist;
+
+  let title = pageProps.artist ? pageProps.artist : "Wechirka пошук артистів";
+  let description = pageProps.artist
+    ? pageProps.artist
+    : "Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))";
+  let image = pageProps.artist
+    ? pageProps.artist
+    : "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp";
+  // // Остальной код без изменений
   useEffect(() => {
     restoreToken();
   }, []);
   return (
     <Provider store={store}>
+      <Head>
+        <meta
+          property="title"
+          content={title.title || "Wechirka пошук артистів"}
+          key="title"
+        />
+        <meta
+          property="description"
+          content={
+            description.description ||
+            "Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))"
+          }
+          key="description"
+        />
+        <meta
+          property="og:title"
+          content={title.title || "Wechirka пошук артистів"}
+          key="title"
+        />
+        <meta
+          property="og:description"
+          content={
+            description.description ||
+            "Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))"
+          }
+          key="description"
+        />
+        <meta
+          property="og:image"
+          content={
+            image.metaUrl ||
+            "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
+          }
+          key="ogimage"
+        />
+        <meta
+          property="og:url"
+          content="https://www.wechirka.com"
+          key="ogurl"
+        />
+        <meta
+          property="og:type"
+          content="website"
+          key="ogtype"
+        />
+        <meta
+          property="fb:app_id"
+          content="302462449359607"
+          key="fbappid"
+        />
+        <meta
+          property="og:locale"
+          content="uk_UA"
+          key="oglocale"
+        />
+        <meta
+          property="og:site_name"
+          content="Wechirka"
+          key="ogsitename"
+        />
+      </Head>
       <PersistGate
         loading={null}
         persistor={persistor}>

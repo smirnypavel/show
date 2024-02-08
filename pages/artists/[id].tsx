@@ -23,7 +23,7 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title key="title">{artist.title}</title>
         <meta
           property="og:title"
@@ -70,7 +70,7 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
           content="Wechirka"
           key="ogsitename"
         />
-      </Head>
+      </Head> */}
       <div className={styles.container}>
         <ArtistPage artist={artist} />
       </div>

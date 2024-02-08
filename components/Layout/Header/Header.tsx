@@ -129,7 +129,7 @@ const Header = () => {
             priority
             className={styles.logo}
           />
-          <p className={`${kodchasan.className}${styles.mobLogoText} `}>
+          <p className={`${styles.mobLogoText} ${kodchasan.className}`}>
             Wechirka
           </p>
         </Link>
@@ -164,8 +164,7 @@ const Header = () => {
             }`}>
             Блог
           </Link> */}
-          {/* <MyGeolocation />
-        <AutocompleteComponent /> */}
+
           {login ? (
             <Link
               href={"/profile"}
