@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Wechirka</title>
+        <title>Wechirka | Головна</title>
       </Head>
       <div className={styles.homepage}>
         <HomeSearchBar />
