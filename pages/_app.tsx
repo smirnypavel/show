@@ -17,8 +17,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   // console.log("pageProps", pageProps.artist);
   // let artist = pageProps.artist;
 
-  let title = pageProps.artist ? pageProps.artist : "Default metatags ";
-  let description = pageProps.artist ? pageProps.artist : "Default description";
+  let title = pageProps.artist ? pageProps.artist : "Wechirka пошук артистів";
+  let description = pageProps.artist
+    ? pageProps.artist
+    : "Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))";
   let image = pageProps.artist
     ? pageProps.artist
     : "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp";
@@ -29,6 +31,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <Head>
+        <meta
+          property="title"
+          content={title.title}
+          key="title"
+        />
+        <meta
+          property="description"
+          content={description.description}
+          key="description"
+        />
         <meta
           property="og:title"
           content={title.title}
@@ -43,6 +55,31 @@ function MyApp({ Component, pageProps }: AppProps) {
           property="og:image"
           content={image.metaUrl}
           key="ogimage"
+        />
+        <meta
+          property="og:url"
+          content="https://www.wechirka.com"
+          key="ogurl"
+        />
+        <meta
+          property="og:type"
+          content="website"
+          key="ogtype"
+        />
+        <meta
+          property="fb:app_id"
+          content="302462449359607"
+          key="fbappid"
+        />
+        <meta
+          property="og:locale"
+          content="uk_UA"
+          key="oglocale"
+        />
+        <meta
+          property="og:site_name"
+          content="Wechirka"
+          key="ogsitename"
         />
       </Head>
       <PersistGate
