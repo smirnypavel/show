@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="ua">
       <Head>
-        <meta
+        {/* <meta
           property="title"
           content="Wechirka пошук артистів"
           key="title"
@@ -53,7 +53,7 @@ export default function Document() {
           property="og:site_name"
           content="Wechirka"
           key="ogsitename"
-        />
+        /> */}
       </Head>
       <body>
         <Main />

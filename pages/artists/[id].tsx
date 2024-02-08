@@ -23,7 +23,7 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title key="title">{artist.title}</title>
         <meta
           property="og:title"
@@ -70,7 +70,7 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
           content="Wechirka"
           key="ogsitename"
         />
-      </Head>
+      </Head> */}
       <div className={styles.container}>
         <ArtistPage artist={artist} />
       </div>
@@ -124,6 +124,50 @@ export const getStaticProps: GetStaticProps<ArtistPageProps> = async ({
     return {
       props: {
         artist,
+        openGraphData: [
+          {
+            property: "og:image",
+            content:
+              "https://glievsbwngosqvrxtupy.supabase.co/storage/v1/object/public/event-banners/Jul%208%20Darkest%20Hour%20LONG.jpeg?t=2022-06-28T21%3A47%3A43.910Z",
+            key: "ogimage",
+          },
+          {
+            property: "og:image:width",
+            content: "400",
+            key: "ogimagewidth",
+          },
+          {
+            property: "og:image:height",
+            content: "300",
+            key: "ogimageheight",
+          },
+          {
+            property: "og:url",
+            content: `http://foobar.com/events`,
+            key: "ogurl",
+          },
+          {
+            property: "og:image:secure_url",
+            content:
+              "https://glievsbwngosqvrxtupy.supabase.co/storage/v1/object/public/event-banners/Jul%208%20Darkest%20Hour%20LONG.jpeg?t=2022-06-28T21%3A47%3A43.910Z",
+            key: "ogimagesecureurl",
+          },
+          {
+            property: "og:title",
+            content: "Hey hey",
+            key: "ogtitle",
+          },
+          {
+            property: "og:description",
+            content: "Ima description",
+            key: "ogdesc",
+          },
+          {
+            property: "og:type",
+            content: "website",
+            key: "website",
+          },
+        ],
       },
       revalidate: 10,
     };

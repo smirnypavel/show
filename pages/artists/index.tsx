@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head"; // Импорт компонента Head
 import styles from "@/styles/Artist/Artist.module.css";
 import ArtistSearchBar from "@/components/Artist/ArtistSearchBar";
 import axios from "axios";
 import { IUserAuth } from "@/types/IAuth";
 import toast from "react-hot-toast";
-// import MetaTags from "@/components/Meta/MetaTags";
 import Pagination from "@/components/Artist/Pagination";
 import { GetServerSideProps } from "next/types";
 import Image from "next/image";
@@ -18,10 +18,28 @@ import { IoIosArrowForward } from "react-icons/io";
 import MobileSort from "@/components/Artist/Mobile/MobileSort";
 import MobileCat from "@/components/Artist/Mobile/MobileCat";
 import ScrollToTopButton from "@/components/helpers/ScrollToTopButton";
-import Head from "next/head";
-// import Head from "next/head";
-// import MetaTags from "@/components/Meta/MetaTags";
 
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Wechirka | Пошук",
+  description: "Пошук артистів",
+  openGraph: {
+    // title: 'Blog',
+    title: "Wechirka | Пошук",
+    description:
+      "Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp",
+      },
+    ],
+    url: "https://www.wechirka.com/artists",
+    // fb:app_id: "302462449359607",
+    locale: "uk_UA",
+    siteName: "Wechirka",
+    type: "website",
+  },
+};
 interface ArtistsProps {
   artists: IUserAuth[];
   totalPages: number;
@@ -49,7 +67,7 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
   }, [artists]);
 
   const handleGoBack = () => {
-    router.back(); // Переход назад на предыдущую страницу
+    router.back();
   };
   const handleCancel = () => {
     router.push({
@@ -59,31 +77,47 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
 
   return (
     <>
-      {/* <MetaTags /> */}
+      {/* <Head>
+        <title>{metadata.title}</title>
+        <meta
+          name="description"
+          content={metadata.description}
+        />
+        <meta
+          property="og:title"
+          content={metadata.openGraph?.title}
+        />
+        <meta
+          property="og:description"
+          content={metadata.ogDescription}
+        />
+        <meta
+          property="og:image"
+          content={metadata.ogImage}
+        />
+        <meta
+          property="og:url"
+          content={metadata.ogUrl}
+        />
+        <meta
+          property="fb:app_id"
+          content={metadata.fbApp_id}
+        />
+        <meta
+          property="og:locale"
+          content={metadata.ogLocale}
+        />
+        <meta
+          property="og:site_name"
+          content={metadata.ogSiteName}
+        />
+        <meta
+          property="og:type"
+          content={metadata.ogType}
+        />
+      </Head> */}
+
       <div className={styles.container}>
-        <Head>
-          title={"Wechirka пошук артистів"}
-          description=
-          {"Іноваційний підхід до пошуку людей які працють у сфері розваг"}
-          keywords={""}
-        </Head>
-        {/* <MetaTags
-        title="Wechirka | Пошук"
-        description="Пошук артистів"
-        keywords=""
-        ogTitle={"Wechirka | Пошук"}
-        ogDescription={
-          "Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
-        }
-        ogImage={
-          "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
-        }
-        ogUrl={"https://www.wechirka.com/artists"}
-        fbApp_id={"302462449359607"}
-        ogLocale={"uk_UA"}
-        ogSiteName={"Wechirka"}
-        ogType={"website"}
-      /> */}
         <div className={styles.mobileBar}>
           <MobileCat />
           <MobileSort />
@@ -97,40 +131,33 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
                 req,
               },
             });
-            // setSearchTerm(searchTerm);
           }}
           onCategoryChange={(cat: string) => {
             router.push({
               pathname: "/artists",
               query: {
                 ...router.query,
-
                 cat,
               },
             });
-            // setSelectedCategoryId(categoryId);
           }}
           onSubcategoryChange={(subcat: string) => {
             router.push({
               pathname: "/artists",
               query: {
                 ...router.query,
-
                 subcat,
               },
             });
-            // setSelectedSubcategoryId(subcategoryId);
           }}
           onSelectedCity={(loc: string) => {
             router.push({
               pathname: "/artists",
               query: {
                 ...router.query,
-
                 loc,
               },
             });
-            // setSelectedCity(city);
           }}
         />
 
@@ -139,10 +166,7 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
             {filteredArtists && filteredArtists.length > 0 ? (
               <ul className={styles2.artistList}>
                 <div className={styles2.buttonBackContainer}>
-                  <Link
-                    href="/"
-                    // onClick={handleGoBack}
-                    className={styles2.buttonBack}>
+                  <Link href="/">
                     <div> Головна</div>
                   </Link>
                   <IoIosArrowForward />
@@ -180,17 +204,14 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
                           <div className={styles2.cardTopContainer}>
                             <p className={styles2.locationContainer}>
                               <GrLocation className={styles2.geoIcon} />
-                              {
-                                artist.location
-                                  ? artist.location.split(",")[0] // Если есть местоположение, отобразить его
-                                  : "Місто не обрано" // Если нет, вывести сообщение
-                              }
+                              {artist.location
+                                ? artist.location.split(",")[0]
+                                : "Місто не обрано"}
                             </p>
                             <p>
                               ₴{" "}
                               {artist.price ? artist.price : "Ціна не вказана"}
                             </p>
-
                             <div className={styles2.artistProfile}>
                               <div className={styles2.avatarContainer}>
                                 {artist.avatar.url ? (
@@ -232,12 +253,10 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages }) => {
                             )}
                           </div>
                           <div className={styles2.descriptionContainer}>
-                            {" "}
                             <div className={styles2.wrapper}>
                               <p className={styles2.descriptionTitle}>
                                 {artist.title}
                               </p>
-
                               <p className={styles2.descriptionText}>
                                 {artist.description
                                   ? artist.description

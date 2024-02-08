@@ -5,19 +5,22 @@ import TopContainer from "@/components/Home/TopContainer/TopContainer";
 
 // import MetaTags from "@/components/Meta/MetaTags";
 import styles from "@/styles/Home/Home.module.css";
+import { Metadata } from "next";
 import Head from "next/head";
-
+export const metadata: Metadata = {
+  title: "Time Line",
+};
 const Home = () => {
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>My page title</title>
         <meta
           property="og:title"
           content="My page title"
           key="title"
         />
-      </Head>
+      </Head> */}
       <div className={styles.homepage}>
         <HomeSearchBar />
         <HomeTopBanner />
