@@ -14,13 +14,15 @@ import "../styles/globals.css"; // Путь к вашему файлу globals.c
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log("pageProps", pageProps.artist);
+  // console.log("pageProps", pageProps.artist);
+  // let artist = pageProps.artist;
+
   let title = pageProps.artist ? pageProps.artist : "Default metatags ";
   let description = pageProps.artist ? pageProps.artist : "Default description";
-  // let image = pageProps.artist.mastrer_photo.url
-  //   ? pageProps.artist.mastrer_photo.url
-  //   : "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp";
-  // Остальной код без изменений
+  let image = pageProps.artist
+    ? pageProps.artist
+    : "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp";
+  // // Остальной код без изменений
   useEffect(() => {
     restoreToken();
   }, []);
@@ -37,11 +39,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           content={description.description}
           key="description"
         />
-        {/* <meta
+        <meta
           property="og:image"
-          content={image}
+          content={image.metaUrl}
           key="ogimage"
-        /> */}
+        />
       </Head>
       <PersistGate
         loading={null}
