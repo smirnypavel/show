@@ -33,27 +33,36 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta
           property="title"
-          content={title.title}
+          content={title.title || "Wechirka пошук артистів"}
           key="title"
         />
         <meta
           property="description"
-          content={description.description}
+          content={
+            description.description ||
+            "Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))"
+          }
           key="description"
         />
         <meta
           property="og:title"
-          content={title.title}
+          content={title.title || "Wechirka пошук артистів"}
           key="title"
         />
         <meta
           property="og:description"
-          content={description.description}
+          content={
+            description.description ||
+            "Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))"
+          }
           key="description"
         />
         <meta
           property="og:image"
-          content={image.metaUrl}
+          content={
+            image.metaUrl ||
+            "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
+          }
           key="ogimage"
         />
         <meta
