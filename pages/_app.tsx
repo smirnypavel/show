@@ -27,12 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <Head>
         <meta
-          property="title"
+          property="og:title"
           content={title}
           key="title"
         />
         <meta
-          property="description"
+          property="og:description"
           content={description}
           key="description"
         />
