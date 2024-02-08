@@ -14,16 +14,12 @@ import "../styles/globals.css"; // Путь к вашему файлу globals.c
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log("pageProps", pageProps);
-  let title = pageProps.artist.title
-    ? pageProps.artist.title
-    : "Default metatags ";
-  let description = pageProps.artist.description
-    ? pageProps.artist.description
-    : "Default description";
-  let image = pageProps.artist.image
-    ? pageProps.artist.image
-    : "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp";
+  console.log("pageProps", pageProps.artist);
+  let title = pageProps.artist ? pageProps.artist : "Default metatags ";
+  let description = pageProps.artist ? pageProps.artist : "Default description";
+  // let image = pageProps.artist.mastrer_photo.url
+  //   ? pageProps.artist.mastrer_photo.url
+  //   : "https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp";
   // Остальной код без изменений
   useEffect(() => {
     restoreToken();
@@ -33,19 +29,19 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta
           property="og:title"
-          content={title}
+          content={title.title}
           key="title"
         />
         <meta
           property="og:description"
-          content={description}
+          content={description.description}
           key="description"
         />
-        <meta
+        {/* <meta
           property="og:image"
           content={image}
           key="ogimage"
-        />
+        /> */}
       </Head>
       <PersistGate
         loading={null}
