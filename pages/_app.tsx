@@ -14,33 +14,34 @@ import "../styles/globals.css"; // Путь к вашему файлу globals.c
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log("pageProps", pageProps);
-  const { openGraphData = [] } = pageProps;
+  // console.log("pageProps", pageProps);
+  let title = pageProps.title ? pageProps.title : "Default metatags ";
+  let description = pageProps.description
+    ? pageProps.description
+    : "Default description";
   // Остальной код без изменений
   useEffect(() => {
     restoreToken();
   }, []);
   return (
     <Provider store={store}>
+      <Head>
+        <meta
+          property="title"
+          content={title}
+          key="title"
+        />
+        <meta
+          property="description"
+          content={description}
+          key="description"
+        />
+      </Head>
       <PersistGate
         loading={null}
         persistor={persistor}>
         <Toaster />
         <Layout>
-          <Head>
-            {openGraphData.map(
-              (
-                og: JSX.IntrinsicAttributes &
-                  ClassAttributes<HTMLMetaElement> &
-                  MetaHTMLAttributes<HTMLMetaElement>
-              ) => (
-                <meta
-                  key={og.content}
-                  {...og}
-                />
-              )
-            )}
-          </Head>
           <main className={`container ${inter.className}`}>
             <Component {...pageProps} />
             <Analytics />
