@@ -7,7 +7,7 @@
   }
 }
 .inputSearch {
-  width: 870px;
+  width: 700px;
   height: 45px;
   border-radius: 8px 0px 0px 8px;
   background: #eee;
@@ -23,9 +23,9 @@
 }
 .searchButton {
   border-radius: 0px 8px 8px 0px;
-  background: var(--button-bg-color);
+  background: #a259ff;
   border: none;
-  width: 40px;
+  width: 100px;
   height: 45px;
   display: flex;
   justify-content: center;

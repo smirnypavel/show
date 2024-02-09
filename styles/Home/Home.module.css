@@ -2,11 +2,11 @@
   width: 100%;
 }
 .container {
-  margin-top: 32px;
   @media screen and (min-width: 768px) {
-    margin-top: 40px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 }
 .requestForm {

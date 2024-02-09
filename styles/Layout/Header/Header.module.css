@@ -190,16 +190,14 @@
 
 .link {
   position: relative;
-  color: var(--white);
-  font-size: 40px;
-  font-weight: 500;
-  /* margin-top: -1px; */
+  /* color: var(--white); */
+  color: #858584;
   white-space: nowrap;
   width: fit-content;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.277);
   @media (min-width: 768px) {
-    font-size: 20px;
-    font-weight: 400;
+    /* font-size: 20px;
+    font-weight: 400; */
   }
 }
 .link::after {
@@ -208,20 +206,22 @@
   bottom: -10px; /* Отступ полоски от нижней части headerNav */
   left: 0; /* Начало полоски */
   height: 1px; /* Высота полоски */
-  background-color: #ffffff8f; /* Цвет полоски */
+  background-color: #a259ff6c; /* Цвет полоски */
   transition: width 0.2s ease-in-out; /* Добавляем плавный переход для изменения ширины */
   width: 0; /* Начальная ширина полоски (будет увеличиваться) */
   @media (min-width: 768px) {
     height: 1px; /* Высота полоски */
-    background-color: #ffffff4f; /* Цвет полоски */
+    background-color: #a159ff6c; /* Цвет полоски */
   }
 }
-
+.active {
+  color: var(--white);
+}
 .link.active::after {
   width: 100%; /* Увеличиваем ширину полоски до 100% при активной ссылке */
 }
 .logoLink {
-  color: rgba(0, 0, 0, 0.834);
+  color: var(--white);
   /* color: var(--button-bg-color); */
   /* font-family: var(--logo-font); */
   font-family: "Kodchasan", sans-serif;

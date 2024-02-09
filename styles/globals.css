@@ -105,9 +105,10 @@ html {
   height: 100%; */
 }
 html {
-  font-family: var(--main-font);
+  /* font-family: var(--main-font); */
+  color: #ffffff;
 
-  background-color: var(--bg-color);
+  background-color: #2b2b2b;
   /* background-image: url(../public/gradient2.png); */
   /* background: radial-gradient(at 36% 47%, var(--bg-color) 0, transparent 50%),
     radial-gradient(at 71% 77%, var(--color-gradient-1) 0, transparent 21%),

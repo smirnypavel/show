@@ -2,10 +2,8 @@
   max-width: 432px;
   min-height: 443px;
   border-radius: 16px;
-  background: var(--accent-color);
-  -webkit-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
-  -moz-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
-  box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
+  background: #3b3b3b;
+
   @media (min-width: 768px) {
     margin-left: 40px;
     width: 372px;
@@ -42,7 +40,7 @@
   }
 }
 .bannerTitle {
-  color: var(--black);
+  color: var(--white);
   text-align: center;
   font-size: 16px;
   font-weight: 500;
@@ -59,10 +57,11 @@
 }
 .bannerCategoryText {
   font-size: var(--h4-medium-font-size);
-  font-style: var(--h4-medium-font-style);
+
   font-weight: var(--h4-medium-font-weight);
 
-  color: var(--black);
+  color: var(--white);
+
   font-size: 12px;
   letter-spacing: 0;
   line-height: normal;

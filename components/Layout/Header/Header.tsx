@@ -6,16 +6,16 @@ import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { IoMenu } from "react-icons/io5";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
-import { Kodchasan } from "next/font/google";
-
 import { BsSearch } from "react-icons/bs";
-
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import NavBar from "./Mobile/NavBar";
+import { Kodchasan } from "next/font/google";
 const kodchasan = Kodchasan({ weight: ["700", "500"], subsets: ["latin"] });
+import { Comfortaa } from "next/font/google";
+const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const Header = () => {
   const router = useRouter();
@@ -57,7 +57,7 @@ const Header = () => {
     setReq("");
   };
   return (
-    <>
+    <div className={comfortaa.className}>
       <div className={styles.mobileContainer}>
         <div className={styles.mobileHeader}>
           <button
@@ -276,7 +276,7 @@ const Header = () => {
         </div>
       )}
       <NavBar />
-    </>
+    </div>
   );
 };
 

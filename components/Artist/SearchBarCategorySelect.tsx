@@ -28,7 +28,7 @@ const SearchBarCategorySelect: React.FC<SearchBarCategorySelectProps> = ({
         const response = await axios.get<ICategory[]>("/users/category");
         setCategories(response.data);
       } catch (error) {
-        console.error("Ошибка при загрузке категорий:", error);
+        console.error("Помилка прі отриманні категрій:", error);
         // Здесь можно добавить обработку ошибки, например, показать сообщение пользователю
       }
     };

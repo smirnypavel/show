@@ -1,0 +1,116 @@
+.imageContainer {
+  margin-top: 20px;
+  /* color: var(--white); */
+  background-color: transparent;
+
+  @media (min-width: 768px) {
+  }
+}
+.title {
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 46px;
+}
+.titleText {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 35px;
+}
+.artistItem {
+  max-width: 330px;
+  margin-top: 20px;
+}
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.imageItem {
+  border: none;
+  position: relative;
+  width: 330px;
+  height: 330px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.image {
+  object-fit: cover;
+  background-color: transparent;
+}
+
+.artistPhotoList {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  justify-content: right;
+}
+.artistPhotoItem {
+  border: none;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.profileLink {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a259ff;
+  border: 2px solid transparent;
+
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.profileLink:hover {
+  background-color: transparent;
+  border: 2px solid #a259ff;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 4px 8px #00000040;
+  transition-delay: 0.2s;
+}
+.artistName {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.artistTitleContainer {
+  width: 22px;
+}
+.artistTitle {
+  margin-top: 15px;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 31px;
+}
+.categoryItem {
+  margin-top: 10px;
+  gap: 12px;
+  padding: 5px 15px;
+  display: flex;
+  border: 2px solid #a259ff;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+  width: fit-content;
+}
+.avatarContainer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.avatarItem {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  border-radius: 120px;
+  overflow: hidden;
+}

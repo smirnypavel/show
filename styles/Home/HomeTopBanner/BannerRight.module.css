@@ -3,15 +3,15 @@
   @media screen and (min-width: 768px) {
     display: unset;
     margin-left: 24px;
-    width: 671px;
+    width: 601px;
     height: 260px;
     flex-shrink: 0;
     border-radius: 16px;
-    background: var(--white);
+    background: transparent;
     position: relative;
-    -webkit-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
+    /* -webkit-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
     -moz-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
-    box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
+    box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59); */
   }
 }
 .banner {

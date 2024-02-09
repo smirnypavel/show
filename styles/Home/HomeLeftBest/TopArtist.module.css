@@ -1,6 +1,7 @@
 .imageContainer {
   margin-top: 20px;
-  background-color: var(--white);
+  background-color: transparent;
+  /* background-color: #858584; */
   border-radius: 0px 0px 16px 16px;
   min-height: 169px;
   max-width: 432px;
