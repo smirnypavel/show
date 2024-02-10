@@ -36,7 +36,7 @@
   overflow: hidden; /* Добавляем скрытие контента, выходящего за пределы контейнера */
 }
 .slideText {
-  position: fixed;
+  position: absolute;
   padding: 10px;
   left: 0px;
   bottom: 0px;
