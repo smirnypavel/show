@@ -13,10 +13,10 @@ const inter = Comfortaa({ weight: ["400", "500", "600"], subsets: ["latin"] });
 import "../styles/globals.css"; // Путь к вашему файлу globals.css
 import Head from "next/head";
 
-
 function MyApp({ Component, pageProps }: AppProps) {
-
-  let title = pageProps.artist ? pageProps.artist : "Wechirka пошук артистів";
+  let title = pageProps.artist
+    ? pageProps.artist
+    : "Wechirka - новий вимір сворення свята";
   let description = pageProps.artist
     ? pageProps.artist
     : "Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))";
@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta
           property="title"
-          content={title.title || "Wechirka пошук артистів"}
+          content={title.title || "Wechirka - новий вимір сворення свята"}
           key="title"
         />
         <meta
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta
           property="og:title"
-          content={title.title || "Wechirka пошук артистів"}
+          content={title.title || "Wechirka - новий вимір сворення свята"}
           key="title"
         />
         <meta

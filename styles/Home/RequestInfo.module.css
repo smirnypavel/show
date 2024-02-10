@@ -1,0 +1,67 @@
+.container {
+  /* margin-left: 40px; */
+  max-width: 360px;
+  height: 729px;
+  background-color: #3b3b3b;
+  border-radius: 20px;
+  padding: 38px 40px;
+}
+.title {
+  text-align: center;
+}
+.submitButton {
+  all: unset;
+  width: 100%;
+  align-items: center;
+  background-color: #a259ff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 12px 24px;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer; /* Добавим указатель при наведении */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  @media screen and (min-width: 768px) {
+    width: fit-content;
+    transform: scale(0.5);
+  }
+}
+
+.textWrapper {
+  /* color: var(--button-text-color); */
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+  transition: color 0.3s ease;
+  /* transform: scale(0.7); */
+}
+
+.submitButton:hover {
+  box-shadow: 0px 4px 8px #00000040;
+}
+
+.submitButton:active {
+  box-shadow: 0px 4px 12px #00000040;
+}
+.textNumber {
+  font-size: 16px;
+  color: #a259ff;
+}
+.text {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: justify;
+}
+.bottomTitle {
+  margin-top: 20px;
+  text-align: justify;
+}

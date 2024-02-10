@@ -90,7 +90,7 @@ const TopArtistsRedesign: React.FC = () => {
                 ))
               )
             )}
-            <div>
+            <div className={styles.artistTitleContainer}>
               <p className={styles.artistTitle}>{artist.title}</p>
             </div>
             <div className={styles.avatarContainer}>

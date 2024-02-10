@@ -1,6 +1,6 @@
 .form {
   background-color: #3b3b3b;
-  border-radius: 16px;
+  border-radius: 20px;
   width: 100%;
   padding: 28px 20px;
   position: relative;
@@ -9,9 +9,9 @@
   -moz-box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59);
   box-shadow: 0px 0px 21px 7px rgba(0, 0, 0, 0.59); */
   @media screen and (min-width: 768px) {
-    padding: 28px 80px;
-    min-height: 729px;
-    min-width: 756px;
+    padding: 28px 40px;
+    min-height: 720px;
+    max-width: 730px;
   }
 }
 
