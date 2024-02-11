@@ -56,11 +56,11 @@
 }
 .card {
   position: relative;
-  /* overflow: hidden; */
 }
 .artistItem {
   max-width: 330px;
   margin-top: 20px;
+  height: 330px;
 
   @media (min-width: 768px) {
   }
@@ -245,7 +245,7 @@
   text-align: justify;
   margin-top: 10px;
   width: 600px;
-  height: 176px;
+  height: 170px;
   background-color: #3b3b3b3f;
   border-radius: 20px;
   overflow: hidden;

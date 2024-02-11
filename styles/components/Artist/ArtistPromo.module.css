@@ -23,9 +23,14 @@
   height: 320px;
 }
 .artistInfo {
-  width: 1050px;
   padding-left: 24px;
   padding-right: 24px;
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 1050px;
+  }
 }
 .artistTitleContainer {
   margin-top: -70px;
