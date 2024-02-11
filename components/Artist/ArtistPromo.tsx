@@ -6,6 +6,8 @@ import Modal from "@/components/helpers/Modal";
 import { IoIosArrowForward } from "react-icons/io";
 import YouTube2 from "../helpers/Youtube";
 import MobileInfoPage from "./Mobile/MobileInfoPage";
+import { GrLocation } from "react-icons/gr";
+import { TbCurrencyHryvnia } from "react-icons/tb";
 
 const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
   const [showPhotos, setShowPhotos] = useState(true); // состояние для отслеживания отображения фотографий/видео
@@ -33,77 +35,52 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
   };
 
   return (
-    <div className={styles.artistPromo}>
-      <div className={styles.artistPromoContainer}>
-        <button
-          className={styles.buttonContact}
-          onClick={toggleMenu}>
-          Контакти
-        </button>
-        <div className={`${styles.mobileInfo} ${menuOpen && styles.show}`}>
-          <button
-            className={styles.buttonClose}
-            onClick={toggleMenu}>
-            <IoIosArrowForward className={styles.buttonCloseIcon} />
-          </button>
-          <MobileInfoPage artist={artist} />
-        </div>
-        <div className={styles.artistPromoHeader}>
-          <div className={styles.artistPromoMasterPhoto}>
+    <>
+      <div className={styles.container}>
+        <div>
+          <div className={styles.imageContainer}>
             <Image
               src={artist.master_photo.url}
-              alt="artist master_photo"
+              alt="MasterPhoto"
               fill
               className={styles.image}
-              sizes="(min-width: 808px) 50vw, 100vw"
             />
+            <div className={styles.gradient}></div>
           </div>
-          <div className={styles.artistPromoHeaderTextContainer}>
-            <div className={styles.artistPromoHeaderText}>{artist.title}</div>
-            <div className={styles.artistPromoHeaderText}>₴ {artist.price}</div>
-            <div>
-              <p className={styles.artistPromoHeaderLocationTitle}>Місто</p>
-              <div className={styles.artistPromoHeaderLocation}>
-                {artist.location.split(",")[0]}{" "}
-                {/* Вывод первого слова из текста */}
-              </div>
+        </div>
+        <div className={styles.artistInfo}>
+          <div className={styles.artistTitleContainer}>
+            <div className={styles.avatarContainer}>
+              <Image
+                src={artist.avatar.url}
+                alt="avatar"
+                fill
+                className={styles.avatar}
+              />
             </div>
+            <h2 className={styles.artistName}>{artist.firstName}</h2>
           </div>
-        </div>
-        <div className={styles.descriptionContainer}>
-          <div className={styles.descriptionWrapper}>
-            {artist.description
-              ? artist.description
-              : "Напишіть про те чим ви займаетесь, для того щоб корістувачам було зручніше Вас знайти"}
+          <h1 className={styles.title}>{artist.title}</h1>
+          <p className={styles.paragraph}>
+            <GrLocation className={styles.icon} />{" "}
+            {artist.location.split(",")[0]}{" "}
+          </p>
+          <p className={styles.paragraph}>
+            <TbCurrencyHryvnia className={styles.icon} /> {artist.price}
+          </p>
+          <div className={styles.descriptionContainer}>
+            <h4 className={styles.label}>Опис</h4>
+            <p className={styles.description}> {artist.description}</p>
           </div>
-        </div>
-        <div>
-          <p className={styles.categoryTitle}>Категорії надання послуг</p>
-          <div className={styles.categoryContainer}>
+          <h5 className={styles.label}>Категорії</h5>
+          <div className={styles.categoryList}>
             {artist.category.length === 0 ? (
               <div className={styles.categoryArtist}>Категорії не обрані</div>
-            ) : (
-              artist.category.map((cat) => (
-                <div
-                  className={styles.categoryArtist}
-                  key={cat._id}>
-                  {cat.name}
-                </div>
-              ))
-            )}
-          </div>
-          <p className={styles.categoryTitle}>Підкатегорія</p>
-
-          <div className={styles.categoryContainer}>
-            {artist.category.length === 0 ? (
-              <div className={styles.categoryArtist}>
-                Підкатегорії не обрані
-              </div>
             ) : (
               artist.category.map((cat) =>
                 cat.subcategories.map((subCat) => (
                   <div
-                    className={styles.categoryArtist}
+                    className={styles.categoryItem}
                     key={subCat.id}>
                     {subCat.name}
                   </div>
@@ -112,89 +89,9 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
             )}
           </div>
         </div>
-        <p className={styles.portfolioTitle}>Портфоліо</p>
-        <div className={styles.buttonsContainer}>
-          <button
-            onClick={handleShowPhotos}
-            className={
-              showPhotos
-                ? `${styles.portfolioButton} ${styles.portfolioButtonActive}`
-                : styles.portfolioButton
-            }>
-            Фото
-          </button>
-          <button
-            onClick={handleShowVideos}
-            className={
-              !showPhotos
-                ? `${styles.portfolioButton} ${styles.portfolioButtonActive}`
-                : styles.portfolioButton
-            }>
-            Відео
-          </button>
-        </div>
-        <div>
-          {showPhotos ? (
-            <div className={styles.portfolioContainer}>
-              <ul className={styles.photoListContainer}>
-                {artist.photo.length === 0 ? (
-                  <div className={styles.categoryArtist}>
-                    Фото виступівне не додане
-                  </div>
-                ) : (
-                  artist.photo.map((item, index) => (
-                    <div key={item.publicId}>
-                      <li className={styles.photoListItem}>
-                        <Image
-                          src={item.url}
-                          alt={"user photo"}
-                          fill
-                          sizes="(min-width: 808px) 50vw, 100vw"
-                          className={styles.photo}
-                          onClick={() => openModal(index)}
-                        />
-                      </li>
-                      {modalOpenIndex === index && (
-                        <Modal onClose={closeModal}>
-                          <li className={styles.photoBigItem}>
-                            <Image
-                              src={item.url}
-                              alt={"user photo"}
-                              fill
-                              sizes="(min-width: 808px) 50vw, 100vw"
-                              className={styles.photo}
-                            />
-                          </li>
-                        </Modal>
-                      )}
-                    </div>
-                  ))
-                )}
-              </ul>
-            </div>
-          ) : (
-            <div className={styles.videoContainer}>
-              <ul className={styles.videoListContainer}>
-                {artist.video.length === 0 ? (
-                  <div className={styles.categoryArtist}>
-                    Відео з YouTube не додане
-                  </div>
-                ) : (
-                  artist.video.map((item) => (
-                    <li
-                      key={item.publicId}
-                      className={styles.videoListItem}>
-                      {/* <YouTube url={item.url} /> */}
-                      <YouTube2 url={item.url} />
-                    </li>
-                  ))
-                )}
-              </ul>
-            </div>
-          )}
-        </div>
+        <div className={styles.bottomContainer}></div>
       </div>
-    </div>
+    </>
   );
 };
 

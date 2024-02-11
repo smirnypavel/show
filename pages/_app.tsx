@@ -6,10 +6,13 @@ import { Provider } from "react-redux";
 import { store, persistor } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { restoreToken } from "../redux/auth/authOperations";
-import { ClassAttributes, JSX, MetaHTMLAttributes, useEffect } from "react";
+import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import Layout from "@/components/Layout/Layout";
-const inter = Comfortaa({ weight: ["400", "500", "600"], subsets: ["latin"] });
+const inter = Comfortaa({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 import "../styles/globals.css"; // Путь к вашему файлу globals.css
 import Head from "next/head";
 

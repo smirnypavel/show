@@ -5,21 +5,8 @@ import { BsSearch, BsX } from "react-icons/bs";
 import ChooseLocationArtist from "./ChooseLocationArtist";
 import { useRouter } from "next/router";
 
-interface ArtistSearchBarProps {
-  onSearch: (searchTerm: string) => void;
-  onCategoryChange: (categoryId: string) => void;
-  onSubcategoryChange: (subcategoryId: string) => void;
-  onSelectedCity: (location: string) => void;
-}
-
-const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
-  onSearch,
-  onCategoryChange,
-  onSubcategoryChange,
-  onSelectedCity,
-}) => {
-
-  const [searchTerm, setSearchTerm] = useState("");
+const ArtistSearchBar = () => {
+  const [req, setSearchTerm] = useState("");
   const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,15 +15,19 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
 
   const handleSearchClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    onSearch(searchTerm); // Вызывайте onSearch при клике на кнопку
+    router.push({
+      pathname: "/artists",
+      query: {
+        ...router.query,
+        req,
+      },
+    });
   };
 
   const handleClearClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setSearchTerm(""); // Очищаем ввод
-    onSearch(""); // Отправляем пустой запрос
-    onCategoryChange(""); // Сбрасываем выбранную категорию
-    onSubcategoryChange("");
+
     router.push({
       pathname: "/artists",
       query: {
@@ -49,11 +40,7 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
     });
   };
 
-  const handleCitySelect = (city: string) => {
-    onSelectedCity(city);
-  };
-
-  const clearButton = searchTerm ? (
+  const clearButton = req ? (
     <button
       type="button"
       onClick={handleClearClick}
@@ -70,11 +57,11 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
           <input
             type="text"
             placeholder="Знайти виконавця"
-            value={searchTerm}
+            value={req}
             onChange={handleInputChange}
             className={styles.inputSearch}
           />
-          <ChooseLocationArtist onCitySelect={handleCitySelect} />
+          <ChooseLocationArtist />
         </div>
         <button
           className={styles.searchButton}
@@ -83,10 +70,7 @@ const ArtistSearchBar: React.FC<ArtistSearchBarProps> = ({
           <BsSearch className={styles.buttonIcon} />
         </button>
       </div>
-      <SearchBarCategorySelect
-        onCategoryChange={onCategoryChange}
-        onSubcategoryChange={onSubcategoryChange}
-      />
+      <SearchBarCategorySelect />
     </div>
   );
 };

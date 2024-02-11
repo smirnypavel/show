@@ -9,11 +9,9 @@ import { TbHandClick } from "react-icons/tb";
 
 // import MetaTags from "@/components/Meta/MetaTags";
 import styles from "@/styles/Home/Home.module.css";
-import { Metadata } from "next";
+
 import Head from "next/head";
-export const metadata: Metadata = {
-  title: "Time Line",
-};
+
 const Home = () => {
   return (
     <>

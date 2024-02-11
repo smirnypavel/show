@@ -19,7 +19,7 @@ const ArtistPage: React.FC<ArtistPageProps> = ({ artist }) => {
 
   return (
     <div className={styles.artistContainer}>
-      <div className={styles.buttonBackContainer}>
+      {/* <div className={styles.buttonBackContainer}>
         <button
           onClick={handleGoBack}
           className={styles.buttonBack}>
@@ -27,9 +27,9 @@ const ArtistPage: React.FC<ArtistPageProps> = ({ artist }) => {
         </button>
         <IoIosArrowForward />
         <button className={styles.buttonBackText}> {artist.title}</button>
-      </div>
+      </div> */}
       <ArtistPromo artist={artist} />
-      <ArtistInfoPage artist={artist} />
+      {/* <ArtistInfoPage artist={artist} /> */}
     </div>
   );
 };

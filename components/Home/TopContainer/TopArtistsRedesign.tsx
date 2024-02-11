@@ -72,7 +72,7 @@ const TopArtistsRedesign: React.FC = () => {
                 )
               )}
               <Link
-                href={`/artist/${artist._id}`}
+                href={`/artists/${artist._id}`}
                 className={styles.profileLink}>
                 Більше <IoIosArrowForward />
               </Link>

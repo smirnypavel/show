@@ -1,14 +1,15 @@
-// ScrollToTopButton.js
 import { useState, useEffect } from "react";
-import styles from "@/styles/components/helpers/ScrollToTopButton.module.css"; // Создайте файл стилей для кнопки
+import styles from "@/styles/components/helpers/ScrollToTopButton.module.css";
 import { FaArrowUp } from "react-icons/fa6";
+
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = () => {
-    const yOffset = window.scrollY; // Use scrollY instead of deprecated pageYOffset
+    const yOffset = window.scrollY;
+    const showThreshold = 100; // Порог, когда кнопка должна появиться
 
-    if (yOffset > 100) {
+    if (yOffset > showThreshold) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -32,13 +33,13 @@ const ScrollToTopButton = () => {
 
   return (
     <div>
-      {isVisible && (
-        <button
-          className={styles.scrollToTopButton}
-          onClick={scrollToTop}>
-          <FaArrowUp className={styles.icon} />
-        </button>
-      )}
+      <button
+        className={`${styles.scrollToTopButton} ${
+          isVisible ? styles.visible : ""
+        }`}
+        onClick={scrollToTop}>
+        <FaArrowUp className={styles.icon} />
+      </button>
     </div>
   );
 };

@@ -4,15 +4,10 @@ import styles from "@/styles/components/Artist/ChoseCity.module.css";
 import { HiOutlineLocationMarker, HiX } from "react-icons/hi";
 import { useRouter } from "next/router";
 
-interface AutocompleteProps {
-  onCitySelect: (city: string) => void;
-}
 const googleMapsApiKey: string = process.env.NEXT_PUBLIC_GOOGLE_KEY || "";
 
 const libraries: Libraries = ["places"];
-const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
-  onCitySelect,
-}) => {
+const ChooseLocationArtist = () => {
   const router = useRouter();
 
   const [selectedPlace, setSelectedPlace] = useState("");
@@ -41,7 +36,7 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
       localStorage.setItem("userCity", place);
       setUserCity(place);
       setSelectedPlace(place);
-      onCitySelect(place);
+      // onCitySelect(place);
       setIsCitySelected(true);
     } else {
       setIsCitySelected(false);
@@ -53,7 +48,14 @@ const ChooseLocationArtist: React.FC<AutocompleteProps> = ({
     localStorage.removeItem("userCity");
     setUserCity("Вся Україна");
     setSelectedPlace("");
-    onCitySelect(""); // Отправка пустой строки для очистки локации
+
+    router.push({
+      pathname: "/artists",
+      query: {
+        ...router.query,
+        loc: "",
+      },
+    });
     setIsCitySelected(false);
     if (inputRef.current) {
       inputRef.current.value = ""; // Очистка поля ввода

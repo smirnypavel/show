@@ -23,54 +23,14 @@ const Artist: React.FC<ArtistPageProps> = ({ artist }) => {
 
   return (
     <>
-      {/* <Head>
+      <Head>
         <title key="title">{artist.title}</title>
-        <meta
-          property="og:title"
-          content={artist.title}
-          key="ogtitle"
-        />
         <meta
           property="description"
           content={artist.description}
           key="description"
         />
-        <meta
-          property="og:description"
-          content={artist.description}
-          key="ogdescription"
-        />
-        <meta
-          property="og:image"
-          content={artist.master_photo.url}
-          key="ogimage"
-        />
-        <meta
-          property="og:url"
-          content={`https://www.wechirka.com/artist/${artist._id}`}
-          key="ogurl"
-        />
-        <meta
-          property="og:type"
-          content="website"
-          key="ogtype"
-        />
-        <meta
-          property="fb:app_id"
-          content="302462449359607"
-          key="fbappid"
-        />
-        <meta
-          property="og:locale"
-          content="uk_UA"
-          key="oglocale"
-        />
-        <meta
-          property="og:site_name"
-          content="Wechirka"
-          key="ogsitename"
-        />
-      </Head> */}
+      </Head>
       <div className={styles.container}>
         <ArtistPage artist={artist} />
       </div>
