@@ -1,5 +1,5 @@
 /* Глобальные стили */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Kodchasan:wght@300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Kodchasan:wght@300;400;500;600;700&display=swap"); */
 :root {
   /* --color-gradient-1: #7d7aff;
   --color-gradient-2: #2121e2;
@@ -9,11 +9,11 @@
   --color-gradient-2: rgba(201, 93, 181, 0.404);
   --color-gradient-3: rgba(161, 89, 255, 0.404);
   --color-gradient-4: #001aff;
-  --main-font: "Inter", sans-serif;
-  --logo-font: "Kodchasan", sans-serif;
+  /* --main-font: "Inter", sans-serif;
+  --logo-font: "Kodchasan", sans-serif; */
   --bg-color: #094356;
   --button-bg-color: #e89559;
-  --button-text-color: #333;
+  /* --button-text-color: #333; */
   --accent-color: #ebdfca;
   --accent-color-1: rgba(235, 223, 202, 1);
   --accent-color-2: rgba(232, 149, 89, 1);
@@ -21,61 +21,61 @@
   --black: rgba(24, 24, 24, 1);
   --gray: rgb(144, 143, 143);
   --gray-light: rgba(217, 217, 217, 1);
-  --h1-medium-font-family: "Inter", sans-serif;
+  /* --h1-medium-font-family: "Inter", sans-serif; */
   --h1-medium-font-size: 20px;
   --h1-medium-font-style: normal;
   --h1-medium-font-weight: 500;
   --h1-medium-letter-spacing: 0px;
   --h1-medium-line-height: normal;
-  --h1-regular-font-family: "Inter", sans-serif;
+  /* --h1-regular-font-family: "Inter", sans-serif; */
   --h1-regular-font-size: 20px;
   --h1-regular-font-style: normal;
   --h1-regular-font-weight: 400;
   --h1-regular-letter-spacing: 0px;
   --h1-regular-line-height: normal;
-  --h2-medium-font-family: "Inter", sans-serif;
+  /* --h2-medium-font-family: "Inter", sans-serif; */
   --h2-medium-font-size: 16px;
   --h2-medium-font-style: normal;
   --h2-medium-font-weight: 500;
   --h2-medium-letter-spacing: 0px;
   --h2-medium-line-height: normal;
-  --h2-regular-font-family: "Inter", sans-serif;
+  /* --h2-regular-font-family: "Inter", sans-serif; */
   --h2-regular-font-size: 16px;
   --h2-regular-font-style: normal;
   --h2-regular-font-weight: 400;
   --h2-regular-letter-spacing: 0px;
   --h2-regular-line-height: normal;
-  --h3-medium-font-family: "Inter", sans-serif;
+  /* --h3-medium-font-family: "Inter", sans-serif; */
   --h3-medium-font-size: 14px;
   --h3-medium-font-style: normal;
   --h3-medium-font-weight: 500;
   --h3-medium-letter-spacing: 0px;
   --h3-medium-line-height: normal;
-  --h3-regular-font-family: "Inter", sans-serif;
+  /* --h3-regular-font-family: "Inter", sans-serif; */
   --h3-regular-font-size: 14px;
   --h3-regular-font-style: normal;
   --h3-regular-font-weight: 400;
   --h3-regular-letter-spacing: 0px;
   --h3-regular-line-height: normal;
-  --h4-medium-font-family: "Inter-Medium", sans-serif;
+  /* --h4-medium-font-family: "Inter-Medium", sans-serif; */
   --h4-medium-font-size: 13px;
   --h4-medium-font-style: normal;
   --h4-medium-font-weight: 500;
   --h4-medium-letter-spacing: 0px;
   --h4-medium-line-height: normal;
-  --h5-medium-font-family: "Inter", sans-serif;
+  /* --h5-medium-font-family: "Inter", sans-serif; */
   --h5-medium-font-size: 12px;
   --h5-medium-font-style: normal;
   --h5-medium-font-weight: 500;
   --h5-medium-letter-spacing: 0px;
   --h5-medium-line-height: normal;
-  --h5-regular-font-family: "Inter", sans-serif;
+  /* --h5-regular-font-family: "Inter", sans-serif; */
   --h5-regular-font-size: 12px;
   --h5-regular-font-style: normal;
   --h5-regular-font-weight: 400;
   --h5-regular-letter-spacing: 0px;
   --h5-regular-line-height: normal;
-  --h6-regular-font-family: "Inter", sans-serif;
+  /* --h6-regular-font-family: "Inter", sans-serif; */
   --h6-regular-font-size: 10px;
   --h6-regular-font-style: normal;
   --h6-regular-font-weight: 400;

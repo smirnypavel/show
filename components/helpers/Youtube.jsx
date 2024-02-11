@@ -26,8 +26,8 @@ const YouTube2 = ({ url }) => {
     <>
       <YouTubeEmbed
         videoid={videoId}
-        height={168}
-        width={300}
+        height={430}
+        width={430}
         params="controls=2&showinfo=0&rel=0&fs=1&modestbranding=1"
       />
     </>

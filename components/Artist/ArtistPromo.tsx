@@ -8,6 +8,24 @@ import YouTube2 from "../helpers/Youtube";
 import MobileInfoPage from "./Mobile/MobileInfoPage";
 import { GrLocation } from "react-icons/gr";
 import { TbCurrencyHryvnia } from "react-icons/tb";
+import {
+  PiTiktokLogoThin,
+  PiInstagramLogoThin,
+  PiFacebookLogoThin,
+  PiYoutubeLogoThin,
+  PiGlobeThin,
+  PiWhatsappLogoThin,
+  PiTelegramLogoThin,
+  PiPhoneThin,
+  PiStarThin,
+} from "react-icons/pi";
+import { SiViber } from "react-icons/si";
+
+import { Comfortaa } from "next/font/google";
+
+import { SiMaildotru } from "react-icons/si";
+
+const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
   const [showPhotos, setShowPhotos] = useState(true); // состояние для отслеживания отображения фотографий/видео
@@ -35,7 +53,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
   };
 
   return (
-    <>
+    <div className={comfortaa.className}>
       <div className={styles.container}>
         <div>
           <div className={styles.imageContainer}>
@@ -60,14 +78,77 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
             </div>
             <h2 className={styles.artistName}>{artist.firstName}</h2>
           </div>
-          <h1 className={styles.title}>{artist.title}</h1>
-          <p className={styles.paragraph}>
-            <GrLocation className={styles.icon} />{" "}
-            {artist.location.split(",")[0]}{" "}
-          </p>
-          <p className={styles.paragraph}>
-            <TbCurrencyHryvnia className={styles.icon} /> {artist.price}
-          </p>
+          <div className={styles.infoTopContainer}>
+            <div>
+              <h1 className={styles.title}>{artist.title}</h1>
+              <p className={styles.paragraph}>
+                <GrLocation className={styles.icon} />{" "}
+                {artist.location.split(",")[0]}{" "}
+              </p>
+              <p className={styles.paragraph}>
+                <TbCurrencyHryvnia className={styles.icon} /> {artist.price}
+              </p>
+              <p className={styles.label}>Рейтинг</p>
+              <div className={styles.ratingContainer}>
+                <PiStarThin className={styles.iconRating} />{" "}
+                <PiStarThin className={styles.iconRating} />{" "}
+                <PiStarThin className={styles.iconRating} />{" "}
+                <PiStarThin className={styles.iconRating} />{" "}
+                <PiStarThin className={styles.iconRating} />
+              </div>
+            </div>
+
+            <div className={styles.artistContact}>
+              <p className={styles.label}>Контакти</p>
+
+              <div className={styles.contactsContainer}>
+                {artist.phone && (
+                  <a
+                    href={`tel:${artist.phone}`}
+                    className={styles.contactItem}>
+                    <PiPhoneThin className={styles.icon} />
+                    {artist.phone}
+                  </a>
+                )}
+                {artist.email && (
+                  <a
+                    href={`mailto:${artist.email}`}
+                    className={styles.contactItem}>
+                    <SiMaildotru className={styles.icon} />
+                    {artist.email}
+                  </a>
+                )}
+
+                {artist.whatsapp && (
+                  <a
+                    href={`https://wa.me/${artist.whatsapp}`}
+                    target="_blank"
+                    className={styles.contactItem}>
+                    <PiWhatsappLogoThin className={styles.icon} />
+                    {artist.whatsapp}
+                  </a>
+                )}
+                {artist.telegram && (
+                  <a
+                    href={`https://t.me/${artist.telegram}`}
+                    target="_blank"
+                    className={styles.contactItem}>
+                    <PiTelegramLogoThin className={styles.icon} />
+                    {artist.telegram}
+                  </a>
+                )}
+                {artist.telegram && (
+                  <a
+                    href={`viber://chat?number=${artist.viber}`}
+                    target="_blank"
+                    className={styles.contactItem}>
+                    <SiViber className={styles.icon} />
+                    {artist.viber}
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
           <div className={styles.descriptionContainer}>
             <h4 className={styles.label}>Опис</h4>
             <p className={styles.description}> {artist.description}</p>
@@ -88,10 +169,136 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
               )
             )}
           </div>
+          <p className={styles.label}>Лінки</p>
+          <div className={styles.artistSocial}>
+            {artist && artist.social && artist.social.Instagram && (
+              <a
+                href={artist.social.Instagram}
+                target="_blank"
+                className={styles.artistSocialItem}>
+                {" "}
+                <PiInstagramLogoThin className={styles.artistSocialItem} />
+              </a>
+            )}
+            {artist && artist.social && artist.social.Facebook && (
+              <a
+                href={artist.social.Facebook}
+                target="_blank"
+                className={styles.artistSocialItem}>
+                <PiFacebookLogoThin className={styles.artistSocialItem} />
+              </a>
+            )}
+            {artist && artist.social && artist.social.Youtube && (
+              <a
+                href={artist.social.Youtube}
+                target="_blank"
+                className={styles.artistSocialItem}>
+                <PiYoutubeLogoThin className={styles.artistSocialItem} />
+              </a>
+            )}
+            {artist && artist.social && artist.social.TikTok && (
+              <a
+                href={artist.social.TikTok}
+                target="_blank"
+                className={styles.artistSocialItem}>
+                <PiTiktokLogoThin className={styles.artistSocialItem} />
+              </a>
+            )}
+            {artist && artist.social && artist.social.WebSite && (
+              <a
+                href={artist.social.WebSite}
+                target="_blank"
+                className={styles.artistSocialItem}>
+                <PiGlobeThin className={styles.artistSocialItem} />
+              </a>
+            )}
+          </div>{" "}
         </div>
-        <div className={styles.bottomContainer}></div>
+        <div className={styles.bottomContainer}>
+          {" "}
+          {/* <p className={styles.portfolioTitle}>Портфоліо</p> */}
+          <div className={styles.buttonsContainer}>
+            <button
+              onClick={handleShowPhotos}
+              className={
+                showPhotos
+                  ? `${comfortaa.className} ${styles.portfolioButton} ${styles.portfolioButtonActive}`
+                  : `${comfortaa.className} ${styles.portfolioButton} `
+              }>
+              Фото
+            </button>
+            <button
+              onClick={handleShowVideos}
+              className={
+                !showPhotos
+                  ? ` ${comfortaa.className} ${styles.portfolioButton} ${styles.portfolioButtonActive}`
+                  : `${comfortaa.className} ${styles.portfolioButton} `
+              }>
+              Відео
+            </button>
+          </div>
+          <div>
+            {showPhotos ? (
+              <div className={styles.portfolioContainer}>
+                <ul className={styles.photoListContainer}>
+                  {artist.photo.length === 0 ? (
+                    <div className={styles.categoryArtist}>
+                      Фото виступівне не додане
+                    </div>
+                  ) : (
+                    artist.photo.map((item, index) => (
+                      <div key={item.publicId}>
+                        <li className={styles.photoListItem}>
+                          <Image
+                            src={item.url}
+                            alt={"user photo"}
+                            fill
+                            sizes="(min-width: 808px) 50vw, 100vw"
+                            className={styles.photo}
+                            onClick={() => openModal(index)}
+                          />
+                        </li>
+                        {modalOpenIndex === index && (
+                          <Modal onClose={closeModal}>
+                            <li className={styles.photoBigItem}>
+                              <Image
+                                src={item.url}
+                                alt={"user photo"}
+                                fill
+                                sizes="(min-width: 808px) 50vw, 100vw"
+                                className={styles.photo}
+                              />
+                            </li>
+                          </Modal>
+                        )}
+                      </div>
+                    ))
+                  )}
+                </ul>
+              </div>
+            ) : (
+              <div className={styles.videoContainer}>
+                <ul className={styles.videoListContainer}>
+                  {artist.video.length === 0 ? (
+                    <div className={styles.categoryArtist}>
+                      Відео з YouTube не додане
+                    </div>
+                  ) : (
+                    artist.video.map((item) => (
+                      <li
+                        key={item.publicId}
+                        className={styles.videoListItem}>
+                        <YouTube2 url={item.url} />
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -190,40 +190,40 @@
 
 .link {
   position: relative;
-  /* color: var(--white); */
   color: #858584;
   white-space: nowrap;
   width: fit-content;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.277);
-  @media (min-width: 768px) {
-    /* font-size: 20px;
-    font-weight: 400; */
-  }
+  transition: color 0.2s ease;
 }
+.link:hover {
+  color: var(--white);
+}
+
 .link::after {
   content: "";
   position: absolute;
-  bottom: -10px; /* Отступ полоски от нижней части headerNav */
+  bottom: -10px; /* Отступ полоски от нижней части .link */
   left: 0; /* Начало полоски */
   height: 1px; /* Высота полоски */
   background-color: #a259ff6c; /* Цвет полоски */
-  transition: width 0.2s ease-in-out; /* Добавляем плавный переход для изменения ширины */
+  transition: width 0.2s ease-in-out; /* Плавный переход для изменения ширины */
   width: 0; /* Начальная ширина полоски (будет увеличиваться) */
-  @media (min-width: 768px) {
-    height: 1px; /* Высота полоски */
-    background-color: #a159ff6c; /* Цвет полоски */
-  }
 }
-.active {
-  color: var(--white);
-}
+
+.link:hover::after, /* Появление линии при ховере */
 .link.active::after {
-  width: 100%; /* Увеличиваем ширину полоски до 100% при активной ссылке */
+  /* Появление линии при активном состоянии */
+  width: 100%; /* Увеличение ширины полоски */
+}
+
+/* При желании, вы можете добавить другие стили для активного состояния */
+.link.active {
+  color: var(--white);
 }
 .logoLink {
   color: var(--white);
-  /* color: var(--button-bg-color); */
-  /* font-family: var(--logo-font); */
+
   font-family: "Kodchasan", sans-serif;
 
   font-size: 32px;
@@ -238,6 +238,7 @@
 }
 
 .logo {
+  z-index: 1;
   width: 150px;
   height: auto;
   transform: rotate(-30deg);

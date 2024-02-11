@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "@/styles/Layout/Footer/Footer.module.css";
 import Link from "next/link";
+import { Comfortaa } from "next/font/google";
+const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const Footer = () => {
   return (
-    <div className={styles.footer}>
+    <div className={`${comfortaa.className} ${styles.footer}`}>
       <div className={styles.containerMap}>
         <div>
           <p className={styles.title}>Пошукачу</p>

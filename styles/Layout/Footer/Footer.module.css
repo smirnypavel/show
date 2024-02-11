@@ -1,17 +1,17 @@
 .footer {
-  padding-left: 24px;
-  padding-right: 24px;
-  margin-top: 20px;
-  min-height: 40px;
-  border-top: 2px solid #67676723;
-  margin-bottom: 90px;
+  border-top: 2px solid #3b3b3b;
+
   color: var(--white);
   /* text-decoration:; */
   @media screen and (min-width: 768px) {
-    margin-bottom: 10px;
+    width: 100vw;
+    padding-bottom: 20px;
+    background-color: #3b3b3b;
+    position: relative;
   }
 }
 .containerMap {
+  margin-top: 10px;
   gap: 5px;
   width: 100%;
   display: flex;
@@ -21,16 +21,15 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 30px;
   }
 }
 .title {
-  font-size: var(--h3-regular-font-size);
   font-weight: 700;
 }
 .listItem {
 }
 .link {
-  font-size: var(--h5-regular-font-size);
-  font-weight: var(--h3-regular-font-weight);
+  font-size: 10px;
+  font-weight: 300;
 }
