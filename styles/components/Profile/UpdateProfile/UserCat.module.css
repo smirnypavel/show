@@ -1,37 +1,40 @@
+.container {
+  background-color: #3b3b3b;
+  border-radius: 20px;
+  padding: 20px;
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1200px) {
+    min-width: 790px;
+  }
+}
 .categoryContainer {
   margin-top: 8px;
   display: flex;
-  /* overflow: auto; */
+
   gap: 8px;
   flex-wrap: wrap;
 }
 .catogoryTitle {
   margin-top: 8px;
-  color: #000000;
-  font-family: var(--h3-regular-font-family);
-  font-size: var(--h3-regular-font-size);
-  font-style: var(--h3-regular-font-style);
-  font-weight: var(--h3-regular-font-weight);
-  left: 0;
-  letter-spacing: var(--h3-regular-letter-spacing);
-  line-height: var(--h3-regular-line-height);
+
   margin-bottom: 4px;
   display: flex;
   align-items: center;
 }
 .categoryArtist {
-  height: 30px;
-  width: auto;
+  height: fit-content;
+  width: fit-content;
   display: flex;
-
   align-items: center;
-  gap: 8px;
-  padding: 8px;
-  border-radius: 8px;
-  background: var(--white);
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 20px;
+  background-color: #3b3b3b;
+  border: 1px solid #a259ff;
   font-size: 15px;
   font-weight: 400;
-
   white-space: nowrap;
   position: relative;
 }
@@ -77,7 +80,8 @@
   opacity: 1;
 }
 .addButton {
-  margin-top: 20px;
+  /* margin-top: 10px; */
+  margin-bottom: 20px;
   border: none;
   background-color: transparent;
   display: flex;

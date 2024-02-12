@@ -238,7 +238,7 @@
 }
 
 .logo {
-  z-index: 1;
+  z-index: 3;
   width: 150px;
   height: auto;
   transform: rotate(-30deg);

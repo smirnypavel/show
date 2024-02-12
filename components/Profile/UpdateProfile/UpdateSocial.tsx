@@ -14,7 +14,7 @@ import tiktokApp from "@/public/icon/tiktokApp.svg";
 import { IUserAuth } from "@/types/IAuth";
 import { updateUser } from "@/redux/auth/authOperations";
 
-const UpdateContacts = () => {
+const UpdateSocial = () => {
   const dispatch = useAppDispatch();
 
   const [showSocial, setShowSocial] = useState(true);
@@ -37,20 +37,10 @@ const UpdateContacts = () => {
   return (
     <div className={styles.container}>
       <div>
-        <p
-          className={`${styles.contactsTitle} ${
-            !showSocial && styles.titleClose
-          }`}
-          onClick={handleShowSocial}>
+        <p className={styles.contactsTitle}>
           Ваші соціальні сторінки або Вебсайт
-          <IoIosArrowDown
-            className={`${styles.iconArrow} ${showSocial && styles.up}`}
-          />
         </p>
-        <div
-          className={`${styles.socialContainer} ${
-            showSocial ? styles.show : styles.hide
-          }`}>
+        <div className={styles.socialContainer}>
           <div>
             <p className={styles.contactLabel}>
               Facebook{" "}
@@ -134,4 +124,4 @@ const UpdateContacts = () => {
   );
 };
 
-export default UpdateContacts;
+export default UpdateSocial;

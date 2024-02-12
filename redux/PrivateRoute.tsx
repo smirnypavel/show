@@ -15,7 +15,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   React.useEffect(() => {
     if (!isLoggedIn) {
       router.push("/auth/login");
-      toast.error("You need to log in");
+      toast.error("Вам потрібно увійти або зареєструватись");
     }
   }, [isLoggedIn, router]);
 

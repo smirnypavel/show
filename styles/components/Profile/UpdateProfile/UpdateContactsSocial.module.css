@@ -1,39 +1,32 @@
 .container {
+  background-color: #3b3b3b;
+  border-radius: 20px;
+  padding: 20px;
+
   @media (min-width: 768px) {
     padding: 20px;
   }
+  @media (min-width: 1200px) {
+    /* padding: 40px; */
+  }
 }
-.contactsContainer,
+
 .socialContainer {
   /* margin-top: 20px; */
   width: 100%;
   overflow: hidden;
-
-  border-bottom-right-radius: 16px;
-  border-bottom-left-radius: 16px;
   @media (min-width: 768px) {
     display: flex;
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
-    transition: max-height 0.3s ease-out;
-    max-height: 0;
-
-    background-color: rgba(0, 0, 0, 0.2);
   }
 }
 .contactsTitle {
   display: none;
   @media (min-width: 768px) {
-    font-size: var(--h1-medium-font-size);
-    font-weight: var(--h1-medium-font-weight);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.36);
-    border-top-right-radius: 16px;
-    border-top-left-radius: 16px;
+
     margin-top: 20px;
   }
 }
@@ -57,16 +50,6 @@
   width: 30px;
 }
 
-.contactsContainer.show,
-.socialContainer.show {
-  padding: 20px;
-  max-height: 600px; /* Задайте максимальную высоту, которую вы считаете подходящей */
-}
-
-.contactsContainer.hide,
-.socialContainer.hide {
-  max-height: 0;
-}
 .iconArrow {
   width: 32px;
   height: 32px;

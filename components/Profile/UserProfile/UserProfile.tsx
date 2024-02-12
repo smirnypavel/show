@@ -15,13 +15,7 @@ export interface ArtistPageProps {
 const UserProfile = () => {
   const artist = useSelector(getUser);
 
-  return (
-    <div className={styles.artistContainer}>
-      <ProfileTabBar />
-      <UserPromo artist={artist} />
-      <UserInfoPage artist={artist} />
-    </div>
-  );
+  return <UserPromo artist={artist} />;
 };
 
 export default UserProfile;

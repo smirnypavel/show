@@ -1,6 +1,3 @@
-.container {
-  width: 100%;
-}
 .mobileBar {
   display: flex;
   justify-content: space-between;

@@ -1,14 +1,14 @@
 import React from "react";
-import styles from "@/styles/Profile/Profile.module.css";
 import UserProfile from "@/components/Profile/UserProfile/UserProfile";
 import PrivateRoute from "@/redux/PrivateRoute";
+import LayoutProfile from "@/components/Layout/LayoutProfile";
 
 const Profile = () => {
   return (
     <PrivateRoute>
-      <div className={styles.container}>
+      <LayoutProfile>
         <UserProfile />
-      </div>
+      </LayoutProfile>
     </PrivateRoute>
   );
 };
