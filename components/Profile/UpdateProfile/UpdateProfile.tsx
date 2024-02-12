@@ -422,7 +422,7 @@ const UpdateProfile = () => {
           <UserCat />
         </Modal>
       )}
-      {modalCat && (
+      {modalVideoPhoto && (
         <Modal onClose={closeModalVideoPhoto}>
           <UpdateMedia />
         </Modal>

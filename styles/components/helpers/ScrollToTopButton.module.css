@@ -1,8 +1,8 @@
 .scrollToTopButton {
   position: fixed;
   right: -50px; /* Изначально кнопка вне экрана */
-  bottom: 100px; /* Позиция кнопки при появлении */
-
+  bottom: 150px; /* Позиция кнопки при появлении */
+  z-index: 1;
   background-color: #a159ff83;
   color: #ffffffad;
   border: none;
@@ -17,7 +17,7 @@
 }
 
 .visible {
-  right: 25px;
+  right: 45px;
 }
 
 .icon {
