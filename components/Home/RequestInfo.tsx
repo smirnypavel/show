@@ -7,9 +7,9 @@ const RequestInfo = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Як це працює</h1>
       <p className={styles.text}>
-        <span className={styles.textNumber}>1.</span>
-        Створюєшь запит за допомогою форми (важливо щоб усі поля були заповнені)
-        та натиснути кнопку
+        <span className={styles.textNumber}>1.</span> Створюєшь запит за
+        допомогою форми (важливо щоб усі поля були заповнені) та натиснути
+        кнопку
         <button className={styles.submitButton}>
           <div className={styles.textWrapper}> Створити запит</div>
         </button>
@@ -27,7 +27,7 @@ const RequestInfo = () => {
         в ручну номер свого телефона) це потрібно зробити один раз для реєстрції
         в ЧАТ-БОТІ
       </p>
-      {/*  */}
+
       <p className={styles.text}>
         <span className={styles.textNumber}>4.</span> Після реєстрації Вам у
         ЧАТ-БОТ прийде код для верифікації. Тепер Вам потрібно повернутись до

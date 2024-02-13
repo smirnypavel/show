@@ -7,6 +7,19 @@
     display: none;
   }
 }
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  padding: 8px 24px;
+  background-color: rgba(41, 91, 108, 0.427);
+  backdrop-filter: blur(10px);
+}
 
 .mobileHeader {
   display: flex;
@@ -62,7 +75,7 @@
   color: var(--black);
   font-size: var(--h2-regular-font-size);
   font-weight: var(--h2-regular-font-weight);
-  font-family: var(--h2-regular-font-family);
+
   position: absolute;
 }
 .inputSearch::placeholder {
@@ -72,12 +85,13 @@
 }
 
 .buttonSearch {
+  width: 80px;
   height: 40px;
   border: none;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   color: var(--white);
-  background-color: var(--button-bg-color);
+  background-color: #a159ff;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -111,6 +125,8 @@
   border: none;
   background-color: transparent;
   padding: 0;
+  margin-left: -8px;
+  margin-top: 20px;
 }
 .search {
   width: 26px;
@@ -150,18 +166,7 @@
   position: relative;
   z-index: 1;
 }
-.mobileMenu {
-  display: flex;
-  flex-direction: column;
 
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  padding: 8px 24px;
-  background-color: rgba(41, 91, 108, 0.427);
-  backdrop-filter: blur(10px);
-}
 .mobileNav {
   margin-top: 40px;
   display: flex;
@@ -267,4 +272,10 @@
 .avatar {
   object-fit: cover;
   border-radius: 50%;
+}
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: gray;
+  margin: 10px 0;
 }

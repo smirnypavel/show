@@ -49,8 +49,7 @@ const BannerRight = () => {
               <Image
                 src={image.src}
                 alt={"banner"}
-                width={600}
-                height={260}
+                fill
                 priority
                 sizes="(min-width: 808px) 50vw, 100vw"
                 className={styles.banner}

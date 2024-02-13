@@ -1,8 +1,10 @@
 .footer {
+  margin-top: 20px;
   border-top: 2px solid #3b3b3b;
-
+  padding-left: 24px;
+  padding-right: 24px;
   color: var(--white);
-  /* text-decoration:; */
+
   @media screen and (min-width: 768px) {
     width: 100vw;
     padding-bottom: 20px;

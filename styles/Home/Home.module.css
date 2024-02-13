@@ -1,5 +1,7 @@
 .homepage {
   width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 .container {
   @media screen and (min-width: 768px) {
@@ -7,6 +9,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+}
+.requestFormContainer {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: unset;
   }
 }
 .requestForm {

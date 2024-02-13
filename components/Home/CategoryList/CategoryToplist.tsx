@@ -13,23 +13,28 @@ import animatorIcon from "@/public/icon/animator.svg";
 
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Home/CategoryList/CategoryToplist.module.css";
+import SceletonTopCategory from "@/components/helpers/Placeholders/SceletonTopCategory";
 
 const CategoryToplist = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchCategories = async () => {
       try {
         const response = await axios.get<ICategory[]>("/users/category");
+        setLoading(false);
         setCategories(response.data);
       } catch (error) {
-        console.error("Помилка прі отриманні категрій:", error);
-        // Здесь можно добавить обработку ошибки, например, показать сообщение пользователю
+        console.error("Error fetching categories:", error);
+        setLoading(false);
       }
     };
 
     fetchCategories();
   }, []);
+
   return (
     <div className={styles.container}>
       <p className={styles.title}>Топ категорій</p>
@@ -37,7 +42,11 @@ const CategoryToplist = () => {
         Категорії в яких найбільше шукають виконавця
       </p>
       <div className={styles.categoryArtistList}>
-        {categories.length === 0 ? (
+        {loading ? (
+          Array.from({ length: 4 }).map((_, index) => (
+            <SceletonTopCategory key={index} />
+          ))
+        ) : categories.length === 0 ? (
           <div className={styles.categoryArtist}>Категорії не обрані</div>
         ) : (
           categories.slice(0, 4).map((cat) => (
@@ -87,44 +96,36 @@ const CategoryToplist = () => {
                     <Image
                       src={muzPoslug}
                       alt={"user photo"}
-                      // fill
                       width={100}
                       height={100}
                       className={styles.categoryIcon}
-                      // sizes="(min-width: 808px) 50vw, 100vw"
                     />
                   )}
                   {cat.name === "Анімаційні послуги" && (
                     <Image
                       src={animatorIcon}
                       alt={"user photo"}
-                      // fill
                       width={100}
                       height={100}
                       className={styles.categoryIcon}
-                      // sizes="(min-width: 808px) 50vw, 100vw"
                     />
                   )}
                   {cat.name === "Фото та відео" && (
                     <Image
                       src={photoIcon}
                       alt={"photo"}
-                      // fill
                       width={100}
                       height={100}
                       className={styles.categoryIcon}
-                      // sizes="(min-width: 808px) 50vw, 100vw"
                     />
                   )}
                   {cat.name === "Декорації та дизайн" && (
                     <Image
                       src={catering}
                       alt={"user photo"}
-                      // fill
                       width={100}
                       height={100}
                       className={styles.categoryIcon}
-                      // sizes="(min-width: 808px) 50vw, 100vw"
                     />
                   )}
                 </div>

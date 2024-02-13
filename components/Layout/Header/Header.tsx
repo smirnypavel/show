@@ -223,6 +223,7 @@ const Header = () => {
               }`}>
               Артисти
             </Link>
+
             <Link
               onClick={toggleMenu}
               href={"/about"}
@@ -230,6 +231,31 @@ const Header = () => {
                 router.pathname === "/about" ? styles.active : ""
               }`}>
               Про нас
+            </Link>
+            <div className={styles.separator}></div>
+            <Link
+              onClick={toggleMenu}
+              href={"/profile"}
+              className={`${styles.link} ${
+                router.pathname === "/profile" ? styles.active : ""
+              }`}>
+              Профіль
+            </Link>
+            <Link
+              onClick={toggleMenu}
+              href={"/profile/update"}
+              className={`${styles.link} ${
+                router.pathname === "/profile/update" ? styles.active : ""
+              }`}>
+              Налаштування профілю
+            </Link>
+            <Link
+              onClick={toggleMenu}
+              href={"/profile/stats"}
+              className={`${styles.link} ${
+                router.pathname === "/profile/stats" ? styles.active : ""
+              }`}>
+              Статистика
             </Link>
             {/* <Link
               onClick={toggleMenu}
@@ -239,7 +265,7 @@ const Header = () => {
               }`}>
               Блог
             </Link> */}
-            {login ? (
+            {/* {login ? (
               <Link
                 onClick={toggleMenu}
                 href={"/profile"}
@@ -271,10 +297,11 @@ const Header = () => {
                 className={styles.link}>
                 Я артист
               </Link>
-            )}
+            )} */}
           </div>
         </div>
       )}
+
       <NavBar />
     </div>
   );

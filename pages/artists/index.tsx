@@ -8,7 +8,7 @@ import Pagination from "@/components/Artist/Pagination";
 import { GetServerSideProps } from "next/types";
 import MobileSort from "@/components/Artist/Mobile/MobileSort";
 import MobileCat from "@/components/Artist/Mobile/MobileCat";
-import MyLoader from "@/styles/components/helpers/SceletonArtistItem";
+import MyLoader from "@/components/helpers/Placeholders/SceletonArtistItem";
 import ArtistList from "@/components/Artist/ArtistList";
 
 interface ArtistsProps {

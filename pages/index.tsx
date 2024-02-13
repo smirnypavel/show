@@ -25,14 +25,16 @@ const Home = () => {
           {" "}
           <CategoryToplist />
           <TopArtistsRedesign />
-          <p className={styles.title}>Новий вимір пошуку</p>
-          <p className={styles.titleText}>
-            Створи собі свято всього у три кліки{" "}
-            <TbHandClick className={styles.iconHand} />
-          </p>
-          <div className={styles.requestForm}>
-            <RequestForm />
-            <RequestInfo />
+          <div className={styles.requestFormContainer}>
+            <p className={styles.title}>Новий вимір пошуку</p>
+            <p className={styles.titleText}>
+              Створи собі свято всього у три кліки{" "}
+              <TbHandClick className={styles.iconHand} />
+            </p>
+            <div className={styles.requestForm}>
+              <RequestForm />
+              <RequestInfo />
+            </div>
           </div>
         </div>
       </div>
