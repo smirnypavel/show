@@ -28,6 +28,7 @@ import UpdateSocial from "./UpdateSocial";
 import UpdateContacts from "./UpdateContacts";
 import UserCat from "./UserCat";
 import UpdateMedia from "./UploadMedia/UpdateMedia";
+import ProfileUpdateInfo from "./ProfileUpdateInfo";
 
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
@@ -37,6 +38,7 @@ const UpdateProfile = () => {
   const [modalOpenIndex, setModalOpenIndex] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalLinks, setModalLinks] = useState(false);
+  const [modalInfo, setModalInfo] = useState(false);
   const [modalContacts, setModalContacts] = useState(false);
   const [modalCat, setModalCat] = useState(false);
   const [modalVideoPhoto, setModalVideoPhoto] = useState(false);
@@ -75,33 +77,9 @@ const UpdateProfile = () => {
     setModalOpenIndex(null);
   };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-  const openModalLinks = () => {
-    setModalLinks(true);
-  };
-  const closeModalLinks = () => {
-    setModalLinks(false);
-  };
-  const openModalContacts = () => {
-    setModalContacts(true);
-  };
-  const closeModalContacts = () => {
-    setModalContacts(false);
-  };
-  const openModalCat = () => {
-    setModalCat(true);
-  };
-  const closeModalCat = () => {
-    setModalCat(false);
-  };
-  const openModalVideoPhoto = () => {
-    setModalVideoPhoto(true);
-  };
-  const closeModalVideoPhoto = () => {
-    setModalVideoPhoto(false);
-  };
+  // const toggleMenu = () => {
+  //   setMenuOpen(!menuOpen);
+  // };
 
   return (
     <div className={comfortaa.className}>
@@ -154,10 +132,10 @@ const UpdateProfile = () => {
             </div>
             <h2 className={styles.artistName}>
               {artist.firstName}{" "}
-              <PiGearSixThin
+              {/* <PiGearSixThin
                 className={styles.gearIcon}
                 // onClick={handleButtonClick}
-              />
+              /> */}
             </h2>
           </div>
           <div className={styles.infoTopContainer}>
@@ -166,7 +144,9 @@ const UpdateProfile = () => {
                 {" "}
                 <PiGearSixThin
                   className={styles.gearIcon}
-                  // onClick={handleButtonClick}
+                  onClick={() => {
+                    setModalInfo(true);
+                  }}
                 />
                 {artist.title}
               </h1>
@@ -192,7 +172,9 @@ const UpdateProfile = () => {
                 Контакти{" "}
                 <PiGearSixThin
                   className={styles.gearIcon}
-                  onClick={openModalContacts}
+                  onClick={() => {
+                    setModalContacts(true);
+                  }}
                 />
               </p>
 
@@ -252,7 +234,9 @@ const UpdateProfile = () => {
             Категорії{" "}
             <PiGearSixThin
               className={styles.gearIcon}
-              onClick={openModalCat}
+              onClick={() => {
+                setModalCat(true);
+              }}
             />
           </h5>
           <div className={styles.categoryList}>
@@ -274,7 +258,9 @@ const UpdateProfile = () => {
             Лінки{" "}
             <PiGearSixThin
               className={styles.gearIcon}
-              onClick={openModalLinks}
+              onClick={() => {
+                setModalLinks(true);
+              }}
             />
           </p>
           <div className={styles.artistSocial}>
@@ -334,7 +320,9 @@ const UpdateProfile = () => {
             </button>
             <PiGearSixThin
               className={styles.gearIcon}
-              onClick={openModalVideoPhoto}
+              onClick={() => {
+                setModalVideoPhoto(true);
+              }}
             />
             <button
               onClick={handleShowVideos}
@@ -408,23 +396,43 @@ const UpdateProfile = () => {
         </div>
       </div>
       {modalLinks && (
-        <Modal onClose={closeModalLinks}>
+        <Modal
+          onClose={() => {
+            setModalLinks(false);
+          }}>
           <UpdateSocial />
         </Modal>
       )}
       {modalContacts && (
-        <Modal onClose={closeModalContacts}>
+        <Modal
+          onClose={() => {
+            setModalContacts(false);
+          }}>
           <UpdateContacts />
         </Modal>
       )}
       {modalCat && (
-        <Modal onClose={closeModalCat}>
+        <Modal
+          onClose={() => {
+            setModalCat(false);
+          }}>
           <UserCat />
         </Modal>
       )}
       {modalVideoPhoto && (
-        <Modal onClose={closeModalVideoPhoto}>
+        <Modal
+          onClose={() => {
+            setModalVideoPhoto(false);
+          }}>
           <UpdateMedia />
+        </Modal>
+      )}
+      {modalInfo && (
+        <Modal
+          onClose={() => {
+            setModalInfo(false);
+          }}>
+          <ProfileUpdateInfo />
         </Modal>
       )}
     </div>

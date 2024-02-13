@@ -9,11 +9,9 @@ const ProfileUpdateInfo = () => {
   return (
     <div className={styles.container}>
       <div className={styles.profileInfoContainer}>
-        <ProfileUpdateAvatar />
         <UserUpdateForm />
       </div>
       <UserUpdateDescription />
-      <UserCat />
     </div>
   );
 };

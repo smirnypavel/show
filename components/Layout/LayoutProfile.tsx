@@ -13,20 +13,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Modal from "../helpers/Modal";
 import ChangePassword from "../Profile/UpdateProfile/ChangePassword";
+import Logout from "../Profile/UpdateProfile/Logout";
 
 const LayoutProfile: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const [modalChangePass, setModalChangePass] = useState(false);
+  const [modalLogout, setModalLogout] = useState(false);
 
   return (
     <div className={styles.wrapper}>
@@ -56,14 +50,20 @@ const LayoutProfile: React.FC<{ children: React.ReactNode }> = ({
           </Link>
         </div>
         <div className={styles.service}>
-          <div className={styles.serviceLink}>
+          <div
+            className={styles.serviceLink}
+            onClick={() => {
+              setModalLogout(true);
+            }}>
             {" "}
             <PiSignOutThin className={styles.serviceIcon} />
             Вийти
           </div>
           <div
             className={styles.serviceLink}
-            onClick={openModal}>
+            onClick={() => {
+              setModalChangePass(true);
+            }}>
             <PiKeyThin className={styles.serviceIcon} />
             Змінити пароль
           </div>
@@ -75,9 +75,24 @@ const LayoutProfile: React.FC<{ children: React.ReactNode }> = ({
         </div>
       </div>
       <div className={styles.content}>{children}</div>
-      {isModalOpen && (
-        <Modal onClose={closeModal}>
+      {modalChangePass && (
+        <Modal
+          onClose={() => {
+            setModalChangePass(false);
+          }}>
           <ChangePassword />
+        </Modal>
+      )}
+      {modalLogout && (
+        <Modal
+          onClose={() => {
+            setModalLogout(false);
+          }}>
+          <Logout
+            close={() => {
+              setModalLogout(false);
+            }}
+          />
         </Modal>
       )}
     </div>
