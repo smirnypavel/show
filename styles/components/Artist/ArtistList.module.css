@@ -49,35 +49,56 @@
   align-items: flex-start;
   justify-content: center;
   @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
   @media (min-width: 1200px) {
-    display: block;
   }
 }
 .card {
   position: relative;
+  @media (min-width: 768px) {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 5px;
+  }
+  @media (min-width: 1200px) {
+    background: none;
+    backdrop-filter: unset;
+    box-shadow: unset;
+  }
 }
 .artistItem {
   max-width: 340px;
   margin-top: 20px;
   border-radius: 20px;
-  padding: 5px;
+  padding: 5px 5px 10px 5px;
   background: rgba(255, 255, 255, 0.01);
   backdrop-filter: blur(20px);
   box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.2);
   @media (min-width: 768px) {
-    max-width: 330px;
-  }
-  @media (min-width: 1200px) {
-    min-width: 1050px;
+    margin-top: 0px;
+
+    max-width: 710px;
+    padding: 0px;
     display: flex;
-    border-radius: 20px;
     overflow: hidden;
     gap: 15px;
     flex-direction: row-reverse;
+    background: none;
+    backdrop-filter: unset;
+    box-shadow: unset;
+  }
+  @media (min-width: 1200px) {
+    margin-top: 20px;
+
     background: rgba(255, 255, 255, 0.01);
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.2);
+    min-width: 1050px;
   }
 }
 .card .circleLeft {
@@ -158,7 +179,6 @@
   justify-content: right;
   @media (min-width: 768px) {
     margin-top: 0px;
-
     display: flex;
     flex-direction: column;
   }
@@ -197,27 +217,45 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
   padding-top: 10px;
+  @media (min-width: 768px) {
+    padding-left: 10px;
+  }
+  @media (min-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+  }
 }
 .cardInfoTop {
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     display: flex;
   }
 }
 .tileCategoryContainer {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
   @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    justify-content: unset;
     flex-grow: 1;
     margin-top: 0px;
-    display: flex;
     flex-direction: column;
   }
   @media (min-width: 1200px) {
+    gap: 0px;
   }
 }
 .artistTitleContainer {
+  display: none;
+
   @media (min-width: 768px) {
+    display: none;
+    display: block;
+  }
+  @media (min-width: 1200px) {
     height: 22px;
   }
 }
@@ -249,10 +287,17 @@
   display: flex;
   justify-content: space-between;
   @media (min-width: 768px) {
-    margin-right: auto;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  @media (min-width: 1200px) {
+    margin-top: 0px;
+    margin-right: auto;
     flex-direction: column;
+
+    align-items: flex-end;
     gap: 10px;
   }
 }
@@ -263,12 +308,15 @@
 }
 
 .avatarContainer {
-  /* display: flex;
-  margin-top: 10px; */
   display: none;
   @media (min-width: 768px) {
-    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
     gap: 12px;
+    margin-top: 10px;
+  }
+  @media (min-width: 1200px) {
+    align-items: center;
   }
 }
 .avatarItem {
@@ -280,7 +328,8 @@
 }
 .description {
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
+    display: block;
     text-align: justify;
     margin-top: 10px;
     width: 600px;
@@ -290,6 +339,29 @@
     overflow: hidden;
     padding: 10px;
     margin-top: auto;
+  }
+}
+.descriptionWrapper {
+  /* padding-top: 10px; */
+  height: 145px;
+  overflow: hidden;
+}
+.descriptionTablet {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+    text-align: justify;
+    margin-top: 10px;
+    width: 710px;
+    height: 170px;
+    background-color: #3b3b3b3f;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+    margin-top: auto;
+  }
+  @media (min-width: 1200px) {
+    display: none;
   }
 }
 .paragraph {

@@ -4,8 +4,9 @@
   border: none;
   display: flex;
   align-items: center;
-  background-color: var(--accent-color-2);
-  border-radius: 16px;
+  background-color: transparent;
+  border: 2px solid #a259ff;
+  border-radius: 20px;
   color: var(--white);
   font-size: var(--h2-medium-font-size);
   font-weight: var(--h2-medium-font-weight);
@@ -13,8 +14,11 @@
 }
 
 .buttonCat.show {
-  background-color: var(--white);
-  color: var(--accent-color-2);
+  background-color: #a259ff;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px #00000040;
+  transition-delay: 0.2s;
 }
 
 .catContainer {
