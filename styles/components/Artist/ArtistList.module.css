@@ -60,7 +60,6 @@
 .artistItem {
   max-width: 330px;
   margin-top: 20px;
-  height: 330px;
 
   @media (min-width: 768px) {
   }
@@ -77,29 +76,35 @@
   }
 }
 .card .circleLeft {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  width: 120px;
-  height: 120px;
-  top: 50px;
-  left: 50px;
-  background: linear-gradient(#e524c269, #8626b272);
-  animation: 6s ease-in infinite alternate;
-  animation-name: move-up;
+  display: none;
+  @media (min-width: 1200px) {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    width: 120px;
+    height: 120px;
+    top: 50px;
+    left: 50px;
+    background: linear-gradient(#e524c269, #8626b272);
+    animation: 6s ease-in infinite alternate;
+    animation-name: move-up;
+  }
 }
 
 .card .circleRight {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  width: 180px;
-  height: 180px;
-  bottom: 86px;
-  right: 270px;
-  background: linear-gradient(#d6461253, #e484075d);
-  animation: 6s ease-in infinite alternate;
-  animation-name: move-down;
+  display: none;
+  @media (min-width: 1200px) {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    width: 180px;
+    height: 180px;
+    bottom: 86px;
+    right: 270px;
+    background: linear-gradient(#d6461253, #e484075d);
+    animation: 6s ease-in infinite alternate;
+    animation-name: move-down;
+  }
 }
 @keyframes move-up {
   to {
@@ -124,6 +129,21 @@
 .image {
   object-fit: cover;
   background-color: transparent;
+}
+.titleMobil {
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #0000007b;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  @media (min-width: 768px) {
+    display: none;
+  }
 }
 
 .artistPhotoList {
@@ -176,13 +196,15 @@
   padding-top: 10px;
 }
 .cardInfoTop {
-  display: flex;
+  @media (min-width: 768px) {
+    display: flex;
+  }
 }
 .tileCategoryContainer {
+  display: none;
   @media (min-width: 768px) {
     flex-grow: 1;
     margin-top: 0px;
-
     display: flex;
     flex-direction: column;
   }
@@ -190,7 +212,9 @@
   }
 }
 .artistTitleContainer {
-  height: 22px;
+  @media (min-width: 768px) {
+    height: 22px;
+  }
 }
 .artistTitle {
   margin-top: 15px;
@@ -216,11 +240,16 @@
   width: fit-content;
 }
 .cardInfoTopRight {
-  margin-right: auto;
+  margin-top: 10px;
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+  @media (min-width: 768px) {
+    margin-right: auto;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 .artistName {
   font-size: 16px;
@@ -229,10 +258,13 @@
 }
 
 .avatarContainer {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  /* display: flex;
+  margin-top: 10px; */
+  display: none;
+  @media (min-width: 768px) {
+    align-items: center;
+    gap: 12px;
+  }
 }
 .avatarItem {
   width: 24px;
@@ -242,20 +274,27 @@
   overflow: hidden;
 }
 .description {
-  text-align: justify;
-  margin-top: 10px;
-  width: 600px;
-  height: 170px;
-  background-color: #3b3b3b3f;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 10px;
-  margin-top: auto;
+  display: none;
+  @media (min-width: 768px) {
+    text-align: justify;
+    margin-top: 10px;
+    width: 600px;
+    height: 170px;
+    background-color: #3b3b3b3f;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+    margin-top: auto;
+  }
 }
 .paragraph {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-direction: row-reverse;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 .icon {
   width: 24px;

@@ -24,7 +24,7 @@ const BannerLeft = () => {
             <Link
               className={styles.submitButton}
               href={"/request"}>
-              Розмісти запит
+              Створити запит
             </Link>
           </div>
         </ul>

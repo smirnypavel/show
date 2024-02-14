@@ -13,7 +13,7 @@ import animatorIcon from "@/public/icon/animator.svg";
 
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Home/CategoryList/CategoryToplist.module.css";
-import SceletonTopCategory from "@/components/helpers/Placeholders/SceletonTopCategory";
+import SceletonTopCategory from "@/components/helpers/Placeholders/SkeletonTopCategory";
 
 const CategoryToplist = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);

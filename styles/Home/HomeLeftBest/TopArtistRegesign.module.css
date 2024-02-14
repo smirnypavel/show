@@ -1,22 +1,28 @@
-.imageContainer {
+.container {
   margin-top: 20px;
-  /* color: var(--white); */
-  background-color: transparent;
 
   @media (min-width: 768px) {
   }
 }
 .title {
+  text-align: center;
   font-weight: 600;
   font-size: 38px;
   line-height: 46px;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+  @media (min-width: 768px) {
+    text-align: start;
+  }
 }
 .titleText {
+  text-align: center;
   font-size: 22px;
   font-weight: 400;
   line-height: 35px;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+  @media (min-width: 768px) {
+    text-align: start;
+  }
 }
 .artistItem {
   max-width: 330px;
@@ -28,6 +34,26 @@
   gap: 30px;
   align-items: flex-start;
   justify-content: center;
+  @media (min-width: 768px) {
+    display: none;
+  }
+  @media (min-width: 1000px) {
+    display: flex;
+  }
+}
+.imageListTablet {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  @media (min-width: 1000px) {
+    display: none;
+  }
 }
 
 .imageItem {

@@ -1,0 +1,79 @@
+import React from "react";
+import ContentLoader from "react-content-loader";
+
+const SkeletonTopArtist = (props: any) => (
+  <>
+    <ContentLoader
+      speed={2}
+      width={330}
+      height={558}
+      viewBox="0 0 330 558"
+      backgroundColor="#3b3b3b"
+      foregroundColor="#a159ff75"
+      {...props}>
+      <rect
+        x="0"
+        y="0"
+        rx="20"
+        ry="20"
+        width="330"
+        height="330"
+      />
+      <rect
+        x="0"
+        y="345"
+        rx="20"
+        ry="20"
+        width="100"
+        height="100"
+      />
+      <rect
+        x="110"
+        y="345"
+        rx="20"
+        ry="20"
+        width="100"
+        height="100"
+      />
+      <rect
+        x="220"
+        y="345"
+        rx="20"
+        ry="20"
+        width="100"
+        height="100"
+      />
+      <rect
+        x="0"
+        y="455"
+        rx="10"
+        ry="10"
+        width="180"
+        height="30"
+      />
+      <rect
+        x="0"
+        y="495"
+        rx="10"
+        ry="10"
+        width="210"
+        height="30"
+      />
+      <circle
+        cx="10"
+        cy="545"
+        r="10"
+      />
+      <rect
+        x="30"
+        y="535"
+        rx="10"
+        ry="10"
+        width="150"
+        height="20"
+      />
+    </ContentLoader>
+  </>
+);
+
+export default SkeletonTopArtist;

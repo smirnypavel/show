@@ -72,6 +72,7 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
                             sizes="(min-width: 808px) 50vw, 100vw"
                           />
                         )}
+                        <div className={styles.titleMobil}>{artist.title}</div>
                       </div>
                       <div className={styles.artistPhotoList}>
                         {artist.photo.slice(0, 2).map(

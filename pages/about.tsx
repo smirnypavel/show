@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/About/About.module.css";
-import SceletonTopCategory from "@/components/helpers/Placeholders/SceletonTopCategory";
+import SkeletonTopArtist from "@/components/helpers/Placeholders/SkeletonTopArtist";
 
 const About = () => {
   return (
@@ -8,7 +8,7 @@ const About = () => {
       <p className={styles.p}>
         Вітаю Вас!!! Але ми ще працюємо над ціею сторінкою
       </p>
-      {/* <SceletonTopCategory /> */}
+      <SkeletonTopArtist />
     </div>
   );
 };

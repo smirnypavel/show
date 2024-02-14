@@ -22,7 +22,6 @@ const Home = () => {
         <HomeSearchBar />
         <HomeTopBanner />
         <div className={styles.container}>
-          {" "}
           <CategoryToplist />
           <TopArtistsRedesign />
           <div className={styles.requestFormContainer}>
