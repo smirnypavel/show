@@ -5,6 +5,18 @@ import axios from "axios";
 import { ICategory } from "@/types/IAuth";
 import { useRouter } from "next/router";
 import MobileInfoPage from "./MobileInfoPage";
+import Image from "next/image";
+import muz_poslug from "@/public/baners/muz-poslug.jpeg";
+import animator from "@/public/baners/animator.jpeg";
+import designweding from "@/public/baners/designweding.jpeg";
+import photo from "@/public/baners/photo.jpeg";
+import logo123 from "@/public/baners/logo123.webp";
+import muzPoslug from "@/public/icon/muzPoslug.svg";
+import photoIcon from "@/public/icon/photoIcon.svg";
+import catering from "@/public/icon/catering.svg";
+import wedding from "@/public/icon/wedding.svg";
+import animatorIcon from "@/public/icon/animator.svg";
+import magic from "@/public/icon/magic.svg";
 
 const MobileCat = () => {
   const [isCatContainerVisible, setIsCatContainerVisible] = useState(false);
@@ -95,13 +107,102 @@ const MobileCat = () => {
             className={`${styles.catList} ${
               selectedCategory ? styles.hide : ""
             }`}>
-            {categories.map((category) => (
+            {categories.map((cat) => (
               <li
-                key={category._id}
-                onClick={(e) => handleCategoryChange(category._id)}
+                key={cat._id}
+                onClick={(e) => handleCategoryChange(cat._id)}
                 className={styles.catListItem}>
-                <p className={styles.catListText}>{category.name}</p>
-                <IoIosArrowBack className={styles.catListIcon} />
+                <div className={styles.categoryImageContainer}>
+                  {cat.name === "Музичні послуги" ? (
+                    <Image
+                      src={muz_poslug}
+                      alt={"user photo"}
+                      fill
+                      className={styles.categoryImage}
+                      sizes="(min-width: 808px) 50vw, 100vw"
+                    />
+                  ) : cat.name === "Анімаційні послуги" ? (
+                    <Image
+                      src={animator}
+                      alt={"animator"}
+                      fill
+                      className={styles.categoryImage}
+                      sizes="(min-width: 808px) 50vw, 100vw"
+                    />
+                  ) : cat.name === "Фото та відео" ? (
+                    <Image
+                      src={photo}
+                      alt={"photo"}
+                      fill
+                      className={styles.categoryImage}
+                      sizes="(min-width: 808px) 50vw, 100vw"
+                    />
+                  ) : cat.name === "Декорації та дизайн" ? (
+                    <Image
+                      src={designweding}
+                      alt={"designweding"}
+                      fill
+                      className={styles.categoryImage}
+                      sizes="(min-width: 808px) 50vw, 100vw"
+                    />
+                  ) : (
+                    <Image
+                      src={logo123}
+                      alt={"placeholder"}
+                      fill
+                      className={styles.categoryImage}
+                      sizes="(min-width: 808px) 50vw, 100vw"
+                    />
+                  )}
+
+                  <div className={styles.iconContainer}>
+                    {cat.name === "Музичні послуги" ? (
+                      <Image
+                        src={muzPoslug}
+                        alt={"user photo"}
+                        width={100}
+                        height={100}
+                        className={styles.categoryIcon}
+                      />
+                    ) : cat.name === "Анімаційні послуги" ? (
+                      <Image
+                        src={animatorIcon}
+                        alt={"user photo"}
+                        width={100}
+                        height={100}
+                        className={styles.categoryIcon}
+                      />
+                    ) : cat.name === "Фото та відео" ? (
+                      <Image
+                        src={photoIcon}
+                        alt={"photo"}
+                        width={100}
+                        height={100}
+                        className={styles.categoryIcon}
+                      />
+                    ) : cat.name === "Декорації та дизайн" ? (
+                      <Image
+                        src={catering}
+                        alt={"user photo"}
+                        width={100}
+                        height={100}
+                        className={styles.categoryIcon}
+                      />
+                    ) : (
+                      <Image
+                        src={magic}
+                        alt={"placeholder"}
+                        width={100}
+                        height={100}
+                        className={styles.categoryIcon}
+                        sizes="(min-width: 808px) 50vw, 100vw"
+                      />
+                    )}
+                  </div>
+                </div>
+                <div className={styles.categoryNameContainer}>
+                  {cat.name} <IoIosArrowBack className={styles.catListIcon} />
+                </div>
               </li>
             ))}
           </ul>
