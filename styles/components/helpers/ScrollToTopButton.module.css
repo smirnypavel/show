@@ -1,6 +1,6 @@
 .scrollToTopButton {
   position: fixed;
-  right: -50px; /* Изначально кнопка вне экрана */
+  right: -100%; /* Изначально кнопка вне экрана */
   bottom: 120px; /* Позиция кнопки при появлении */
 
   z-index: 1;
