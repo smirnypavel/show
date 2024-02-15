@@ -14,7 +14,9 @@ const Footer = () => {
       <button
         onClick={handleShowSocial}
         type="button"
-        className={styles.footerButton}>
+        className={`${styles.footerButton} ${
+          showSocial ? styles.show : styles.hide
+        }`}>
         Сховище корисних посилань
       </button>
       <div

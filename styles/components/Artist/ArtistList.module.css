@@ -45,13 +45,12 @@
 .imageList {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  /* gap: 30px; */
   align-items: flex-start;
   justify-content: center;
   @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    gap: 30px;
   }
   @media (min-width: 1200px) {
   }

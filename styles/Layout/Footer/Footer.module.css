@@ -26,6 +26,12 @@
     display: none;
   }
 }
+.footerButton.hide {
+  margin-bottom: 100px;
+}
+.footerButton.show {
+  margin-bottom: 10px;
+}
 .containerMap {
   margin-top: 10px;
   gap: 5px;

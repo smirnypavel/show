@@ -102,7 +102,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
             <Analytics />
           </main>
-          {/* Компонент переключения темы */}
         </Layout>
       </PersistGate>
     </Provider>

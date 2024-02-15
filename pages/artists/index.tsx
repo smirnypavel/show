@@ -32,8 +32,8 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages, loading }) => {
         <MobileSort />
       </div>
       <ArtistSearchBar />
-      {loading && <MyLoader />}
-      {!loading && <ArtistList artists={artists} />}
+
+      <ArtistList artists={artists} />
       <div className={styles.pagination}>
         {totalPages > 0 && <Pagination totalPages={totalPages} />}
       </div>

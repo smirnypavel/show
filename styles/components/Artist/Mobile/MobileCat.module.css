@@ -25,9 +25,9 @@
   overflow: hidden;
   margin-top: 19px;
   width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.01);
+  height: 93.5%;
 
+  background: rgba(255, 255, 255, 0.01);
   backdrop-filter: blur(10px);
   position: absolute;
   z-index: 4;
