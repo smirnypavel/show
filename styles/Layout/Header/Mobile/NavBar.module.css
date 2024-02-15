@@ -9,7 +9,6 @@
   border-radius: 16px;
   display: flex;
   align-items: center;
-
   justify-content: space-evenly;
   padding: 4px 0px;
   width: 90%;
@@ -29,7 +28,7 @@
   align-items: center;
   text-align: center;
   font-size: var(--h3-medium-font-size);
-  font-style: var(--h3-medium-font-style);
+
   font-weight: var(--h3-medium-font-weight);
 }
 .navBarIcon {

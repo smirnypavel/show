@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/Layout/Footer/Footer.module.css";
 import Link from "next/link";
 import { Comfortaa } from "next/font/google";
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const Footer = () => {
+  const [showSocial, setShowSocial] = useState(false);
+  const handleShowSocial = () => {
+    setShowSocial(!showSocial);
+  };
   return (
     <div className={`${comfortaa.className} ${styles.footer}`}>
-      <div className={styles.containerMap}>
+      <button
+        onClick={handleShowSocial}
+        type="button"
+        className={styles.footerButton}>
+        Сховище корисних посилань
+      </button>
+      <div
+        className={`${styles.containerMap} ${
+          showSocial ? styles.show : styles.hide
+        }`}>
         <div>
           <p className={styles.title}>Пошукачу</p>
           <ul>
