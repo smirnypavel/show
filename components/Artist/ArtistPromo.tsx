@@ -20,11 +20,8 @@ import {
   PiStarThin,
 } from "react-icons/pi";
 import { SiViber } from "react-icons/si";
-
-import { Comfortaa } from "next/font/google";
-
 import { SiMaildotru } from "react-icons/si";
-
+import { Comfortaa } from "next/font/google";
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {

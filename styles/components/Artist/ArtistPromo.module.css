@@ -23,10 +23,12 @@
   height: 320px;
 }
 .artistInfo {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-right: 10px;
+  padding-left: 10px;
   @media screen and (min-width: 768px) {
     width: 768px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   @media screen and (min-width: 1200px) {
     width: 1050px;
@@ -60,17 +62,22 @@
 }
 
 .title {
-  margin-top: 30px;
-  font-size: 38px;
-  font-weight: 700;
+  @media screen and (min-width: 768px) {
+    margin-top: 30px;
+    font-size: 38px;
+    font-weight: 700;
+  }
 }
 .paragraph {
   margin-top: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 24px;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 }
 .icon {
   color: #858584;
@@ -103,15 +110,24 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  font-size: 12px;
+  @media screen and (min-width: 768px) {
+  }
 }
 .descriptionContainer {
+  padding: 10px;
   margin-top: 30px;
+  @media screen and (min-width: 768px) {
+    padding: 0;
+  }
 }
 .label {
   color: #858584;
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 35px;
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 35px;
+  }
 }
 .description {
   margin-top: auto;
