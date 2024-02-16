@@ -76,6 +76,7 @@
     margin-top: 30px;
     font-size: 38px;
     font-weight: 700;
+    width: unset;
   }
 }
 .paragraph {
@@ -109,7 +110,10 @@
   color: #a259ff;
 }
 .artistContact {
-  margin-top: 30px;
+  margin-top: 20px;
+  @media screen and (min-width: 768px) {
+    margin-top: 30px;
+  }
 }
 .contactsContainer {
   display: flex;
@@ -227,10 +231,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-
   justify-content: center;
   @media (min-width: 768px) {
     gap: 30px;
+    width: 1050px;
   }
 }
 .photoListItem {
@@ -272,16 +276,12 @@
 }
 .videoListContainer {
   max-width: 1050px;
-  gap: 10px;
-
   display: flex;
   justify-content: center;
+
   flex-wrap: wrap;
+  gap: 30px;
   margin-bottom: 24px;
-  @media screen and (min-width: 768px) {
-    max-width: 1050px;
-    gap: 30px;
-  }
 }
 .videoListItem {
   width: 300px;

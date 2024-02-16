@@ -24,6 +24,7 @@ import { SiViber } from "react-icons/si";
 import { Comfortaa } from "next/font/google";
 
 import { SiMaildotru } from "react-icons/si";
+import YouTube3 from "@/components/helpers/Youtube2";
 
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
@@ -286,7 +287,12 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                       <li
                         key={item.publicId}
                         className={styles.videoListItem}>
-                        <YouTube2 url={item.url} />
+                        <div className={styles.video}>
+                          <YouTube2 url={item.url} />
+                        </div>
+                        <div className={styles.videoMobile}>
+                          <YouTube3 url={item.url} />
+                        </div>
                       </li>
                     ))
                   )}

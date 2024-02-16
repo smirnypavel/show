@@ -74,7 +74,7 @@ const Header = () => {
               priority
               className={styles.logoMob}
             />
-            <p className={`${styles.mobLogoText} ${kodchasan.className}`}>
+            <p className={`${kodchasan.className} ${styles.mobLogoText}`}>
               Wechirka
             </p>
           </Link>
@@ -129,7 +129,7 @@ const Header = () => {
             priority
             className={styles.logo}
           />
-          <p className={`${styles.mobLogoText} ${kodchasan.className}`}>
+          <p className={`${kodchasan.className} ${styles.mobLogoText} `}>
             Wechirka
           </p>
         </Link>

@@ -23,10 +23,12 @@
   height: 320px;
 }
 .artistInfo {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-right: 10px;
+  padding-left: 10px;
   @media screen and (min-width: 768px) {
     width: 768px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   @media screen and (min-width: 1200px) {
     width: 1050px;
@@ -90,17 +92,28 @@
 }
 
 .title {
-  /* margin-top: 30px; */
-  font-size: 38px;
-  font-weight: 700;
+  font-size: 24px;
+  margin-top: 20px;
+  width: 175px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media screen and (min-width: 768px) {
+    margin-top: 30px;
+    font-size: 38px;
+    font-weight: 700;
+    width: unset;
+  }
 }
 .paragraph {
   margin-top: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 24px;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 }
 .icon {
   color: #858584;
