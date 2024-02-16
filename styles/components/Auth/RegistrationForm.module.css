@@ -1,15 +1,19 @@
 .container {
   max-width: 770px;
   max-height: 777px;
-  border-radius: 16px;
-  background: var(--accent-color);
+  border-radius: 20px;
+  background-color: #3b3b3b;
+
   margin: 0 auto;
   margin-top: 40px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 10px;
   -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  @media screen and (min-width: 768px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 .loginContainer {
   width: 100%;
@@ -133,21 +137,24 @@
 
 .submitButton {
   all: unset;
+  width: fit-content;
   align-items: center;
-  background-color: var(--white);
+  background-color: #a259ff;
   border-radius: 8px;
-  box-sizing: border-box;
+  margin-bottom: 10px;
   display: inline-flex;
   gap: 12px;
   justify-content: center;
   padding: 12px 24px;
-  margin-bottom: 24px;
   transition: box-shadow 0.3s ease;
-  margin-bottom: 24px;
   cursor: pointer; /* Добавим указатель при наведении */
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  @media screen and (min-width: 768px) {
+    width: fit-content;
+    transform: scale(0.5);
+  }
 }
 
 .textWrapper {
