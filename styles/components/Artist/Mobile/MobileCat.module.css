@@ -4,8 +4,9 @@
   border: none;
   display: flex;
   align-items: center;
-  background-color: var(--accent-color-2);
-  border-radius: 16px;
+  background-color: transparent;
+  border: 2px solid #a259ff;
+  border-radius: 20px;
   color: var(--white);
   font-size: var(--h2-medium-font-size);
   font-weight: var(--h2-medium-font-weight);
@@ -13,16 +14,19 @@
 }
 
 .buttonCat.show {
-  background-color: var(--white);
-  color: var(--accent-color-2);
+  background-color: #a259ff;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px #00000040;
+  transition-delay: 0.2s;
 }
 
 .catContainer {
   overflow: hidden;
-  margin-top: 23px;
+  margin-top: 15px;
   width: 100%;
-  height: 100%;
-  background-color: rgba(41, 91, 108, 0.427);
+  height: calc(100% - 260px);
+  background: rgba(255, 255, 255, 0.01);
   backdrop-filter: blur(10px);
   position: absolute;
   z-index: 4;
@@ -59,8 +63,9 @@
 .catList {
   width: 90%;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
   position: absolute;
   transition: opacity 0.3s ease-in-out; /* Adjusted transition properties */
 }
@@ -71,18 +76,22 @@
   opacity: 1; /* Added opacity property */
 }
 .catListItem {
-  width: 100%;
-  display: flex;
+  /* width: 100%; */
+  width: 148px;
+  /* height: 100px; */
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: var(--accent-color-1);
-  border-radius: 8px;
-  padding: 8px;
-  font-size: var(--h1-medium-font-size);
-  font-weight: var(--h1-medium-font-weight);
+  justify-content: center; */
+  background-color: #3b3b3b;
+
+  /* border: 1px solid #a259ff; */
+  border-radius: 20px;
+  /* padding: 8px; */
+  font-size: 10px;
 }
 .catListText {
-  width: 100%;
+  /* width: 100%; */
+  font-size: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +100,7 @@
   width: 32px;
   height: 32px;
   margin-left: auto;
-  color: var(--bg-color);
+  /* color: var(--bg-color); */
   transform: rotate(180deg);
 }
 .subCatList {
@@ -132,4 +141,66 @@
   padding: 8px;
   font-size: var(--h1-medium-font-size);
   font-weight: var(--h1-medium-font-weight);
+}
+.categoryImageContainer {
+  position: relative;
+  width: 148px;
+  height: 142px;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    width: 150px;
+  }
+  @media (min-width: 1000px) {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+.categoryImage {
+  object-fit: cover;
+  background-color: transparent;
+}
+.iconContainer {
+  position: relative;
+  width: 148px;
+  height: 142px;
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: backdrop-filter 0.2s;
+  @media (min-width: 768px) {
+    width: 150px;
+  }
+  @media (min-width: 1000px) {
+    width: 240px;
+    height: 240px;
+  }
+}
+.iconContainer:hover {
+  /* transform: scale(1.5);
+
+  transition-delay: 0.2s; */
+  backdrop-filter: blur(1px);
+}
+.categoryIcon {
+  background-color: transparent;
+}
+.categoryNameContainer {
+  padding: 10px 20px 15px;
+  font-size: 12px;
+  font-weight: 600;
+
+  display: flex;
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1200px) {
+    padding: 20px 30px 25px;
+
+    font-size: 22px;
+  }
 }

@@ -11,15 +11,6 @@
   padding-right: 24px; */
 }
 
-.artistList {
-  width: 100%;
-  margin-top: 24px;
-  text-align: start;
-  display: flex;
-  flex-direction: column;
-  row-gap: 32px;
-  position: relative;
-}
 .buttonBackContainer {
   display: none;
   @media (min-width: 768px) {
@@ -28,8 +19,8 @@
     align-items: center;
     gap: 8px;
     position: absolute;
-    top: -32px;
-    left: 32px;
+    top: 0px;
+    left: 0px;
   }
 }
 .buttonBack {
@@ -50,175 +41,339 @@
   border: none;
   cursor: default;
 }
-.artistItem {
-  width: 100%;
-  height: auto;
-  gap: 10px;
-  border-radius: 16px;
-  background-color: var(--accent-color);
-  -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
-  -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
-  box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 30px; */
+  align-items: flex-start;
+  justify-content: center;
   @media (min-width: 768px) {
-    border-radius: 8px;
-    max-width: 1168px;
-    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 1200px) {
+  }
+}
+.card {
+  position: relative;
+  @media (min-width: 768px) {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 20px;
+  }
+  @media (min-width: 1200px) {
+    background: none;
+    backdrop-filter: unset;
+    box-shadow: unset;
+  }
+}
+.artistItem {
+  max-width: 340px;
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 5px 5px 10px 5px;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.2);
+  @media (min-width: 768px) {
+    margin-top: 0px;
+
+    max-width: 710px;
+    padding: 0px;
+    display: flex;
+    overflow: hidden;
+    gap: 15px;
+    flex-direction: row-reverse;
+    background: none;
+    backdrop-filter: unset;
+    box-shadow: unset;
+  }
+  @media (min-width: 1200px) {
+    margin-top: 20px;
+
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.2);
+    min-width: 1050px;
+  }
+}
+.card .circleLeft {
+  display: none;
+  @media (min-width: 1200px) {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    width: 120px;
+    height: 120px;
+    top: 50px;
+    left: 50px;
+    background: linear-gradient(#e524c269, #8626b272);
+    animation: 6s ease-in infinite alternate;
+    animation-name: move-up;
   }
 }
 
-.cardContainer {
-  @media (min-width: 768px) {
-    display: flex;
+.card .circleRight {
+  display: none;
+  @media (min-width: 1200px) {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    width: 180px;
+    height: 180px;
+    bottom: 86px;
+    right: 270px;
+    background: linear-gradient(#d6461253, #e484075d);
+    animation: 6s ease-in infinite alternate;
+    animation-name: move-down;
   }
 }
-.imageContainer {
-  height: 312px;
-  position: relative;
-  border-radius: 8px;
-  @media (min-width: 768px) {
-    position: relative;
-    width: 356px;
-    margin-left: -1px;
+@keyframes move-up {
+  to {
+    transform: translateY(-50px);
   }
+}
+
+@keyframes move-down {
+  to {
+    transform: translateX(60px);
+  }
+}
+
+.imageItem {
+  border: none;
+  position: relative;
+  width: 330px;
+  height: 330px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .image {
   object-fit: cover;
-  border-radius: 16px 16px 0px 0px;
-
-  @media (min-width: 1200px) {
-    border-radius: 8px 0px 0px 8px;
-  }
+  background-color: transparent;
 }
-.cardInfo {
-  margin-top: 16px;
-  max-width: 811px;
-  @media (min-width: 768px) {
-    max-width: 811px;
-  }
-}
-.cardTopContainer {
-  display: flex;
-  justify-content: space-between;
-
-  align-items: center;
-  padding: 0px 8px 0px 8px;
-  font-size: var(--h4-medium-font-size);
-  font-weight: var(--h4-medium-font-weight);
-  @media (min-width: 768px) {
-    gap: 24px;
-    margin-left: 16px;
-  }
-  @media (min-width: 1200px) {
-    justify-content: unset;
-    margin-left: 8px;
-    font-size: 20px;
-    font-weight: 500;
-  }
-}
-.locationContainer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.geoIcon {
-  width: 24px;
-  height: 24px;
-}
-.artistProfile {
+.titleMobil {
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #0000007b;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-}
-.avatarContainer {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  margin-left: -1px;
+  font-weight: 600;
   @media (min-width: 768px) {
-    width: 48px;
-    height: 48px;
+    display: none;
   }
 }
-.avatar {
-  border-radius: 50%;
-  object-fit: cover;
-}
-.categoryContainer {
-  margin-top: 8px;
-  margin-left: 8px;
+
+.artistPhotoList {
+  margin-top: 15px;
   display: flex;
-  flex-wrap: wrap;
-  overflow: auto;
-  gap: 8px;
+  gap: 15px;
+  justify-content: right;
+  @media (min-width: 768px) {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+  }
   @media (min-width: 1200px) {
-    width: 785px;
-    flex-wrap: nowrap;
   }
 }
-.categoryContainer::-webkit-scrollbar {
-  display: none;
+.artistPhotoItem {
+  border: none;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  overflow: hidden;
 }
-.categoryArtist {
-  height: 23px;
-  font-size: var(--h5-regular-font-size);
-  font-weight: var(--h5-regular-font-weight);
-  width: auto;
+.profileLink {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
-  padding: 8px;
-  border-radius: 8px;
-  background: var(--white);
-  @media (min-width: 768px) {
-    white-space: nowrap;
-    font-size: var(--h1-regular-font-size);
-    font-weight: var(--h1-regular-font-weight);
-    height: 40px;
-    background: var(--gray-light);
-  }
+  justify-content: center;
+  background-color: #a259ff;
+  border: 2px solid transparent;
+
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
-.descriptionContainer {
-  margin-top: 8px;
-  background-color: var(--white);
-  max-width: 812px;
-  height: 137px;
-  padding: 16px;
-  border: none;
-  border-radius: 0px 0px 16px 16px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.profileLink:hover {
+  background-color: transparent;
+  border: 2px solid #a259ff;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 4px 8px #00000040;
+  transition-delay: 0.2s;
+}
+.cardInfo {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
   @media (min-width: 768px) {
-    overflow: hidden;
-    background-color: var(--accent-color);
-    height: 192px;
-    width: 365px;
-    border-radius: 0px 0px 8px 0px;
+    padding-left: 10px;
   }
   @media (min-width: 1200px) {
-    width: 797px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
   }
 }
-
-.descriptionTitle {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: normal;
+.cardInfoTop {
+  @media (min-width: 1200px) {
+    display: flex;
+  }
 }
-.wrapper {
-  height: 110px;
-
-  overflow: hidden;
-  overflow-wrap: break-word;
-  text-overflow: ellipsis;
+.tileCategoryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
   @media (min-width: 768px) {
-    height: 150px;
+    flex-wrap: nowrap;
+    justify-content: unset;
+    flex-grow: 1;
+    margin-top: 0px;
+    flex-direction: column;
+  }
+  @media (min-width: 1200px) {
+    gap: 0px;
   }
 }
-.descriptionText {
-  height: 50px;
-  margin-top: 24px;
+.artistTitleContainer {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: none;
+    display: block;
+  }
+  @media (min-width: 1200px) {
+    height: 22px;
+  }
+}
+.artistTitle {
+  margin-top: 15px;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 31px;
+  @media (min-width: 768px) {
+    margin-top: 0px;
+  }
+  @media (min-width: 1200px) {
+  }
+}
+.categoryItem {
+  margin-top: 10px;
+  gap: 12px;
+  padding: 5px 15px;
+  display: flex;
+  border: 2px solid #a259ff;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+  width: fit-content;
+}
+.cardInfoTopRight {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  @media (min-width: 1200px) {
+    margin-top: 0px;
+    margin-right: auto;
+    flex-direction: column;
+
+    align-items: flex-end;
+    gap: 10px;
+  }
+}
+.artistName {
   font-size: 16px;
   font-weight: 400;
-  /* @media (min-width: 768px) {
-  } */
+  line-height: 22px;
+}
+
+.avatarContainer {
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  @media (min-width: 1200px) {
+    align-items: center;
+  }
+}
+.avatarItem {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  border-radius: 120px;
+  overflow: hidden;
+}
+.description {
+  display: none;
+  @media (min-width: 1200px) {
+    display: block;
+    text-align: justify;
+    margin-top: 10px;
+    width: 600px;
+    height: 170px;
+    background-color: #3b3b3b3f;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+    margin-top: auto;
+  }
+}
+.descriptionWrapper {
+  /* padding-top: 10px; */
+  height: 145px;
+  overflow: hidden;
+}
+.descriptionTablet {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+    text-align: justify;
+    margin-top: 10px;
+    width: 710px;
+    height: 170px;
+    background-color: #3b3b3b3f;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+    margin-top: auto;
+  }
+  @media (min-width: 1200px) {
+    display: none;
+  }
+}
+.paragraph {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+.icon {
+  width: 24px;
+  height: 24px;
 }

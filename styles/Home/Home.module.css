@@ -1,17 +1,58 @@
 .homepage {
   width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 .container {
-  margin-top: 32px;
   @media screen and (min-width: 768px) {
-    margin-top: 40px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+  }
+}
+.requestFormContainer {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: unset;
   }
 }
 .requestForm {
   display: none;
   @media screen and (min-width: 768px) {
-    display: unset;
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+}
+.title {
+  margin-top: 20px;
+
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 46px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+}
+.titleText {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 35px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+}
+.iconHand {
+  color: #a259ff; /* Цвет иконки */
+  animation: explode 2s ease infinite; /* Запускаем анимацию постоянно */
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1); /* Начальный размер иконки */
+  }
+  50% {
+    transform: scale(1.5); /* Увеличиваем размер в середине анимации */
+  }
+  100% {
+    transform: scale(1); /* Возвращаем исходный размер в конце анимации */
   }
 }

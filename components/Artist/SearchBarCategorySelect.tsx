@@ -2,16 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ICategory, ISubcategory } from "@/types/IAuth";
 import styles from "@/styles/components/Artist/SearchBarCategorySelect.module.css";
+import { useRouter } from "next/router";
 
-interface SearchBarCategorySelectProps {
-  onCategoryChange: (categoryId: string) => void;
-  onSubcategoryChange: (subcategoryId: string) => void;
-}
+// interface SearchBarCategorySelectProps {
+//   onCategoryChange: (categoryId: string) => void;
+//   onSubcategoryChange: (subcategoryId: string) => void;
+// }
 
-const SearchBarCategorySelect: React.FC<SearchBarCategorySelectProps> = ({
-  onCategoryChange,
-  onSubcategoryChange,
-}) => {
+const SearchBarCategorySelect = () => {
+  const router = useRouter();
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<ICategory | null>(
     null
@@ -28,7 +27,7 @@ const SearchBarCategorySelect: React.FC<SearchBarCategorySelectProps> = ({
         const response = await axios.get<ICategory[]>("/users/category");
         setCategories(response.data);
       } catch (error) {
-        console.error("Ошибка при загрузке категорий:", error);
+        console.error("Помилка прі отриманні категрій:", error);
         // Здесь можно добавить обработку ошибки, например, показать сообщение пользователю
       }
     };
@@ -36,29 +35,29 @@ const SearchBarCategorySelect: React.FC<SearchBarCategorySelectProps> = ({
     fetchCategories();
   }, []);
 
-  const handleCategoryChange = (categoryId: string) => {
-    onCategoryChange(categoryId); // Передаем идентификатор категории в родительский компонент
+  const handleCategoryChange = (cat: string) => {
+    router.push({
+      pathname: "/artists",
+      query: {
+        ...router.query,
+        cat,
+      },
+    });
     const selectedCategory = categories.find(
-      (category) => category._id === categoryId
+      (category) => category._id === cat
     );
     setSelectedCategory(selectedCategory || null);
     setSelectedSubcategory(null);
   };
 
-  const handleSubcategoryChange = (subcategoryId: string) => {
-    onSubcategoryChange(subcategoryId); // Передаем идентификатор подкатегории в родительский компонент
-    const selectedSubcategory = selectedCategory?.subcategories.find(
-      (subcategory) => subcategory.id === subcategoryId
-    );
-    if (selectedCategory && selectedSubcategory) {
-      setSelectedItems([
-        ...selectedItems,
-        {
-          categoryId: selectedCategory._id,
-          subcategoryId: selectedSubcategory.id,
-        },
-      ]);
-    }
+  const handleSubcategoryChange = (subcat: string) => {
+    router.push({
+      pathname: "/artists",
+      query: {
+        ...router.query,
+        subcat,
+      },
+    });
   };
 
   return (

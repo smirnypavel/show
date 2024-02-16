@@ -19,7 +19,7 @@ const UserCat = () => {
     dispatch(deleteCat(id));
   };
   return (
-    <div>
+    <div className={styles.container}>
       <div>
         <div className={styles.addButton}>
           <FiPlus className={styles.addIcon} />

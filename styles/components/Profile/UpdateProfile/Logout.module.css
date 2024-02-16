@@ -1,0 +1,43 @@
+.container {
+  width: fit-content;
+  height: fit-content;
+  padding: 40px;
+  background-color: #3b3b3b;
+  border-radius: 20px;
+}
+.title {
+  text-align: center;
+}
+.buttonsContainer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.button {
+  width: 100%;
+  align-items: center;
+  background-color: #a259ff;
+  border-radius: 20px 20px 20px 20px;
+  padding: 12px 24px;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  cursor: pointer; /* Добавим указатель при наведении */
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  color: var(--white);
+  border: 2px solid transparent;
+
+  @media screen and (min-width: 768px) {
+    width: fit-content;
+  }
+}
+.button:hover {
+  background-color: transparent;
+  border: 2px solid #a259ff;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 4px 8px #00000040;
+  transition-delay: 0.2s;
+}

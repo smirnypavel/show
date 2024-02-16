@@ -4,16 +4,14 @@
   bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--accent-color-1);
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(20px);
   border-radius: 16px;
   display: flex;
   align-items: center;
-  /* gap: 24px; */
   justify-content: space-evenly;
   padding: 4px 0px;
-
   width: 90%;
-
   height: 90px;
 
   z-index: 6; /* Установите z-index по вашему усмотрению */
@@ -30,12 +28,12 @@
   align-items: center;
   text-align: center;
   font-size: var(--h3-medium-font-size);
-  font-style: var(--h3-medium-font-style);
+
   font-weight: var(--h3-medium-font-weight);
 }
 .navBarIcon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
 }
 .navBarActive {
   color: var(--button-bg-color);

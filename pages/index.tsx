@@ -1,15 +1,17 @@
+import CategoryToplist from "@/components/Home/CategoryList/CategoryToplist";
 import HomeSearchBar from "@/components/Home/HomeSearchBar";
 import HomeTopBanner from "@/components/Home/HomeTopBanner/HomeTopBanner";
 import RequestForm from "@/components/Home/RequestForm";
+import RequestInfo from "@/components/Home/RequestInfo";
+import TopArtistsRedesign from "@/components/Home/TopContainer/TopArtistsRedesign";
 import TopContainer from "@/components/Home/TopContainer/TopContainer";
+import { TbHandClick } from "react-icons/tb";
 
 // import MetaTags from "@/components/Meta/MetaTags";
 import styles from "@/styles/Home/Home.module.css";
-import { Metadata } from "next";
+
 import Head from "next/head";
-export const metadata: Metadata = {
-  title: "Time Line",
-};
+
 const Home = () => {
   return (
     <>
@@ -20,10 +22,19 @@ const Home = () => {
         <HomeSearchBar />
         <HomeTopBanner />
         <div className={styles.container}>
-          <div className={styles.requestForm}>
-            <RequestForm />
+          <CategoryToplist />
+          <TopArtistsRedesign />
+          <div className={styles.requestFormContainer}>
+            <p className={styles.title}>Новий вимір пошуку</p>
+            <p className={styles.titleText}>
+              Створи собі свято всього у три кліки{" "}
+              <TbHandClick className={styles.iconHand} />
+            </p>
+            <div className={styles.requestForm}>
+              <RequestForm />
+              <RequestInfo />
+            </div>
           </div>
-          <TopContainer />
         </div>
       </div>
     </>
@@ -31,43 +42,3 @@ const Home = () => {
 };
 
 export default Home;
-
-{
-  /* <title>Wechirka пошук артистів</title>
-        <meta
-          property="description"
-          content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
-        />
-        <meta
-          property="og:title"
-          content="Wechirka пошук артистів"
-        />
-        <meta
-          property="og:description"
-          content="Тут Ви зможете знайти будь-якого артиста за допомогою категорій та фільтрів"
-        />
-        <meta
-          property="og:image"
-          content="https://res.cloudinary.com/dciy3u6un/image/upload/v1701947849/service/paanrsds5krezvpreog0.webp"
-        />
-        <meta
-          property="og:url"
-          content="https://www.wechirka.com"
-        />
-        <meta
-          property="og:type"
-          content="website"
-        />
-        <meta
-          property="fb:app_id"
-          content="302462449359607"
-        />
-        <meta
-          property="og:locale"
-          content="uk_UA"
-        />
-        <meta
-          property="og:site_name"
-          content="Wechirka"
-        /> */
-}

@@ -21,9 +21,6 @@ const UpdateContacts = () => {
   const user: IUserAuth = useAppSelector(getUser);
 
   const handleSubmitValue = (value: string, contactType: string) => {
-    // Делай что-то с полученным значением value
-    // console.log("Submitted value:", value);
-    // dispatch(updateUser(value));
     const contactData = {
       [contactType]: value,
     };
@@ -41,20 +38,8 @@ const UpdateContacts = () => {
   return (
     <div className={styles.container}>
       <div>
-        <p
-          className={`${styles.contactsTitle} ${
-            !showContacts && styles.titleClose
-          }`}
-          onClick={handleShowContacts}>
-          Ваші контактні данні
-          <IoIosArrowDown
-            className={`${styles.iconArrow} ${showContacts && styles.up}`}
-          />
-        </p>
-        <div
-          className={`${styles.contactsContainer} ${
-            showContacts ? styles.show : styles.hide
-          }`}>
+        <p className={styles.contactsTitle}>Ваші контактні данні</p>
+        <div className={styles.socialContainer}>
           <div>
             <p className={styles.contactLabel}>
               Телефон <HiOutlinePhone className={styles.contactIcon} />

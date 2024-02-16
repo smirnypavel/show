@@ -1,0 +1,117 @@
+.wrapper {
+  /* margin-top: 23px; */
+  width: 100%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 1280px;
+  }
+}
+
+.content {
+  flex: 1;
+}
+.nav {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  background: #2b2b2b7c;
+  backdrop-filter: blur(30px);
+  padding: 5px;
+  top: -2px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+}
+.navLinksContainer {
+  display: flex;
+  gap: 5px;
+
+  justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    gap: 30px;
+  }
+}
+.navLink {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 20px;
+  -moz-box-shadow: 2px 1px 7px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 1px 7px 0px rgba(0, 0, 0, 0.4);
+  @media screen and (min-width: 768px) {
+    font-size: unset;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+}
+.navLink:hover {
+  /* color: #353534; */
+  background: rgba(255, 255, 255, 0.3);
+  /* backdrop-filter: blur(30px); */
+}
+.active {
+  /* color: #353534; */
+  background: rgba(255, 255, 255, 0.3);
+  /* backdrop-filter: blur(30px); */
+}
+.service {
+  height: 11px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+
+  @media screen and (min-width: 768px) {
+    height: unset;
+
+    margin-top: 0px;
+    flex-direction: column;
+    /* justify-content: unset; */
+    justify-content: center;
+    gap: 5px;
+  }
+  @media screen and (min-width: 1200px) {
+  }
+}
+.serviceLink {
+  font-size: 10px;
+  width: fit-content;
+  height: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+.serviceLink:hover {
+  border-bottom: 1px solid #fff;
+}
+.serviceIcon {
+  width: 11px;
+  height: 11px;
+}

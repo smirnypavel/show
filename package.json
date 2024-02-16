@@ -26,6 +26,8 @@
     "liqpay": "^0.0.1",
     "next": "^14.1.0",
     "react": "^18.2.0",
+    "react-alice-carousel": "^2.8.0",
+    "react-content-loader": "^6.2.1",
     "react-datepicker": "^4.24.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
@@ -33,8 +35,11 @@
     "react-player": "^2.13.0",
     "react-redux": "^8.1.2",
     "react-responsive": "^9.0.2",
+    "react-slick": "^0.30.1",
     "redux-persist": "^6.0.0",
     "sharp": "^0.33.2",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^11.0.6",
     "typescript": "5.2.2",
     "uuid": "^9.0.1",
     "yup": "^1.2.0"
@@ -42,6 +47,7 @@
   "devDependencies": {
     "@types/geoip-lite": "^1.4.4",
     "@types/react-datepicker": "^4.19.3",
+    "@types/react-slick": "^0.23.13",
     "@types/uuid": "^9.0.7"
   }
 }

@@ -1,5 +1,6 @@
 import React, { ReactNode, MouseEvent } from "react";
 import styles from "@/styles/components/helpers/Modal.module.css";
+import { PiXCircle } from "react-icons/pi";
 interface ModalProps {
   onClose: () => void;
   children: ReactNode;
@@ -20,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
         <button
           className={styles.closeButton}
           onClick={onClose}>
-          Закрити
+          <PiXCircle className={styles.icon} />
         </button>
         {children}
       </div>

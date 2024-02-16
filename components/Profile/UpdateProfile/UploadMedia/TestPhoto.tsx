@@ -22,7 +22,7 @@ const PhotoPlaceholderComponent = () => {
   const user = useAppSelector(getUser);
   const loading = useAppSelector(isLoading);
   const existingImages = userPhoto.map((photo) => photo.url);
-  const emptyImageCount = 5 - existingImages.length;
+  const emptyImageCount = 6 - existingImages.length;
   const dispatch = useAppDispatch();
   const fileInputRef = useRef<HTMLInputElement>(null);
 

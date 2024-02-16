@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "@/styles/components/helpers/Pagination.module.css";
 import {
@@ -7,19 +7,18 @@ import {
   MdOutlineKeyboardDoubleArrowRight,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
+import { useRouter } from "next/router";
 interface PaginationProps {
-  currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}) => {
+const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
+  const router = useRouter();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
   const handlePageClick = (page: number) => {
-    onPageChange(page);
+    setCurrentPage(page);
+    router.push(`/artists?page=${page}`);
   };
 
   const renderPageButtons = () => {

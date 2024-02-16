@@ -6,16 +6,16 @@ import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { IoMenu } from "react-icons/io5";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
-import { Kodchasan } from "next/font/google";
-
 import { BsSearch } from "react-icons/bs";
-
 import { isLoggedIn, getUser } from "@/redux/auth/authSelectors";
 import styles from "@/styles/Layout/Header/Header.module.css";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import NavBar from "./Mobile/NavBar";
+import { Kodchasan } from "next/font/google";
 const kodchasan = Kodchasan({ weight: ["700", "500"], subsets: ["latin"] });
+import { Comfortaa } from "next/font/google";
+const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const Header = () => {
   const router = useRouter();
@@ -57,7 +57,7 @@ const Header = () => {
     setReq("");
   };
   return (
-    <>
+    <div className={comfortaa.className}>
       <div className={styles.mobileContainer}>
         <div className={styles.mobileHeader}>
           <button
@@ -74,7 +74,7 @@ const Header = () => {
               priority
               className={styles.logoMob}
             />
-            <p className={`${styles.mobLogoText} ${kodchasan.className}`}>
+            <p className={`${kodchasan.className} ${styles.mobLogoText}`}>
               Wechirka
             </p>
           </Link>
@@ -129,7 +129,7 @@ const Header = () => {
             priority
             className={styles.logo}
           />
-          <p className={`${styles.mobLogoText} ${kodchasan.className}`}>
+          <p className={`${kodchasan.className} ${styles.mobLogoText} `}>
             Wechirka
           </p>
         </Link>
@@ -223,6 +223,7 @@ const Header = () => {
               }`}>
               Артисти
             </Link>
+
             <Link
               onClick={toggleMenu}
               href={"/about"}
@@ -230,6 +231,31 @@ const Header = () => {
                 router.pathname === "/about" ? styles.active : ""
               }`}>
               Про нас
+            </Link>
+            <div className={styles.separator}></div>
+            <Link
+              onClick={toggleMenu}
+              href={"/profile"}
+              className={`${styles.link} ${
+                router.pathname === "/profile" ? styles.active : ""
+              }`}>
+              Профіль
+            </Link>
+            <Link
+              onClick={toggleMenu}
+              href={"/profile/update"}
+              className={`${styles.link} ${
+                router.pathname === "/profile/update" ? styles.active : ""
+              }`}>
+              Налаштування профілю
+            </Link>
+            <Link
+              onClick={toggleMenu}
+              href={"/profile/stats"}
+              className={`${styles.link} ${
+                router.pathname === "/profile/stats" ? styles.active : ""
+              }`}>
+              Статистика
             </Link>
             {/* <Link
               onClick={toggleMenu}
@@ -239,7 +265,7 @@ const Header = () => {
               }`}>
               Блог
             </Link> */}
-            {login ? (
+            {/* {login ? (
               <Link
                 onClick={toggleMenu}
                 href={"/profile"}
@@ -271,12 +297,13 @@ const Header = () => {
                 className={styles.link}>
                 Я артист
               </Link>
-            )}
+            )} */}
           </div>
         </div>
       )}
+
       <NavBar />
-    </>
+    </div>
   );
 };
 

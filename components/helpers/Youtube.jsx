@@ -23,14 +23,12 @@ const YouTube2 = ({ url }) => {
     setIsModalOpen(false);
   };
   return (
-    <>
-      <YouTubeEmbed
-        videoid={videoId}
-        height={168}
-        width={300}
-        params="controls=2&showinfo=0&rel=0&fs=1&modestbranding=1"
-      />
-    </>
+    <YouTubeEmbed
+      videoid={videoId}
+      height="100%"
+      width="100%"
+      params="controls=2&showinfo=0&rel=0&fs=1&modestbranding=1"
+    />
   );
 };
 export default YouTube2;

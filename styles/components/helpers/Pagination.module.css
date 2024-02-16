@@ -1,43 +1,43 @@
 .paginateContainer {
-  /* width: 432px;
-  height: 48px; */
   display: flex;
   justify-content: center;
-  -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
-  -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
-  box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 }
 .buttonStart {
   border: none;
-
-  background-color: var(--white);
-  border: 0.5px solid;
-  border-color: var(--gray-light);
-  border-radius: 8px 0px 0px 8px;
+  background-color: transparent;
   height: 48px;
-  width: 72px;
+  width: 48px;
+  color: #808080;
+}
+.buttonStart:disabled {
+  color: #212121;
 }
 .buttonPrevious {
+  background-color: transparent;
   border: none;
-
   align-items: center;
-  background-color: var(--white);
-  border: 0.5px solid;
-  border-color: var(--gray-light);
   display: flex;
   height: 48px;
   justify-content: center;
   padding: 8px;
   position: relative;
   width: 48px;
+  color: #808080;
 }
-.buttonNext {
-  border: none;
+.buttonPrevious:disabled {
+  color: #212121;
+}
 
+.buttonNext {
+  background-color: transparent;
+  border: none;
   align-items: center;
-  background-color: var(--white);
-  border: 0.5px solid;
-  border-color: var(--gray-light);
   display: flex;
   gap: 8px;
   height: 48px;
@@ -45,46 +45,46 @@
   padding: 8px;
   position: relative;
   width: 48px;
+  color: #808080;
 }
-.buttonEnd {
-  border: none;
+.buttonNext:disabled {
+  color: #212121;
+}
 
-  background-color: var(--white);
-  border: 0.5px solid;
-  border-color: var(--gray-light);
-  border-radius: 0px 8px 8px 0px;
+.buttonEnd {
+  background-color: transparent;
+  color: #808080;
+
+  border: none;
   height: 48px;
   position: relative;
-  width: 72px;
+  width: 48px;
+}
+.buttonEnd:disabled {
+  color: #212121;
 }
 .buttoPages {
+  background-color: transparent;
   border: none;
   align-items: center;
-  background-color: var(--white);
-  border: 0.5px solid;
-  border-color: var(--gray-light);
   display: flex;
   flex-direction: column;
   height: 48px;
   justify-content: center;
   padding: 8px;
   width: 48px;
-  color: var(--black);
-  font-family: "Inter-Regular", Helvetica;
+  color: #808080;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: normal;
-
   white-space: nowrap;
 }
-.buttonPagesActive {
-  border: none;
 
+.buttonPagesActive {
+  background-color: transparent;
+  border: none;
   align-items: center;
-  background-color: var(--white);
-  border: 0.5px solid;
-  border-color: var(--gray-light);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -92,8 +92,7 @@
   justify-content: center;
   padding: 8px;
   width: 48px;
-  color: var(--accent-color-2);
-  font-family: "Inter-Regular", Helvetica;
+  color: var(--white);
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 0;
