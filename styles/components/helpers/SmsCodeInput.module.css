@@ -1,6 +1,6 @@
 .smsForm {
-  background-color: var(--accent-color);
-  border-radius: 16px;
+  border-radius: 20px;
+  background-color: #3b3b3b;
   height: 100%;
   max-width: 480px;
   display: flex;
@@ -68,22 +68,33 @@
     font-size: 40px;
   }
 }
-
+.inputField::-webkit-inner-spin-button,
+.inputField::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.inputField[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
 .submitButton {
   all: unset;
-  margin-top: 12px;
+  width: fit-content;
   align-items: center;
-  background-color: var(--button-bg-color);
+  background-color: #a259ff;
   border-radius: 8px;
-  color: var(--white);
-  padding: 10px 28px;
+  margin-bottom: 10px;
+  display: inline-flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 12px 24px;
   transition: box-shadow 0.3s ease;
   cursor: pointer; /* Добавим указатель при наведении */
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
-  @media (min-width: 768px) {
-    margin-top: 24px;
+  @media screen and (min-width: 768px) {
+    width: fit-content;
+    transform: scale(0.5);
   }
 }
 .submitButton:hover {
@@ -132,7 +143,8 @@
   all: unset;
   font-family: inherit;
   font-size: 20px;
-  background-color: var(--button-bg-color);
+  background-color: #a259ff;
+
   margin-top: 12px;
   color: white;
   padding: 10px 28px;

@@ -1,15 +1,19 @@
 .container {
   max-width: 770px;
   max-height: 540px;
-  border-radius: 16px;
-  background: var(--accent-color);
+  border-radius: 20px;
+  background-color: #3b3b3b;
+
   margin: 0 auto;
   margin-top: 40px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 10px;
   -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  @media screen and (min-width: 768px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 .loginContainer {
   width: 100%;
@@ -25,6 +29,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 .formGroup {
   display: flex;
@@ -53,7 +58,7 @@
   position: relative;
 }
 .passwordInput {
-  background-color: #c9c9c9;
+  background-color: white;
   border-radius: 8px;
   height: 45px;
   border: none;
@@ -105,6 +110,7 @@
   justify-content: space-between;
   margin-bottom: 32px;
   align-items: center;
+  flex-wrap: wrap;
 }
 .rememberPasswordCheckbox {
   margin: 0;
@@ -115,18 +121,18 @@
   align-items: center;
   cursor: pointer;
   gap: 12px;
+  flex-wrap: wrap;
 }
 .rememberedText {
-  color: var(--black);
-  font-family: var(--h5-regular-font-family);
+  /* color: var(--black); */
   font-size: var(--h5-regular-font-size);
   font-weight: var(--h5-regular-font-weight);
   margin: 0;
   padding: 0;
 }
 .forgotPassword {
-  color: var(--black);
-  font-family: var(--h5-medium-font-family);
+  color: white;
+
   font-size: var(--h5-medium-font-size);
   font-weight: var(--h5-regular-font-weight);
   border: none;
@@ -136,25 +142,29 @@
 .forgotPasswordContainer {
   border-bottom-style: solid;
   border-bottom-width: 0.5px;
-  border-color: #00000076;
+  border-color: white;
   padding: 4px 8px;
 }
 .submitButton {
   all: unset;
+  width: fit-content;
   align-items: center;
-  background-color: var(--white);
+  background-color: #a259ff;
   border-radius: 8px;
-  box-sizing: border-box;
+  margin-bottom: 10px;
   display: inline-flex;
   gap: 12px;
   justify-content: center;
   padding: 12px 24px;
-  margin-bottom: 24px;
   transition: box-shadow 0.3s ease;
   cursor: pointer; /* Добавим указатель при наведении */
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.14);
+  @media screen and (min-width: 768px) {
+    width: fit-content;
+    transform: scale(0.5);
+  }
 }
 
 .textWrapper {
@@ -178,7 +188,7 @@
 }
 
 .registerLink {
-  color: var(--black);
+  /* color: var(--black); */
   font-size: 20px;
   font-weight: 400;
   text-align: center;
