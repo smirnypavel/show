@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/About/About.module.css";
-import SearchCity from "@/components/trash/SitySearchNew";
+import SearchCity from "@/components/helpers/SitySearchNew";
 
 const About = () => {
   return (
@@ -9,7 +9,7 @@ const About = () => {
         Вітаю Вас!!! Але ми ще працюємо над ціею сторінкою
       </p>
 
-      <SearchCity />
+      {/* <SearchCity /> */}
     </div>
   );
 };

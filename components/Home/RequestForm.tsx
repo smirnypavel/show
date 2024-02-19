@@ -11,6 +11,7 @@ import AutocompleteComponent from "../Layout/Header/ChooseLocation";
 import DateTimePicker from "../helpers/DateTimePicker";
 import Modal from "../helpers/Modal";
 import SmsCodeInput from "../helpers/SmsCodeInput";
+import SearchCity from "../helpers/SitySearchNew";
 const badWordsFilter = new BadWordsNext();
 badWordsFilter.add(require("bad-words-next/data/ru.json")); // Добавляем словарь для русского языка
 badWordsFilter.add(require("bad-words-next/data/ua.json")); // Добавляем словарь для украинского языка
@@ -175,7 +176,9 @@ const RequestForm = () => {
               </div>
               <div className={styles.titleLocation}>Локація *</div>
               <div className={styles.locationWrapper}>
-                <AutocompleteComponent onCitySelect={handleCitySelect} />
+                {/* <AutocompleteComponent onCitySelect={handleCitySelect} /> */}
+                <SearchCity onCitySelect={handleCitySelect} />
+
                 <Field
                   type="text"
                   name="address"

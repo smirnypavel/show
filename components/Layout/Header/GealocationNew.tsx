@@ -15,7 +15,6 @@ const Geolocation = () => {
   useEffect(() => {
     const storedCity = localStorage.getItem("userCity");
     if (storedCity) {
-      // setLocation(storedCity);
       return; // Завершаем выполнение эффекта, если значение уже есть
     }
     if ("geolocation" in navigator) {

@@ -4,6 +4,7 @@ import styles from "@/styles/components/Artist/ArtistSearchBar.module.css";
 import { BsSearch, BsX } from "react-icons/bs";
 import ChooseLocationArtist from "./ChooseLocationArtist";
 import { useRouter } from "next/router";
+import SearchCityArtistList from "../Layout/Header/ChooseLocationNew";
 
 const ArtistSearchBar = () => {
   const [req, setSearchTerm] = useState("");
@@ -61,7 +62,8 @@ const ArtistSearchBar = () => {
             onChange={handleInputChange}
             className={styles.inputSearch}
           />
-          <ChooseLocationArtist />
+          {/* <ChooseLocationArtist /> */}
+          <SearchCityArtistList />
         </div>
         <button
           className={styles.searchButton}
