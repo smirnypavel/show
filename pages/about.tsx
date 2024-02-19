@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/About/About.module.css";
-import SkeletonTopArtist from "@/components/helpers/Placeholders/SkeletonTopArtist";
+import SearchCity from "@/components/trash/SitySearchNew";
 
 const About = () => {
   return (
@@ -8,7 +8,8 @@ const About = () => {
       <p className={styles.p}>
         Вітаю Вас!!! Але ми ще працюємо над ціею сторінкою
       </p>
-      <SkeletonTopArtist />
+
+      <SearchCity />
     </div>
   );
 };
