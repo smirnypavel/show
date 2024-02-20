@@ -3,6 +3,7 @@ import customGeo from "@/public/custom.geo.json";
 import styles from "@/styles/components/Artist/SearchCityArtistList.module.css";
 import { useRouter } from "next/router";
 import { PiXCircle } from "react-icons/pi";
+import { HiOutlineLocationMarker } from "react-icons/hi";
 
 interface City {
   name: string;
@@ -107,19 +108,24 @@ const SearchCityArtistList = () => {
 
   return (
     <div>
-      <input
-        ref={inputRef}
-        type="text"
-        placeholder={userCity || "Вся Україна"}
-        value={selectedCity || query}
-        onChange={handleInputChange}
-        className={styles.input}
-        onFocus={() => {
-          inputRef.current?.dispatchEvent(
-            new Event("input", { bubbles: true })
-          );
-        }}
-      />
+      <div className={styles.inputContainer}>
+        <HiOutlineLocationMarker
+          className={selectedCity ? styles.geoIconActive : styles.geoIcon}
+        />
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder={userCity || "Вся Україна"}
+          value={selectedCity || query}
+          onChange={handleInputChange}
+          className={styles.input}
+          onFocus={() => {
+            inputRef.current?.dispatchEvent(
+              new Event("input", { bubbles: true })
+            );
+          }}
+        />
+      </div>
       {query && (
         <ul className={styles.itemList}>
           {cities.map((city) => (

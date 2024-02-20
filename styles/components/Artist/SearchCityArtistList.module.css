@@ -1,3 +1,10 @@
+.inputContainer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 60px;
+  top: 0;
+}
 .input {
   @media screen and (min-width: 768px) {
     position: relative;
@@ -8,11 +15,30 @@
     border: none;
     padding-left: 16px;
     width: 130px;
-    position: absolute;
-    right: 0;
-    top: 0;
+
     transition: width 0.3s ease; /* Добавляем анимацию перехода для плавного изменения ширины */
   }
+}
+.input:focus-within {
+  width: 230px;
+}
+
+.input:focus-within {
+  transform: translateX(
+    -0px
+  ); /* Используем transform для сдвига контейнера autocomplete */
+  transition: transform 0.3s ease; /* Анимация перехода сдвига контейнера autocomplete */
+}
+.geoIcon {
+  width: 24px;
+  height: 24px;
+  color: #a259ff;
+}
+
+.geoIconActive {
+  width: 24px;
+  height: 24px;
+  color: #a259ff;
 }
 
 .itemList {

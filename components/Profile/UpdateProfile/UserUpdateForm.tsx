@@ -10,6 +10,7 @@ import UpdateInputUi from "@/components/Ui/UpdateInput";
 import UpdateLocation from "./UpdateLocation";
 import { FaCheck } from "react-icons/fa6";
 import { LuPencil } from "react-icons/lu";
+import SearchCity from "@/components/helpers/SitySearchNew";
 
 const UserUpdateForm = () => {
   const user = useAppSelector(getUser);
@@ -74,12 +75,13 @@ const UserUpdateForm = () => {
           )}
         </button>
         {isEditing ? (
-          <UpdateLocation onCitySelect={handleCitySelect} />
+          // <UpdateLocation onCitySelect={handleCitySelect} />
+          <SearchCity onCitySelect={handleCitySelect} />
         ) : (
           <div className={styles.location}>
             {`${
               user?.location
-                ? user.location
+                ? user.location.split(",")[0]
                 : "Тут має бути місто чи область де Ви працюєте"
             }`}
           </div>

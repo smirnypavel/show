@@ -31,12 +31,9 @@ const Geolocation = () => {
             `https://nominatim.openstreetmap.org/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&accept-language=ua&format=json`
           );
           const data = await response.json();
-          console.log(data);
+
           if (data) {
-            localStorage.setItem(
-              "userCity",
-              `${data.address.city}, ${data.address.state}`
-            );
+            localStorage.setItem("userCity", `${data.address.city}`);
           } else return;
         }
 

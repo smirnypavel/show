@@ -63,14 +63,14 @@ const ArtistSearchBar = () => {
             className={styles.inputSearch}
           />
           {/* <ChooseLocationArtist /> */}
-          <SearchCityArtistList />
+          <SearchCityArtistList />{" "}
+          <button
+            className={styles.searchButton}
+            type="button"
+            onClick={handleSearchClick}>
+            <BsSearch className={styles.buttonIcon} />
+          </button>
         </div>
-        <button
-          className={styles.searchButton}
-          type="button"
-          onClick={handleSearchClick}>
-          <BsSearch className={styles.buttonIcon} />
-        </button>
       </div>
       <SearchBarCategorySelect />
     </div>
