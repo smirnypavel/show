@@ -1,31 +1,5 @@
-/* styles.module.css */
-
-.autocompleteContainer {
-  position: relative;
-}
-
-.pac-container {
-  background-color: rgb(223, 11, 11);
-  padding: 5px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.pac-item {
-  padding: 3px 5px;
-  cursor: pointer;
-}
-
-.pac-item:hover {
-  background-color: #e61717;
-}
 .input {
+  position: relative;
   background-color: #f4f4f4;
   border-radius: 8px;
   height: 31px;
@@ -38,4 +12,32 @@
   @media screen and (min-width: 768px) {
     width: 260px;
   }
+}
+
+.itemList {
+  width: 90%;
+  margin-top: 5px;
+  position: absolute;
+  height: fit-content;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.item {
+  background-color: #3b3b3b;
+  width: 100%;
+  padding: 10px;
+  height: fit-content;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: border 0.3s ease; /* Плавный переход для свойства border */
+}
+
+.item:hover {
+  border-color: #a259ff; /* Изменение цвета границы при наведении */
 }

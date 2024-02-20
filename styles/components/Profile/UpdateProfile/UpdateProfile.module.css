@@ -59,11 +59,15 @@
   border-bottom-right-radius: 20px;
 }
 .gearIcon {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   animation: rotate 2s linear infinite;
   color: #ffff;
   cursor: pointer;
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
 }
 @keyframes rotate {
   from {
@@ -141,23 +145,30 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-top: 10px;
 }
 .contactItem {
+  font-size: 12px;
   display: flex;
   gap: 10px;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+  }
 }
 .descriptionContainer {
   margin-top: 30px;
 }
 .label {
   color: #858584;
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 35px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @media screen and (min-width: 768px) {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
 .description {
   margin-top: auto;
@@ -368,4 +379,8 @@
 .buttonCloseIcon {
   width: 32px;
   height: 32px;
+}
+.buttonPhotoVideo {
+  background: none;
+  border: none;
 }

@@ -318,12 +318,23 @@ const UpdateProfile = () => {
               }>
               Фото
             </button>
-            <PiGearSixThin
+            <button
+              type="button"
+              className={styles.buttonPhotoVideo}>
+              {" "}
+              <PiGearSixThin
+                className={styles.gearIcon}
+                onClick={() => {
+                  setModalVideoPhoto(true);
+                }}
+              />
+            </button>
+            {/* <PiGearSixThin
               className={styles.gearIcon}
               onClick={() => {
                 setModalVideoPhoto(true);
               }}
-            />
+            /> */}
             <button
               onClick={handleShowVideos}
               className={
