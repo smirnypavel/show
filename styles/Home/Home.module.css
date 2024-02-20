@@ -14,17 +14,14 @@
 .requestFormContainer {
   display: none;
   @media screen and (min-width: 768px) {
-    display: unset;
+    display: block;
   }
 }
 .requestForm {
-  display: none;
-  @media screen and (min-width: 768px) {
-    margin-top: 20px;
-    display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-  }
+  margin-top: 20px;
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
 }
 .title {
   margin-top: 20px;
