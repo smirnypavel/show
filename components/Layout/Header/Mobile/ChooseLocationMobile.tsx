@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import customGeo from "@/public/custom.geo.json";
-import styles from "@/styles/components/Artist/SearchCityArtistList.module.css";
+import styles from "@/styles/Layout/Header/Mobile/ChooseLocationMobile.module.css";
 import { useRouter } from "next/router";
 import { PiXCircle } from "react-icons/pi";
 import { HiOutlineLocationMarker, HiX } from "react-icons/hi";
@@ -13,7 +13,7 @@ interface City {
   place_id: number;
 }
 
-const SearchCityArtistList = () => {
+const SearchCityMobile = () => {
   const router = useRouter();
 
   const [cities, setCities] = useState<City[]>([]);
@@ -162,11 +162,11 @@ const SearchCityArtistList = () => {
           ))}
         </ul>
       )}
-      {notification && (
+      {/* {notification && (
         <div className={styles.notificationWrapper}>
           <div className={styles.notification}>
             Локація вашого пошуку визначилася як:{" "}
-            <span className={styles.cityName}>{userCity}</span> ?
+            <span className={styles.cityName}>{userCity}</span>
             <button
               type="button"
               onClick={handleCloseNotification}
@@ -175,9 +175,9 @@ const SearchCityArtistList = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
-export default SearchCityArtistList;
+export default SearchCityMobile;

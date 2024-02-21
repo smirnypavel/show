@@ -15,6 +15,8 @@ import NavBar from "./Mobile/NavBar";
 import { Kodchasan } from "next/font/google";
 const kodchasan = Kodchasan({ weight: ["700", "500"], subsets: ["latin"] });
 import { Comfortaa } from "next/font/google";
+
+import SearchCityMobile from "./Mobile/ChooseLocationMobile";
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const Header = () => {
@@ -114,6 +116,7 @@ const Header = () => {
                 onClick={handleSearch}>
                 Знайти
               </button>
+              <SearchCityMobile />
             </div>
           </div>
         </div>
