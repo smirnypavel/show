@@ -234,7 +234,6 @@
   justify-content: center;
   @media (min-width: 768px) {
     gap: 30px;
-    width: 1050px;
   }
 }
 .photoListItem {
