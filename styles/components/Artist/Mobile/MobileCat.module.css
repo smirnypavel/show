@@ -25,13 +25,15 @@
   overflow: hidden;
   margin-top: 15px;
   width: 100%;
-  height: calc(100% - 260px);
+  height: 100vh;
+
   background: rgba(255, 255, 255, 0.01);
   backdrop-filter: blur(10px);
   position: absolute;
   z-index: 4;
   left: -200%;
   transition: left 0.3s ease-in-out;
+  overflow: scroll;
 }
 
 .catContainer.show {
