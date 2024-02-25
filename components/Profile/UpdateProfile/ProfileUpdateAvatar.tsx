@@ -7,6 +7,12 @@ import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { useAppDispatch } from "@/redux/hooks";
 import { uploadAvatar } from "@/redux/auth/authOperations";
 import LoaderImg from "@/components/helpers/loaderImg/LoaderImg";
+import { Comfortaa } from "next/font/google";
+
+const comfortaa = Comfortaa({
+  weight: ["300", "400", "500", "600"],
+  subsets: ["latin"],
+});
 
 const ProfileUpdateAvatar = () => {
   const user = useSelector(getUser);
@@ -31,7 +37,7 @@ const ProfileUpdateAvatar = () => {
     }
   };
   return (
-    <div>
+    <div className={comfortaa.className}>
       <div className={styles.avatarContainer}>
         <div className={styles.avatarWrapper}>
           {loading ? ( // Если идет загрузка, показываем лоадер
@@ -40,25 +46,32 @@ const ProfileUpdateAvatar = () => {
             <Image
               src={avatarUrl}
               alt="avatar"
-              fill
-              className={styles.avatar}
-              sizes="(min-width: 808px) 50vw, 100vw"
+              sizes="100vw"
+              // Make the image display full width
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+              }}
             />
           ) : (
             <Image
               src={UserNoPhoto}
               alt="No Photo"
-              fill
-              className={styles.avatar}
-              sizes="(min-width: 808px) 50vw, 100vw"
+              sizes="100vw"
+              // Make the image display full width
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
             />
           )}
         </div>
         <div className={styles.updateLinkContainer}>
           <button
-            className={styles.updateLink}
+            className={`${styles.updateLink} ${comfortaa.className}`}
             onClick={handleButtonClick}>
-            Змінити фото
+            Додати аватар
           </button>
           {/* Скрываем инпут и используем его через кнопку */}
           <input

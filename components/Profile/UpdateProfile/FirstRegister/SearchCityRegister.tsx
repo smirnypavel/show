@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import customGeo from "@/public/custom.geo.json";
-import styles from "@/styles/Layout/Header/Mobile/ChooseLocationMobile.module.css";
-import { useRouter } from "next/router";
-import { PiXCircle } from "react-icons/pi";
-import { HiOutlineLocationMarker, HiX } from "react-icons/hi";
+import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/SerchCityRegister.module.css";
+import { FaCheck } from "react-icons/fa";
+import { useAppDispatch } from "@/redux/hooks";
+import { updateUser } from "@/redux/auth/authOperations";
 
 interface City {
   name: string;
@@ -13,23 +13,13 @@ interface City {
   place_id: number;
 }
 
-const SearchCityMobile = () => {
-  const router = useRouter();
-
+const SearchCityRegister = () => {
   const [cities, setCities] = useState<City[]>([]);
   const [query, setQuery] = useState("");
-  const [notification, setNotification] = useState(true);
-  const [userCity, setUserCity] = useState(localStorage.getItem("userCity"));
-  const inputRef = useRef<HTMLInputElement>(null);
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
-  const loc: string | null = localStorage.getItem("userCity");
-  const locQuestExists: boolean = localStorage.getItem("locQuest") !== null;
-
-  useEffect(() => {
-    if (locQuestExists) {
-      setNotification(false);
-    }
-  }, [locQuestExists]);
+  const [requestCity, setRequestCity] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -48,7 +38,8 @@ const SearchCityMobile = () => {
       `https://nominatim.openstreetmap.org/search?q=${query}&format=json&countrycodes=ua&addressdetails=1&accept-language=ua&polygon_geojson=${customGeo}`
     );
     const data = await response.json();
-
+    console.log(data);
+    // Filter and map cities
     const filteredCities = data
       .filter(
         (item: any) =>
@@ -62,7 +53,6 @@ const SearchCityMobile = () => {
         place_id: item.place_id,
       }));
 
-    // Partial matching logic
     const lowerCaseQuery = query.toLowerCase();
     const matchedCities = filteredCities.filter((city: { name: string }) =>
       city.name.toLowerCase().includes(lowerCaseQuery)
@@ -72,70 +62,39 @@ const SearchCityMobile = () => {
   };
 
   const handleCityClick = (city: City) => {
+    setRequestCity(city.name);
     setSelectedCity(city.name.split(",")[0]);
-    localStorage.setItem("userCity", city.name.split(",")[0]);
-    setUserCity(city.name.split(",")[0]);
-    router.push({
-      pathname: "/artists",
-      query: {
-        ...router.query,
-        loc: city.name.split(",")[0],
-      },
-    });
-    setQuery(""); // Clear query to allow new searches
+    setQuery("");
+    setIsEditing(true);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedCity(null); // Clear selected city when input changes
     setQuery(e.target.value); // Update query state
   };
-  const handleCloseNotification = () => {
-    localStorage.setItem("locQuest", "close");
-    setNotification(false);
-  };
-  const handleClearInput = () => {
-    setUserCity("Вся Україна");
-    localStorage.removeItem("userCity");
-    localStorage.removeItem("locQuest");
-
-    router.push({
-      pathname: "/artists",
-      query: {
-        ...router.query,
-        loc: "",
-      },
-    });
-
-    if (inputRef.current) {
-      inputRef.current.value = ""; // Очистка поля ввода
-    }
+  const handleSubmit = () => {
+    setIsEditing(false);
+    dispatch(updateUser({ location: requestCity }));
   };
 
   return (
     <div>
-      <div className={styles.inputContainer}>
-        <HiOutlineLocationMarker
-          className={selectedCity ? styles.geoIconActive : styles.geoIcon}
-        />
+      <div className={styles.inputGroup}>
         <input
-          ref={inputRef}
           type="text"
-          placeholder={userCity || "Вся Україна"}
+          placeholder="Введіть назву населеного пункту..."
           value={selectedCity || query}
           onChange={handleInputChange}
           className={styles.input}
-          onFocus={() => {
-            inputRef.current?.dispatchEvent(
-              new Event("input", { bubbles: true })
-            );
-          }}
         />
-        <button
-          onClick={handleClearInput}
-          className={styles.clearButton}
-          tabIndex={-1}>
-          <HiX />
-        </button>
+        {isEditing && (
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className={styles.buttonSubmit}>
+            <FaCheck className={styles.iconOk} />
+          </button>
+        )}
       </div>
       {query && (
         <ul className={styles.itemList}>
@@ -154,4 +113,4 @@ const SearchCityMobile = () => {
   );
 };
 
-export default SearchCityMobile;
+export default SearchCityRegister;

@@ -1,0 +1,35 @@
+.inputGroup {
+  display: flex;
+  align-items: center;
+}
+.input {
+  @media (min-width: 768px) {
+    display: flex;
+    padding: 16px;
+    position: relative;
+    width: 280px;
+    border: 1px solid #858584;
+    align-items: center;
+    border-radius: 20px;
+    background-color: #fff;
+  }
+}
+.input::placeholder {
+  color: #2b2b2b;
+  font-size: 16px;
+}
+.buttonSubmit {
+  height: 24px;
+  width: 24px;
+  border: none;
+  padding: 0;
+  margin-left: 10px;
+  background-color: transparent;
+}
+.iconOk {
+  color: green;
+  height: 24px;
+  width: 24px;
+  border: none;
+  padding: 0;
+}

@@ -98,6 +98,21 @@ export const googleAuth = createAsyncThunk(
     }
   }
 );
+export const verifyMail = createAsyncThunk(
+  "auth/verifyMail",
+  async (userId: string, thunkAPI) => {
+    const initialToken = localStorage.getItem("token");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.get(`/users/verify-email/${userId}`);
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
   console.log("logout Operation");

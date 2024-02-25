@@ -36,6 +36,7 @@ const SearchCityArtistList = () => {
       });
     }
   }, [loc]);
+
   useEffect(() => {
     if (locQuestExists) {
       setNotification(false);

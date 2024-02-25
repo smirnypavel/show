@@ -54,7 +54,9 @@ const UserUpdateForm = () => {
       <UpdateInputUi
         initialValue={user.title}
         onSubmit={(value) => handleSubmitValue(value, "title")}
-        placeholder={"Тут має бути назва Вашого гурту або назва Вашого "}
+        placeholder={
+          "Тут має бути назва Вашого гурту або назва Вашого колективу "
+        }
       />
       <p className={styles.titleInput}>Ціна:</p>
       <UpdateInputUi

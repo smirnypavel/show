@@ -13,6 +13,7 @@ import {
   updatePassword,
   updateCategory,
   deleteCat,
+  verifyMail,
 } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
@@ -112,6 +113,18 @@ export const authSlice = createSlice({
       .addCase(googleAuth.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isLoading = false;
+        state.isLoading = false;
+      })
+      .addCase(verifyMail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(verifyMail.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(verifyMail.fulfilled, (state, action) => {
+        state.user = action.payload.data.posts;
         state.isLoading = false;
         state.isLoading = false;
       })

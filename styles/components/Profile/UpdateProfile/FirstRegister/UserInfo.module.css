@@ -1,0 +1,10 @@
+.container {
+  width: fit-content;
+  height: fit-content;
+  text-align: start;
+}
+.titleInput {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 12px;
+}

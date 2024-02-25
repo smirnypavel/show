@@ -1,0 +1,44 @@
+.container {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1200px) {
+  }
+}
+
+.socialContainer {
+  /* margin-top: 20px; */
+  width: 100%;
+  /* overflow: hidden; */
+
+  @media (min-width: 768px) {
+  }
+}
+.contactsTitle {
+  display: none;
+  @media (min-width: 768px) {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.contactLabel {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.contactIcon {
+  height: 24px;
+  width: 24px;
+}
+.contactIconWhatsapp {
+  height: 30px;
+  width: 30px;
+}

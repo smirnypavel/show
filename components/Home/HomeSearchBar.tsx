@@ -14,7 +14,6 @@ const HomeSearchBar = () => {
   // console.log(token);
   useEffect(() => {
     const authenticateWithGoogle = async () => {
-      console.log(token);
       try {
         if (typeof token === "string") {
           await dispatch(googleAuth(token));
