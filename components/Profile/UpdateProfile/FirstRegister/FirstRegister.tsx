@@ -87,6 +87,10 @@ const MultiPageComponent = () => {
         return <Page4 />;
       case 5:
         return <Page5 />;
+      case 6:
+        return <Page6 />;
+      case 7:
+        return <Page7 />;
       default:
         return null;
     }
