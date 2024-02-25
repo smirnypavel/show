@@ -24,13 +24,18 @@ import { SiMaildotru } from "react-icons/si";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getUser } from "@/redux/auth/authSelectors";
 import { uploadAvatar } from "@/redux/auth/authOperations";
-import UpdateSocial from "./UpdateSocial";
-import UpdateContacts from "./UpdateContacts";
-import UserCat from "./UserCat";
-import UpdateMedia from "./UploadMedia/UpdateMedia";
-import ProfileUpdateInfo from "./ProfileUpdateInfo";
+import {
+  UpdateSocial,
+  UpdateContacts,
+  UserCat,
+  UpdateMedia,
+  ProfileUpdateInfo,
+} from "@/components/Profile/UpdateProfile";
 
-const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
+const comfortaa = Comfortaa({
+  weight: ["300", "400", "500", "600"],
+  subsets: ["latin"],
+});
 
 const UpdateProfile = () => {
   const [showPhotos, setShowPhotos] = useState(true); // состояние для отслеживания отображения фотографий/видео
