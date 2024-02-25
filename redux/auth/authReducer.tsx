@@ -124,9 +124,9 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(verifyMail.fulfilled, (state, action) => {
-        state.user = action.payload.data.posts;
+        state.user = action.payload;
         state.isLoading = false;
-        state.isLoading = false;
+        state.isLoggedIn = true;
       })
       .addCase(logOut.pending, (state) => {
         state.isLoading = true;
