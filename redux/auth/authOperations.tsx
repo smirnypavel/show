@@ -107,6 +107,9 @@ export const verifyMail = createAsyncThunk(
     }
     try {
       const { data } = await axios.get(`/users/verify-email/${userId}`);
+
+      localStorage.setItem("refreshToken", data.refresh_token);
+
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
