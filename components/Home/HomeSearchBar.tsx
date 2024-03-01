@@ -18,10 +18,10 @@ const HomeSearchBar = () => {
   useEffect(() => {
     const authenticateWithGoogle = async () => {
       try {
-        if (typeof token === "string" && !authenticated) {
+        if (typeof token === "string") {
           // Додано перевірку на authenticated
           const result = await dispatch(googleAuth(token));
-          if (!isReg && result.payload.success) {
+          if (!result.payload.data.register) {
             router.push("/profile/first-register");
             setAuthenticated(true);
           }
@@ -34,7 +34,7 @@ const HomeSearchBar = () => {
     if (token) {
       authenticateWithGoogle();
     }
-  }, [token, isReg]);
+  }, [token]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
