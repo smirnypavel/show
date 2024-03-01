@@ -22,8 +22,8 @@ const HomeSearchBar = () => {
           // Додано перевірку на authenticated
           const result = await dispatch(googleAuth(token));
           if (!isReg && result.payload.success) {
-            setAuthenticated(true); // Встановлюємо authenticated в true
             router.push("/profile/first-register");
+            setAuthenticated(true);
           }
         }
       } catch (error) {
@@ -34,7 +34,7 @@ const HomeSearchBar = () => {
     if (token) {
       authenticateWithGoogle();
     }
-  }, [token, isReg, authenticated]);
+  }, [token, isReg]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
