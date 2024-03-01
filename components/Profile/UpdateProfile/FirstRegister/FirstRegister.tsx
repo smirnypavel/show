@@ -18,6 +18,8 @@ import UpdateSocialFirstReg from "./UpdateSocialFirstReg";
 import UpdateMediaFirstReg from "./UpdateMediaFirstReg";
 import FinishReg from "./FinishReg";
 import Link from "next/link";
+import { useAppDispatch } from "@/redux/hooks";
+import { updateUser } from "@/redux/auth/authOperations";
 
 // Компоненты для каждой страницы
 const Page1 = () => (
@@ -59,7 +61,8 @@ const Page7 = () => (
 );
 
 const MultiPageComponent = () => {
-  const router = useRouter();
+  const dispatch = useAppDispatch();
+  // const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 7;
 
@@ -75,9 +78,8 @@ const MultiPageComponent = () => {
     }
   };
 
-  const finish = () => {
-    // Обработка завершения, например, переход на другую страницу или выполнение действий
-    console.log("Завершено!");
+  const finish = async () => {
+    await dispatch(updateUser({ register: true }));
   };
 
   const renderPageContent = () => {
