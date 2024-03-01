@@ -21,7 +21,7 @@ const HomeSearchBar = () => {
           const result = await dispatch(googleAuth(token));
 
           // Перевірка, чи користувач перший раз реєструється
-          if (!isReg) {
+          if (!isReg && result.payload.success) {
             console.log("должен сработать");
             router.push("/profile/first-register");
           }
