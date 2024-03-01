@@ -8,6 +8,7 @@ import { isFirstReg } from "@/redux/auth/authSelectors";
 
 const HomeSearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
   const isReg = useAppSelector(isFirstReg);
 
   const router = useRouter();
@@ -17,12 +18,11 @@ const HomeSearchBar = () => {
   useEffect(() => {
     const authenticateWithGoogle = async () => {
       try {
-        if (typeof token === "string") {
+        if (typeof token === "string" && !authenticated) {
+          // Додано перевірку на authenticated
           const result = await dispatch(googleAuth(token));
-
-          // Перевірка, чи користувач перший раз реєструється
           if (!isReg && result.payload.success) {
-            console.log("должен сработать");
+            setAuthenticated(true); // Встановлюємо authenticated в true
             router.push("/profile/first-register");
           }
         }
@@ -34,7 +34,7 @@ const HomeSearchBar = () => {
     if (token) {
       authenticateWithGoogle();
     }
-  }, [token]);
+  }, [token, isReg, authenticated]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
