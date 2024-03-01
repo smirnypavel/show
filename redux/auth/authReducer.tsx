@@ -33,6 +33,7 @@ const initialState: IAuthState = {
     trial: false,
     verify: false,
     ban: false,
+    register: false,
     photo: [{ publicId: "", url: "" }],
     avatar: { publicId: "", url: "" },
     video: [{ publicId: "", url: "" }],

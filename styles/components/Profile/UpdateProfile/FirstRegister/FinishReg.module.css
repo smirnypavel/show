@@ -1,0 +1,39 @@
+.labelResend {
+  text-align: justify;
+  @media (min-width: 768px) {
+  }
+}
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 10px;
+  @media (min-width: 768px) {
+    gap: 30px;
+    margin-top: 24px;
+  }
+}
+.linkBot {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  @media (min-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
+}
+.qrCode {
+  margin-top: 24px;
+  border-radius: 16px;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+  box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
+}

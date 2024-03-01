@@ -1,0 +1,11 @@
+.container {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: scroll;
+  @media (min-width: 768px) {
+    height: 420px;
+  }
+}

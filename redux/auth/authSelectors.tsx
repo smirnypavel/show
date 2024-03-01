@@ -15,6 +15,7 @@ export const getUserPhoto = (state: { auth: { user: { photo: IPhoto[] } } }) =>
   state.auth.user.photo;
 export const getUserVideo = (state: { auth: { user: { video: ILink[] } } }) =>
   state.auth.user.video;
-
+export const isFirstReg = (state: { auth: { user: { register: boolean } } }) =>
+  state.auth.user.register;
 // export const getRole = (state: { auth: { user: IUserAuth } }) =>
 //   state.auth.user.role;
