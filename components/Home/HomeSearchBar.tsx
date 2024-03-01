@@ -21,6 +21,10 @@ const HomeSearchBar = () => {
           const result = await dispatch(googleAuth(token));
 
           // Перевірка, чи користувач перший раз реєструється
+          if (!isReg) {
+            console.log("должен сработать");
+            router.push("/profile/first-register");
+          }
         }
       } catch (error) {
         console.error("Ошибка при входе:", error);
@@ -30,11 +34,7 @@ const HomeSearchBar = () => {
     if (token) {
       authenticateWithGoogle();
     }
-    if (!isReg) {
-      console.log("должен сработать");
-      router.push("/profile/first-register");
-    }
-  }, [token]);
+  }, [token, isReg]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
