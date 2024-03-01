@@ -20,8 +20,8 @@ const HomeSearchBar = () => {
       try {
         if (typeof token === "string") {
           // Додано перевірку на authenticated
-          const result = await dispatch(googleAuth(token));
-          if (!result.payload.data.register) {
+          const data = await dispatch(googleAuth(token));
+          if (!data.payload.register) {
             router.push("/profile/first-register");
             setAuthenticated(true);
           }
