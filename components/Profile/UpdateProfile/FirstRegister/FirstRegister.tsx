@@ -15,6 +15,9 @@ import banner from "@/public/bannerForRegister/banner.png";
 import UpdateContactsFirstRegister from "./UpdateContactFirstRegister";
 import UserCatFirstRegister from "./UserCatFirstRegister";
 import UpdateSocialFirstReg from "./UpdateSocialFirstReg";
+import UpdateMediaFirstReg from "./UpdateMediaFirstReg";
+import FinishReg from "./FinishReg";
+import Link from "next/link";
 
 // Компоненты для каждой страницы
 const Page1 = () => (
@@ -44,12 +47,14 @@ const Page5 = () => (
 );
 const Page6 = () => (
   <div>
-    <UpdateMedia />
+    <UpdateMediaFirstReg />
   </div>
 );
 const Page7 = () => (
   <div>
-    <div>page7</div>
+    <div>
+      <FinishReg />
+    </div>
   </div>
 );
 
@@ -101,6 +106,7 @@ const MultiPageComponent = () => {
       return (
         <div className={styles.buttonContainerFirstPage}>
           <button
+            type="button"
             onClick={goToNextPage}
             className={styles.button}>
             Далі
@@ -111,26 +117,30 @@ const MultiPageComponent = () => {
       return (
         <div className={styles.buttonContainer}>
           <button
+            type="button"
             onClick={goToPreviousPage}
             className={styles.button}>
             Назад
           </button>
-          <button
+          <Link
             onClick={finish}
-            className={styles.button}>
+            className={styles.button}
+            href={"/profile"}>
             Завершити
-          </button>
+          </Link>
         </div>
       );
     } else {
       return (
         <div className={styles.buttonContainer}>
           <button
+            type="button"
             onClick={goToPreviousPage}
             className={styles.button}>
             Назад
           </button>
           <button
+            type="button"
             onClick={goToNextPage}
             className={styles.button}>
             Далі

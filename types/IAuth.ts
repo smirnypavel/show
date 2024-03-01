@@ -36,6 +36,7 @@ export interface IUserAuth {
   description: string;
   price: string;
   social?: Social;
+  register: boolean;
 }
 
 export interface IPhoto {

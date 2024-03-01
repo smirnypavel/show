@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo123 from "@/public/logo/logo123.svg";
 import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
-import { IoMenu } from "react-icons/io5";
+
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
