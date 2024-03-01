@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
-import Image from "next/image";
+
 import styles from "@/styles/components/Auth/RegistrationForm.module.css";
 import { PiEyeClosed } from "react-icons/pi";
 import { PiEye } from "react-icons/pi";
-import facebookLogo from "@/public/logo/facebookLogo.svg";
-import GoogleLogo from "@/public/logo/GoogleLogo.svg";
+
 import SocialReg from "./SocialReg";
 // Определите тип для данных формы
 export type FormValues = {
@@ -45,7 +44,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
-  // Состояние для отслеживания видимости пароля
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -56,7 +54,7 @@ const RegistrationForm: React.FC<Props> = ({ onSubmit }) => {
         initialValues={{
           firstName: "",
           phone: "",
-          email: "", // Заменено имя поля на "email"
+          email: "",
           password: "",
           confirmPassword: "",
         }}

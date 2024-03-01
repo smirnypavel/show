@@ -186,3 +186,18 @@
     margin-bottom: 66px;
   }
 }
+
+.modal {
+  width: 450px;
+  /* height: 250px; */
+  padding: 20px;
+  background-color: #3b3b3b;
+  border-radius: 20px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  text-align: center;
+}
+.mail {
+  color: #a259ff;
+}
