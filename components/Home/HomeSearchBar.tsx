@@ -34,7 +34,7 @@ const HomeSearchBar = () => {
     if (token) {
       authenticateWithGoogle();
     }
-  }, [token, isReg]);
+  }, [token]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
