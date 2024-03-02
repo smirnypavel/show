@@ -46,24 +46,15 @@ const ProfileUpdateAvatar = () => {
             <Image
               src={avatarUrl}
               alt="avatar"
-              sizes="100vw"
-              // Make the image display full width
-              style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "cover",
-              }}
+              fill
+              className={styles.avatar}
             />
           ) : (
             <Image
               src={UserNoPhoto}
               alt="No Photo"
-              sizes="100vw"
-              // Make the image display full width
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
+              fill
+              className={styles.avatar}
             />
           )}
         </div>

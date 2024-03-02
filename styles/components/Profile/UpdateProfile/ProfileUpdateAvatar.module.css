@@ -10,8 +10,11 @@
   height: 100px;
   border-radius: 20px;
   overflow: hidden;
+  position: relative;
 }
-
+.avatar {
+  object-fit: cover;
+}
 .updateLinkContainer {
   margin-top: 5px;
 }
