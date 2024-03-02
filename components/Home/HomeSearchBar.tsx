@@ -23,7 +23,8 @@ const HomeSearchBar = () => {
           const data = await dispatch(googleAuth(token));
           if (!data.payload.register) {
             router.push("/profile/first-register");
-            setAuthenticated(true);
+          } else {
+            router.push("/profile");
           }
         }
       } catch (error) {
