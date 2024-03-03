@@ -188,13 +188,11 @@
 }
 
 .modal {
-  width: 450px;
-  /* height: 250px; */
+  max-width: 450px;
   padding: 20px;
   background-color: #3b3b3b;
   border-radius: 20px;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   text-align: center;
 }

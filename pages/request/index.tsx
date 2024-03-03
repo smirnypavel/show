@@ -1,9 +1,10 @@
 import RequestForm from "@/components/Home/RequestForm";
 import React from "react";
+import styles from "@/styles/RequestPage/RequestPage.module.css";
 
 const RequestPage = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <RequestForm />
     </div>
   );

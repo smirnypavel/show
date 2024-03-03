@@ -5,7 +5,5 @@
   flex-direction: column;
   gap: 20px;
   overflow-y: scroll;
-  @media (min-width: 768px) {
-    height: 420px;
-  }
+  height: 420px;
 }
