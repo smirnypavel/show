@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo123 from "@/public/logo/logo123.svg";
 import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
-
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoClose } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
@@ -31,6 +30,11 @@ const Header = () => {
   };
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+    if (!menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   };
   const handleInputChange = (event: {
     target: { value: React.SetStateAction<string> };
@@ -58,6 +62,11 @@ const Header = () => {
     });
     setReq("");
   };
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "auto"; // Reset overflow when component unmounts
+    };
+  }, []);
   return (
     <div className={comfortaa.className}>
       <div className={styles.mobileContainer}>
@@ -236,30 +245,7 @@ const Header = () => {
               Про нас
             </Link>
             <div className={styles.separator}></div>
-            <Link
-              onClick={toggleMenu}
-              href={"/profile"}
-              className={`${styles.link} ${
-                router.pathname === "/profile" ? styles.active : ""
-              }`}>
-              Профіль
-            </Link>
-            <Link
-              onClick={toggleMenu}
-              href={"/profile/update"}
-              className={`${styles.link} ${
-                router.pathname === "/profile/update" ? styles.active : ""
-              }`}>
-              Налаштування профілю
-            </Link>
-            <Link
-              onClick={toggleMenu}
-              href={"/profile/stats"}
-              className={`${styles.link} ${
-                router.pathname === "/profile/stats" ? styles.active : ""
-              }`}>
-              Статистика
-            </Link>
+
             {/* <Link
               onClick={toggleMenu}
               href={"/blog"}
@@ -268,39 +254,57 @@ const Header = () => {
               }`}>
               Блог
             </Link> */}
-            {/* {login ? (
-              <Link
-                onClick={toggleMenu}
-                href={"/profile"}
-                className={styles.avatarLink}>
-                <div className={styles.avatarWrapper}>
-                  {user.avatar.url ? (
-                    <Image
-                      src={user.avatar.url}
-                      alt={"user photo"}
-                      fill
-                      sizes="(min-width: 808px) 50vw, 100vw"
-                      className={styles.avatar}
-                    />
-                  ) : (
-                    <Image
-                      src={UserNoPhoto}
-                      alt={"user photo"}
-                      fill
-                      sizes="(min-width: 808px) 50vw, 100vw"
-                      className={styles.avatar}
-                    />
-                  )}
-                </div>
-                {user.firstName}
-              </Link>
+            {login ? (
+              <div>
+                <Link
+                  onClick={toggleMenu}
+                  href={"/profile"}
+                  className={styles.avatarLink}>
+                  <div className={styles.avatarWrapper}>
+                    {user.avatar.url ? (
+                      <Image
+                        src={user.avatar.url}
+                        alt={"user photo"}
+                        fill
+                        sizes="(min-width: 808px) 50vw, 100vw"
+                        className={styles.avatar}
+                      />
+                    ) : (
+                      <Image
+                        src={UserNoPhoto}
+                        alt={"user photo"}
+                        fill
+                        sizes="(min-width: 808px) 50vw, 100vw"
+                        className={styles.avatar}
+                      />
+                    )}
+                  </div>
+                  {user.firstName}
+                </Link>
+                <Link
+                  onClick={toggleMenu}
+                  href={"/profile/update"}
+                  className={`${styles.link} ${
+                    router.pathname === "/profile/update" ? styles.active : ""
+                  }`}>
+                  Налаштування профілю
+                </Link>
+                <Link
+                  onClick={toggleMenu}
+                  href={"/profile/stats"}
+                  className={`${styles.link} ${
+                    router.pathname === "/profile/stats" ? styles.active : ""
+                  }`}>
+                  Статистика
+                </Link>
+              </div>
             ) : (
               <Link
                 href={"/auth/login"}
                 className={styles.link}>
                 Я артист
               </Link>
-            )} */}
+            )}
           </div>
         </div>
       )}

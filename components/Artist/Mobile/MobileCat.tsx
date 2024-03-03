@@ -27,6 +27,11 @@ const MobileCat = () => {
   const router = useRouter();
   const toggleCatContainer = () => {
     setIsCatContainerVisible(!isCatContainerVisible);
+    // if (!isCatContainerVisible) {
+    //   document.body.style.overflow = "hidden";
+    // } else {
+    //   document.body.style.overflow = "auto";
+    // }
     setSelectedCategory(null);
   };
   const returnButton = () => {
@@ -211,7 +216,7 @@ const MobileCat = () => {
               selectedCategory ? styles.show : ""
             }`}>
             {selectedCategory && (
-              <p className={styles.catListItem}> {selectedCategory?.name}</p>
+              <p className={styles.subCatItem}> {selectedCategory?.name}</p>
             )}
             {selectedCategory && (
               <p

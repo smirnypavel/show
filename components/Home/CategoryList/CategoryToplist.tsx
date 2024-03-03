@@ -14,6 +14,7 @@ import animatorIcon from "@/public/icon/animator.svg";
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Home/CategoryList/CategoryToplist.module.css";
 import SceletonTopCategory from "@/components/helpers/Placeholders/SkeletonTopCategory";
+import Link from "next/link";
 
 const CategoryToplist = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -50,7 +51,8 @@ const CategoryToplist = () => {
           <div className={styles.categoryArtist}>Категорії не обрані</div>
         ) : (
           categories.slice(0, 4).map((cat) => (
-            <div
+            <Link
+              href={`/artists?cat=${cat._id}`}
               className={styles.categoryItem}
               key={cat._id}>
               <div className={styles.categoryImageContainer}>
@@ -131,7 +133,7 @@ const CategoryToplist = () => {
                 </div>
               </div>
               <div className={styles.categoryNameContainer}>{cat.name}</div>
-            </div>
+            </Link>
           ))
         )}
       </div>

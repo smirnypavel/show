@@ -29,10 +29,12 @@
 }
 .visibleContainer {
   margin-top: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   transition: top 0.1s ease-in-out;
   border-radius: 10px;
+  overflow: auto; /* Разрешить прокрутку внутри меню */
+  -webkit-overflow-scrolling: touch;
 }
 .move {
   height: 90px;
@@ -188,12 +190,17 @@
 }
 
 .link {
+  font-size: 36px;
   position: relative;
-  color: #858584;
   white-space: nowrap;
   width: fit-content;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.277);
   transition: color 0.2s ease;
+  @media (min-width: 1200px) {
+    /* font-size: 16px; */
+
+    color: #858584;
+  }
 }
 .link:hover {
   color: var(--white);
@@ -204,10 +211,14 @@
   position: absolute;
   bottom: -10px; /* Отступ полоски от нижней части .link */
   left: 0; /* Начало полоски */
-  height: 1px; /* Высота полоски */
+  height: 2px; /* Высота полоски */
   background-color: #a259ff6c; /* Цвет полоски */
   transition: width 0.2s ease-in-out; /* Плавный переход для изменения ширины */
   width: 0; /* Начальная ширина полоски (будет увеличиваться) */
+  @media (min-width: 1200px) {
+    background-color: #a259ff6c; /* Цвет полоски */
+    height: 1px; /* Высота полоски */
+  }
 }
 
 .link:hover::after, /* Появление линии при ховере */
@@ -218,7 +229,11 @@
 
 /* При желании, вы можете добавить другие стили для активного состояния */
 .link.active {
-  color: var(--white);
+  color: #a159ff;
+
+  @media (min-width: 1200px) {
+    color: var(--white);
+  }
 }
 .logoLink {
   color: var(--white);
