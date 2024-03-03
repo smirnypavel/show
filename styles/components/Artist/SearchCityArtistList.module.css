@@ -70,6 +70,8 @@
 }
 .notificationWrapper {
   position: absolute;
+  z-index: 1;
+
   width: 200px;
   height: fit-content;
   border-radius: 20px;
@@ -103,6 +105,7 @@
 }
 .clearButton {
   position: absolute;
+
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
