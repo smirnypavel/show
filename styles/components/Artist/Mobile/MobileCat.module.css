@@ -22,18 +22,16 @@
 }
 
 .catContainer {
-  overflow: hidden;
+  overflow: scroll;
   margin-top: 15px;
   width: 100%;
   height: 100vh;
-
   background: rgba(255, 255, 255, 0.01);
   backdrop-filter: blur(10px);
   position: absolute;
   z-index: 4;
   left: -200%;
   transition: left 0.3s ease-in-out;
-  overflow: scroll;
 }
 
 .catContainer.show {
@@ -61,6 +59,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+  /* overflow: hidden; */
 }
 .catList {
   width: 90%;
@@ -70,6 +69,8 @@
   gap: 10px;
   position: absolute;
   transition: opacity 0.3s ease-in-out; /* Adjusted transition properties */
+  overflow: auto; /* Разрешить прокрутку внутри меню */
+  -webkit-overflow-scrolling: touch;
 }
 .catList.hide {
   opacity: 0; /* Added opacity property */
@@ -130,19 +131,13 @@
 .subCatItem {
   margin-top: 10px;
   padding: 10px;
-  /* color: var(--white);
-  font-size: var(--h1-medium-font-size);
-  font-weight: var(--h1-medium-font-weight);
-  border: none;
-  border-bottom: 0.5px solid var(--white); */
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--accent-color-1);
-  border-radius: 8px;
-  padding: 8px;
-  font-size: var(--h1-medium-font-size);
-  font-weight: var(--h1-medium-font-weight);
+  background-color: #3b3b3b;
+  border: 2px solid #a259ff;
+  border-radius: 20px;
+  font-size: 24px;
 }
 .categoryImageContainer {
   position: relative;
