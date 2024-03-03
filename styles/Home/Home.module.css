@@ -1,5 +1,4 @@
 .homepage {
-  width: 100%;
   padding-left: 24px;
   padding-right: 24px;
 }
@@ -25,7 +24,6 @@
 }
 .title {
   margin-top: 20px;
-
   font-weight: 600;
   font-size: 38px;
   line-height: 46px;
