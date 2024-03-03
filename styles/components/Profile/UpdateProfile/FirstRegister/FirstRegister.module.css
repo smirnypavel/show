@@ -2,11 +2,9 @@
   margin-top: 30px;
   display: flex;
   border-radius: 20px;
-  overflow: hidden;
   width: fit-content;
-
+  overflow: hidden;
   height: 505px;
-
   border: 0.5px solid rgba(128, 128, 128, 0.14);
   @media screen and (min-width: 1200px) {
     width: 1050px;
