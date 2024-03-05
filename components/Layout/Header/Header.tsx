@@ -169,13 +169,13 @@ const Header = () => {
             }`}>
             Про нас
           </Link>
-          {/* <Link
+          <Link
             href={"/blog"}
             className={`${styles.link} ${
               router.pathname === "/blog" ? styles.active : ""
             }`}>
             Блог
-          </Link> */}
+          </Link>
 
           {login ? (
             <Link
@@ -235,7 +235,6 @@ const Header = () => {
               }`}>
               Артисти
             </Link>
-
             <Link
               onClick={toggleMenu}
               href={"/about"}
@@ -244,8 +243,6 @@ const Header = () => {
               }`}>
               Про нас
             </Link>
-            <div className={styles.separator}></div>
-
             <Link
               onClick={toggleMenu}
               href={"/blog"}
@@ -254,6 +251,7 @@ const Header = () => {
               }`}>
               Блог
             </Link>
+            <div className={styles.separator}></div>
             {login ? (
               <div className={styles.mobileLinkContainer}>
                 <Link

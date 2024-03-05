@@ -1,6 +1,7 @@
 import styles from "@/styles/components/Articles/ArticlesList.module.css";
 import { IArticle } from "@/types/IArticles";
 import Image from "next/image";
+import Link from "next/link";
 
 export interface ItemListProps {
   articles: IArticle[];
@@ -13,9 +14,9 @@ const ArticleList: React.FC<ItemListProps> = ({ articles }) => {
 
   return (
     <div className={styles.articleList}>
-      {articles.map((article, index) => (
+      {articles.map((article) => (
         <div
-          key={index}
+          key={article._id}
           className={styles.articleItem}>
           <div className={styles.imageContainer}>
             <Image
@@ -29,10 +30,12 @@ const ArticleList: React.FC<ItemListProps> = ({ articles }) => {
           </div>
           <div className={styles.articleContent}>
             <h3 className={styles.articleTitle}>{article.title}</h3>
-            <div
-              className={styles.articleDescription}
-              dangerouslySetInnerHTML={{ __html: article.smallDescription }}
-            />
+            <Link href={`/blog/article/${article._id}`}>
+              <div
+                className={styles.articleDescription}
+                dangerouslySetInnerHTML={{ __html: article.smallDescription }}
+              />
+            </Link>
           </div>
         </div>
       ))}
