@@ -255,7 +255,7 @@ const Header = () => {
               Блог
             </Link> */}
             {login ? (
-              <div>
+              <div className={styles.mobileLinkContainer}>
                 <Link
                   onClick={toggleMenu}
                   href={"/profile"}
@@ -284,15 +284,15 @@ const Header = () => {
                 <Link
                   onClick={toggleMenu}
                   href={"/profile/update"}
-                  className={`${styles.link} ${
+                  className={`${styles.linkBurgerUser} ${
                     router.pathname === "/profile/update" ? styles.active : ""
                   }`}>
-                  Налаштування профілю
+                  Налаштування
                 </Link>
                 <Link
                   onClick={toggleMenu}
                   href={"/profile/stats"}
-                  className={`${styles.link} ${
+                  className={`${styles.linkBurgerUser} ${
                     router.pathname === "/profile/stats" ? styles.active : ""
                   }`}>
                   Статистика

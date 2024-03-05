@@ -1,8 +1,8 @@
 .footer {
   margin-top: 20px;
   border-top: 2px solid #3b3b3b;
-  /* padding-left: 24px;
-  padding-right: 24px; */
+  padding-left: 24px;
+  padding-right: 24px;
   color: var(--white);
   display: flex;
   flex-direction: column;

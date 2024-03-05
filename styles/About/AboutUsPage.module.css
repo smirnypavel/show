@@ -1,0 +1,70 @@
+.about-us-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #2b2b2b; /* колір фону */
+  color: #fff; /* колір тексту */
+}
+
+.about-us-container h2 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.about-us-container h3 {
+  font-size: 20px;
+  color: #a259ff; /* акцентний колір */
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.about-us-container ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.about-us-container li {
+  margin-bottom: 10px;
+}
+
+.about-us-container p {
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.about-us-container a {
+  color: #a259ff;
+  text-decoration: none;
+}
+
+.about-us-container a:hover {
+  text-decoration: underline;
+}
+
+.about-us-container .social-media-links {
+  margin-top: 10px;
+}
+
+.about-us-container .values-info {
+  margin-top: 20px;
+  border-top: 1px solid #a259ff;
+  padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .about-us-container h2 {
+    font-size: 20px;
+  }
+
+  .about-us-container h3 {
+    font-size: 18px;
+  }
+
+  .about-us-container p {
+    font-size: 16px;
+  }
+}
+.link {
+  color: #a259ff;
+}
