@@ -1,0 +1,27 @@
+.article {
+  margin-top: 20px;
+  padding: 24px;
+}
+
+.articleTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.imageContainer {
+  width: 100%px;
+  height: 400px; /* Змініть розмір відповідно до вашого дизайну */
+  overflow: hidden; /* Приховати великі зображення */
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.articleImage {
+  object-fit: cover;
+}
+
+.articleContent {
+  font-size: 1.2rem;
+  color: #fff; /* Темний колір тексту */
+}

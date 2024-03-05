@@ -8,26 +8,36 @@
 }
 
 .articleItem {
-  /* background-color: #f8f9fa; */
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  /* background-color: #ffffff; Білий фон */
 }
 
 .articleItem:hover {
   transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); /* Збільшення тіні при наведенні */
 }
 
 .imageContainer {
   position: relative;
   width: 100%;
   height: 200px;
+  overflow: hidden; /* Приховати великі зображення */
+  border-top-left-radius: 10px; /* Закруглені кути зверху */
+  border-top-right-radius: 10px;
 }
 
 .articleImage {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  width: 100%; /* Заповнити контейнер */
+  height: 100%;
+  object-fit: cover; /* Зображення повністю заповнює контейнер */
+  transition: transform 0.3s ease; /* Анімація */
+}
+
+.articleImage:hover {
+  transform: scale(1.05); /* Збільшення зображення при наведенні */
 }
 
 .articleContent {
@@ -37,17 +47,17 @@
 .articleTitle {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #f8f9fa;
+  color: #ffff; /* Темний колір тексту */
 }
 
 .articleDescription {
   font-size: 1.2rem;
-  color: #666;
+  color: #666666; /* Сірий колір тексту */
 }
 
 .noArticles {
   text-align: center;
   font-size: 1.5rem;
-  color: #999;
+  color: #999999; /* Світлий сірий колір тексту */
   margin-top: 20px;
 }

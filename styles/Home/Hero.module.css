@@ -1,0 +1,41 @@
+.hero {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 20px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  /* Додайте будь-які інші стилі, що ви бажаєте */
+}
+
+.heroContent {
+  flex: 1;
+  max-width: 600px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.heroDescription {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.heroButton {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.heroImage {
+  flex: 1;
+  /* Додайте будь-які стилі для зображення */
+}
