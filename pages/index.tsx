@@ -11,7 +11,7 @@ import { TbHandClick } from "react-icons/tb";
 import styles from "@/styles/Home/Home.module.css";
 
 import Head from "next/head";
-import Hero from "@/components/Home/Hero";
+// import Hero from "@/components/Home/Hero";
 
 const Home = () => {
   return (
