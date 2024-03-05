@@ -10,6 +10,7 @@ import UserNoPhoto from "@/public/user/UserNoPhoto.jpg";
 import { IoIosArrowForward } from "react-icons/io";
 import ScrollToTopButton from "../helpers/ScrollToTopButton";
 import { useState } from "react";
+import NotFound from "../helpers/NotFound";
 
 export interface ItemListProps {
   artists: IUserAuth[];
@@ -174,13 +175,7 @@ const ArtistList: React.FC<ItemListProps> = ({ artists }) => {
             </ul>
           ) : (
             <>
-              <p>
-                Вибачте але по Вашому запиту ні чого не знайдено. В свою чергу
-                ми працюемо над тим щоб задовольнити Усі Ваші запити
-              </p>
-              <button onClick={handleCancel}>
-                Скинути пошук та почати з початку
-              </button>
+              <NotFound />
             </>
           )}
         </div>
