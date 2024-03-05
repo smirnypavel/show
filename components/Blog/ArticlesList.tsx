@@ -1,7 +1,6 @@
-import Link from "next/link";
-
-import styles from "@/styles/components/Artist/ArtistList.module.css";
+import styles from "@/styles/components/Articles/ArticlesList.module.css";
 import { IArticle } from "@/types/IArticles";
+import Image from "next/image";
 
 export interface ItemListProps {
   articles: IArticle[];
@@ -9,29 +8,34 @@ export interface ItemListProps {
 
 const ArticleList: React.FC<ItemListProps> = ({ articles }) => {
   if (!articles || articles.length === 0) {
-    return <p>No artists found</p>; // Заглушка или сообщение об отсутствии данных
+    return <p className={styles.noArticles}>No articles found</p>;
   }
 
   return (
-    <div className={styles.container}>
-      <p>ArticleList</p>
-      <ul className={styles.artistList}>
-        {articles &&
-          articles.map((article) => (
-            <li
-              key={article._id}
-              className={styles.artistItem}>
-              <Link href={`/blog/${article._id}`}>
-                <div>
-                  <p> Назва: {article.title}</p>
-                </div>
-                <div
-                  dangerouslySetInnerHTML={{ __html: article.description }}
-                />
-              </Link>
-            </li>
-          ))}
-      </ul>
+    <div className={styles.articleList}>
+      {articles.map((article, index) => (
+        <div
+          key={index}
+          className={styles.articleItem}>
+          <div className={styles.imageContainer}>
+            <Image
+              src={article.img[0]}
+              fill
+              alt={article.title}
+              layout="fill"
+              objectFit="cover"
+              className={styles.articleImage}
+            />
+          </div>
+          <div className={styles.articleContent}>
+            <h3 className={styles.articleTitle}>{article.title}</h3>
+            <div
+              className={styles.articleDescription}
+              dangerouslySetInnerHTML={{ __html: article.smallDescription }}
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

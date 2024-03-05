@@ -246,14 +246,14 @@ const Header = () => {
             </Link>
             <div className={styles.separator}></div>
 
-            {/* <Link
+            <Link
               onClick={toggleMenu}
               href={"/blog"}
               className={`${styles.link} ${
                 router.pathname === "/blog" ? styles.active : ""
               }`}>
               Блог
-            </Link> */}
+            </Link>
             {login ? (
               <div className={styles.mobileLinkContainer}>
                 <Link
