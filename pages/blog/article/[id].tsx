@@ -31,7 +31,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const response = await axios.get(`/posts`);
     const articles: IArticle[] = response.data;
-    console.log(articles);
 
     const paths = articles.map((article) => ({
       params: { id: article._id.toString() },

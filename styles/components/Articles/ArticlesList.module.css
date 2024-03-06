@@ -1,10 +1,12 @@
 .articleList {
+  margin: 0 auto;
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   padding-left: 24px;
   padding-right: 24px;
+  max-width: 1060px;
 }
 
 .articleItem {
