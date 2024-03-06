@@ -1,68 +1,80 @@
 .footer {
   margin-top: 20px;
   border-top: 2px solid #3b3b3b;
+  padding-top: 40px;
   padding-left: 24px;
   padding-right: 24px;
   color: var(--white);
   display: flex;
   flex-direction: column;
   align-items: normal;
+  background-color: #3b3b3b;
 
+  padding-bottom: 110px;
   @media screen and (min-width: 768px) {
-    /* width: 100vw; */
-    padding-bottom: 20px;
-    background-color: #3b3b3b;
-    position: relative;
   }
 }
-.footerButton {
-  margin-top: 10px;
-  padding: 10px;
-  color: #fff;
-  background-color: transparent;
-  border: 2px solid #a259ff;
-  border-radius: 20px;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
+.container {
 }
-.footerButton.hide {
-  margin-bottom: 100px;
-}
-.footerButton.show {
-  margin-bottom: 10px;
-}
-.containerMap {
-  margin-top: 10px;
-  gap: 5px;
-  /* width: 100%; */
+.logoLink {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  min-height: 0px;
-  @media screen and (min-width: 768px) {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-  }
+  gap: 12px;
+  align-items: center;
+}
+.logoContainer {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+}
+.logo {
+  object-fit: cover;
+}
+.span {
+  font-size: 24px;
 }
 .title {
-  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 20px;
+  font-weight: 300;
+  color: #ccc;
 }
-.listItem {
+.socialTitle {
+  margin-top: 20px;
+  font-weight: 300;
+  font-size: 14px;
+  color: #858584;
+}
+.socialContainer {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  color: #858584;
+}
+.linkContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .link {
-  font-size: 10px;
+  color: #858584;
+  font-size: 12px;
+}
+.separator {
+  margin-top: 20px;
+  height: 0.5px;
+  background-color: #85858478;
+}
+.backstageText {
+  margin-top: 10px;
   font-weight: 300;
-}
-.containerMap.hide {
-  display: none;
-  @media screen and (min-width: 768px) {
-    display: flex;
-  }
-}
-.containerMap.show {
-  display: flex;
-  margin-bottom: 100px;
+  font-size: 12px;
+  color: #858584;
+  text-align: center;
 }

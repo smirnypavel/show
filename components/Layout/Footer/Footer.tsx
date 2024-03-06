@@ -1,37 +1,109 @@
 import React, { useState } from "react";
 import styles from "@/styles/Layout/Footer/Footer.module.css";
 import Link from "next/link";
+import Image from "next/image";
 import { Comfortaa } from "next/font/google";
-const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
+const comfortaa = Comfortaa({
+  weight: ["300", "400", "700", "500"],
+  subsets: ["latin"],
+});
+import { Kodchasan } from "next/font/google";
+const kodchasan = Kodchasan({
+  weight: ["300", "400", "700", "500"],
+  subsets: ["latin"],
+});
+import {
+  PiTiktokLogoThin,
+  PiInstagramLogoThin,
+  PiFacebookLogoThin,
+  PiYoutubeLogoThin,
+  PiTelegramLogoThin,
+  PiPhoneThin,
+  PiInstagramLogo,
+  PiInstagramLogoLight,
+  PiYoutubeLogoLight,
+  PiFacebookLogoLight,
+  PiGooglePlayLogoLight,
+  PiAppStoreLogo,
+} from "react-icons/pi";
+import { LuAtSign } from "react-icons/lu";
 
 const Footer = () => {
-  const [showSocial, setShowSocial] = useState(false);
-  const handleShowSocial = () => {
-    setShowSocial(!showSocial);
-  };
   return (
     <div className={`${comfortaa.className} ${styles.footer}`}>
-      <button
-        onClick={handleShowSocial}
-        type="button"
-        className={`${styles.footerButton} ${
-          showSocial ? styles.show : styles.hide
-        }`}>
-        Сховище корисних посилань
-      </button>
-      <div
-        className={`${styles.containerMap} ${
-          showSocial ? styles.show : styles.hide
-        }`}>
-        <div>
+      <div className={styles.containe}>
+        <Link
+          href={"/"}
+          className={styles.logoLink}>
+          <div className={styles.logoContainer}>
+            <Image
+              src={"/logo/logo123.svg"}
+              alt={""}
+              fill
+              className={styles.logo}
+            />
+          </div>
+          <span className={`${kodchasan.className} ${styles.span}`}>
+            Wechirka.com
+          </span>
+        </Link>
+        <p className={styles.title}>Wechirka: відкрий новий рівень разваг.</p>
+        <p className={styles.socialTitle}>Приєднуйтесь до нашого комьюніті: </p>
+        <div className={styles.socialContainer}>
+          <Link href={""}>
+            <PiFacebookLogoLight className={styles.socialIcon} />
+          </Link>
+          <Link href={""}>
+            <PiYoutubeLogoLight className={styles.socialIcon} />
+          </Link>
+          <Link href={""}>
+            <PiInstagramLogoLight className={styles.socialIcon} />
+          </Link>
+        </div>
+        <p className={styles.title}>Корисні посилання </p>
+        <div className={styles.linkContainer}>
+          {" "}
+          <Link
+            href="/privacy/privacy_offer.pdf"
+            className={styles.link}
+            target="_blank">
+            Конфіденційність
+          </Link>
+          <Link
+            href={"/public/public-offer"}
+            className={styles.link}
+            target="_blank">
+            Публічна оферта
+          </Link>
+        </div>
+        <p className={styles.title}>Відгукі та пропозиції </p>
+        <div className={styles.socialContainer}>
+          <a
+            href={`https://t.me/+tG6pSpHWPPFiYzMy`}
+            target="_blank">
+            <PiTelegramLogoThin className={styles.socialIcon} />
+          </a>
+          <a
+            href={`mailto:support@wechirka.com`}
+            target="_blank">
+            <LuAtSign className={styles.socialIcon} />
+          </a>
+        </div>
+        <p className={styles.title}>Очікуйте додаток </p>
+        <div className={styles.socialContainer}>
+          <PiGooglePlayLogoLight className={styles.socialIcon} />
+          <PiAppStoreLogo className={styles.socialIcon} />
+        </div>
+        <div className={styles.separator}></div>
+        <p className={styles.backstageText}>
+          Ⓒ Створено командою Wechirka 2024
+        </p>
+
+        {/* <div>
           <p className={styles.title}>Пошукачу</p>
           <ul>
             <li>
-              <Link
-                href={"/"}
-                className={styles.link}>
-                Головна
-              </Link>
+             
             </li>
             <li>
               <Link
@@ -155,7 +227,7 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );
