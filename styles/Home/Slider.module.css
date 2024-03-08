@@ -1,15 +1,24 @@
 .sliderContainer {
   margin: 0 auto;
   margin-top: 20px;
-  width: 1080px;
-  height: 500px;
+  max-width: 1080px;
+  height: 300px;
+
+  @media screen and (min-width: 768px) {
+    height: 500px;
+  }
 }
 .imageContainer {
   position: relative;
-  width: 1080px;
-  height: 500px;
+  max-width: 1080px;
+
   border-radius: 20px;
   overflow: hidden;
+  height: 300px;
+
+  @media screen and (min-width: 768px) {
+    height: 500px;
+  }
 }
 .heroContent {
   z-index: 1;
