@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  color: #ff00ff; /* Пурпурный цвет */
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.5rem;
+  color: #ffffff; /* Белый цвет */
+  margin-bottom: 30px;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+}
+
+.featureItem {
+  font-size: 1.2rem;
+  color: #cccccc; /* Серый цвет */
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 2rem;
+  color: #66ccff; /* Голубой цвет */
+}

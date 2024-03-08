@@ -10,7 +10,7 @@ import photoIcon from "@/public/icon/photoIcon.svg";
 import catering from "@/public/icon/catering.svg";
 import wedding from "@/public/icon/wedding.svg";
 import animatorIcon from "@/public/icon/animator.svg";
-
+import { PiMicrophoneStageThin } from "react-icons/pi";
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Home/CategoryList/CategoryToplist.module.css";
 import SceletonTopCategory from "@/components/helpers/Placeholders/SkeletonTopCategory";
@@ -65,6 +65,16 @@ const CategoryToplist = () => {
                     sizes="(min-width: 808px) 50vw, 100vw"
                   />
                 )}
+                {cat.name === "Ведучі" && (
+                  <Image
+                    src={"/baners/speaker.png"}
+                    alt={"user photo"}
+                    fill
+                    className={styles.categoryImage}
+                    sizes="(min-width: 808px) 50vw, 100vw"
+                  />
+                )}
+
                 {cat.name === "Анімаційні послуги" && (
                   <Image
                     src={animator}
@@ -102,6 +112,16 @@ const CategoryToplist = () => {
                       height={100}
                       className={styles.categoryIcon}
                     />
+                  )}
+                  {cat.name === "Ведучі" && (
+                    // <Image
+                    //   src={muz_poslug}
+                    //   alt={"user photo"}
+                    //   fill
+                    //   className={styles.categoryImage}
+                    //   sizes="(min-width: 808px) 50vw, 100vw"
+                    // />
+                    <PiMicrophoneStageThin className={styles.iconCat} />
                   )}
                   {cat.name === "Анімаційні послуги" && (
                     <Image
