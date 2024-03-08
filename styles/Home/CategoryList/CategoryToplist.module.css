@@ -96,6 +96,10 @@
 .categoryIcon {
   background-color: transparent;
 }
+.iconCat {
+  width: 118px;
+  height: 112px;
+}
 .categoryNameContainer {
   padding: 10px 20px 15px;
   font-size: 16px;

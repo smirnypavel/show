@@ -11,7 +11,9 @@ import { TbHandClick } from "react-icons/tb";
 import styles from "@/styles/Home/Home.module.css";
 
 import Head from "next/head";
-// import Hero from "@/components/Home/Hero";
+import Hero from "@/components/Home/Hero";
+import Fade from "@/components/Home/Slider";
+// import SnowfallComponent from "@/components/trash/snow";
 
 const Home = () => {
   return (
@@ -22,6 +24,7 @@ const Home = () => {
       <div className={styles.homepage}>
         <HomeSearchBar />
         {/* <Hero /> */}
+        <Fade />
         <HomeTopBanner />
         <div className={styles.container}>
           <CategoryToplist />
