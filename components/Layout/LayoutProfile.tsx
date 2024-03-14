@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import Modal from "../helpers/Modal";
 import ChangePassword from "../Profile/UpdateProfile/ChangePassword";
 import Logout from "../Profile/UpdateProfile/Logout";
+import DeleteProfile from "../Profile/UpdateProfile/DeleteProfile";
 
 const LayoutProfile: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -21,6 +22,7 @@ const LayoutProfile: React.FC<{ children: React.ReactNode }> = ({
   const router = useRouter();
   const [modalChangePass, setModalChangePass] = useState(false);
   const [modalLogout, setModalLogout] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
 
   return (
     <div className={styles.wrapper}>
@@ -67,7 +69,11 @@ const LayoutProfile: React.FC<{ children: React.ReactNode }> = ({
             <PiKeyThin className={styles.serviceIcon} />
             Змінити пароль
           </div>
-          <div className={styles.serviceLink}>
+          <div
+            className={styles.serviceLink}
+            onClick={() => {
+              setModalDelete(true);
+            }}>
             {" "}
             <PiSkullThin className={styles.serviceIcon} />
             Видалити профіль
@@ -91,6 +97,30 @@ const LayoutProfile: React.FC<{ children: React.ReactNode }> = ({
           <Logout
             close={() => {
               setModalLogout(false);
+            }}
+          />
+        </Modal>
+      )}
+      {modalLogout && (
+        <Modal
+          onClose={() => {
+            setModalLogout(false);
+          }}>
+          <Logout
+            close={() => {
+              setModalLogout(false);
+            }}
+          />
+        </Modal>
+      )}
+      {modalDelete && (
+        <Modal
+          onClose={() => {
+            setModalDelete(false);
+          }}>
+          <DeleteProfile
+            close={() => {
+              setModalDelete(false);
             }}
           />
         </Modal>

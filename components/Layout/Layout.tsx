@@ -4,6 +4,7 @@ import Header from "./Header/Header";
 import styles from "@/styles/Layout/Layout.module.css"; // импортируем файл со стилями
 
 import Geolocation from "./Header/GealocationNew";
+import FeedbackButton from "../helpers/Feedback";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -12,6 +13,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <Header />
       <div className={styles.content}>{children}</div>
       <Footer />
+      <FeedbackButton />
     </div>
   );
 };

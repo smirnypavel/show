@@ -340,3 +340,20 @@
     color: var(--white);
   }
 }
+.feedbackContainer {
+  display: none;
+  @media (min-width: 1200px) {
+    width: 100%;
+    height: 30px;
+    background-color: #fc9c3dcb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.feedbackIcon {
+  width: 22px;
+  height: 22px;
+}
