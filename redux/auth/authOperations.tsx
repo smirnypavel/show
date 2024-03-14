@@ -118,7 +118,6 @@ export const verifyMail = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
-  console.log("logout Operation");
   try {
     await axios.post("/users/logout");
     clearAuthHeader();
@@ -130,6 +129,21 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+export const deleteProfile = createAsyncThunk(
+  "auth/deleteProfile",
+  async (credentials: {}, thunkAPI) => {
+    try {
+      await axios.post("/users/delete-profile", credentials);
+      clearAuthHeader();
+      localStorage.clear();
+      toast.success("Профіль успішно видалений");
+    } catch (error: any) {
+      localStorage.clear();
+      toast.error("Під час видалення сталася помилка");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const updateUser = createAsyncThunk(
   "auth/updateUser",

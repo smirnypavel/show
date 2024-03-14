@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "@/styles/Home/Hero.module.css";
 import Image from "next/image";
-
+import heroBanner from "@/public/baners/heroBanner.jpeg";
+import heroBanner2 from "@/public/baners/heroBanner2.png";
+import facebookBanner from "@/public/baners/facebookBanner.png";
 const heroContents = [
   {
     title: "Вітаємо в нашому захоплюючому світі неперевершених свят!",
@@ -9,21 +11,21 @@ const heroContents = [
       "Де кожен момент - це можливість втілити ваші найяскравіші ідеї.",
     link: " https",
     linkName: "Долучитися зараз",
-    bannerImg: "/baners/heroBanner.jpeg",
+    bannerImg: heroBanner,
   },
   {
     title: "Вітаємо в нашому свят!",
     description: "Де кожен момент  ідеї.",
     link: " https",
     linkName: "Долучитися",
-    bannerImg: "/baners/heroBanner2.png",
+    bannerImg: heroBanner2,
   },
   {
     title: "Будь у курсі всіх новин!",
     description: "Підпишись на нашу сторінку у Facebook.",
     link: "https://www.facebook.com/people/Wechirka/61556196121327/",
     linkName: "Перейти",
-    bannerImg: "/baners/facebookBanner.png",
+    bannerImg: facebookBanner,
   },
 ];
 
@@ -70,18 +72,6 @@ const Hero = () => {
           fill
           className={styles.heroBanner}
         />
-      </div>
-      <div className={styles.buttonContainer}>
-        <button
-          onClick={handlePrev}
-          className={styles.button}>
-          Previous
-        </button>
-        <button
-          onClick={handleNext}
-          className={styles.button}>
-          Next
-        </button>
       </div>
     </section>
   );

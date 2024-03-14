@@ -16,6 +16,7 @@ const kodchasan = Kodchasan({ weight: ["700", "500"], subsets: ["latin"] });
 import { Comfortaa } from "next/font/google";
 
 import SearchCityMobile from "./Mobile/ChooseLocationMobile";
+import { PiTelegramLogoThin } from "react-icons/pi";
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const Header = () => {
@@ -211,6 +212,17 @@ const Header = () => {
           )}
         </div>
       </div>
+
+      <Link
+        className={styles.feedbackContainer}
+        target="_blank"
+        href={"https://t.me/+tG6pSpHWPPFiYzMy"}>
+        <div>
+          Вельми шановні тестери ось лінк на телеграм для вашого фідбеку
+        </div>
+        <PiTelegramLogoThin className={styles.feedbackIcon} />
+      </Link>
+
       {menuOpen && (
         <div className={styles.mobileMenu}>
           <button

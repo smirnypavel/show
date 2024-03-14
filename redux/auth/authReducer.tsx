@@ -14,6 +14,7 @@ import {
   updateCategory,
   deleteCat,
   verifyMail,
+  deleteProfile,
 } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
@@ -139,6 +140,21 @@ export const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(logOut.fulfilled, (state) => {
+        state.user = initialState.user;
+        state.isLoggedIn = false;
+        state.isLoading = false;
+        state.isRefreshing = false;
+      })
+      .addCase(deleteProfile.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteProfile.rejected, (state) => {
+        state.isLoading = false;
+        state.user = initialState.user;
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+      })
+      .addCase(deleteProfile.fulfilled, (state) => {
         state.user = initialState.user;
         state.isLoggedIn = false;
         state.isLoading = false;
