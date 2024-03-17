@@ -23,6 +23,7 @@
   height: 320px;
 }
 .artistInfo {
+  width: 100%;
   padding-right: 10px;
   padding-left: 10px;
   @media screen and (min-width: 768px) {
@@ -88,6 +89,7 @@
   align-items: center;
 }
 .infoTopContainer {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -146,12 +148,25 @@
   flex-direction: column;
   gap: 20px;
   padding-top: 10px;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+  }
+}
+.spanMail {
+  max-width: 110px;
+  white-space: nowrap; /* Запрещаем перенос текста */
+  overflow: hidden; /* Скрываем текст, который не помещается */
+  text-overflow: ellipsis;
+  padding-right: 10px;
 }
 .contactItem {
   font-size: 12px;
   display: flex;
   gap: 10px;
   align-items: center;
+  /* max-width: 120px; */
+
   @media screen and (min-width: 768px) {
     font-size: 22px;
   }
@@ -180,6 +195,7 @@
 .categoryList {
   display: flex;
   gap: 30px;
+  flex-wrap: wrap;
 }
 .categoryItem {
   margin-top: 10px;

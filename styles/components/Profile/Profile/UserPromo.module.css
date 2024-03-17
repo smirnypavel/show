@@ -116,6 +116,7 @@
   gap: 20px;
   padding-top: 10px;
 }
+
 .contactItem {
   display: flex;
   gap: 10px;
@@ -124,6 +125,13 @@
   @media screen and (min-width: 768px) {
     font-size: 22px;
   }
+}
+.spanMail {
+  max-width: 110px;
+  white-space: nowrap; /* Запрещаем перенос текста */
+  overflow: hidden; /* Скрываем текст, который не помещается */
+  text-overflow: ellipsis;
+  padding-right: 10px;
 }
 .descriptionContainer {
   padding: 10px;

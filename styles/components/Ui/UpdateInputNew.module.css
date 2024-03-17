@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
 }
+
 .input {
   display: flex;
   padding: 16px;
@@ -12,10 +13,18 @@
   border-radius: 20px;
   background-color: #fff;
 }
+
 .input::placeholder {
   color: #2b2b2b;
   font-size: 16px;
 }
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .buttonSubmit {
   height: 24px;
   width: 24px;
@@ -24,10 +33,17 @@
   margin-left: 10px;
   background-color: transparent;
 }
+
 .iconOk {
   color: green;
   height: 24px;
   width: 24px;
   border: none;
   padding: 0;
+}
+
+.buttonText {
+  margin-left: 5px; /* Добавим небольшой отступ между кнопкой и текстом */
+  color: #faf8f8; /* Цвет текста */
+  font-size: 8px; /* Размер шрифта */
 }

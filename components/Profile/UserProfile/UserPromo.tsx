@@ -116,7 +116,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                     href={`mailto:${artist.email}`}
                     className={styles.contactItem}>
                     <SiMaildotru className={styles.icon} />
-                    {artist.email}
+                    <span className={styles.spanMail}>{artist.email}</span>
                   </a>
                 )}
 

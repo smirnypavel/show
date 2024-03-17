@@ -113,7 +113,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                     href={`mailto:${artist.email}`}
                     className={styles.contactItem}>
                     <SiMaildotru className={styles.icon} />
-                    {artist.email}
+                    <span className={styles.spanMail}>{artist.email}</span>
                   </a>
                 )}
 
@@ -167,7 +167,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
               )
             )}
           </div>
-          <p className={styles.label}>Лінки</p>
+          <p className={styles.label}>Соціальні лінки</p>
           <div className={styles.artistSocial}>
             {artist && artist.social && artist.social.Instagram && (
               <a

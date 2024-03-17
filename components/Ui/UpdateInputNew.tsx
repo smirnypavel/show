@@ -46,12 +46,15 @@ const UpdateInputNew: React.FC<InputUiProps> = ({
         className={`${styles.input} ${styles.inputGroup}`}
       />
       {isEditing && value.trim() !== "" && (
-        <button
-          type="button"
-          onClick={handleSubmit}
-          className={styles.buttonSubmit}>
-          <FaCheck className={styles.iconOk} />
-        </button>
+        <div className={styles.buttonWrapper}>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className={styles.buttonSubmit}>
+            <FaCheck className={styles.iconOk} />
+          </button>
+          <span className={styles.buttonText}>підтвердити</span>
+        </div>
       )}
     </div>
   );
