@@ -46,7 +46,10 @@ const UpdateInputUi: React.FC<InputUiProps> = ({
         onClick={isEditing ? handleSubmit : handleEdit}
         className={styles.buttonEdit}>
         {isEditing ? (
-          <FaCheck className={styles.iconOk} />
+          <div className={styles.buttonWrapper}>
+            <FaCheck className={styles.iconOk} />
+            <span className={styles.buttonText}>підтвердити</span>
+          </div>
         ) : (
           <LuPencil className={styles.iconEdit} />
         )}

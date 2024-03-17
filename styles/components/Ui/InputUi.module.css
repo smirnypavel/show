@@ -47,3 +47,8 @@
   height: 24px;
   width: 24px;
 }
+.buttonText {
+  margin-left: 5px; /* Добавим небольшой отступ между кнопкой и текстом */
+  color: #faf8f8; /* Цвет текста */
+  font-size: 7px; /* Размер шрифта */
+}
