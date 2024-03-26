@@ -30,6 +30,14 @@ const heroContents = [
     linkName: "Перейти",
     bannerImg: "/baners/facebookBanner.png",
   },
+  {
+    title: "Припиніть втрачати час!",
+    description:
+      "Не втрачайте час на пошук весільного ведучого. Заповніть форму і ведучий сам Вас знайде.",
+    link: "/request",
+    linkName: "До форми",
+    bannerImg: "/baners/RequestBanner.png",
+  },
 ];
 
 function Fade() {
