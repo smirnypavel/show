@@ -25,14 +25,14 @@
 .content {
   flex: 1;
 }
-.floatingBoxes {
+/* .floatingBoxes {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: -1;
 }
-/* The Boxes */
+
 .floatingBoxes li {
   position: absolute;
   list-style: none;
@@ -128,4 +128,4 @@ ul.floating-boxes li:nth-child(6) {
     opacity: 1;
     border-radius: 50%;
   }
-}
+} */
