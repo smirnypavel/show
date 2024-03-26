@@ -1,0 +1,58 @@
+.editorContainer {
+  margin: 0 auto;
+  width: 350px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.textArea {
+  width: 350px;
+  min-height: 200px;
+  padding: 8px;
+  padding-bottom: 22px;
+  border-radius: 5px;
+  border: 1px solid#a159ff7f;
+}
+.buttonSubmit {
+  color: inherit;
+  font-family: inherit;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: fit-content;
+  align-items: center;
+  background-color: #a259ff;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  padding: 5px;
+
+  cursor: pointer; /* Добавим указатель при наведении */
+
+  @media screen and (min-width: 768px) {
+    /* transform: scale(0.5); */
+  }
+}
+
+.buttonsContainer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 5px;
+}
+
+.button {
+  /* padding: 3px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
+}

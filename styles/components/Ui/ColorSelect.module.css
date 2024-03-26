@@ -1,0 +1,65 @@
+/* custom-select.module.css */
+
+.customSelect {
+  /* Overall container styling */
+  display: inline-block;
+  position: relative;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+
+  padding: 2px;
+  background-color: transparent;
+  cursor: pointer;
+}
+/* .selectedColor {
+  width: 26px;
+  height: 26px;
+} */
+.customSelect button {
+  width: 24px;
+  height: 24px;
+
+  border-radius: 4px;
+  border: none;
+  padding: 2px;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.customSelectOptions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  list-style: none;
+  background-color: #3b3b3b;
+
+  border: 1px solid #b3b3b36a;
+  border-radius: 4px;
+  padding: 2px;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.customSelectOptions li button {
+  /* Individual option buttons within the dropdown */
+  display: block;
+  padding: 5px 10px;
+  text-align: left;
+  /* border-bottom: 1px solid #ccc; */
+  cursor: pointer;
+}
+
+.customSelectOptions li button:hover {
+  /* Styling for option buttons on hover */
+  background-color: #f5f5f5;
+}
+
+.customSelectOptions li:last-child button {
+  /* Remove border for the last option button */
+  border-bottom: none;
+}

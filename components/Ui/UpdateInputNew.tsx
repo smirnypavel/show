@@ -53,7 +53,7 @@ const UpdateInputNew: React.FC<InputUiProps> = ({
             className={styles.buttonSubmit}>
             <FaCheck className={styles.iconOk} />
           </button>
-          <span className={styles.buttonText}>підтвердити</span>
+          <span className={styles.buttonText}>Зберегти</span>
         </div>
       )}
     </div>
