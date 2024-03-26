@@ -76,7 +76,7 @@ const SearchCity: React.FC<AutocompleteProps> = ({ onCitySelect }) => {
     <div>
       <input
         type="text"
-        placeholder="Введите название населенного пункта..."
+        placeholder="Введіть назву міста..."
         value={selectedCity || query}
         onChange={handleInputChange}
         className={styles.input}
