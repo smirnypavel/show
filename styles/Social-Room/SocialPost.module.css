@@ -1,0 +1,138 @@
+.post {
+  width: 350px;
+  background-color: #3b3b3b;
+
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  padding: 16px 0px 5px 0px;
+  margin-bottom: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.post:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-left: 16px;
+}
+
+.avatarContainer {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.avatar {
+  object-fit: cover;
+}
+.authorInfo {
+  flex: 1;
+}
+
+.authorName {
+  font-weight: bold;
+  font-size: 16px;
+  color: #a159ff;
+}
+
+.date {
+  color: #aaa;
+  font-size: 12px;
+}
+.description {
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 568px;
+  text-align: justify;
+  text-wrap: wrap;
+}
+.readMoreButton {
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  color: #6e6e6e;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.content {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.imageContainer {
+  width: 100%;
+  height: 300px;
+  margin-top: 8px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.actions {
+  display: flex;
+  margin-top: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.action {
+  margin-right: 8px;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.action:hover {
+  background-color: #ddd;
+  transform: scale(1.1);
+}
+
+.like {
+  cursor: pointer;
+  color: #a159ff;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.like:hover {
+  transform: scale(1.1);
+}
+.disLike {
+  cursor: pointer;
+  color: #a159ff7d;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.disLike:hover {
+  transform: scale(1.1);
+}
+.comment {
+  color: blue;
+}
+.likesContainer {
+  display: flex;
+  margin-right: 8px;
+  padding: 4px 8px;
+  border: 1px solid #a159ff7b;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
+  gap: 5px;
+}
