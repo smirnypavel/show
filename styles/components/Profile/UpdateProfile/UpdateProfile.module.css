@@ -355,7 +355,17 @@
     display: none;
   }
 }
-
+.video {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+.videoMobile {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
 .mobileInfo {
   /* margin-top: 5px; */
   width: 100%;

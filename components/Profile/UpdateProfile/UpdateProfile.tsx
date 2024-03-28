@@ -31,6 +31,7 @@ import {
   UpdateMedia,
   ProfileUpdateInfo,
 } from "@/components/Profile/UpdateProfile";
+import YouTube3 from "@/components/helpers/Youtube2";
 
 const comfortaa = Comfortaa({
   weight: ["300", "400", "500", "600"],
@@ -401,7 +402,12 @@ const UpdateProfile = () => {
                       <li
                         key={item.publicId}
                         className={styles.videoListItem}>
-                        <YouTube2 url={item.url} />
+                        <div className={styles.video}>
+                          <YouTube2 url={item.url} />
+                        </div>
+                        <div className={styles.videoMobile}>
+                          <YouTube3 url={item.url} />
+                        </div>
                       </li>
                     ))
                   )}
