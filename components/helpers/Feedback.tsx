@@ -37,7 +37,7 @@ const FeedbackButton = () => {
       <Link
         className={styles.scrollToTopButton}
         target="_blank"
-        href={"https://t.me/+tG6pSpHWPPFiYzMy"}>
+        href={"https://t.me/+xk_KcHEu3eNlNTVi"}>
         <PiTelegramLogoThin className={styles.icon} />
         <div>feedback</div>
       </Link>
