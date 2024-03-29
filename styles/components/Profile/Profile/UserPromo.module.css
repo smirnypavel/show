@@ -37,6 +37,12 @@
 .artistTitleContainer {
   margin-top: -70px;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+.artistTitle {
+  display: flex;
   align-items: flex-end;
   gap: 15px;
 }
@@ -47,7 +53,6 @@
   border: 2px solid #2b2b2b;
   border-radius: 20px;
   overflow: hidden;
-
   z-index: 1;
 }
 .avatar {
@@ -55,6 +60,17 @@
 }
 .artistName {
   margin-bottom: 20px;
+}
+.sharedContainer {
+  position: absolute;
+  right: 20px;
+  bottom: 50px;
+  z-index: 1;
+
+  @media screen and (min-width: 768px) {
+    right: 40px;
+    bottom: -20px;
+  }
 }
 .infoTopContainer {
   display: flex;
