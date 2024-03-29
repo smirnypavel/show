@@ -70,15 +70,20 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
         </div>
         <div className={styles.artistInfo}>
           <div className={styles.artistTitleContainer}>
-            <div className={styles.avatarContainer}>
-              <Image
-                src={artist.avatar.url}
-                alt="avatar"
-                fill
-                className={styles.avatar}
-              />
+            <div className={styles.artistTitle}>
+              <div className={styles.avatarContainer}>
+                <Image
+                  src={artist.avatar.url}
+                  alt="avatar"
+                  fill
+                  className={styles.avatar}
+                />
+              </div>
+              <h2 className={styles.artistName}>{artist.firstName}</h2>
             </div>
-            <h2 className={styles.artistName}>{artist.firstName}</h2>
+            <div className={styles.sharedContainer}>
+              <ShareLink id={artist._id} />
+            </div>
           </div>
           <div className={styles.infoTopContainer}>
             <div>
@@ -99,7 +104,6 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                 <PiStarThin className={styles.iconRating} />
               </div>
             </div>
-            <ShareLink />
             <div className={styles.artistContact}>
               <p className={styles.label}>Контакти</p>
 

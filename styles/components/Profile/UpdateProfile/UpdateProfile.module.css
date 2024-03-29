@@ -41,6 +41,7 @@
   align-items: flex-end;
   gap: 15px;
 }
+
 .avatarContainer {
   position: relative;
   width: 120px;

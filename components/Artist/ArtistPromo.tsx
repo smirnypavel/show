@@ -23,6 +23,7 @@ import { SiViber } from "react-icons/si";
 import { SiMaildotru } from "react-icons/si";
 import { Comfortaa } from "next/font/google";
 import YouTube3 from "../helpers/Youtube2";
+import ShareLink from "../helpers/ShareLink";
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
@@ -66,15 +67,20 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
         </div>
         <div className={styles.artistInfo}>
           <div className={styles.artistTitleContainer}>
-            <div className={styles.avatarContainer}>
-              <Image
-                src={artist.avatar.url}
-                alt="avatar"
-                fill
-                className={styles.avatar}
-              />
+            <div className={styles.artistTitle}>
+              <div className={styles.avatarContainer}>
+                <Image
+                  src={artist.avatar.url}
+                  alt="avatar"
+                  fill
+                  className={styles.avatar}
+                />
+              </div>
+              <h2 className={styles.artistName}>{artist.firstName}</h2>
             </div>
-            <h2 className={styles.artistName}>{artist.firstName}</h2>
+            <div className={styles.sharedContainer}>
+              <ShareLink id={artist._id} />
+            </div>
           </div>
           <div className={styles.infoTopContainer}>
             <div>

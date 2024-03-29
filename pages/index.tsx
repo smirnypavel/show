@@ -4,14 +4,9 @@ import HomeTopBanner from "@/components/Home/HomeTopBanner/HomeTopBanner";
 import RequestForm from "@/components/Home/RequestForm";
 import RequestInfo from "@/components/Home/RequestInfo";
 import TopArtistsRedesign from "@/components/Home/TopContainer/TopArtistsRedesign";
-import TopContainer from "@/components/Home/TopContainer/TopContainer";
 import { TbHandClick } from "react-icons/tb";
-
-// import MetaTags from "@/components/Meta/MetaTags";
 import styles from "@/styles/Home/Home.module.css";
-
 import Head from "next/head";
-import Hero from "@/components/Home/Hero";
 import Fade from "@/components/Home/Slider";
 // import SnowfallComponent from "@/components/trash/snow";
 
@@ -23,7 +18,7 @@ const Home = () => {
       </Head>
       <div className={styles.homepage}>
         <HomeSearchBar />
-        {/* <Hero /> */}
+
         <Fade />
         <HomeTopBanner />
         <div className={styles.container}>
