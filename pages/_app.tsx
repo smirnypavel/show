@@ -70,7 +70,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta
           property="og:url"
-          content={`https://www.wechirka.com/artists/${url._id} || "https://www.wechirka.com"`}
+          content={
+            `https://www.wechirka.com/artists/${url._id} ` ||
+            "https://www.wechirka.com"
+          }
           key="ogurl"
         />
         <meta
