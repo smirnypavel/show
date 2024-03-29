@@ -216,7 +216,7 @@ const Header = () => {
       <Link
         className={styles.feedbackContainer}
         target="_blank"
-        href={"https://t.me/+tG6pSpHWPPFiYzMy"}>
+        href={"https://t.me/+xk_KcHEu3eNlNTVi"}>
         <div>
           Вельми шановні тестери ось лінк на телеграм для вашого фідбеку
         </div>
