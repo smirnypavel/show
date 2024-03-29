@@ -25,6 +25,7 @@ import { Comfortaa } from "next/font/google";
 
 import { SiMaildotru } from "react-icons/si";
 import YouTube3 from "@/components/helpers/Youtube2";
+import ShareLink from "@/components/helpers/ShareLink";
 
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
@@ -98,7 +99,7 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                 <PiStarThin className={styles.iconRating} />
               </div>
             </div>
-
+            <ShareLink />
             <div className={styles.artistContact}>
               <p className={styles.label}>Контакти</p>
 
