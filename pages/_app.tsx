@@ -69,7 +69,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta
           property="og:url"
-          content="https://www.wechirka.com"
+          content="https://www.wechirka.com/artists/65ea49a15e6bbb81c4e175a7"
           key="ogurl"
         />
         <meta

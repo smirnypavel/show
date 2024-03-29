@@ -1,8 +1,8 @@
 .container {
   margin: 0 auto;
-  width: 1050px;
+  max-width: 1050px;
   display: flex;
-  position: relative;
+  /* position: relative; */
 }
 .addButton {
   font-family: inherit;
@@ -36,14 +36,14 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  min-width: 600px;
-  overflow: hidden;
-  overflow-y: scroll;
-  height: 100vh;
+  max-width: 600px;
+  /* overflow: hidden;
+  overflow-y: scroll; */
+  /* height: 100vh; */
   align-items: center;
 }
 .header {
-  position: fixed;
+  /* position: fixed; */
   height: 100px;
   width: 602px;
   background-color: #3b3b3b;
