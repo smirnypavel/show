@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   let title = pageProps.artist
     ? pageProps.artist
     : "Wechirka - новий вимір сворення свята";
+  let url = pageProps.artist ? pageProps.artist : "https://www.wechirka.com";
   let description = pageProps.artist
     ? pageProps.artist
     : "Тут Ви зможете знайти будь-якого артиста або людину що працює у сфері розваг)))";
@@ -69,7 +70,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta
           property="og:url"
-          content="https://www.wechirka.com/artists/65ea49a15e6bbb81c4e175a7"
+          content={`https://www.wechirka.com/artists/${url._id} || "https://www.wechirka.com"`}
           key="ogurl"
         />
         <meta
