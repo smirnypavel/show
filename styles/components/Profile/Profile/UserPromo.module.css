@@ -241,6 +241,8 @@
   /* background-color: #3b3b3b; */
   padding-top: 40px;
   padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
 }
 .portfolioTitle {
   text-align: center;
@@ -249,6 +251,8 @@
   color: var(--black);
 }
 .photoListContainer {
+  max-width: 1050px;
+
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
