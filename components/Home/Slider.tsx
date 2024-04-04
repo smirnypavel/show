@@ -11,7 +11,7 @@ const heroContents = [
     title: "Вітаємо в нашому захоплюючому світі неперевершених свят!",
     description:
       "Де кожен момент - це можливість втілити ваші найяскравіші ідеї.",
-    link: " https",
+    link: "/request",
     linkName: "Долучитися зараз",
     bannerImg: "/baners/heroBanner.jpeg",
   },
@@ -19,7 +19,7 @@ const heroContents = [
     title: " Свори свято своїй дитині!",
     description:
       "Знайди талановитого аніматора на день нарожденя дитини за три кліки).",
-    link: " https",
+    link: "/request",
     linkName: "Знайти",
     bannerImg: "/baners/heroBanner2.png",
   },
