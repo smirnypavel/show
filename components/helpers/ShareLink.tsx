@@ -15,7 +15,7 @@ interface SharedProps {
 const ShareLink: React.FC<SharedProps> = ({ id }) => {
   const [isShow, setIsShow] = useState(false);
   const shareUrl = `https://www.wechirka.com/artists/${id}`;
-  const title = "Профіль на wechirka.com ";
+  const title = "Профіль  ";
   const handleShow = () => {
     setIsShow(!isShow);
   };

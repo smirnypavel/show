@@ -2,6 +2,7 @@ import Post from "@/components/Social-Room/SocialPost";
 import RichTextEditor from "@/components/Ui/ReachText";
 import styles from "@/styles/Social-Room/SocialRoom.module.css";
 import { useState } from "react";
+import Friends from "./Friends";
 
 const posts = [
   {
@@ -53,34 +54,37 @@ const SocialRoom = () => {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.postsContainer}>
-        <button
-          onClick={handleShowRichText}
-          type="button"
-          className={styles.addButton}>
-          написати годноту
-        </button>
-        {showRichText && <RichTextEditor />}
+      <div className={styles.content}>
+        <div>
+          <RichTextEditor />
+          <div>
+            <h2>Ваші колеги</h2>
+            <Friends />
+          </div>
+        </div>
 
-        {posts.map((post) => (
-          <Post
-            key={post.id}
-            {...post}
-          />
-        ))}
-      </div>
-      <div className={styles.rightContainer}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, amet
-        perspiciatis, voluptatibus, modi neque totam perferendis nisi reiciendis
-        a accusantium consectetur quidem nobis qui soluta dolor ex facilis minus
-        obcaecati! Blanditiis consectetur velit maxime quasi, asperiores harum
-        similique hic maiores. Dignissimos, eius tenetur, veritatis unde tempora
-        quod minima nesciunt magni consequuntur ea nemo eligendi eum odio
-        sapiente quae facilis dicta. Omnis, odit error dolore magnam corrupti
-        facilis sapiente consequuntur expedita dolorum sit doloremque adipisci!
-        Architecto odit rem reiciendis sint, dignissimos velit vel, beatae ut in
-        facilis quam aliquam magni nulla. Obcaecati nobis sunt voluptas
-        doloremque quaerat eum vero, numquam praesentium unde labore officia
+        <div className={styles.postsContainer}>
+          {posts.map((post) => (
+            <Post
+              key={post.id}
+              {...post}
+            />
+          ))}
+        </div>
+        <div className={styles.rightContainer}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, amet
+          perspiciatis, voluptatibus, modi neque totam perferendis nisi
+          reiciendis a accusantium consectetur quidem nobis qui soluta dolor ex
+          facilis minus obcaecati! Blanditiis consectetur velit maxime quasi,
+          asperiores harum similique hic maiores. Dignissimos, eius tenetur,
+          veritatis unde tempora quod minima nesciunt magni consequuntur ea nemo
+          eligendi eum odio sapiente quae facilis dicta. Omnis, odit error
+          dolore magnam corrupti facilis sapiente consequuntur expedita dolorum
+          sit doloremque adipisci! Architecto odit rem reiciendis sint,
+          dignissimos velit vel, beatae ut in facilis quam aliquam magni nulla.
+          Obcaecati nobis sunt voluptas doloremque quaerat eum vero, numquam
+          praesentium unde labore officia
+        </div>
       </div>
     </div>
   );
