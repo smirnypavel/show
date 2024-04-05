@@ -1,8 +1,8 @@
 .editorContainer {
   margin: 0 auto;
   width: 350px;
+  /* height: 250px; */
   margin-bottom: 10px;
-  position: relative;
 }
 
 .textArea {
@@ -12,26 +12,6 @@
   padding-bottom: 22px;
   border-radius: 5px;
   border: 1px solid#a159ff7f;
-}
-.buttonSubmit {
-  color: inherit;
-  font-family: inherit;
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  width: fit-content;
-  align-items: center;
-  background-color: #a259ff;
-  border: none;
-  border-radius: 5px;
-  justify-content: center;
-  padding: 5px;
-
-  cursor: pointer; /* Добавим указатель при наведении */
-
-  @media screen and (min-width: 768px) {
-    /* transform: scale(0.5); */
-  }
 }
 
 .buttonsContainer {
@@ -55,4 +35,68 @@
   background-color: transparent;
   color: inherit;
   font-size: inherit;
+}
+.addPhotoButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+
+  background-color: transparent;
+  color: inherit;
+  font-size: inherit;
+}
+.bottomButtonContainer {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.buttonSubmit {
+  color: inherit;
+  font-family: inherit;
+  width: fit-content;
+  align-items: center;
+  background-color: #a259ff;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  padding: 5px;
+  cursor: pointer;
+}
+.previewContainer {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.imagePreview {
+  object-fit: cover;
+}
+
+.deleteButton {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: 1;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 4px;
+  top: 4px;
+  background-color: #d1d1d1b7;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.deleteButton:hover {
+  background-color: #d1d1d1;
+}
+.deleteButtonIcon {
+  width: 24px;
+  height: 24px;
 }

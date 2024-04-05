@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { BiBold, BiItalic, BiUnderline } from "react-icons/bi";
 import { PiSquareFill } from "react-icons/pi";
 import { PiTextAlignJustify } from "react-icons/pi";
+import { IoClose } from "react-icons/io5";
 import {
   AiOutlineRedo,
   AiOutlineUndo,
@@ -9,10 +10,12 @@ import {
   AiOutlineAlignCenter,
   AiOutlineAlignRight,
 } from "react-icons/ai";
+import { MdOutlineAddAPhoto } from "react-icons/md";
 import styles from "@/styles/components/Ui/RichTextEditor.module.css";
 import CustomSelect from "./ColorSelect";
 import CustomSelectFontSize from "./ReachText/FontsizeSelect";
 import EmojiPicker from "./ReachText/EmojiPicker";
+import Image from "next/image";
 
 interface ColorOption {
   value: string;
@@ -20,6 +23,8 @@ interface ColorOption {
 }
 
 const RichTextEditor: React.FC = () => {
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+
   const [content, setContent] = useState<string>("");
   const textAreaRef = useRef<HTMLDivElement>(null);
   const [selectedColor, setSelectedColor] = useState<string>("black");
@@ -76,11 +81,31 @@ const RichTextEditor: React.FC = () => {
     // Add more colors as needed
   ];
   const fontSizes: string[] = ["1", "2", "3", "4", "5"];
+  const handleAddPhoto = async () => {
+    try {
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.accept = "image/*";
+      fileInput.click();
+
+      fileInput.onchange = async (e) => {
+        const file = (e.target as HTMLInputElement).files?.[0];
+        if (file) {
+          const imageUrl = URL.createObjectURL(file);
+          setImageSrc(imageUrl);
+        }
+      };
+    } catch (error) {
+      console.error("Error adding photo:", error);
+    }
+  };
+  const handleDeletePreview = () => {
+    setImageSrc(null);
+  };
 
   return (
     <div className={styles.editorContainer}>
       <div className={styles.buttonsContainer}>
-        {/* Кнопки для выбора стилей */}
         <button
           onClick={() => applyStyle("bold")}
           className={styles.button}>
@@ -138,21 +163,42 @@ const RichTextEditor: React.FC = () => {
           onSelectChange={handleFontSizeChange}
           className={styles.select}
         />
-        {/* Кнопки для вставки смайликов */}
-        {/* <EmojiPicker onEmojiClick={insertEmoji} /> */}
-        {/* Другие символы */}
+
+        <MdOutlineAddAPhoto
+          onClick={handleAddPhoto}
+          className={styles.addPhotoButton}
+        />
       </div>
+      {imageSrc && (
+        <div className={styles.previewContainer}>
+          <Image
+            src={imageSrc}
+            alt="Preview"
+            className={styles.imagePreview}
+            fill
+          />
+          <button
+            type="button"
+            onClick={handleDeletePreview}
+            className={styles.deleteButton}>
+            <IoClose className={styles.deleteButtonIcon} />
+          </button>
+        </div>
+      )}
       <div
         ref={textAreaRef}
         contentEditable
         className={styles.textArea}
         onInput={(e) => setContent(e.currentTarget.innerHTML)}
       />
-      <button
-        type="button"
-        className={styles.buttonSubmit}>
-        Опублікувати
-      </button>
+      <div className={styles.bottomButtonContainer}>
+        <span></span>
+        <button
+          type="button"
+          className={styles.buttonSubmit}>
+          Опублікувати
+        </button>
+      </div>
     </div>
   );
 };
