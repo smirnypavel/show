@@ -6,25 +6,19 @@ import styles from "@/styles/Social-Room/SocialPost.module.css";
 import Image from "next/image";
 
 interface PostProps {
-  author: string;
-  avatar: string;
-  content: string;
-  image?: string; // Optional image property
-  date: string;
-  like: number;
-  dislikes: number;
+  post: {
+    author: string;
+    avatar: string;
+    content: string;
+    image?: string; // Optional image property
+    date: string;
+    like: number;
+    dislikes: number;
+  };
 }
 const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
-const Post: React.FC<PostProps> = ({
-  author,
-  avatar,
-  content,
-  image,
-  date,
-  like,
-  dislikes,
-}) => {
+const Post: React.FC<PostProps> = ({ post }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleReadMoreClick = () => {
@@ -36,22 +30,22 @@ const Post: React.FC<PostProps> = ({
       <div className={styles.header}>
         <div className={styles.avatarContainer}>
           <Image
-            src={avatar}
-            alt={author}
+            src={post.avatar}
+            alt={post.author}
             className={styles.avatar}
             fill
           />
         </div>
         <div className={styles.authorInfo}>
-          <p className={styles.authorName}>{author}</p>
-          <p className={styles.date}>{date}</p>
+          <p className={styles.authorName}>{post.author}</p>
+          <p className={styles.date}>{post.date}</p>
         </div>
       </div>
       <div className={styles.content}>
-        {image && (
+        {post.image && (
           <div className={styles.imageContainer}>
             <Image
-              src={image}
+              src={post.image}
               alt="Post image"
               className={styles.image}
               fill
@@ -60,8 +54,8 @@ const Post: React.FC<PostProps> = ({
         )}
 
         <p className={styles.description}>
-          {isExpanded ? content : `${content.slice(0, 100)}...`}
-          {content.length > 100 && (
+          {isExpanded ? post.content : `${post.content.slice(0, 100)}...`}
+          {post.content.length > 100 && (
             <button
               type="button"
               className={`${comfortaa.className} ${styles.readMoreButton}`}
@@ -74,11 +68,11 @@ const Post: React.FC<PostProps> = ({
       <div className={styles.actions}>
         <div className={styles.likesContainer}>
           <span className={styles.like}>
-            {like}
+            {post.like}
             <BiLike />
           </span>
           <span className={styles.disLike}>
-            {dislikes}
+            {post.dislikes}
             <BiDislike />
           </span>
         </div>

@@ -44,7 +44,6 @@ const posts = [
     like: 12,
     dislikes: 1,
   },
-  // ...
 ];
 
 const SocialRoom = () => {
@@ -67,7 +66,7 @@ const SocialRoom = () => {
           {posts.map((post) => (
             <Post
               key={post.id}
-              {...post}
+              post={post}
             />
           ))}
         </div>
