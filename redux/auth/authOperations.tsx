@@ -200,6 +200,7 @@ export const getUser = createAsyncThunk(
     }
   }
 );
+
 export const uploadImage = createAsyncThunk(
   "auth/uploadImage",
   async (file: File, thunkAPI) => {

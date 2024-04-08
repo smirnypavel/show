@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
 import styles from "@/styles/Social-Room/Friends.module.css";
 const friends = [
   {
@@ -14,7 +14,7 @@ const friends = [
     _di: 2,
     firstName: "Pavlik",
     avatar: {
-      publicId: 1,
+      publicId: 2,
       url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785361/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image%281%29-1707785360994.jpeg.jpg",
     },
   },
@@ -22,7 +22,7 @@ const friends = [
     _di: 3,
     firstName: "Vova",
     avatar: {
-      publicId: 1,
+      publicId: 3,
       url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785369/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image-1707785368897.jpeg.jpg",
     },
   },
@@ -30,7 +30,7 @@ const friends = [
     _di: 4,
     firstName: "Elvis",
     avatar: {
-      publicId: 1,
+      publicId: 4,
       url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785381/user-64ff012f1424c2d37e2d0467/Bard_Generated_Image-1707785381209.jpeg.jpg",
     },
   },
@@ -38,7 +38,7 @@ const friends = [
     _di: 5,
     firstName: "Wechirka",
     avatar: {
-      publicId: 1,
+      publicId: 5,
       url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785453/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image%283%29-1707785452323.jpeg.jpg",
     },
   },
