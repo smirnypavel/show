@@ -9,11 +9,11 @@ const posts = [
     id: 1,
     author: "John Doe",
     avatar:
-      "https://res.cloudinary.com/dciy3u6un/image/upload/v1707752537/user-64ff012f1424c2d37e2d0467/avatar-banerRegister-1707752535384.jpeg.jpg",
+      "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853194/user-65ea49a15e6bbb81c4e175a7/avatar-banerRegister-1709853193894.jpeg.jpg",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     image:
-      "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785351/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image%282%29-1707785350934.jpeg.jpg",
+      "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853687/user-65ea49a15e6bbb81c4e175a7/Gemini_Generated_Image%282%29-1709853687005.jpeg.jpg",
     date: "2024-03-22",
     like: 3,
     dislikes: 1,
@@ -22,11 +22,11 @@ const posts = [
     id: 2,
     author: "John Doe",
     avatar:
-      "https://res.cloudinary.com/dciy3u6un/image/upload/v1707752537/user-64ff012f1424c2d37e2d0467/avatar-banerRegister-1707752535384.jpeg.jpg",
+      "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853194/user-65ea49a15e6bbb81c4e175a7/avatar-banerRegister-1709853193894.jpeg.jpg",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     image:
-      "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785351/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image%282%29-1707785350934.jpeg.jpg",
+      "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853704/user-65ea49a15e6bbb81c4e175a7/Gemini_Generated_Image%281%29-1709853704191.jpeg.jpg",
     date: "2024-03-22",
     like: 5,
     dislikes: 1,
@@ -35,11 +35,11 @@ const posts = [
     id: 3,
     author: "John Doe",
     avatar:
-      "https://res.cloudinary.com/dciy3u6un/image/upload/v1707752537/user-64ff012f1424c2d37e2d0467/avatar-banerRegister-1707752535384.jpeg.jpg",
+      "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853194/user-65ea49a15e6bbb81c4e175a7/avatar-banerRegister-1709853193894.jpeg.jpg",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     image:
-      "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785351/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image%282%29-1707785350934.jpeg.jpg",
+      "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853720/user-65ea49a15e6bbb81c4e175a7/Gemini_Generated_Image%283%29-1709853719708.jpeg.jpg",
     date: "2024-03-22",
     like: 12,
     dislikes: 1,

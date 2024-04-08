@@ -7,7 +7,7 @@ const friends = [
     firstName: "John",
     avatar: {
       publicId: 1,
-      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785351/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image%282%29-1707785350934.jpeg.jpg",
+      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853194/user-65ea49a15e6bbb81c4e175a7/avatar-banerRegister-1709853193894.jpeg.jpg",
     },
   },
   {
@@ -15,7 +15,7 @@ const friends = [
     firstName: "Pavlik",
     avatar: {
       publicId: 2,
-      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785361/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image%281%29-1707785360994.jpeg.jpg",
+      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853734/user-65ea49a15e6bbb81c4e175a7/Gemini_Generated_Image-1709853733312.jpeg.jpg",
     },
   },
   {
@@ -23,7 +23,7 @@ const friends = [
     firstName: "Vova",
     avatar: {
       publicId: 3,
-      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785369/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image-1707785368897.jpeg.jpg",
+      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853762/user-65ea49a15e6bbb81c4e175a7/image%2823%29-1709853761716.png.png",
     },
   },
   {
@@ -31,7 +31,7 @@ const friends = [
     firstName: "Elvis",
     avatar: {
       publicId: 4,
-      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785381/user-64ff012f1424c2d37e2d0467/Bard_Generated_Image-1707785381209.jpeg.jpg",
+      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853788/user-65ea49a15e6bbb81c4e175a7/image-5-1709853787638.png.png",
     },
   },
   {
@@ -39,7 +39,7 @@ const friends = [
     firstName: "Wechirka",
     avatar: {
       publicId: 5,
-      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1707785453/user-64ff012f1424c2d37e2d0467/Gemini_Generated_Image%283%29-1707785452323.jpeg.jpg",
+      url: "https://res.cloudinary.com/dciy3u6un/image/upload/v1709853687/user-65ea49a15e6bbb81c4e175a7/Gemini_Generated_Image%282%29-1709853687005.jpeg.jpg",
     },
   },
 ];
