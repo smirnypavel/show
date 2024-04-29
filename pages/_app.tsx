@@ -1,5 +1,6 @@
-// import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import { ApolloProvider } from "@apollo/client/react";
+import client from "@/utils/client";
 import { Analytics } from "@vercel/analytics/react";
 import { Comfortaa } from "next/font/google";
 import { Provider } from "react-redux";
@@ -100,13 +101,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       <PersistGate
         loading={null}
         persistor={persistor}>
-        <Toaster />
-        <Layout>
-          <main className={`container ${inter.className}`}>
-            <Component {...pageProps} />
-            <Analytics />
-          </main>
-        </Layout>
+        <ApolloProvider client={client}>
+          <Toaster />
+          <Layout>
+            <main className={`container ${inter.className}`}>
+              <Component {...pageProps} />
+              <Analytics />
+            </main>
+          </Layout>
+        </ApolloProvider>
       </PersistGate>
     </Provider>
   );

@@ -16,6 +16,26 @@ import CustomSelect from "./ColorSelect";
 import CustomSelectFontSize from "./ReachText/FontsizeSelect";
 import EmojiPicker from "./ReachText/EmojiPicker";
 import Image from "next/image";
+import { useMutation } from "@apollo/client/react";
+import { gql } from "@apollo/client/core";
+
+interface CreateLiveDto {
+  content: String;
+  image?: String;
+}
+
+const CREATE_MESSAGE = gql`
+  mutation {
+    createMessage(data: { content: $data }) {
+      _id
+      content
+      date
+      like
+      dislikes
+      avatar
+    }
+  }
+`;
 
 interface ColorOption {
   value: string;
@@ -30,6 +50,7 @@ const RichTextEditor: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>("black");
   const [textAlign, setTextAlign] = useState<string>("left");
   const [selectedFontSize, setSelectedFontSize] = useState<string>("medium");
+  const [createMessage] = useMutation(CREATE_MESSAGE);
 
   const applyStyle = (style: string) => {
     document.execCommand(style, false);
@@ -81,6 +102,7 @@ const RichTextEditor: React.FC = () => {
     // Add more colors as needed
   ];
   const fontSizes: string[] = ["1", "2", "3", "4", "5"];
+
   const handleAddPhoto = async () => {
     try {
       const fileInput = document.createElement("input");
@@ -102,7 +124,22 @@ const RichTextEditor: React.FC = () => {
   const handleDeletePreview = () => {
     setImageSrc(null);
   };
+  const handleSubmit = async () => {
+    try {
+      let variables: { data: { content: string } };
 
+      if (imageSrc) {
+        variables = { data: { content } };
+      } else {
+        variables = { data: { content } }; // Не передаем image, если изображение отсутствует
+      }
+
+      const response = await createMessage({ variables });
+      console.log("Сообщение успешно отправлено:", response.data.createMessage);
+    } catch (error) {
+      console.error("Ошибка при отправке сообщения:", error);
+    }
+  };
   return (
     <div className={styles.editorContainer}>
       <div className={styles.buttonsContainer}>
@@ -194,6 +231,7 @@ const RichTextEditor: React.FC = () => {
       <div className={styles.bottomButtonContainer}>
         <span></span>
         <button
+          onClick={handleSubmit}
           type="button"
           className={styles.buttonSubmit}>
           Опублікувати

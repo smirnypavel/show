@@ -9,6 +9,7 @@ import {
   TelegramIcon,
   TelegramShareButton,
 } from "react-share";
+import ShareProfileQRCode from "./ShareProfileQRCode";
 interface SharedProps {
   id: string;
 }
@@ -56,6 +57,8 @@ const ShareLink: React.FC<SharedProps> = ({ id }) => {
       />
 
       <div className={styles.linkContainer}>
+        {/* <ShareProfileQRCode /> */}
+
         <FacebookShareButton url={shareUrl}>
           <FacebookIcon
             size={32}
