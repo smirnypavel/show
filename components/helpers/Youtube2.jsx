@@ -6,7 +6,10 @@ const YouTube3 = ({ url }) => {
   const getVideoId = (url) => {
     if (typeof url === "string") {
       // Регулярное выражение для извлечения идентификатора видео из ссылки
-      const match = url.match(/(?:youtu\.be\/|\/watch\?v=)([a-zA-Z0-9_-]{11})/);
+      const match = url.match(
+        /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:embed|v|watch(?:\/|\?.*v=)))|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/
+      );
+
       return match?.[1]; // Возвращаем первое совпадение, которое содержит идентификатор видео
     }
     return undefined;
