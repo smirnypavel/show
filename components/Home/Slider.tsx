@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "@/styles/Home/Slider.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
+import { IBanner } from "@/types/IBaners";
 
 const heroContents = [
   {
@@ -41,6 +43,21 @@ const heroContents = [
 ];
 
 function Fade() {
+  const [banners, setBanners] = useState<IBanner[]>([]);
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const response = await axios.get<IBanner[]>("/banners");
+
+        setBanners(response.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchBanners();
+  }, []);
+
   const settings = {
     dots: true,
     fade: true,
@@ -57,10 +74,10 @@ function Fade() {
   return (
     <div className={styles.sliderContainer}>
       <Slider {...settings}>
-        {heroContents.map((content, index) => (
+        {banners.map((content) => (
           <div
             className={styles.heroContent}
-            key={index}>
+            key={content._id}>
             <div className={styles.imageContainer}>
               <Image
                 src={content.bannerImg}
