@@ -21,6 +21,20 @@ const UpdateContacts = () => {
   const user: IUserAuth = useAppSelector(getUser);
 
   const handleSubmitValue = (value: string, contactType: string) => {
+    if (contactType === "telegram") {
+      // Регулярное выражение для проверки ссылки и извлечения имени пользователя
+      const telegramUrlRegex = /^https:\/\/t\.me\/([a-zA-Z0-9_]{5,})$/;
+      const match = value.match(telegramUrlRegex);
+
+      if (match) {
+        // Извлекаем имя пользователя из ссылки
+        value = match[1];
+      } else if (value.startsWith("@")) {
+        // Убираем @, если он есть в имени пользователя
+        value = value.substring(1);
+      }
+    }
+
     const contactData = {
       [contactType]: value,
     };
