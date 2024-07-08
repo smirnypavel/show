@@ -46,7 +46,7 @@ const UpdateSocial = () => {
               Facebook{" "}
               <Image
                 src={FacebookLogo}
-                alt="Viber Logo"
+                alt="Facebook Logo"
                 className={styles.contactIcon}
               />
             </p>
@@ -62,7 +62,7 @@ const UpdateSocial = () => {
               Instagram{" "}
               <Image
                 src={instagram}
-                alt="Viber Logo"
+                alt="Instagram Logo"
                 className={styles.contactIcon}
               />
             </p>
@@ -79,7 +79,7 @@ const UpdateSocial = () => {
               YouTube{" "}
               <Image
                 src={YouTubeLogo}
-                alt="Viber Logo"
+                alt="YouTube Logo"
                 className={styles.contactIcon}
               />
             </p>
@@ -96,7 +96,7 @@ const UpdateSocial = () => {
               Tik-Tok{" "}
               <Image
                 src={tiktokApp}
-                alt="tiktok Logo"
+                alt="Tik-Tok Logo"
                 className={styles.contactIcon}
               />
             </p>
