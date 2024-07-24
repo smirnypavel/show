@@ -63,6 +63,7 @@ const ChangePassword = () => {
                 className={styles.changePasswordInput}
                 type={showPassword ? "text" : "password"}
                 name="oldPassword"
+                required
               />
               <ErrorMessage
                 name="oldPassword"
@@ -78,6 +79,7 @@ const ChangePassword = () => {
                 className={styles.changePasswordInput}
                 type={showPassword ? "text" : "password"}
                 name="password"
+                required
               />
               <ErrorMessage
                 name="password"
@@ -94,6 +96,7 @@ const ChangePassword = () => {
                   className={styles.changePasswordInput}
                   type={showPassword ? "text" : "password"}
                   name="confirmPassword"
+                  required
                 />
                 <div className="input-group-append">
                   <button

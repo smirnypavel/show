@@ -133,7 +133,7 @@ export const deleteProfile = createAsyncThunk(
   "auth/deleteProfile",
   async (credentials: {}, thunkAPI) => {
     try {
-      await axios.post("/users/delete-profile", credentials);
+      await axios.delete("/users/delete-profile", credentials);
       clearAuthHeader();
       localStorage.clear();
       toast.success("Профіль успішно видалений");
