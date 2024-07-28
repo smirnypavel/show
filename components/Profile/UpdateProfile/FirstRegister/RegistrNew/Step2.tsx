@@ -18,7 +18,8 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
   return (
     <div className={styles.container}>
       <div>
-        <p className={styles.contactsTitle}>Ваші контактні данні</p>
+        <p className={styles.contactsTitle}>Ваші контактні данні </p>
+
         <div className={styles.socialContainer}>
           <div>
             <p className={styles.contactLabel}>
@@ -47,14 +48,15 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
               className={stylesInput.input}
             />
             <p className={styles.contactLabel}>
-              Почта <SiMaildotru className={styles.contactIcon} />
+              Пошта <SiMaildotru className={styles.contactIcon} />
             </p>
             <input
               type="mail"
               name="email"
-              value={data.mail || ""}
+              value={data.email || ""}
               onChange={handleChange}
               className={stylesInput.input}
+              placeholder="ваша пошта"
             />
           </div>
 
