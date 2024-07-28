@@ -34,8 +34,8 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
             </p>
             <input
               type="text"
-              name="facebook"
-              value={data.social?.facebook || ""}
+              name="Facebook"
+              value={data.social?.Facebook || ""}
               onChange={handleChange}
               className={stylesInput.input}
             />
@@ -49,8 +49,8 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
             </p>
             <input
               type="text"
-              name="instagram"
-              value={data.social?.instagram || ""}
+              name="Instagram"
+              value={data.social?.Instagram || ""}
               onChange={handleChange}
               className={stylesInput.input}
             />
@@ -64,8 +64,8 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
             </p>
             <input
               type="text"
-              name="youtube"
-              value={data.social?.youtube || ""}
+              name="Youtube"
+              value={data.social?.Youtube || ""}
               onChange={handleChange}
               className={stylesInput.input}
             />
@@ -81,8 +81,8 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
             </p>
             <input
               type="text"
-              name="tiktok"
-              value={data.social?.tiktok || ""}
+              name="TikTok"
+              value={data.social?.TikTok || ""}
               onChange={handleChange}
               className={stylesInput.input}
             />
@@ -91,8 +91,8 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
             </p>
             <input
               type="text"
-              name="website"
-              value={data.social?.website || ""}
+              name="WebSite"
+              value={data.social?.WebSite || ""}
               onChange={handleChange}
               className={stylesInput.input}
             />

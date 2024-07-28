@@ -4,18 +4,18 @@ export interface FormData {
   firstName?: string;
   phone?: string;
   telegram?: string;
-  mail?: string;
+  email?: string;
   viber?: string;
   whatsapp?: string;
   title?: string;
   price?: string;
   description?: string;
   social?: {
-    facebook?: string;
-    instagram?: string;
-    youtube?: string;
-    tiktok?: string;
-    website?: string;
+    Facebook?: string;
+    Instagram?: string;
+    Youtube?: string;
+    TikTok?: string;
+    WebSite?: string;
   };
 }
 
