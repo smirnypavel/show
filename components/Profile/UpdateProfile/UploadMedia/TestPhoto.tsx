@@ -101,6 +101,7 @@ const PhotoPlaceholderComponent = () => {
         ref={fileInputRef}
         disabled={emptyImageCount <= 0}
         style={{ display: "none" }}
+        multiple
       />
       <button
         onClick={handleButtonClick}
