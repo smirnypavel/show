@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
-// import Step4 from './Step4';
 import Step5 from "./Step5";
-// import Step6 from './Step6';
-// import Step7 from './Step7';
-import { StepProps, FormData } from "@/types/IRegFormData";
 import CategorySelectorFirstReg from "./CategorySelectFirstReg";
 import UpdateMediaFirstReg from "./UpdateMediaFirstReg";
 import FinishReg from "./FinishReg";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/ultiStepForm.module.css";
 import { useAppDispatch } from "@/redux/hooks";
-import { firstReg, updateUser } from "@/redux/auth/authOperations";
+import { firstReg } from "@/redux/auth/authOperations";
+import { FormData, StepProps } from "@/types/IRegFormData";
+
 const MultiStepForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [formData, setFormData] = useState<FormData>({
@@ -43,15 +41,27 @@ const MultiStepForm: React.FC = () => {
   };
 
   const dispatch = useAppDispatch();
-  // // const router = useRouter();
 
-  // const finish = async () => {
-  //   await dispatch(updateUser({ register: true }));
-  // };
+  const filterEmptyFields = (data: any): any => {
+    const filteredData: any = {};
+    Object.keys(data).forEach((key) => {
+      const value = data[key];
+      if (typeof value === "string" && value.trim() !== "") {
+        filteredData[key] = value;
+      } else if (typeof value === "object" && value !== null) {
+        const nestedFilteredData = filterEmptyFields(value);
+        if (Object.keys(nestedFilteredData).length > 0) {
+          filteredData[key] = nestedFilteredData;
+        }
+      }
+    });
+    return filteredData;
+  };
+
   const handleSubmit = async () => {
-    console.log(formData);
-    await dispatch(firstReg({ ...formData, register: true }));
-    // await dispatch(updateUser({ register: true }));
+    const filteredData = filterEmptyFields(formData);
+    console.log(filteredData);
+    await dispatch(firstReg({ ...filteredData, register: true }));
   };
 
   return (
@@ -60,26 +70,34 @@ const MultiStepForm: React.FC = () => {
         {currentStep === 1 && (
           <Step1
             data={formData}
-            setData={setFormData}
+            setData={
+              setFormData as React.Dispatch<React.SetStateAction<FormData>>
+            }
           />
         )}
         {currentStep === 2 && (
           <Step2
             data={formData}
-            setData={setFormData}
+            setData={
+              setFormData as React.Dispatch<React.SetStateAction<FormData>>
+            }
           />
         )}
         {currentStep === 3 && (
           <Step3
             data={formData}
-            setData={setFormData}
+            setData={
+              setFormData as React.Dispatch<React.SetStateAction<FormData>>
+            }
           />
         )}
         {currentStep === 4 && <CategorySelectorFirstReg />}
         {currentStep === 5 && (
           <Step5
             data={formData}
-            setData={setFormData}
+            setData={
+              setFormData as React.Dispatch<React.SetStateAction<FormData>>
+            }
           />
         )}
         {currentStep === 6 && <UpdateMediaFirstReg />}

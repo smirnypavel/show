@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, ChangeEvent } from "react";
 import { StepProps } from "@/types/IRegFormData";
 import stylesInput from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/Step1.module.css";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/UpdateContactFirstRegister.module.css";
@@ -14,104 +14,119 @@ import WhatsApp from "@/public/icon/WhatsApp.svg";
 const Step2: React.FC<StepProps> = ({ data, setData }) => {
   const user = useAppSelector(getUser);
 
-  const formatTelegramUsername = (input: string) => {
+  useEffect(() => {
+    if (!data.phone && user.phone) {
+      setData((prevData) => ({ ...prevData, phone: user.phone }));
+    }
+    if (!data.email && user.email) {
+      setData((prevData) => ({ ...prevData, email: user.email }));
+    }
+  }, [user, data, setData]);
+
+  const formatTelegramUsername = (input: string): string => {
     const regex = /^(?:https:\/\/t\.me\/|@)?(\w+)$/;
     const match = input.match(regex);
     return match ? match[1] : input;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
-
-    if (name === "telegram") {
-      const formattedValue = formatTelegramUsername(value);
-      setData({ ...data, [name]: formattedValue });
-    } else {
-      setData({ ...data, [name]: value });
-    }
+    const formattedValue =
+      name === "telegram" ? formatTelegramUsername(value) : value;
+    setData((prevData) => ({ ...prevData, [name]: formattedValue }));
   };
 
   return (
     <div className={styles.container}>
       <div>
         <p className={styles.contactsTitle}>Ваші контактні данні </p>
-
         <div className={styles.socialContainer}>
-          <div>
-            <p className={styles.contactLabel}>
-              Телефон <HiOutlinePhone className={styles.contactIcon} />
-            </p>
-            <input
-              type="text"
-              name="phone"
-              value={data.phone || user.phone}
-              onChange={handleChange}
-              className={stylesInput.input}
-            />
-            <p className={styles.contactLabel}>
-              Телеграм
+          <ContactInput
+            label="Телефон"
+            icon={<HiOutlinePhone className={styles.contactIcon} />}
+            name="phone"
+            value={data.phone || ""}
+            onChange={handleChange}
+          />
+          <ContactInput
+            label="Телеграм"
+            icon={
               <Image
                 src={TelegramLogo}
                 alt="Telegram Logo"
                 className={styles.contactIcon}
               />
-            </p>
-            <input
-              type="text"
-              name="telegram"
-              value={data.telegram || ""}
-              onChange={handleChange}
-              className={stylesInput.input}
-            />
-            <p className={styles.contactLabel}>
-              Пошта <SiMaildotru className={styles.contactIcon} />
-            </p>
-            <input
-              type="mail"
-              name="email"
-              value={data.email || user.email}
-              onChange={handleChange}
-              className={stylesInput.input}
-              placeholder="Ваша пошта"
-            />
-          </div>
-
-          <div>
-            <p className={styles.contactLabel}>
-              Вайбер{" "}
+            }
+            name="telegram"
+            value={data.telegram || ""}
+            onChange={handleChange}
+          />
+          <ContactInput
+            label="Пошта"
+            icon={<SiMaildotru className={styles.contactIcon} />}
+            name="email"
+            value={data.email || ""}
+            onChange={handleChange}
+          />
+          <ContactInput
+            label="Вайбер"
+            icon={
               <Image
                 src={ViberLogo}
                 alt="Viber Logo"
                 className={styles.contactIcon}
               />
-            </p>
-            <input
-              type="text"
-              name="viber"
-              value={data.viber || ""}
-              onChange={handleChange}
-              className={stylesInput.input}
-            />
-            <p className={styles.contactLabel}>
-              Вотсап{" "}
+            }
+            name="viber"
+            value={data.viber || ""}
+            onChange={handleChange}
+          />
+          <ContactInput
+            label="Вотсап"
+            icon={
               <Image
                 src={WhatsApp}
                 alt="WhatsApp Logo"
                 className={styles.contactIcon}
               />
-            </p>
-            <input
-              type="text"
-              name="whatsapp"
-              value={data.whatsapp || ""}
-              onChange={handleChange}
-              className={stylesInput.input}
-            />
-          </div>
+            }
+            name="whatsapp"
+            value={data.whatsapp || ""}
+            onChange={handleChange}
+          />
         </div>
       </div>
     </div>
   );
 };
+
+interface ContactInputProps {
+  label: string;
+  icon: React.ReactNode;
+  name: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const ContactInput: React.FC<ContactInputProps> = ({
+  label,
+  icon,
+  name,
+  value,
+  onChange,
+}) => (
+  <div>
+    <p className={styles.contactLabel}>
+      {label} {icon}
+    </p>
+    <input
+      type="text"
+      name={name}
+      value={value}
+      onChange={onChange}
+      className={stylesInput.input}
+    />
+  </div>
+);
 
 export default Step2;

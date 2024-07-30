@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StepProps } from "@/types/IRegFormData";
 import ProfileUpdateAvatar from "../../ProfileUpdateAvatar";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/UserProfileRegister.module.css";
@@ -10,6 +10,12 @@ import { getUser } from "@/redux/auth/authSelectors";
 const Step1: React.FC<StepProps> = ({ data, setData }) => {
   const user = useAppSelector(getUser);
 
+  useEffect(() => {
+    if (user.firstName && !data.firstName) {
+      setData((prevData) => ({ ...prevData, firstName: user.firstName }));
+    }
+  }, [user.firstName, data.firstName, setData]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, firstName: e.target.value });
   };
@@ -19,10 +25,9 @@ const Step1: React.FC<StepProps> = ({ data, setData }) => {
       <p>Для початку додайте свої данні</p>
       <ProfileUpdateAvatar />
       <p className={styles.titleInput}>Ваше Ім’я:</p>
-
       <input
         type="text"
-        value={data.firstName || user.firstName}
+        value={data.firstName || ""}
         onChange={handleChange}
         placeholder={"Тут має бути Ваше Ім’я"}
         className={stylesInput.input}
