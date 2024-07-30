@@ -169,7 +169,7 @@ export const updateUser = createAsyncThunk(
   }
 );
 export const firstReg = createAsyncThunk(
-  "auth/updateUser",
+  "auth/firstReg",
   async (credentials: {}, thunkAPI) => {
     const initialToken = localStorage.getItem("token");
     if (initialToken) {
