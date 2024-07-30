@@ -4,8 +4,12 @@ import ProfileUpdateAvatar from "../../ProfileUpdateAvatar";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/UserProfileRegister.module.css";
 import stylesInput from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/Step1.module.css";
 import SearchCityRegister from "../SearchCityRegister";
+import { useAppSelector } from "@/redux/hooks";
+import { getUser } from "@/redux/auth/authSelectors";
 
 const Step1: React.FC<StepProps> = ({ data, setData }) => {
+  const user = useAppSelector(getUser);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, firstName: e.target.value });
   };
@@ -18,7 +22,7 @@ const Step1: React.FC<StepProps> = ({ data, setData }) => {
 
       <input
         type="text"
-        value={data.firstName || ""}
+        value={data.firstName || user.firstName}
         onChange={handleChange}
         placeholder={"Тут має бути Ваше Ім’я"}
         className={stylesInput.input}

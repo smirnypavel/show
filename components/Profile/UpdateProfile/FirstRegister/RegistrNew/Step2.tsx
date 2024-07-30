@@ -4,15 +4,31 @@ import stylesInput from "@/styles/components/Profile/UpdateProfile/FirstRegister
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/UpdateContactFirstRegister.module.css";
 import { HiOutlinePhone } from "react-icons/hi";
 import Image from "next/image";
+import { useAppSelector } from "@/redux/hooks";
+import { getUser } from "@/redux/auth/authSelectors";
 import TelegramLogo from "@/public/icon/TelegramLogo.svg";
 import { SiMaildotru } from "react-icons/si";
 import ViberLogo from "@/public/icon/ViberLogo.svg";
 import WhatsApp from "@/public/icon/WhatsApp.svg";
 
 const Step2: React.FC<StepProps> = ({ data, setData }) => {
+  const user = useAppSelector(getUser);
+
+  const formatTelegramUsername = (input: string) => {
+    const regex = /^(?:https:\/\/t\.me\/|@)?(\w+)$/;
+    const match = input.match(regex);
+    return match ? match[1] : input;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setData({ ...data, [name]: value });
+
+    if (name === "telegram") {
+      const formattedValue = formatTelegramUsername(value);
+      setData({ ...data, [name]: formattedValue });
+    } else {
+      setData({ ...data, [name]: value });
+    }
   };
 
   return (
@@ -28,10 +44,10 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
             <input
               type="text"
               name="phone"
-              value={data.phone || ""}
+              value={data.phone || user.phone}
               onChange={handleChange}
               className={stylesInput.input}
-            />{" "}
+            />
             <p className={styles.contactLabel}>
               Телеграм
               <Image
@@ -53,10 +69,10 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
             <input
               type="mail"
               name="email"
-              value={data.email || ""}
+              value={data.email || user.email}
               onChange={handleChange}
               className={stylesInput.input}
-              placeholder="ваша пошта"
+              placeholder="Ваша пошта"
             />
           </div>
 

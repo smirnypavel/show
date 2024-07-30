@@ -176,7 +176,7 @@ export const firstReg = createAsyncThunk(
       setAuthHeader(initialToken);
     }
     try {
-      const { data } = await axios.put("/registration", credentials);
+      const { data } = await axios.patch("/registration", credentials);
       if (data) {
         toast.success("Користувач успішно оновлений");
         return data;
