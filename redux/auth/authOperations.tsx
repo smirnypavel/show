@@ -168,6 +168,28 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+export const firstReg = createAsyncThunk(
+  "auth/updateUser",
+  async (credentials: {}, thunkAPI) => {
+    const initialToken = localStorage.getItem("token");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.put("/registration", credentials);
+      if (data) {
+        toast.success("Користувач успішно оновлений");
+        return data;
+      } else {
+        // Если data не существует или пусто, вызываем ошибку
+        throw new Error("Отсутствуют данные после обновления пользователя");
+      }
+    } catch (error: any) {
+      toast.error("Під час оновлення користувача сталася помилка");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 export const updatePassword = createAsyncThunk(
   "auth/updatePassword",
   async (credentials: {}, thunkAPI) => {

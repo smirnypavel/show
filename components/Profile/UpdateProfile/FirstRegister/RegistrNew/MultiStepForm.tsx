@@ -12,7 +12,7 @@ import UpdateMediaFirstReg from "./UpdateMediaFirstReg";
 import FinishReg from "./FinishReg";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/ultiStepForm.module.css";
 import { useAppDispatch } from "@/redux/hooks";
-import { updateUser } from "@/redux/auth/authOperations";
+import { firstReg, updateUser } from "@/redux/auth/authOperations";
 const MultiStepForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [formData, setFormData] = useState<FormData>({
@@ -45,13 +45,13 @@ const MultiStepForm: React.FC = () => {
   const dispatch = useAppDispatch();
   // // const router = useRouter();
 
-  const finish = async () => {
-    await dispatch(updateUser({ register: true }));
-  };
+  // const finish = async () => {
+  //   await dispatch(updateUser({ register: true }));
+  // };
   const handleSubmit = async () => {
     console.log(formData);
-    await dispatch(updateUser(formData));
-    await dispatch(updateUser({ register: true }));
+    await dispatch(firstReg({ ...formData, register: true }));
+    // await dispatch(updateUser({ register: true }));
   };
 
   return (
