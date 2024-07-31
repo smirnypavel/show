@@ -230,17 +230,18 @@ export const uploadImage = createAsyncThunk(
     try {
       const formData = new FormData();
       for (const file of files) {
-        formData.append("files", file); // Используем один ключ для всех файлов
+        formData.append("files", file);
       }
       const { data } = await axios.post("/users/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-
+      console.log("Server response:", data); // Добавьте эту строку для проверки ответа сервера
       toast.success("Зображення успішно завантажено!");
       return data;
     } catch (error: any) {
+      console.error("Upload error:", error); // Добавьте эту строку для проверки ошибки
       toast.error("Помилка при завантаженні зображення:");
       return thunkAPI.rejectWithValue(error.message);
     }

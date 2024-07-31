@@ -32,6 +32,7 @@ const PhotoPlaceholderComponent = () => {
     const files = event.target.files; // Получаем все файлы из FileList
     if (files && files.length > 0) {
       const fileArray = Array.from(files); // Преобразуем FileList в массив
+      console.log("Files selected for upload:", fileArray); // Добавьте эту строку для проверки файлов
       dispatch(uploadImage(fileArray)); // Передаем массив файлов
     }
   };
