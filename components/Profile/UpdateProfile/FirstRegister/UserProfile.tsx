@@ -8,7 +8,7 @@ const UserProfile = () => {
     <div className={styles.container}>
       <p>Для початку додайте свої данні</p>
       <ProfileUpdateAvatar />
-      <UserInfo />
+      {/* <UserInfo /> */}
     </div>
   );
 };

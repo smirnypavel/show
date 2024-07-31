@@ -15,6 +15,7 @@ import {
   deleteCat,
   verifyMail,
   deleteProfile,
+  firstReg,
 } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
@@ -168,6 +169,19 @@ export const authSlice = createSlice({
         state.error = action.error.message || "";
       })
       .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+        state.isLoading = false;
+      })
+      .addCase(firstReg.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(firstReg.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "";
+      })
+      .addCase(firstReg.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;

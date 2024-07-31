@@ -134,7 +134,7 @@ export const deleteProfile = createAsyncThunk(
   async (credentials: {}, thunkAPI) => {
     try {
       console.log(credentials);
-      await axios.delete("/users/delete-profile", credentials);
+      await axios.post("/users/delete-profile", credentials);
       clearAuthHeader();
       localStorage.clear();
       toast.success("Профіль успішно видалений");
@@ -155,6 +155,28 @@ export const updateUser = createAsyncThunk(
     }
     try {
       const { data } = await axios.put("/users", credentials);
+      if (data) {
+        toast.success("Користувач успішно оновлений");
+        return data;
+      } else {
+        // Если data не существует или пусто, вызываем ошибку
+        throw new Error("Отсутствуют данные после обновления пользователя");
+      }
+    } catch (error: any) {
+      toast.error("Під час оновлення користувача сталася помилка");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const firstReg = createAsyncThunk(
+  "auth/firstReg",
+  async (credentials: {}, thunkAPI) => {
+    const initialToken = localStorage.getItem("token");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.put("/users/registration", credentials);
       if (data) {
         toast.success("Користувач успішно оновлений");
         return data;
@@ -204,20 +226,22 @@ export const getUser = createAsyncThunk(
 
 export const uploadImage = createAsyncThunk(
   "auth/uploadImage",
-  async (file: File, thunkAPI) => {
-    // Изменяем тип file на File, а не File[]
+  async (files: File[], thunkAPI) => {
     try {
       const formData = new FormData();
-      formData.append(`file`, file); // Используем один ключ для файла
+      for (const file of files) {
+        formData.append("file", file);
+      }
       const { data } = await axios.post("/users/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-
+      console.log("Server response:", data); // Добавьте эту строку для проверки ответа сервера
       toast.success("Зображення успішно завантажено!");
       return data;
     } catch (error: any) {
+      console.error("Upload error:", error); // Добавьте эту строку для проверки ошибки
       toast.error("Помилка при завантаженні зображення:");
       return thunkAPI.rejectWithValue(error.message);
     }

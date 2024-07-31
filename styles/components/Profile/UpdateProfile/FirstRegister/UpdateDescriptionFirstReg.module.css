@@ -16,11 +16,12 @@
   font-size: var(--h2-medium-font-size);
   font-weight: var(--h2-medium-font-weight);
   resize: none;
+  padding: 10px;
 }
 .input::placeholder {
-  color: var(--black);
-  font-size: var(--h1-medium-font-size);
-  font-weight: var(--h1-medium-font-weight);
+  color: var(--gray);
+  font-size: var(--h3-medium-font-size);
+  font-weight: var(--h2-medium-font-weight);
 }
 .active {
   background-color: var(--white);

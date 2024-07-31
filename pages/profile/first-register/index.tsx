@@ -1,6 +1,7 @@
-import MultiPageComponent from "@/components/Profile/UpdateProfile/FirstRegister/FirstRegister";
 import React from "react";
 import styles from "@/styles/FirstRegisterPage/FirstRegisterPage.module.css";
+import MultiStepForm from "@/components/Profile/UpdateProfile/FirstRegister/RegistrNew/MultiStepForm";
+import MultiPageComponent from "@/components/Profile/UpdateProfile/FirstRegister/FirstRegister";
 
 const FirstRegisterPage = () => {
   return (
