@@ -38,6 +38,7 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
               value={data.social?.Facebook || ""}
               onChange={handleChange}
               className={stylesInput.input}
+              placeholder="Посилання на Facebook сторинку"
             />
             <p className={styles.contactLabel}>
               Instagram{" "}
@@ -53,6 +54,7 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
               value={data.social?.Instagram || ""}
               onChange={handleChange}
               className={stylesInput.input}
+              placeholder="Посилання на Instagram сторинку"
             />
             <p className={styles.contactLabel}>
               YouTube{" "}
@@ -68,6 +70,7 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
               value={data.social?.Youtube || ""}
               onChange={handleChange}
               className={stylesInput.input}
+              placeholder="Посилання на Youtube сторинку"
             />
           </div>
           <div>
@@ -85,6 +88,7 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
               value={data.social?.TikTok || ""}
               onChange={handleChange}
               className={stylesInput.input}
+              placeholder="Посилання на TikTok сторинку"
             />
             <p className={styles.contactLabel}>
               Вебсайт <CgWebsite className={styles.contactIcon} />
@@ -95,6 +99,7 @@ const Step5: React.FC<StepProps> = ({ data, setData }) => {
               value={data.social?.WebSite || ""}
               onChange={handleChange}
               className={stylesInput.input}
+              placeholder="Посилання на персональний WebSite"
             />
           </div>
         </div>

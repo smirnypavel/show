@@ -85,6 +85,7 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
             name="phone"
             value={data.phone || ""}
             onChange={handleChange}
+            placeholder="Номер телефону"
           />
           <ContactInput
             label="Телеграм"
@@ -98,6 +99,7 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
             name="telegram"
             value={data.telegram || ""}
             onChange={handleChange}
+            placeholder="Посилання на профіль або нік в Telegram"
           />
           <ContactInput
             label="Пошта"
@@ -105,6 +107,7 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
             name="email"
             value={data.email || ""}
             onChange={handleChange}
+            placeholder="Ваша пошта"
           />
           <ContactInput
             label="Вайбер"
@@ -118,6 +121,7 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
             name="viber"
             value={data.viber || ""}
             onChange={handleChange}
+            placeholder="Номер Viber"
           />
           <ContactInput
             label="Вотсап"
@@ -131,6 +135,7 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
             name="whatsapp"
             value={data.whatsapp || ""}
             onChange={handleChange}
+            placeholder="Номер WhatsApp"
           />
         </div>
       </div>
@@ -143,10 +148,12 @@ interface ContactInputProps {
   icon: React.ReactNode;
   name: string;
   value: string;
+  placeholder: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ContactInput: React.FC<ContactInputProps> = ({
+  placeholder,
   label,
   icon,
   name,
@@ -163,6 +170,7 @@ const ContactInput: React.FC<ContactInputProps> = ({
       value={value}
       onChange={onChange}
       className={stylesInput.input}
+      placeholder={placeholder}
     />
   </div>
 );
