@@ -226,17 +226,15 @@ export const getUser = createAsyncThunk(
 
 export const uploadImage = createAsyncThunk(
   "auth/uploadImage",
-  async (files: File[], thunkAPI) => {
+  async (file: File, thunkAPI) => {
+    // Изменяем тип file на File, а не File[]
     try {
       const formData = new FormData();
-      files.forEach((file, index) => {
-        formData.append(`files[]`, file); // Изменяем ключ на `files[]`
-      });
-      console.log(formData);
+      formData.append(`file`, file); // Используем один ключ для файла
       const { data } = await axios.post("/users/upload", formData, {
-        // headers: {
-        //   "Content-Type": "multipart/form-data",
-        // },
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
 
       toast.success("Зображення успішно завантажено!");
