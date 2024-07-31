@@ -7,7 +7,7 @@
   display: flex;
   padding: 16px;
   position: relative;
-  width: 280px;
+  width: 100%;
   border: 1px solid #858584;
   align-items: center;
   border-radius: 20px;

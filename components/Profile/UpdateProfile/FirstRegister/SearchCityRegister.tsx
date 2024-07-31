@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import customGeo from "@/public/custom.geo.json";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/SerchCityRegister.module.css";
-import { FaCheck } from "react-icons/fa";
 import { useAppDispatch } from "@/redux/hooks";
 import { updateUser } from "@/redux/auth/authOperations";
 
@@ -13,12 +12,11 @@ interface City {
   place_id: number;
 }
 
-const SearchCityRegister = () => {
+const SearchCityRegister: React.FC = () => {
   const [cities, setCities] = useState<City[]>([]);
   const [query, setQuery] = useState("");
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const [requestCity, setRequestCity] = useState<string | null>(null);
-  const [isEditing, setIsEditing] = useState(false);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -65,15 +63,15 @@ const SearchCityRegister = () => {
     setRequestCity(city.name);
     setSelectedCity(city.name.split(",")[0]);
     setQuery("");
-    setIsEditing(true);
+    handleSubmit(); // Call handleSubmit when a city is selected
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedCity(null); // Clear selected city when input changes
     setQuery(e.target.value); // Update query state
   };
+
   const handleSubmit = () => {
-    setIsEditing(false);
     dispatch(updateUser({ location: requestCity }));
   };
 
@@ -87,14 +85,7 @@ const SearchCityRegister = () => {
           onChange={handleInputChange}
           className={styles.input}
         />
-        {isEditing && (
-          <button
-            type="button"
-            onClick={handleSubmit}
-            className={styles.buttonSubmit}>
-            <FaCheck className={styles.iconOk} />
-          </button>
-        )}
+        {/* Удаляем кнопку Submit */}
       </div>
       {query && (
         <ul className={styles.itemList}>
@@ -104,7 +95,7 @@ const SearchCityRegister = () => {
               key={city.place_id}
               onClick={() => handleCityClick(city)}>
               {city.name.split(",")[0]},{city.name.split(",")[2]},{" "}
-              {city.name.split(",")[3]},{" "}
+              {city.name.split(",")[3]}
             </li>
           ))}
         </ul>

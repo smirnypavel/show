@@ -25,7 +25,10 @@ const Step1: React.FC<StepProps> = ({ data, setData }) => {
   return (
     <div className={styles.container}>
       <p>Для початку додайте свої данні</p>
-      <ProfileUpdateAvatar />
+      <div className={styles.avatarContainer}>
+        <ProfileUpdateAvatar />
+      </div>
+
       <p className={styles.titleInput}>Ваше Ім’я:</p>
       <input
         type="text"
