@@ -230,7 +230,7 @@ export const uploadImage = createAsyncThunk(
     try {
       const formData = new FormData();
       for (const file of files) {
-        formData.append("files", file);
+        formData.append("file", file);
       }
       const { data } = await axios.post("/users/upload", formData, {
         headers: {
