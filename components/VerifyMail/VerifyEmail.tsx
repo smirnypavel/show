@@ -29,7 +29,7 @@ const VerifyEmail = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         {!isReg ? (
-          <div>
+          <div className={styles.contentWrapper}>
             <h1>Вітаю ви успішно підтвердили пошту)</h1>
             <h2>
               Для того щоб завершити реестрацію Вам потрібно налаштувати профіль
@@ -41,7 +41,7 @@ const VerifyEmail = () => {
             </Link>
           </div>
         ) : (
-          <div>
+          <div className={styles.contentWrapper}>
             <h1>Ви вже підтвердили пошту</h1>
             <Link
               className={styles.buttonLink}

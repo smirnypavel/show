@@ -17,7 +17,14 @@
   gap: 10px;
   align-items: center;
 }
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
 .buttonLink {
+  margin-top: 20px;
   width: fit-content;
   align-items: center;
   background-color: #a259ff;
