@@ -36,6 +36,7 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
         value={data.price || ""}
         onChange={handleChange}
         className={stylesInput.input}
+        placeholder={"Ціна за виступ або за годину"}
       />
       <p className={styles.titleInput}>
         Опис того чим Ви займаєтесь та що пропонуєте:
@@ -45,6 +46,7 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
         value={data.description || ""}
         onChange={handleChange}
         className={styles2.input}
+        placeholder="Чим більше ви напишете про свій колектив та ваші виступи, тим краще замовник зможе вас оцінити. Це підвищить ймовірність того, що саме вас оберуть для замовлення."
       />
     </div>
   );
