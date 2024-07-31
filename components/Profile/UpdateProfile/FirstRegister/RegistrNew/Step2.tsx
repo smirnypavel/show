@@ -1,4 +1,4 @@
-import React, { useEffect, ChangeEvent } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import { StepProps } from "@/types/IRegFormData";
 import stylesInput from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/Step1.module.css";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/UpdateContactFirstRegister.module.css";
@@ -14,12 +14,28 @@ import WhatsApp from "@/public/icon/WhatsApp.svg";
 const Step2: React.FC<StepProps> = ({ data, setData }) => {
   const user = useAppSelector(getUser);
 
+  // States to track if each field has been manually changed
+  const [isPhoneChanged, setIsPhoneChanged] = useState(false);
+  const [isEmailChanged, setIsEmailChanged] = useState(false);
+  const [isTelegramChanged, setIsTelegramChanged] = useState(false);
+  const [isViberChanged, setIsViberChanged] = useState(false);
+  const [isWhatsAppChanged, setIsWhatsAppChanged] = useState(false);
+
   useEffect(() => {
     if (!data.phone && user.phone) {
       setData((prevData) => ({ ...prevData, phone: user.phone }));
     }
     if (!data.email && user.email) {
       setData((prevData) => ({ ...prevData, email: user.email }));
+    }
+    if (!data.telegram && user.telegram) {
+      setData((prevData) => ({ ...prevData, telegram: user.telegram }));
+    }
+    if (!data.viber && user.viber) {
+      setData((prevData) => ({ ...prevData, viber: user.viber }));
+    }
+    if (!data.whatsapp && user.whatsapp) {
+      setData((prevData) => ({ ...prevData, whatsapp: user.whatsapp }));
     }
   }, [user, data, setData]);
 
@@ -33,6 +49,28 @@ const Step2: React.FC<StepProps> = ({ data, setData }) => {
     const { name, value } = e.target;
     const formattedValue =
       name === "telegram" ? formatTelegramUsername(value) : value;
+
+    // Update state for tracking if the field has been manually changed
+    switch (name) {
+      case "phone":
+        setIsPhoneChanged(true);
+        break;
+      case "email":
+        setIsEmailChanged(true);
+        break;
+      case "telegram":
+        setIsTelegramChanged(true);
+        break;
+      case "viber":
+        setIsViberChanged(true);
+        break;
+      case "whatsapp":
+        setIsWhatsAppChanged(true);
+        break;
+      default:
+        break;
+    }
+
     setData((prevData) => ({ ...prevData, [name]: formattedValue }));
   };
 

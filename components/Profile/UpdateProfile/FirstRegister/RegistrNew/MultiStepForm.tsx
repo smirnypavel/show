@@ -3,7 +3,7 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step5 from "./Step5";
-import CategorySelectorFirstReg from "./CategorySelectFirstReg";
+import UserCatFirstRegister from "../UserCatFirstRegister";
 import UpdateMediaFirstReg from "./UpdateMediaFirstReg";
 import FinishReg from "./FinishReg";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/ultiStepForm.module.css";
@@ -91,7 +91,7 @@ const MultiStepForm: React.FC = () => {
             }
           />
         )}
-        {currentStep === 4 && <CategorySelectorFirstReg />}
+        {currentStep === 4 && <UserCatFirstRegister />}
         {currentStep === 5 && (
           <Step5
             data={formData}
@@ -103,7 +103,10 @@ const MultiStepForm: React.FC = () => {
         {currentStep === 6 && <UpdateMediaFirstReg />}
         {currentStep === 7 && <FinishReg />}
       </div>
-      <div className={styles.buttons}>
+      <div
+        className={
+          currentStep === 1 ? styles.firstStepButtons : styles.buttons
+        }>
         {currentStep > 1 && (
           <button
             className={styles.button}
