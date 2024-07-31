@@ -14,6 +14,7 @@ import { IPhoto } from "@/types/IAuth";
 import { RiLoader2Line } from "react-icons/ri";
 import styles from "@/styles/components/Profile/UpdateProfile/UpdateMedia/TestPhoto.module.css";
 
+// Вспомогательная функция для обработки загружаемых файлов
 const processFiles = (
   files: FileList | null,
   existingCount: number,
