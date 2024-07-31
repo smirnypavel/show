@@ -15,8 +15,6 @@ import { HiOutlineDownload, HiOutlineStar } from "react-icons/hi";
 import { IPhoto } from "@/types/IAuth";
 import { RiLoader2Line } from "react-icons/ri";
 
-// const emptyImagePlaceholder = "https://via.placeholder.com/250x250";
-
 const PhotoPlaceholderComponent = () => {
   const userPhoto = useAppSelector(getUserPhoto);
   const user = useAppSelector(getUser);
@@ -27,23 +25,27 @@ const PhotoPlaceholderComponent = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleButtonClick = () => {
-    fileInputRef.current?.click(); // Нажатие на input при клике на кнопку
+    fileInputRef.current?.click();
   };
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]; // Получаем первый файл из FileList
-    if (file) {
-      dispatch(uploadImage(file)); // Передаем file напрямую
+    const files = event.target.files; // Получаем все файлы из FileList
+    if (files && files.length > 0) {
+      const fileArray = Array.from(files); // Преобразуем FileList в массив
+      dispatch(uploadImage(fileArray)); // Передаем массив файлов
     }
   };
+
   const handleDeletePhoto = (publicId: string) => {
     console.log(publicId);
     dispatch(deletePhoto({ id: publicId }));
   };
+
   const handleAddMasterPhoto = (photo: IPhoto) => {
     console.log(photo);
     dispatch(updateUser({ master_photo: photo }));
   };
-  // Создаем массив с элементами, представляющими места для фото
+
   const photoPlaceholders = Array.from(
     { length: emptyImageCount },
     (_, index) => (
@@ -61,7 +63,6 @@ const PhotoPlaceholderComponent = () => {
     )
   );
 
-  // Если есть фото у пользователя, заменяем пустые заглушки на фотографии
   const photos = userPhoto.map((photo) => (
     <div
       key={photo.publicId}
@@ -89,7 +90,6 @@ const PhotoPlaceholderComponent = () => {
     </div>
   ));
 
-  // Объединяем места для фото и фотографии пользователя
   const allPhotos = [...photos, ...photoPlaceholders];
 
   return (
@@ -101,13 +101,13 @@ const PhotoPlaceholderComponent = () => {
         ref={fileInputRef}
         disabled={emptyImageCount <= 0}
         style={{ display: "none" }}
-        multiple
+        multiple // Добавляем атрибут multiple для выбора нескольких файлов
       />
       <button
         onClick={handleButtonClick}
-        disabled={emptyImageCount <= 0 || loading} // Добавить состояние загрузки в условие активации кнопки
+        disabled={emptyImageCount <= 0 || loading}
         className={styles.download}>
-        {loading ? ( // Использовать состояние uploading для отображения иконки загрузки
+        {loading ? (
           <RiLoader2Line className={styles.uploadIcon} />
         ) : (
           <HiOutlineDownload className={styles.downloadIcon} />
