@@ -233,9 +233,9 @@ export const uploadImage = createAsyncThunk(
         formData.append(`files[]`, file); // Изменяем ключ на `files[]`
       });
       const { data } = await axios.post("/users/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        // headers: {
+        //   "Content-Type": "multipart/form-data",
+        // },
       });
 
       toast.success("Зображення успішно завантажено!");
