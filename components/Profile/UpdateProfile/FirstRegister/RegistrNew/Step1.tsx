@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StepProps } from "@/types/IRegFormData";
 import ProfileUpdateAvatar from "../../ProfileUpdateAvatar";
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/UserProfileRegister.module.css";
@@ -9,14 +9,16 @@ import { getUser } from "@/redux/auth/authSelectors";
 
 const Step1: React.FC<StepProps> = ({ data, setData }) => {
   const user = useAppSelector(getUser);
+  const [isFirstNameChanged, setIsFirstNameChanged] = useState(false);
 
   useEffect(() => {
-    if (user.firstName && !data.firstName) {
+    if (user.firstName && !data.firstName && !isFirstNameChanged) {
       setData((prevData) => ({ ...prevData, firstName: user.firstName }));
     }
-  }, [user.firstName, data.firstName, setData]);
+  }, [user.firstName, data.firstName, isFirstNameChanged, setData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsFirstNameChanged(true);
     setData({ ...data, firstName: e.target.value });
   };
 
