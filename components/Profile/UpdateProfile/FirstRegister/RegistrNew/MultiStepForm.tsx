@@ -1,4 +1,5 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/router"; // Импортируйте useRouter
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -32,6 +33,9 @@ const MultiStepForm: React.FC = () => {
     },
   });
 
+  const router = useRouter(); // Инициализируйте useRouter
+  const dispatch = useAppDispatch();
+
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
@@ -39,8 +43,6 @@ const MultiStepForm: React.FC = () => {
   const handleBack = () => {
     setCurrentStep((prevStep) => prevStep - 1);
   };
-
-  const dispatch = useAppDispatch();
 
   const filterEmptyFields = (data: any): any => {
     const filteredData: any = {};
@@ -62,6 +64,9 @@ const MultiStepForm: React.FC = () => {
     const filteredData = filterEmptyFields(formData);
     console.log(filteredData);
     await dispatch(firstReg({ ...filteredData, register: true }));
+
+    // После успешной регистрации перенаправьте пользователя на /profile
+    router.push("/profile");
   };
 
   return (

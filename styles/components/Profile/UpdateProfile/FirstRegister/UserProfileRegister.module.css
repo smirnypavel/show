@@ -5,6 +5,11 @@
   text-align: center;
   gap: 20px;
 }
+.avatarContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .input {
   display: flex;
   padding: 16px;
