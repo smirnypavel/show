@@ -281,11 +281,12 @@
 }
 .photo {
   object-fit: cover;
+  border-radius: 20px;
 }
 .photoBigItem {
   margin-top: 28px;
   position: relative;
-  width: 700px;
+  /* width: 700px; */
   height: 550px;
   -webkit-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
   -moz-box-shadow: 10px 10px 21px -7px rgba(0, 0, 0, 0.59);
@@ -392,4 +393,8 @@
 .buttonCloseIcon {
   width: 32px;
   height: 32px;
+}
+.sliderContainer {
+  width: 700px;
+  padding: 20px;
 }

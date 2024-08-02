@@ -3,9 +3,14 @@ import styles from "@/styles/components/Artist/ArtistPromo.module.css";
 import { ArtistPageProps } from "./ArtistPage";
 import Image from "next/image";
 import Modal from "@/components/helpers/Modal";
-import { IoIosArrowForward } from "react-icons/io";
 import YouTube2 from "../helpers/Youtube";
-import MobileInfoPage from "./Mobile/MobileInfoPage";
+// import MobileInfoPage from "./Mobile/MobileInfoPage";
+// import { IoIosArrowForward } from "react-icons/io";
+// import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 import { GrLocation } from "react-icons/gr";
 import { TbCurrencyHryvnia } from "react-icons/tb";
 import {
@@ -31,6 +36,15 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalOpenIndex, setModalOpenIndex] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const settings = {
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    waitForAnimate: false,
+  };
 
   const handleShowPhotos = () => {
     setShowPhotos(true);
@@ -264,15 +278,32 @@ const ArtistPromo: React.FC<ArtistPageProps> = ({ artist }) => {
                         </li>
                         {modalOpenIndex === index && (
                           <Modal onClose={closeModal}>
-                            <li className={styles.photoBigItem}>
-                              <Image
-                                src={item.url}
-                                alt={"user photo"}
-                                fill
-                                sizes="(min-width: 808px) 50vw, 100vw"
-                                className={styles.photo}
-                              />
-                            </li>
+                            <div className={styles.sliderContainer}>
+                              <Slider {...settings}>
+                                {artist.photo.map((item) => (
+                                  <div
+                                    key={item.publicId}
+                                    className={styles.photoBigItem}>
+                                    <Image
+                                      src={item.url}
+                                      alt={"user photo"}
+                                      fill
+                                      sizes="(min-width: 808px) 50vw, 100vw"
+                                      className={styles.photo}
+                                    />
+                                  </div>
+                                ))}
+                                {/* <li className={styles.photoBigItem}>
+                                  <Image
+                                    src={item.url}
+                                    alt={"user photo"}
+                                    fill
+                                    sizes="(min-width: 808px) 50vw, 100vw"
+                                    className={styles.photo}
+                                  />
+                                </li> */}
+                              </Slider>
+                            </div>
                           </Modal>
                         )}
                       </div>
