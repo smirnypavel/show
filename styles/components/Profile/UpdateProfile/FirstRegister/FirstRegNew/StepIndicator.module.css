@@ -1,0 +1,26 @@
+.stepIndicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.step {
+  flex: 1;
+  height: 3px; /* Высота индикатора */
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border: 0.5px solid #a259ff;
+}
+
+.completed {
+  background-color: #a259ff; /* Цвет для завершенных шагов */
+}
+
+.active {
+  /* background-color: #ff7f50;  */
+  background-color: rgb(162, 89, 255); /* Цвет для завершенных шагов */
+  -webkit-box-shadow: 0px 1px 6px 4px rgba(162, 89, 255, 0.59);
+  -moz-box-shadow: 0px 1px 6px 4px rgba(162, 89, 255, 0.59);
+  box-shadow: 0px 1px 6px 4px rgba(162, 89, 255, 0.59);
+}

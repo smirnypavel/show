@@ -7,13 +7,16 @@ import Step5 from "./Step5";
 import UserCatFirstRegister from "../UserCatFirstRegister";
 import UpdateMediaFirstReg from "./UpdateMediaFirstReg";
 import FinishReg from "./FinishReg";
+import StepIndicator from "./StepIndicator"; // Импортируйте StepIndicator
 import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/ultiStepForm.module.css";
 import { useAppDispatch } from "@/redux/hooks";
 import { firstReg } from "@/redux/auth/authOperations";
-import { FormData, StepProps } from "@/types/IRegFormData";
+import { FormData } from "@/types/IRegFormData";
 
 const MultiStepForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const totalSteps = 7; // Общее количество шагов
+
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     phone: "",
@@ -71,6 +74,10 @@ const MultiStepForm: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      <StepIndicator
+        currentStep={currentStep}
+        totalSteps={totalSteps}
+      />
       <div className={styles.content}>
         {currentStep === 1 && (
           <Step1
