@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/stepIndicator.module.css";
+import styles from "@/styles/components/Profile/UpdateProfile/FirstRegister/FirstRegNew/StepIndicator.module.css";
 
 interface StepIndicatorProps {
   currentStep: number;
@@ -16,7 +16,11 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({
         <div
           key={index}
           className={`${styles.step} ${
-            index + 1 <= currentStep ? styles.active : ""
+            index + 1 === currentStep
+              ? styles.active
+              : index + 1 < currentStep
+              ? styles.completed
+              : ""
           }`}></div>
       ))}
     </div>
