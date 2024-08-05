@@ -90,7 +90,7 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <p className={styles.title}>Відгукі та пропозиції </p>
+          <p className={styles.title}>Відгуки та пропозиції</p>
           <div className={styles.socialContainer}>
             <a
               href={`https://t.me/+tG6pSpHWPPFiYzMy`}
