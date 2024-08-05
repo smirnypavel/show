@@ -5,6 +5,8 @@ import { BsSearch, BsX } from "react-icons/bs";
 import ChooseLocationArtist from "./ChooseLocationArtist";
 import { useRouter } from "next/router";
 import SearchCityArtistList from "../Layout/Header/ChooseLocationNew";
+import { Comfortaa } from "next/font/google";
+const comfortaa = Comfortaa({ weight: ["400"], subsets: ["latin"] });
 
 const ArtistSearchBar = () => {
   const [req, setSearchTerm] = useState("");
@@ -60,7 +62,7 @@ const ArtistSearchBar = () => {
             placeholder="Знайти виконавця"
             value={req}
             onChange={handleInputChange}
-            className={styles.inputSearch}
+            className={`${styles.inputSearch} ${comfortaa.className}`}
           />
           {/* <ChooseLocationArtist /> */}
           <SearchCityArtistList />{" "}
