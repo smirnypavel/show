@@ -36,7 +36,7 @@ const SearchCity: React.FC<AutocompleteProps> = ({ onCitySelect }) => {
       `https://nominatim.openstreetmap.org/search?q=${query}&format=json&countrycodes=ua&addressdetails=1&accept-language=ua&polygon_geojson=${customGeo}`
     );
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     // Filter and map cities
     const filteredCities = data
       .filter(
@@ -44,6 +44,7 @@ const SearchCity: React.FC<AutocompleteProps> = ({ onCitySelect }) => {
           item.type === "city" ||
           item.type === "administrative" ||
           item.type === "village"
+        // item.type === "town"
       )
       .map((item: any) => ({
         name: item.display_name,

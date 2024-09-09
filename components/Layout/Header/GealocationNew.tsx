@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 interface Location {
   latitude: number | null;
   longitude: number | null;
@@ -17,28 +18,51 @@ const Geolocation = () => {
     if (storedCity) {
       return; // Завершаем выполнение эффекта, если значение уже есть
     }
+
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          city: null, // Включите свойство `city`, даже если оно имеет значение `null`
-        });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            city: null,
+          });
 
-        // Получить город по координатам
-        async function getCity() {
-          const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&accept-language=ua&format=json`
-          );
-          const data = await response.json();
+          // Получить город по координатам
+          async function getCity() {
+            try {
+              const response = await fetch(
+                `https://nominatim.openstreetmap.org/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&accept-language=ua&format=json`
+              );
+              const data = await response.json();
+              console.log(data);
 
-          if (data) {
-            localStorage.setItem("userCity", `${data.address.city}`);
-          } else return;
+              // Проверяем, существует ли название города
+              const city =
+                data.address.city ||
+                data.address.town ||
+                data.address.village ||
+                data.address.administrative;
+              if (city) {
+                localStorage.setItem("userCity", city);
+                setLocation((prevLocation) => ({
+                  ...prevLocation,
+                  city: city,
+                }));
+              } else {
+                console.error("Город не найден");
+              }
+            } catch (error) {
+              console.error("Ошибка при запросе к Nominatim:", error);
+            }
+          }
+
+          getCity();
+        },
+        (error) => {
+          console.error("Ошибка при получении геолокации:", error);
         }
-
-        getCity();
-      });
+      );
     } else {
       console.log("Geolocation not supported");
     }
