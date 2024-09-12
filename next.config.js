@@ -41,6 +41,7 @@ const nextConfig = {
       },
     ],
   },
+  output: "export", // Добавляем настройку для статического HTML экспорта
 };
 
 module.exports = nextConfig;
