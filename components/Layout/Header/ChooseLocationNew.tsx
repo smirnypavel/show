@@ -122,7 +122,7 @@ const SearchCityArtistList = () => {
     });
 
     if (inputRef.current) {
-      inputRef.current.value = ""; // Очистка поля ввода (если нужно напрямую работать с DOM)
+      inputRef.current.value = "";
     }
   };
 
