@@ -21,6 +21,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "src/**/*.css",
+    "src/**/*.scss",
     "components/helpers/Youtube.jsx",
     "components/helpers/Youtube2.jsx"
   ],

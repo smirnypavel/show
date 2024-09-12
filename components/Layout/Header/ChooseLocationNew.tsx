@@ -108,6 +108,8 @@ const SearchCityArtistList = () => {
   };
   const handleClearInput = () => {
     setUserCity("Вся Україна");
+    setQuery(""); // Сброс значения query
+    setSelectedCity(null); // Сброс выбранного города
     localStorage.removeItem("userCity");
     localStorage.removeItem("locQuest");
 
@@ -120,7 +122,7 @@ const SearchCityArtistList = () => {
     });
 
     if (inputRef.current) {
-      inputRef.current.value = ""; // Очистка поля ввода
+      inputRef.current.value = ""; // Очистка поля ввода (если нужно напрямую работать с DOM)
     }
   };
 

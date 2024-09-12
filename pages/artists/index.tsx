@@ -31,7 +31,9 @@ const Artists: React.FC<ArtistsProps> = ({ artists, totalPages, loading }) => {
         <MobileCat />
         <MobileSort />
       </div>
-      <ArtistSearchBar />
+      <div className={styles.searhWrapper}>
+        <ArtistSearchBar />
+      </div>
 
       <ArtistList artists={artists} />
       <div className={styles.pagination}>
